@@ -26,6 +26,14 @@
             android:name="edu.jcu.cs470.togenda.AgendaActivity"
             android:label="@string/title_activity_agenda" >
         </activity>
+        <activity
+            android:name="edu.jcu.cs470.togenda.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="edu.jcu.cs470.togenda.AgendaFragment"
+            android:label="@string/title_activity_agenda_fragment" >
+        </activity>
     </application>
 
 </manifest>

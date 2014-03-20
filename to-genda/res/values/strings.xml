@@ -10,5 +10,6 @@
     <string name="action_example">New Task</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_agenda">Agenda</string>
+    <string name="title_activity_agenda_fragment">AgendaFragment</string>
 
 </resources>
