@@ -1,10 +1,12 @@
 package edu.jcu.cs470.togenda;
 
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -64,7 +66,10 @@ public class MainActivity extends Activity
                 mTitle = getString(R.string.title_section2);
                 break;
             case 3:
-                mTitle = getString(R.string.title_section3);
+                //mTitle = getString(R.string.title_section3);
+                View v = findViewById(android.R.id.content);
+                Intent settingsIntent = new Intent(v.getContext(), SettingsActivity.class);
+        		startActivityForResult(settingsIntent, 0);
                 break;
         }
     }

@@ -28,11 +28,17 @@
         </activity>
         <activity
             android:name="edu.jcu.cs470.togenda.SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="edu.jcu.cs470.togenda.MainActivity"
+            android:theme="@style/AppSubTheme" >
         </activity>
         <activity
             android:name="edu.jcu.cs470.togenda.AgendaFragment"
             android:label="@string/title_activity_agenda_fragment" >
+        </activity>
+        <activity
+            android:name="edu.jcu.cs470.togenda.BasicActivity"
+            android:label="@string/title_activity_basic" >
         </activity>
     </application>
 
