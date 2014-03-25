@@ -202,6 +202,8 @@ public class NavigationDrawerFragment extends Fragment {
 			{
 				Intent settingsIntent = new Intent(getActivity(), SettingsActivity.class);
 				getActivity().startActivity(settingsIntent);
+				selectItem(0); //should reload agenda eventually.
+				
 			}
 			else
 			{
