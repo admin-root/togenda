@@ -9,14 +9,26 @@ package edu.jcu.cs470.togenda;
 
 public final class R {
     public static final class array {
-        public static final int pref_example_list_titles=0x7f070000;
-        public static final int pref_example_list_values=0x7f070001;
-        public static final int pref_sync_frequency_titles=0x7f070002;
-        public static final int pref_sync_frequency_values=0x7f070003;
+        public static int pref_example_list_titles=0x7f090000;
+        public static int pref_example_list_values=0x7f090001;
+        public static int pref_sync_frequency_titles=0x7f090002;
+        public static int pref_sync_frequency_values=0x7f090003;
     }
     public static final class attr {
     }
+    public static final class color {
+        public static int card_border=0x7f050007;
+        public static int card_grid_text=0x7f050005;
+        public static int card_light_text=0x7f050004;
+        public static int card_separator=0x7f050006;
+        public static int card_text=0x7f050002;
+        public static int card_title_text=0x7f050003;
+        public static int stroke=0x7f050000;
+        public static int text_light=0x7f050001;
+    }
     public static final class dimen {
+        public static int action_bar_switch_padding=0x7f060044;
+        public static int action_confirm_button_margin=0x7f060064;
         /**  Default screen margins, per the Android Design guidelines. 
 
          Example customization of dimensions originally defined in res/values/dimens.xml
@@ -24,84 +36,291 @@ public final class R {
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static int activity_horizontal_margin=0x7f0600ac;
+        public static int activity_vertical_margin=0x7f0600ad;
+        public static int app_icon_area_height=0x7f06007f;
+        public static int app_icon_area_width=0x7f06007e;
+        public static int at_place_card_content_height=0x7f060027;
+        public static int auto_scroll_padding=0x7f06002b;
+        public static int card_action_button_height=0x7f0600a0;
+        public static int card_action_small_text=0x7f060097;
+        public static int card_action_text=0x7f060098;
+        public static int card_grid_font_size=0x7f060091;
+        public static int card_horizontal_map_height=0x7f06009e;
+        public static int card_large_text=0x7f060094;
+        public static int card_medium_text=0x7f060095;
+        public static int card_minimum_padding=0x7f060066;
+        public static int card_padding=0x7f060099;
+        public static int card_small_padding=0x7f0600a1;
+        public static int card_small_text=0x7f060096;
+        public static int card_spacer_margin=0x7f0600a2;
+        public static int card_temperature_size=0x7f060092;
+        public static int card_xl_text=0x7f060093;
+        public static int cards_max_column_width=0x7f060026;
+        public static int cards_padding_inbetween=0x7f060024;
+        public static int cards_padding_inbetween_adjusted=0x7f060025;
+        public static int contact_avatar_height=0x7f060080;
+        public static int contact_avatar_width=0x7f060081;
+        public static int contact_select_fragment_padding=0x7f060082;
+        public static int context_header_padding=0x7f06004d;
+        public static int control_size=0x7f06002f;
+        public static int corpus_bar_left_padding=0x7f06001e;
+        public static int corpus_bar_more_padding=0x7f06001f;
+        public static int corpus_bar_vertical_padding=0x7f06001d;
+        public static int corpus_selector_element_margin=0x7f060022;
+        public static int corpus_selector_horizontal_margin=0x7f060020;
+        public static int corpus_selector_text_size=0x7f060021;
+        public static int correction_popup_width_1buttons=0x7f060051;
+        public static int correction_popup_width_2buttons=0x7f060052;
+        public static int correction_popup_width_3buttons=0x7f060053;
+        public static int dialog_corner_radius=0x7f060056;
+        public static int dialog_height=0x7f060058;
+        public static int dialog_pos_left=0x7f06005a;
+        public static int dialog_pos_top=0x7f06005b;
+        public static int dialog_text_size=0x7f060060;
+        public static int dialog_width=0x7f060057;
+        public static int divider_height=0x7f06005e;
+        public static int extra_height_to_account_for_system_space_in_landscape=0x7f060015;
+        public static int first_run_context_image_height=0x7f060023;
+        public static int first_run_padding=0x7f06009a;
+        public static int footer_height=0x7f06001b;
+        public static int gmail_card_button_height=0x7f06001c;
+        public static int google_header_margin_bottom=0x7f060016;
+        public static int google_logo_margin_left=0x7f060033;
+        public static int google_logo_margin_right=0x7f060034;
+        public static int half_unit=0x7f060070;
+        public static int hands_free_padding=0x7f060086;
+        public static int hands_free_small_padding=0x7f060085;
+        public static int header_footer_size=0x7f06005f;
+        public static int high_confidence_answer_card_image_height=0x7f06006b;
+        public static int high_confidence_answer_card_image_width=0x7f06006c;
+        public static int high_confidence_answer_card_min_spacing=0x7f06006a;
+        public static int hint_bubble_offset=0x7f060055;
+        public static int histogram_bar_padding=0x7f0600aa;
+        public static int histogram_bar_size=0x7f0600a9;
+        public static int histogram_width=0x7f0600ab;
+        public static int horizontal_static_map_height=0x7f06009f;
+        public static int image_result_carousel_height=0x7f060043;
+        public static int image_result_height=0x7f060042;
+        public static int image_view_padding=0x7f060037;
+        public static int ime_button_text_size=0x7f06008c;
+        public static int ime_land_height=0x7f060088;
+        public static int ime_mic_size=0x7f06008d;
+        public static int ime_padding_bottom=0x7f06008e;
+        public static int ime_padding_top=0x7f06008f;
+        public static int ime_port_height=0x7f060087;
+        public static int ime_spinner_text=0x7f060089;
+        public static int ime_state_text_size=0x7f06008b;
+        public static int ime_title_text_size=0x7f06008a;
+        public static int indicator_size=0x7f06005c;
+        public static int indicator_stroke=0x7f06005d;
+        public static int intent_api_mic_area_size=0x7f060090;
+        public static int large_preview_width=0x7f060028;
+        public static int load_more_button_margin=0x7f0600a3;
+        public static int local_result_vertical_divider_height=0x7f06006d;
+        public static int local_results_item_margin=0x7f06006e;
+        public static int local_results_map_height=0x7f06006f;
+        public static int main_fragment_top_padding=0x7f060013;
+        public static int map_preview_image_height=0x7f060069;
+        public static int map_preview_image_width=0x7f060068;
+        public static int max_height_for_fullscreen=0x7f060059;
+        public static int max_preview_area_width=0x7f06002d;
+        public static int max_waveform_height=0x7f060061;
+        public static int mic_height=0x7f060063;
+        public static int min_height_background_image=0x7f06004c;
+        public static int min_preview_area_width=0x7f06002c;
         /** 
          Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html
     
          */
-        public static final int navigation_drawer_width=0x7f050002;
+        public static int navigation_drawer_width=0x7f0600ae;
+        public static int negative_unit=0x7f060075;
+        public static int photo_crop_stroke_width=0x7f060002;
+        public static int photo_crop_width=0x7f060001;
+        public static int photo_preview_size=0x7f060003;
+        public static int playpausebutton_size=0x7f060031;
+        public static int preview_image_height=0x7f06002a;
+        public static int preview_image_size=0x7f060067;
+        public static int preview_image_width=0x7f060029;
+        public static int recording_popup_size=0x7f060054;
+        public static int retry_button_size=0x7f060004;
+        public static int sample_card_width=0x7f0600a4;
+        public static int searchResultListItemHeight=0x7f060050;
+        public static int search_bar_padding=0x7f060038;
+        public static int search_bar_text_size=0x7f060035;
+        public static int search_box_width=0x7f060036;
+        public static int search_device_footer_bottom_margin=0x7f060008;
+        public static int search_plate_expand_threshold=0x7f06007a;
+        public static int search_plate_height=0x7f060032;
+        public static int search_plate_icon_height=0x7f06007d;
+        public static int search_plate_icon_width=0x7f06007c;
+        public static int search_plate_minimum_padding=0x7f06007b;
+        public static int small_unit=0x7f060076;
+        public static int small_units_2=0x7f060077;
+        public static int small_units_3=0x7f060078;
+        public static int small_units_4=0x7f060079;
+        public static int speak_now_speech_height=0x7f06004b;
+        public static int sports_card_image_height=0x7f060084;
+        public static int sports_card_image_width=0x7f060083;
+        public static int sticky_height=0x7f060000;
+        public static int stock_chart_height=0x7f0600a7;
+        public static int stock_chart_width=0x7f0600a8;
+        public static int stock_price_padding=0x7f0600a6;
+        public static int suggest_summons_area_padding=0x7f060039;
+        public static int suggest_web_height=0x7f06003a;
+        public static int suggest_web_padding=0x7f06003b;
+        public static int suggestion_footer_view_height=0x7f060007;
+        public static int suggestion_icon1_left_padding=0x7f06000f;
+        public static int suggestion_icon_size=0x7f06000b;
+        public static int suggestion_large_image_max_height=0x7f06000d;
+        public static int suggestion_large_image_max_width=0x7f06000c;
+        public static int suggestion_text2_height=0x7f06000e;
+        public static int suggestion_text_padding=0x7f060010;
+        public static int suggestion_view_height=0x7f060009;
+        public static int suggestion_view_height_large=0x7f06000a;
+        public static int suggestions_divider_margin_left_right=0x7f060012;
+        public static int suggestions_padding=0x7f060011;
+        public static int summons_height=0x7f06003c;
+        public static int summons_inter_source_padding=0x7f06003f;
+        public static int summons_padding=0x7f06003d;
+        public static int summons_width=0x7f06003e;
+        public static int suppressed_web_results_min_visible_height=0x7f060040;
+        public static int table_row_vertical_padding=0x7f0600a5;
+        public static int text_block_bottom_padding=0x7f06009c;
+        public static int text_block_side_padding=0x7f06009d;
+        public static int text_block_top_padding=0x7f06009b;
+        public static int tidbit_padding=0x7f06002e;
+        public static int unit=0x7f060071;
+        public static int unit_small_caps=0x7f060065;
+        public static int units_2=0x7f060072;
+        public static int units_3=0x7f060073;
+        public static int units_4=0x7f060074;
+        public static int voice_popup_margin=0x7f060062;
+        public static int weather_current_icon_height=0x7f06004f;
+        public static int weather_forecast_icon_height=0x7f06004e;
+        public static int web_snapshots_default_visible_width=0x7f060046;
+        public static int web_snapshots_dismiss_from_offset=0x7f06004a;
+        public static int web_snapshots_just_added_extra_height=0x7f060048;
+        public static int web_snapshots_launch_browser_from_offset=0x7f060049;
+        public static int web_snapshots_text_size=0x7f060047;
+        public static int web_snapshots_width=0x7f060045;
+        public static int web_suggestion_icon_size=0x7f060006;
+        public static int web_suggestion_view_height=0x7f060005;
+        public static int websearch_card_top_margin=0x7f060014;
+        public static int websearch_collapse_card_padding_offscreen_leeway=0x7f060041;
+        public static int websearch_fragment_inbetween_padding=0x7f060017;
+        public static int websearch_header_left_padding=0x7f060018;
+        public static int webview_margin_left=0x7f060030;
+        public static int widget_margin_left_right=0x7f060019;
+        public static int widget_margin_top_bottom=0x7f06001a;
     }
     public static final class drawable {
-        public static final int drawer_shadow=0x7f020000;
-        public static final int ic_action_event=0x7f020001;
-        public static final int ic_action_new_event=0x7f020002;
-        public static final int ic_drawer=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
+        public static int card=0x7f020000;
+        public static int card_background=0x7f020001;
+        public static int card_background_shadow=0x7f020002;
+        public static int card_shadow=0x7f020003;
+        public static int drawer_shadow=0x7f020004;
+        public static int ic_action_event=0x7f020005;
+        public static int ic_action_new_event=0x7f020006;
+        public static int ic_drawer=0x7f020007;
+        public static int ic_launcher=0x7f020008;
+        public static int top_shadow=0x7f020009;
     }
     public static final class id {
-        public static final int action_example=0x7f0a0007;
-        public static final int action_settings=0x7f0a0006;
-        public static final int container=0x7f0a0001;
-        public static final int drawer_layout=0x7f0a0002;
-        public static final int navigation_drawer=0x7f0a0003;
-        public static final int pager=0x7f0a0000;
-        public static final int section_label=0x7f0a0004;
-        public static final int textView1=0x7f0a0005;
+        public static int ScrollView1=0x7f0b0006;
+        public static int action_example=0x7f0b001e;
+        public static int action_settings=0x7f0b001d;
+        public static int cardContent=0x7f0b0019;
+        public static int cardsview=0x7f0b000a;
+        public static int container=0x7f0b0001;
+        public static int datelabel=0x7f0b0009;
+        public static int drawer_layout=0x7f0b0002;
+        public static int footer=0x7f0b0008;
+        public static int listView=0x7f0b0004;
+        public static int navigation_drawer=0x7f0b0003;
+        public static int pager=0x7f0b0000;
+        public static int placeholder=0x7f0b0018;
+        public static int section_label=0x7f0b0017;
+        public static int stackContainer=0x7f0b001c;
+        public static int stackRoot=0x7f0b001a;
+        public static int stackTitle=0x7f0b001b;
+        public static int sticky=0x7f0b0005;
+        public static int tableLayout=0x7f0b0007;
+        public static int tableRow1=0x7f0b000b;
+        public static int tableRow2=0x7f0b000d;
+        public static int tableRow3=0x7f0b000f;
+        public static int tableRow4=0x7f0b0011;
+        public static int tableRow5=0x7f0b0013;
+        public static int tableRow6=0x7f0b0015;
+        public static int textView1=0x7f0b000c;
+        public static int textView2=0x7f0b000e;
+        public static int textView3=0x7f0b0010;
+        public static int textView4=0x7f0b0012;
+        public static int textView5=0x7f0b0014;
+        public static int textView6=0x7f0b0016;
     }
     public static final class layout {
-        public static final int activity_agenda_fragment=0x7f030000;
-        public static final int activity_basic=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int fragment_agenda=0x7f030003;
-        public static final int fragment_basic=0x7f030004;
-        public static final int fragment_main=0x7f030005;
-        public static final int fragment_navigation_drawer=0x7f030006;
+        public static int activity_agenda_fragment=0x7f030000;
+        public static int activity_basic=0x7f030001;
+        public static int activity_main=0x7f030002;
+        public static int cards_view=0x7f030003;
+        public static int cards_view_multicolumn=0x7f030004;
+        public static int footer_fragment=0x7f030005;
+        public static int fragment_agenda=0x7f030006;
+        public static int fragment_basic=0x7f030007;
+        public static int fragment_main=0x7f030008;
+        public static int fragment_navigation_drawer=0x7f030009;
+        public static int header=0x7f03000a;
+        public static int item_card=0x7f03000b;
+        public static int item_card_empty_first=0x7f03000c;
+        public static int item_card_empty_last=0x7f03000d;
+        public static int item_play_card_empty_first=0x7f03000e;
+        public static int item_stack=0x7f03000f;
     }
     public static final class menu {
-        public static final int agenda=0x7f090000;
-        public static final int basic=0x7f090001;
-        public static final int global=0x7f090002;
-        public static final int main=0x7f090003;
-        public static final int to_do=0x7f090004;
+        public static int agenda=0x7f0a0000;
+        public static int basic=0x7f0a0001;
+        public static int global=0x7f0a0002;
+        public static int main=0x7f0a0003;
+        public static int to_do=0x7f0a0004;
     }
     public static final class string {
-        public static final int action_example=0x7f060006;
-        public static final int action_settings=0x7f060007;
-        public static final int app_name=0x7f060000;
-        public static final int hello_world=0x7f06000b;
-        public static final int navigation_drawer_close=0x7f060005;
-        public static final int navigation_drawer_open=0x7f060004;
-        public static final int pref_default_display_name=0x7f060012;
-        public static final int pref_description_social_recommendations=0x7f060010;
+        public static int action_example=0x7f080006;
+        public static int action_settings=0x7f080007;
+        public static int app_name=0x7f080000;
+        public static int hello_world=0x7f08000b;
+        public static int navigation_drawer_close=0x7f080005;
+        public static int navigation_drawer_open=0x7f080004;
+        public static int pref_default_display_name=0x7f080012;
+        public static int pref_description_social_recommendations=0x7f080010;
         /**  Example settings for Data & Sync 
          */
-        public static final int pref_header_data_sync=0x7f060014;
+        public static int pref_header_data_sync=0x7f080014;
         /**  Strings related to Settings 
  Example General settings 
          */
-        public static final int pref_header_general=0x7f06000e;
+        public static int pref_header_general=0x7f08000e;
         /**  Example settings for Notifications 
          */
-        public static final int pref_header_notifications=0x7f060017;
-        public static final int pref_ringtone_silent=0x7f06001a;
-        public static final int pref_title_add_friends_to_messages=0x7f060013;
-        public static final int pref_title_display_name=0x7f060011;
-        public static final int pref_title_new_message_notifications=0x7f060018;
-        public static final int pref_title_ringtone=0x7f060019;
-        public static final int pref_title_social_recommendations=0x7f06000f;
-        public static final int pref_title_sync_frequency=0x7f060015;
-        public static final int pref_title_system_sync_settings=0x7f060016;
-        public static final int pref_title_vibrate=0x7f06001b;
-        public static final int title_activity_agenda=0x7f060008;
-        public static final int title_activity_agenda_fragment=0x7f060009;
-        public static final int title_activity_basic=0x7f06000a;
-        public static final int title_activity_settings=0x7f06000d;
-        public static final int title_activity_to_do=0x7f06000c;
-        public static final int title_section1=0x7f060001;
-        public static final int title_section2=0x7f060002;
-        public static final int title_section3=0x7f060003;
+        public static int pref_header_notifications=0x7f080017;
+        public static int pref_ringtone_silent=0x7f08001a;
+        public static int pref_title_add_friends_to_messages=0x7f080013;
+        public static int pref_title_display_name=0x7f080011;
+        public static int pref_title_new_message_notifications=0x7f080018;
+        public static int pref_title_ringtone=0x7f080019;
+        public static int pref_title_social_recommendations=0x7f08000f;
+        public static int pref_title_sync_frequency=0x7f080015;
+        public static int pref_title_system_sync_settings=0x7f080016;
+        public static int pref_title_vibrate=0x7f08001b;
+        public static int title_activity_agenda=0x7f080008;
+        public static int title_activity_agenda_fragment=0x7f080009;
+        public static int title_activity_basic=0x7f08000a;
+        public static int title_activity_settings=0x7f08000d;
+        public static int title_activity_to_do=0x7f08000c;
+        public static int title_section1=0x7f080001;
+        public static int title_section2=0x7f080002;
+        public static int title_section3=0x7f080003;
     }
     public static final class style {
         /** 
@@ -125,23 +344,43 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static int AppBaseTheme=0x7f070008;
         /** 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         
          */
-        public static final int AppSubTheme=0x7f080001;
+        public static int AppSubTheme=0x7f070009;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080002;
+        public static int AppTheme=0x7f07000a;
+        public static int CardLightText=0x7f070001;
+        /** 
+          <style name="CardTitle">
+        <item name="android:id">@android:id/title</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/text_light</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+    
+         */
+        public static int CardText=0x7f070000;
+        public static int CardTitle=0x7f070002;
+        public static int CardTitleBold=0x7f070003;
+        public static int Item=0x7f070005;
+        public static int Item_Sticky=0x7f070007;
+        public static int Item_Top=0x7f070006;
+        public static int StackTitle=0x7f070004;
     }
     public static final class xml {
-        public static final int pref_data_sync=0x7f040000;
-        public static final int pref_general=0x7f040001;
-        public static final int pref_headers=0x7f040002;
-        public static final int pref_notification=0x7f040003;
+        public static int pref_data_sync=0x7f040000;
+        public static int pref_general=0x7f040001;
+        public static int pref_headers=0x7f040002;
+        public static int pref_notification=0x7f040003;
     }
 }

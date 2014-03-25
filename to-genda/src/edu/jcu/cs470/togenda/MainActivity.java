@@ -1,6 +1,8 @@
 package edu.jcu.cs470.togenda;
 
 
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -11,7 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.support.v4.widget.DrawerLayout;
+import android.text.format.Time;
 
 public class MainActivity extends Activity
 implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -128,10 +132,16 @@ implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_agenda, container, false);
-			//TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-			//textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-			return rootView;
+			LayoutInflater lf = getActivity().getLayoutInflater(); 
+			View view =  lf.inflate(R.layout.fragment_agenda, container, false);
+
+			TextView dateTime = (TextView) view.findViewById(R.id.datelabel);
+
+			dateTime.setText(java.text.DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime()));
+			
+			
+			
+			return view;
 		}
 
 		@Override
