@@ -13,4 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/section_label"
+        android:layout_toRightOf="@+id/section_label"
+        android:text="This is the agenda Fragment."
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>

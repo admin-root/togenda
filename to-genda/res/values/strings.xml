@@ -13,5 +13,6 @@
     <string name="title_activity_agenda_fragment">AgendaFragment</string>
     <string name="title_activity_basic">BasicActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_to_do">ToDo</string>
 
 </resources>
