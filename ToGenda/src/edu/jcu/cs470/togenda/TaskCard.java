@@ -3,11 +3,12 @@ package edu.jcu.cs470.togenda;
 import android.view.View;
 import android.widget.TextView;
 
+import com.fima.cardsui.objects.Card.OnCardSwiped;
 import com.fima.cardsui.objects.RecyclableCard;
 
-public class MyCard extends RecyclableCard {
+public class TaskCard extends RecyclableCard {
 
-	public MyCard(String title){
+	public TaskCard(String title){
 		super(title);
 	}
 

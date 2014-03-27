@@ -1,24 +1,26 @@
 package edu.jcu.cs470.togenda;
 
-import com.fima.cardsui.*;
-import com.fima.cardsui.objects.CardStack;
-import com.fima.cardsui.views.CardUI;
 
+import com.fima.cardsui.views.CardUI;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.os.Build;
+
+import java.text.Format; 
+
+import android.database.Cursor; 
+import android.provider.CalendarContract; 
+import android.text.format.DateFormat;
 
 public class MainActivity extends Activity {
+
+	private Cursor mCursor = null; private static final String[] COLS = new String[]
+			{ CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,46 +28,62 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		// init CardView
-		CardUI mCardView = (CardUI) findViewById(R.id.cardsview);
-		mCardView.setSwipeable(true);
+		CardUI CardView = (CardUI) findViewById(R.id.cardsview);
+		CardView.setSwipeable(true);
 
-		// add AndroidViews Cards
-		mCardView.addCard(new MyCard("Get the CardsUI view"));
-		mCardView.addCardToLastStack(new MyCard("for Android at"));
-		MyCard androidViewsCard = new MyCard("www.androidviews.net");
-		androidViewsCard.setOnClickListener(new OnClickListener() {
+		mCursor = getContentResolver().query(CalendarContract.Events.CONTENT_URI, COLS, null, null, null);
+		mCursor.moveToFirst();
 
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.setData(Uri.parse("http://www.androidviews.net/"));
-				startActivity(intent);
-
+		for (int e = 0; e <=9; e++)
+		{
+			//get cards from personal calendar
+			//Will later create cards and add them to array list. then call "addcard" later after we've sorted by date.
+			try{
+				CardView.addCard(new EventCard(getEvent()));
 			}
-		});
-		mCardView.addCardToLastStack(androidViewsCard);
-
-		// add one card, and then add another one to the last stack.
-		mCardView.addCard(new MyCard("2 cards"));
-		mCardView.addCardToLastStack(new MyCard("2 cards"));
-
-		// add one card
-		mCardView.addCard(new MyCard("1 card"));
-
-		// create a stack
-		CardStack stack = new CardStack();
-		stack.setTitle("title test");
-
-		// add 3 cards to stack
-		stack.add(new MyCard("3 cards"));
-		stack.add(new MyCard("3 cards"));
-		stack.add(new MyCard("3 cards"));
-
-		// add stack to cardView
-		mCardView.addStack(stack);
+			catch (Exception ex)
+			{
+				//ignore
+			}
+		}
+		
+//		// add AndroidViews Cards
+//		eventCardView.addCard(new MyCard("Get the CardsUI view"));
+//		eventCardView.addCardToLastStack(new MyCard("for Android at"));
+//		MyCard androidViewsCard = new MyCard("www.androidviews.net");
+//		androidViewsCard.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				Intent intent = new Intent(Intent.ACTION_VIEW);
+//				intent.setData(Uri.parse("http://www.androidviews.net/"));
+//				startActivity(intent);
+//
+//			}
+//		});
+//		eventCardView.addCardToLastStack(androidViewsCard);
+//
+//		// add one card, and then add another one to the last stack.
+//		eventCardView.addCard(new MyCard("2 cards"));
+//		eventCardView.addCardToLastStack(new MyCard("2 cards"));
+//
+//		// add one card
+//		eventCardView.addCard(new MyCard("1 card"));
+//
+//		// create a stack
+//		CardStack stack = new CardStack();
+//		stack.setTitle("title test");
+//
+//		// add 3 cards to stack
+//		stack.add(new MyCard("3 cards"));
+//		stack.add(new MyCard("3 cards"));
+//		stack.add(new MyCard("3 cards"));
+//
+//		// add stack to cardView
+//		eventCardView.addStack(stack);
 
 		// draw cards
-		mCardView.refresh();
+		CardView.refresh();
 
 
 
@@ -108,4 +126,32 @@ public class MainActivity extends Activity {
 		}
 	}
 
+	
+	public String getEvent() {
+		//TextView tv = (TextView)findViewById(R.id.data);
+
+		String event;
+		
+		String title = "N/A";
+
+		Long start = 0L;
+
+		if(!mCursor.isLast()) mCursor.moveToNext();
+
+		Format df = DateFormat.getDateFormat(this); Format tf = DateFormat.getTimeFormat(this); try {
+		title = mCursor.getString(0);
+
+		start = mCursor.getLong(1);
+
+		} catch (Exception e) {
+		//ignore
+
+		}
+
+		event = (title+" on "+df.format(start)+" at "+tf.format(start));
+
+		return event;
+		
+		}
+	
 }
