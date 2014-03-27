@@ -8,13 +8,6 @@ import com.fima.cardsui.objects.RecyclableCard;
 
 public class EventCard extends RecyclableCard {
 
-	@Override
-	public void OnSwipeCard() {
-		// TODO Auto-generated method stub
-		//super.OnSwipeCard();
-		//do nothing
-	}
-
 	public EventCard(String title){
 		super(title);
 	}
