@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
 		for (int e = 0; e <=9; e++)
 		{
 			String eventtext = getEvent();
-			if (eventtext != null)
+			if (eventtext != "no event")
 			{
 				cardList.add(new EventCard(eventtext));
 			}
@@ -77,6 +77,7 @@ public class MainActivity extends Activity {
 		//		eventCardView.addCardToLastStack(new MyCard("2 cards"));
 		//
 		//		// add one card
+		CardView.addCard(new TaskCard("1 card"));
 		CardView.addCard(new EventCard("1 card"));
 		//
 		//		// create a stack
@@ -164,12 +165,12 @@ public class MainActivity extends Activity {
 
 				} catch (Exception e) {
 					//ignore
-					return "no events";
+					return "no event";
 				}
 			}
 			else
 			{
-				return "no events";
+				return "no event";
 			}
 
 			event = (title+" on "+df.format(start)+" at "+tf.format(start));
@@ -177,7 +178,7 @@ public class MainActivity extends Activity {
 		}
 		catch(Exception ex)
 		{
-			return "null event";
+			return "no event";
 		}
 	}
 

@@ -13,12 +13,21 @@
         android:paddingRight="8dp" >
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/TextView01"
             style="@style/CardTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="title" />
+
+        <TextView
+            android:id="@+id/TimeLabel"
+            style="@style/CardTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="time" />
 
     </LinearLayout>
 
