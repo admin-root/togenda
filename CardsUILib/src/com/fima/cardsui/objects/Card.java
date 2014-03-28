@@ -28,6 +28,12 @@ public abstract class Card extends AbstractCard {
         this.title = title;
         this.desc = desc;
     }
+    
+    public Card(String title, String desc, String Time) {
+        this.title = title;
+        this.desc = desc;
+        this.time = Time;
+    }
 
     public Card(String title, int image) {
         this.title = title;
@@ -38,6 +44,13 @@ public abstract class Card extends AbstractCard {
         this.title = title;
         this.desc = desc;
         this.image = image;
+    }
+    
+    public Card(String title, String desc, int image, String time) {
+        this.title = title;
+        this.desc = desc;
+        this.image = image;
+        this.time = time;
     }
 
     public Card(String titlePlay, String description, String color,

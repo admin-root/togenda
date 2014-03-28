@@ -6,7 +6,7 @@ import android.view.View;
 public abstract class AbstractCard {
 
 	protected int image;
-	protected String description, color, titleColor, desc, title, titlePlay, timelabel;
+	protected String description, color, titleColor, desc, title, titlePlay, time;
 	protected Boolean hasOverflow, isClickable;
 	protected int imageRes;
 	protected Object data;
@@ -29,6 +29,10 @@ public abstract class AbstractCard {
 
 	public String getDescription() {
 		return description;
+	}
+	
+	public String getTime() {
+		return time;
 	}
 
 	public int getImage() {
