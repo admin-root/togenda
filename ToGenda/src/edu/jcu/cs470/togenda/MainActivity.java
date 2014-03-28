@@ -77,8 +77,9 @@ public class MainActivity extends Activity {
 		//		eventCardView.addCardToLastStack(new MyCard("2 cards"));
 		//
 		//		// add one card
-		CardView.addCard(new TaskCard("1 card"));
-		CardView.addCardToLastStack(new EventCard("1 card"));
+		CardView.addCard(new TaskCard("Task Name"));
+		CardView.addCard(new TaskCard("Stack Event"));
+		CardView.addCardToLastStack(new EventCard("Stack Event"));
 		//
 		//		// create a stack
 		//		CardStack stack = new CardStack();
