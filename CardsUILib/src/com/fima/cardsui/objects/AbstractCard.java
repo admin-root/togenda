@@ -6,7 +6,7 @@ import android.view.View;
 public abstract class AbstractCard {
 
 	protected int image;
-	protected String description, color, titleColor, desc, title, titlePlay;
+	protected String description, color, titleColor, desc, title, titlePlay, timelabel;
 	protected Boolean hasOverflow, isClickable;
 	protected int imageRes;
 	protected Object data;
