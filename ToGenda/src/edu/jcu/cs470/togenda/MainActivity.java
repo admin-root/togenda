@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
 		}
 
 		//get tasks
-		
+
 		//Add sort here.
 
 		if (!cardList.isEmpty())
@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
 		//
 		//		// add one card
 		CardView.addCard(new TaskCard("1 card"));
-		CardView.addCard(new EventCard("1 card"));
+		CardView.addCardToLastStack(new EventCard("1 card"));
 		//
 		//		// create a stack
 		//		CardStack stack = new CardStack();
@@ -154,14 +154,10 @@ public class MainActivity extends Activity {
 			{
 				mCursor.moveToNext();
 
-
-
 				try {
 					title = mCursor.getString(0);
 
 					start = mCursor.getLong(1);
-
-
 
 				} catch (Exception e) {
 					//ignore
