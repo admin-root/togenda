@@ -135,7 +135,7 @@ public class SwipeDismissTouchListener implements View.OnTouchListener {
 		if (mViewWidth < 2) {
 			mViewWidth = mView.getWidth();
 		}
-
+		
 		switch (motionEvent.getActionMasked()) {
 		case MotionEvent.ACTION_DOWN: {
 			// TODO: ensure this is a finger, and set a flag
