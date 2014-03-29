@@ -12,7 +12,7 @@
         android:paddingRight="8dp" >
 
         <TextView
-            android:id="@+id/TimeLabel"
+            android:id="@+id/EventLabel"
             style="@style/CardTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

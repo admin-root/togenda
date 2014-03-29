@@ -17,6 +17,6 @@ public class TaskCard extends RecyclableCard {
 
 	@Override
 	protected void applyTo(View convertView) {
-		((TextView) convertView.findViewById(R.id.TimeLabel)).setText(title);
+		((TextView) convertView.findViewById(R.id.EventLabel)).setText(title);
 	}
 }

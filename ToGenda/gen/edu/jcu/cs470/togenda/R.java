@@ -360,9 +360,9 @@ public final class R {
         public static final int url3=0x7f02000d;
     }
     public static final class id {
+        public static final int EventLabel=0x7f090003;
         public static final int ScrollView1=0x7f09000b;
-        public static final int TextView01=0x7f090003;
-        public static final int TimeLabel=0x7f090004;
+        public static final int Time=0x7f090004;
         public static final int TimeandDate=0x7f090000;
         public static final int action_settings=0x7f090013;
         public static final int cardContent=0x7f09000f;

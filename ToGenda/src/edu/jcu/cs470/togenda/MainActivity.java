@@ -2,6 +2,7 @@ package edu.jcu.cs470.togenda;
 
 
 import com.fima.cardsui.views.CardUI;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,10 +11,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import java.text.Format; 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 import android.database.Cursor; 
 import android.provider.CalendarContract; 
+import android.provider.CalendarContract.Calendars;
 import android.text.format.DateFormat;
 
 public class MainActivity extends Activity {
@@ -28,7 +36,15 @@ public class MainActivity extends Activity {
 		// init CardView
 		CardUI CardView = (CardUI) findViewById(R.id.cardsview);
 		CardView.setSwipeable(true);
+		
+		Format df = DateFormat.getDateFormat(this);
+		Format tf = DateFormat.getTimeFormat(this); 
+		SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+		Date d = new Date();
 
+		TextView timedate = (TextView)findViewById(R.id.TimeandDate);
+		timedate.setText(sdf.format(d)+", "+tf.format(d)+", "+df.format(d));
+		
 		mCursor = getContentResolver().query(CalendarContract.Events.CONTENT_URI, COLS, null, null, null);
 		mCursor.moveToFirst();
 

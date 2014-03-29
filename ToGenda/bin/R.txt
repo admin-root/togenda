@@ -334,9 +334,9 @@ int drawable top_shadow 0x7f02000a
 int drawable url1 0x7f02000b
 int drawable url2 0x7f02000c
 int drawable url3 0x7f02000d
+int id EventLabel 0x7f090003
 int id ScrollView1 0x7f09000b
-int id TextView01 0x7f090003
-int id TimeLabel 0x7f090004
+int id Time 0x7f090004
 int id TimeandDate 0x7f090000
 int id action_settings 0x7f090013
 int id cardContent 0x7f09000f

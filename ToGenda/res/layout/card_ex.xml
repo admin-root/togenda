@@ -20,7 +20,7 @@
             android:src="@drawable/ic_action_event" />
 
         <TextView
-            android:id="@+id/TextView01"
+            android:id="@+id/EventLabel"
             style="@style/CardTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,13 +28,13 @@
             android:text="title" />
 
         <TextView
-            android:id="@+id/TimeLabel"
+            android:id="@+id/Time"
             style="@style/CardTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:gravity="right"
-            android:text="time" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="bottom|right"
+            android:text="time"
+            android:textSize="@dimen/card_action_small_text" />
 
     </LinearLayout>
 

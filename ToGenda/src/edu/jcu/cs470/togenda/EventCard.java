@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.fima.cardsui.objects.RecyclableCard;
-import com.fima.cardsui.objects.Card.OnCardSwiped;
 
 public class EventCard extends RecyclableCard {
 
@@ -19,7 +18,7 @@ public class EventCard extends RecyclableCard {
 
 	@Override
 	protected void applyTo(View convertView) {
-		((TextView) convertView.findViewById(R.id.TimeLabel)).setText(title);
+		((TextView) convertView.findViewById(R.id.EventLabel)).setText(title);
 	}
 	
 	@Override
