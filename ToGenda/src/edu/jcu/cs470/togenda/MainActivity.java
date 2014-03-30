@@ -21,6 +21,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 import android.content.ContentUris;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.database.Cursor; 
 import android.provider.CalendarContract; 
 import android.provider.CalendarContract.Calendars;
@@ -29,7 +32,7 @@ import android.text.format.Time;
 
 public class MainActivity extends Activity {
 
-	private Cursor mCursor = null; private static final String[] COLS = new String[]{ CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART, CalendarContract.Events.DTEND, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Events.DESCRIPTION};
+	private Cursor mCursor = null; private static final String[] COLS = new String[]{ CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART, CalendarContract.Events.DTEND, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Events.DESCRIPTION, CalendarContract.Events._ID};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -186,6 +189,7 @@ public class MainActivity extends Activity {
 			Long end;
 			String color;
 			String desc;
+			String eventId;
 
 			Format df = DateFormat.getDateFormat(this);
 			Format tf = DateFormat.getTimeFormat(this); 
@@ -205,6 +209,8 @@ public class MainActivity extends Activity {
 					color = mCursor.getString(3);
 					//CalendarContract.Events.DESCRIPTION
 					desc = mCursor.getString(4);
+					//CalendarContract.Events._ID
+					eventId = mCursor.getString(5);
 					
 
 				} catch (Exception e) {
@@ -217,7 +223,8 @@ public class MainActivity extends Activity {
 				
 				return new EventCard("null");
 			}
-			event = new EventCard(title, desc, start, end, color, false, true);
+			event = new EventCard(title, desc, start, end, color, false, true, eventId);
+			
 			return event;
 		}
 		catch(Exception ex)

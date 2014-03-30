@@ -1,11 +1,11 @@
 package edu.jcu.cs470.togenda;
 
 import java.sql.Time;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,6 +18,8 @@ public class EventCard extends RecyclableCard {
 	String end;
 
 	int[] colors;
+	private OnCardSwiped onCardSwipedListener;
+	private String eventId = "0";
 			
 	public EventCard(String title){
 		super(title);
@@ -75,11 +77,10 @@ public class EventCard extends RecyclableCard {
 
 	@Override
 	public void setOnCardSwipedListener(OnCardSwiped onEpisodeSwipedListener) {
-		//this.onCardSwipedListener = onEpisodeSwipedListener;
-		//Do nothing
+		this.onCardSwipedListener = onEpisodeSwipedListener;
 	}
 
-	public EventCard(String titlePlay, String description, Long start, Long end, String color, Boolean hasOverflow, Boolean isClickable) {
+	public EventCard(String titlePlay, String description, Long start, Long end, String color, Boolean hasOverflow, Boolean isClickable, String eventId) {
 		//super(titlePlay, description, color, color, hasOverflow, isClickable);
 		this.titlePlay = titlePlay;
 		this.description = description;
@@ -90,7 +91,24 @@ public class EventCard extends RecyclableCard {
 		this.color = color;
 		this.hasOverflow = hasOverflow;
 		this.isClickable = isClickable;
+		this.eventId = eventId;
 
+	}
+
+
+		public void onClick(View v) {
+			Intent intent = new Intent(Intent.ACTION_VIEW);
+			//Android 2.2+
+			intent.setData(Uri.parse("content://com.android.calendar/events/" + eventId));  
+			//Android 2.1 and below.
+			//intent.setData(Uri.parse("content://calendar/events/" + String.valueOf(calendarEventID)));    
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+			        | Intent.FLAG_ACTIVITY_SINGLE_TOP
+			        | Intent.FLAG_ACTIVITY_CLEAR_TOP
+			        | Intent.FLAG_ACTIVITY_NO_HISTORY
+			        | Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+			v.getContext().startActivity(intent);
+		
 	}
 
 }
