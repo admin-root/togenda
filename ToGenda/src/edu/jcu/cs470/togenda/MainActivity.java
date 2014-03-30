@@ -29,7 +29,7 @@ import android.text.format.Time;
 
 public class MainActivity extends Activity {
 
-	private Cursor mCursor = null; private static final String[] COLS = new String[]{ CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART, CalendarContract.Events.DTEND, CalendarContract.Events.EVENT_COLOR, CalendarContract.Events.DESCRIPTION};
+	private Cursor mCursor = null; private static final String[] COLS = new String[]{ CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART, CalendarContract.Events.DTEND, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Events.DESCRIPTION};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +70,10 @@ public class MainActivity extends Activity {
 		
 		while(makeCards)
 		{
-			String eventtext = getEvent();
-			if (eventtext != "no event")
+			EventCard newCard = getEvent();
+			if (newCard.getTitle() != "null")
 			{
-				cardList.add(new EventCard(eventtext));
+				cardList.add(newCard);//new EventCard(eventtext));
 			}
 			else
 			{
@@ -115,9 +115,9 @@ public class MainActivity extends Activity {
 		//		eventCardView.addCardToLastStack(new MyCard("2 cards"));
 		//
 		//		// add one card
-		CardView.addCard(new TaskCard("Task Name"));
-		CardView.addCard(new TaskCard("Stack Event"));
-		CardView.addCardToLastStack(new EventCard("Stack Event"));
+//		CardView.addCard(new TaskCard("Task Name"));
+//		CardView.addCard(new TaskCard("Stack Event"));
+//		CardView.addCardToLastStack(new EventCard("Stack Event"));
 		//
 		//		// create a stack
 		//		CardStack stack = new CardStack();
@@ -176,15 +176,16 @@ public class MainActivity extends Activity {
 	}
 
 
-	public String getEvent() {
+	public EventCard getEvent() {
 		//TextView tv = (TextView)findViewById(R.id.data);
 		try
 		{
-			String event;
-
-			String title = "N/A";
-
-			Long start = 0L;
+			EventCard event;
+			String title;
+			Long start;
+			Long end;
+			String color;
+			String desc;
 
 			Format df = DateFormat.getDateFormat(this);
 			Format tf = DateFormat.getTimeFormat(this); 
@@ -199,30 +200,29 @@ public class MainActivity extends Activity {
 					//CalendarContract.Events.DTSTART
 					start = mCursor.getLong(1);
 					//CalendarContract.Events.DTEND
-					
+					end = mCursor.getLong(2);
 					//CalendarContract.Events.EVENT_COLOR
-					
+					color = mCursor.getString(3);
 					//CalendarContract.Events.DESCRIPTION
-					
-
+					desc = mCursor.getString(4);
 					
 
 				} catch (Exception e) {
 					//ignore
-					return "no event";
+					return new EventCard("null");
 				}
 			}
 			else
 			{
-				return "no event";
+				
+				return new EventCard("null");
 			}
-
-			event = (title+" on "+df.format(start)+" at "+tf.format(start));
+			event = new EventCard(title, desc, start, end, color, false, true);
 			return event;
 		}
 		catch(Exception ex)
 		{
-			return "no event";
+			return new EventCard("null");
 		}
 	}
 
