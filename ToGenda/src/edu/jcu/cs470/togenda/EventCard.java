@@ -16,7 +16,7 @@ public class EventCard extends RecyclableCard {
 
 	String start;
 	String end;
-	boolean last;
+	boolean last = false;
 
 	int[] colors;
 	private OnCardSwiped onCardSwipedListener;
@@ -112,5 +112,15 @@ public class EventCard extends RecyclableCard {
 //		v.getContext().startActivity(intent);
 //
 //	}
+	
+	public void setDescription(String desc)
+	{
+		this.description = desc;
+	}
+	
+	public boolean isLast()
+	{
+		return last;
+	}
 
 }

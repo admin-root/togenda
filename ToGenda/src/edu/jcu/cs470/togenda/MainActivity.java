@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 
 		Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI.buildUpon();
 		ContentUris.appendId(eventsUriBuilder, t.toMillis(true));
-		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)+86400000);
+		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)+604800000);
 		Uri eventsUri = eventsUriBuilder.build();
 		//Cursor cursor = null;       
 		mCursor = getContentResolver().query(eventsUri, COLS, null, null, CalendarContract.Instances.DTSTART + " ASC");
@@ -76,13 +76,17 @@ public class MainActivity extends Activity {
 			EventCard newCard = getEvent();
 			if (newCard.getTitle() != "no event")
 			{
+				if(newCard.isLast() == true){
+					newCard.setDescription("last");
+				}
+
 				cardList.add(newCard);//new EventCard(eventtext));
 			}
 			else
 			{
 				makeCards = false;
 			}
-			if (newCard.last = true)
+			if (newCard.isLast() == true)
 			{
 				makeCards = false;
 			}
@@ -215,13 +219,13 @@ public class MainActivity extends Activity {
 				return new EventCard("no event");
 			}
 
-			if(!mCursor.isLast()) 
+			if(mCursor.isLast()) 
 			{
-				mCursor.moveToNext();
+				last = true;
 			}
 			else
 			{
-				last = true;
+				mCursor.moveToNext();
 			}
 			event = new EventCard(title, desc, start, end, color, false, true, eventId, last);
 
