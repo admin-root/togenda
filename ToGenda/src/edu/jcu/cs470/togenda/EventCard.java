@@ -20,7 +20,7 @@ public class EventCard extends RecyclableCard {
 	int[] colors;
 	private OnCardSwiped onCardSwipedListener;
 	private String eventId = "0";
-			
+
 	public EventCard(String title){
 		super(title);
 	}
@@ -35,42 +35,42 @@ public class EventCard extends RecyclableCard {
 		((TextView) convertView.findViewById(R.id.EventLabel)).setText(titlePlay);
 		((TextView) convertView.findViewById(R.id.description)).setText(description);
 		((TextView) convertView.findViewById(R.id.Time)).setText(start+" - "+end);
-		
+
 		if (color!=null){
-		
-		if (Integer.parseInt(color) < 25 && Integer.parseInt(color) > 0)
-		{
-			
-			colors = new int[25];
-			
-			colors[1] = R.color.Brown;
-			colors[2] = R.color.Maroon;
-			colors[3] = R.color.Tomato;
-			colors[4] = R.color.Red;
-			colors[5] = R.color.OrangeRed;
-			colors[6] = R.color.Orange;
-			colors[7] = R.color.SeaGreen;
-			colors[8] = R.color.DarkGreen;
-			colors[9] = R.color.Green;
-			colors[10] = R.color.YellowGreen;
-			colors[11] = R.color.LightGoldenrodYellow;
-			colors[12] = R.color.Yellow;
-			colors[13] = R.color.LightGreen;
-			colors[14] = R.color.LightCoral;
-			colors[15] = R.color.LightBlue;
-			colors[16] = R.color.Blue;
-			colors[17] = R.color.BlueViolet;
-			colors[18] = R.color.Azure;
-			colors[19] = R.color.Gray;
-			colors[20] = R.color.Beige;
-			colors[21] = R.color.SaddleBrown;
-			colors[22] = R.color.Pink;
-			colors[23] = R.color.Violet;
-			colors[24] = R.color.Purple;
-			
-			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[Integer.parseInt(color)]);
-		}
-		
+
+			if (Integer.parseInt(color) < 25 && Integer.parseInt(color) > 0)
+			{
+
+				colors = new int[25];
+
+				colors[1] = R.color.Brown;
+				colors[2] = R.color.Maroon;
+				colors[3] = R.color.Tomato;
+				colors[4] = R.color.Red;
+				colors[5] = R.color.OrangeRed;
+				colors[6] = R.color.Orange;
+				colors[7] = R.color.SeaGreen;
+				colors[8] = R.color.DarkGreen;
+				colors[9] = R.color.Green;
+				colors[10] = R.color.YellowGreen;
+				colors[11] = R.color.LightGoldenrodYellow;
+				colors[12] = R.color.Yellow;
+				colors[13] = R.color.LightGreen;
+				colors[14] = R.color.LightCoral;
+				colors[15] = R.color.LightBlue;
+				colors[16] = R.color.Blue;
+				colors[17] = R.color.BlueViolet;
+				colors[18] = R.color.Azure;
+				colors[19] = R.color.Gray;
+				colors[20] = R.color.Beige;
+				colors[21] = R.color.SaddleBrown;
+				colors[22] = R.color.Pink;
+				colors[23] = R.color.Violet;
+				colors[24] = R.color.Purple;
+
+				((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[Integer.parseInt(color)]);
+			}
+
 		}
 
 	}
@@ -96,19 +96,19 @@ public class EventCard extends RecyclableCard {
 	}
 
 
-		public void onClick(View v) {
-			Intent intent = new Intent(Intent.ACTION_VIEW);
-			//Android 2.2+
-			intent.setData(Uri.parse("content://com.android.calendar/events/" + eventId));  
-			//Android 2.1 and below.
-			//intent.setData(Uri.parse("content://calendar/events/" + String.valueOf(calendarEventID)));    
-			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-			        | Intent.FLAG_ACTIVITY_SINGLE_TOP
-			        | Intent.FLAG_ACTIVITY_CLEAR_TOP
-			        | Intent.FLAG_ACTIVITY_NO_HISTORY
-			        | Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-			v.getContext().startActivity(intent);
-		
-	}
+//	public void onClick(View v) {
+//		Intent intent = new Intent(Intent.ACTION_VIEW);
+//		//Android 2.2+
+//		intent.setData(Uri.parse("content://com.android.calendar/events/" + eventId));  
+//		//Android 2.1 and below.
+//		//intent.setData(Uri.parse("content://calendar/events/" + String.valueOf(calendarEventID)));    
+//		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+//				| Intent.FLAG_ACTIVITY_SINGLE_TOP
+//				| Intent.FLAG_ACTIVITY_CLEAR_TOP
+//				| Intent.FLAG_ACTIVITY_NO_HISTORY
+//				| Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+//		v.getContext().startActivity(intent);
+//
+//	}
 
 }

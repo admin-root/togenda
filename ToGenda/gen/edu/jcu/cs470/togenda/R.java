@@ -360,26 +360,27 @@ public final class R {
         public static final int url3=0x7f02000d;
     }
     public static final class id {
-        public static final int EventLabel=0x7f090003;
-        public static final int ScrollView1=0x7f09000b;
-        public static final int Time=0x7f090004;
+        public static final int EventLabel=0x7f090004;
+        public static final int ScrollView1=0x7f09000c;
+        public static final int Time=0x7f090006;
         public static final int TimeandDate=0x7f090000;
-        public static final int action_settings=0x7f090013;
-        public static final int cardContent=0x7f09000f;
+        public static final int action_settings=0x7f090014;
+        public static final int background=0x7f090002;
+        public static final int cardContent=0x7f090010;
         public static final int cardsview=0x7f090001;
-        public static final int contentLayout=0x7f090007;
+        public static final int contentLayout=0x7f090008;
         public static final int description=0x7f090005;
-        public static final int footer=0x7f09000d;
-        public static final int imageView1=0x7f090002;
-        public static final int listView=0x7f090009;
-        public static final int overflow=0x7f090008;
-        public static final int placeholder=0x7f09000e;
-        public static final int stackContainer=0x7f090012;
-        public static final int stackRoot=0x7f090010;
-        public static final int stackTitle=0x7f090011;
-        public static final int sticky=0x7f09000a;
-        public static final int stripe=0x7f090006;
-        public static final int tableLayout=0x7f09000c;
+        public static final int footer=0x7f09000e;
+        public static final int imageView1=0x7f090003;
+        public static final int listView=0x7f09000a;
+        public static final int overflow=0x7f090009;
+        public static final int placeholder=0x7f09000f;
+        public static final int stackContainer=0x7f090013;
+        public static final int stackRoot=0x7f090011;
+        public static final int stackTitle=0x7f090012;
+        public static final int sticky=0x7f09000b;
+        public static final int stripe=0x7f090007;
+        public static final int tableLayout=0x7f09000d;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
