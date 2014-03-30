@@ -5,6 +5,7 @@ import com.fima.cardsui.views.CardUI;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,14 +20,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import android.content.ContentUris;
 import android.database.Cursor; 
 import android.provider.CalendarContract; 
 import android.provider.CalendarContract.Calendars;
 import android.text.format.DateFormat;
+import android.text.format.Time;
 
 public class MainActivity extends Activity {
 
-	private Cursor mCursor = null; private static final String[] COLS = new String[]{ CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART};
+	private Cursor mCursor = null; private static final String[] COLS = new String[]{ CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART, CalendarContract.Events.DTEND, CalendarContract.Events.EVENT_COLOR, CalendarContract.Events.DESCRIPTION};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,17 +48,36 @@ public class MainActivity extends Activity {
 		TextView timedate = (TextView)findViewById(R.id.TimeandDate);
 		timedate.setText(sdf.format(d)+", "+tf.format(d)+", "+df.format(d));
 		
-		mCursor = getContentResolver().query(CalendarContract.Events.CONTENT_URI, COLS, null, null, null);
+		//mCursor = getContentResolver().query(CalendarContract.Events.CONTENT_URI, COLS, null, null, null);
+		
+		
+		//Cursor cur = null;
+	    //String selection = "((" + CalendarContract.Events.DTSTART + " >= ?) AND (" + CalendarContract.Events.DTEND + " <= ?))";
+	    Time t = new Time();
+	    t.setToNow();
+	    
+		Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI.buildUpon();
+		ContentUris.appendId(eventsUriBuilder, t.toMillis(true));
+		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)+86400000);
+		Uri eventsUri = eventsUriBuilder.build();
+		//Cursor cursor = null;       
+		mCursor = getContentResolver().query(eventsUri, COLS, null, null, CalendarContract.Instances.DTSTART + " ASC");
 		mCursor.moveToFirst();
 
 		ArrayList<EventCard> cardList = new ArrayList<EventCard>();
 
-		for (int e = 0; e <=9; e++)
+		boolean makeCards = true;
+		
+		while(makeCards)
 		{
 			String eventtext = getEvent();
 			if (eventtext != "no event")
 			{
 				cardList.add(new EventCard(eventtext));
+			}
+			else
+			{
+				makeCards = false;
 			}
 
 		}
@@ -172,9 +194,18 @@ public class MainActivity extends Activity {
 				mCursor.moveToNext();
 
 				try {
+					//CalendarContract.Events.TITLE
 					title = mCursor.getString(0);
-
+					//CalendarContract.Events.DTSTART
 					start = mCursor.getLong(1);
+					//CalendarContract.Events.DTEND
+					
+					//CalendarContract.Events.EVENT_COLOR
+					
+					//CalendarContract.Events.DESCRIPTION
+					
+
+					
 
 				} catch (Exception e) {
 					//ignore
