@@ -16,6 +16,7 @@ public class EventCard extends RecyclableCard {
 
 	String start;
 	String end;
+	boolean last;
 
 	int[] colors;
 	private OnCardSwiped onCardSwipedListener;
@@ -80,7 +81,7 @@ public class EventCard extends RecyclableCard {
 		this.onCardSwipedListener = onEpisodeSwipedListener;
 	}
 
-	public EventCard(String titlePlay, String description, Long start, Long end, String color, Boolean hasOverflow, Boolean isClickable, String eventId) {
+	public EventCard(String titlePlay, String description, Long start, Long end, String color, Boolean hasOverflow, Boolean isClickable, String eventId, boolean last) {
 		//super(titlePlay, description, color, color, hasOverflow, isClickable);
 		this.titlePlay = titlePlay;
 		this.description = description;
@@ -92,6 +93,7 @@ public class EventCard extends RecyclableCard {
 		this.hasOverflow = hasOverflow;
 		this.isClickable = isClickable;
 		this.eventId = eventId;
+		this.last = last;
 
 	}
 

@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
 		// init CardView
 		CardUI CardView = (CardUI) findViewById(R.id.cardsview);
 		CardView.setSwipeable(true);
-		
+
 		Format df = DateFormat.getDateFormat(this);
 		Format tf = DateFormat.getTimeFormat(this); 
 		SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
@@ -50,15 +50,15 @@ public class MainActivity extends Activity {
 
 		TextView timedate = (TextView)findViewById(R.id.TimeandDate);
 		timedate.setText(sdf.format(d)+", "+tf.format(d)+", "+df.format(d));
-		
+
 		//mCursor = getContentResolver().query(CalendarContract.Events.CONTENT_URI, COLS, null, null, null);
-		
-		
+
+
 		//Cursor cur = null;
-	    //String selection = "((" + CalendarContract.Events.DTSTART + " >= ?) AND (" + CalendarContract.Events.DTEND + " <= ?))";
-	    Time t = new Time();
-	    t.setToNow();
-	    
+		//String selection = "((" + CalendarContract.Events.DTSTART + " >= ?) AND (" + CalendarContract.Events.DTEND + " <= ?))";
+		Time t = new Time();
+		t.setToNow();
+
 		Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI.buildUpon();
 		ContentUris.appendId(eventsUriBuilder, t.toMillis(true));
 		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)+86400000);
@@ -70,15 +70,19 @@ public class MainActivity extends Activity {
 		ArrayList<EventCard> cardList = new ArrayList<EventCard>();
 
 		boolean makeCards = true;
-		
+
 		while(makeCards)
 		{
 			EventCard newCard = getEvent();
-			if (newCard.getTitle() != "null")
+			if (newCard.getTitle() != "no event")
 			{
 				cardList.add(newCard);//new EventCard(eventtext));
 			}
 			else
+			{
+				makeCards = false;
+			}
+			if (newCard.last = true)
 			{
 				makeCards = false;
 			}
@@ -118,9 +122,9 @@ public class MainActivity extends Activity {
 		//		eventCardView.addCardToLastStack(new MyCard("2 cards"));
 		//
 		//		// add one card
-//		CardView.addCard(new TaskCard("Task Name"));
-//		CardView.addCard(new TaskCard("Stack Event"));
-//		CardView.addCardToLastStack(new EventCard("Stack Event"));
+		//		CardView.addCard(new TaskCard("Task Name"));
+		//		CardView.addCard(new TaskCard("Stack Event"));
+		//		CardView.addCardToLastStack(new EventCard("Stack Event"));
 		//
 		//		// create a stack
 		//		CardStack stack = new CardStack();
@@ -190,46 +194,42 @@ public class MainActivity extends Activity {
 			String color;
 			String desc;
 			String eventId;
+			boolean last = false;
 
-			Format df = DateFormat.getDateFormat(this);
-			Format tf = DateFormat.getTimeFormat(this); 
+			try {
+				//CalendarContract.Events.TITLE
+				title = mCursor.getString(0);
+				//CalendarContract.Events.DTSTART
+				start = mCursor.getLong(1);
+				//CalendarContract.Events.DTEND
+				end = mCursor.getLong(2);
+				//CalendarContract.Events.EVENT_COLOR
+				color = mCursor.getString(3);
+				//CalendarContract.Events.DESCRIPTION
+				desc = mCursor.getString(4);
+				//CalendarContract.Events._ID
+				eventId = mCursor.getString(5);
+
+			} catch (Exception e) {
+				//ignore
+				return new EventCard("no event");
+			}
 
 			if(!mCursor.isLast()) 
 			{
 				mCursor.moveToNext();
-
-				try {
-					//CalendarContract.Events.TITLE
-					title = mCursor.getString(0);
-					//CalendarContract.Events.DTSTART
-					start = mCursor.getLong(1);
-					//CalendarContract.Events.DTEND
-					end = mCursor.getLong(2);
-					//CalendarContract.Events.EVENT_COLOR
-					color = mCursor.getString(3);
-					//CalendarContract.Events.DESCRIPTION
-					desc = mCursor.getString(4);
-					//CalendarContract.Events._ID
-					eventId = mCursor.getString(5);
-					
-
-				} catch (Exception e) {
-					//ignore
-					return new EventCard("null");
-				}
 			}
 			else
 			{
-				
-				return new EventCard("null");
+				last = true;
 			}
-			event = new EventCard(title, desc, start, end, color, false, true, eventId);
-			
+			event = new EventCard(title, desc, start, end, color, false, true, eventId, last);
+
 			return event;
 		}
 		catch(Exception ex)
 		{
-			return new EventCard("null");
+			return new EventCard("no event");
 		}
 	}
 
