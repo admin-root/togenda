@@ -17,8 +17,7 @@ public abstract class RecyclableCard extends Card {
         super(title, image);
     }
 
-    public RecyclableCard(String titlePlay, String description, int imageRes,
-                          String titleColor, Boolean hasOverflow, Boolean isClickable) {
+    public RecyclableCard(String titlePlay, int imageRes, String description, String titleColor, Boolean hasOverflow, Boolean isClickable) {
         super(titlePlay, description, imageRes, titleColor, hasOverflow, isClickable);
     }
 
