@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.fima.cardsui.objects.RecyclableCard;
 
-public class EventCard extends RecyclableCard {
+public class EventCard extends RecyclableCard implements Comparable{
 
 	String start;
 	String end;
@@ -81,14 +81,15 @@ public class EventCard extends RecyclableCard {
 		this.onCardSwipedListener = onEpisodeSwipedListener;
 	}
 
-	public EventCard(String titlePlay, String description, Long start, Long end, String color, Boolean hasOverflow, Boolean isClickable, String eventId, boolean last) {
+	public EventCard(String titlePlay, String description, int start2, int end2, String color, Boolean hasOverflow, Boolean isClickable, String eventId, boolean last) {
 		//super(titlePlay, description, color, color, hasOverflow, isClickable);
 		this.titlePlay = titlePlay;
 		this.description = description;
 		//SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
+		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("d/M h:mm a");
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
-		this.start = _12HourSDF.format(new Time(start));
-		this.end = _12HourSDF.format(new Time(end));
+		this.start = _12HourSDFwDM.format(new Time(start2));
+		this.end = _12HourSDF.format(new Time(end2));
 		this.color = color;
 		this.hasOverflow = hasOverflow;
 		this.isClickable = isClickable;
@@ -112,7 +113,7 @@ public class EventCard extends RecyclableCard {
 //		v.getContext().startActivity(intent);
 //
 //	}
-	
+
 	public void setDescription(String desc)
 	{
 		this.description = desc;
@@ -122,5 +123,26 @@ public class EventCard extends RecyclableCard {
 	{
 		return last;
 	}
+	
+	public long getStart()
+	{
+		return Integer.parseInt(start);
+	}
 
+	public long getEnd()
+	{
+		return Integer.parseInt(end);
+	}
+
+	public int compareTo(Object another) {
+		if (this.getStart() < ((EventCard) another).getStart())
+		{
+			return 1;
+		}
+//		else if (Long.parseLong(start) > ((EventCard) another).getStart())
+//		{
+//			return -1;
+//		}
+		return 0;
+	}
 }

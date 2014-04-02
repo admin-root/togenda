@@ -18,6 +18,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 
 import android.content.ContentUris;
@@ -32,7 +33,10 @@ import android.text.format.Time;
 
 public class MainActivity extends Activity {
 
-	private Cursor mCursor = null; private static final String[] COLS = new String[]{ CalendarContract.Events.TITLE, CalendarContract.Events.DTSTART, CalendarContract.Events.DTEND, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Events.DESCRIPTION, CalendarContract.Events._ID};
+	private Cursor mCursor = null; private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
+		CalendarContract.Instances.TITLE,  CalendarContract.Events.DESCRIPTION, CalendarContract.Instances.START_DAY, 
+		CalendarContract.Instances.START_MINUTE, CalendarContract.Instances.END_DAY, CalendarContract.Instances.END_MINUTE, 
+		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,11 +80,7 @@ public class MainActivity extends Activity {
 			EventCard newCard = getEvent();
 			if (newCard.getTitle() != "no event")
 			{
-				if(newCard.isLast() == true){
-					newCard.setDescription("last");
-				}
-
-				cardList.add(newCard);//new EventCard(eventtext));
+				cardList.add(newCard);
 			}
 			else
 			{
@@ -92,6 +92,9 @@ public class MainActivity extends Activity {
 			}
 
 		}
+
+
+		//Collections.sort(cardList); //Doesn't work
 
 		//get tasks
 
@@ -193,48 +196,66 @@ public class MainActivity extends Activity {
 		{
 			EventCard event;
 			String title;
-			Long start;
-			Long end;
-			String color;
+			int start;
+			int end;
+			int color;
+			String colorKey;
 			String desc;
 			String eventId;
 			boolean last = false;
 
 			try {
-				//CalendarContract.Events.TITLE
-				title = mCursor.getString(0);
-				//CalendarContract.Events.DTSTART
-				start = mCursor.getLong(1);
-				//CalendarContract.Events.DTEND
-				end = mCursor.getLong(2);
-				//CalendarContract.Events.EVENT_COLOR
-				color = mCursor.getString(3);
-				//CalendarContract.Events.DESCRIPTION
-				desc = mCursor.getString(4);
-				//CalendarContract.Events._ID
-				eventId = mCursor.getString(5);
+				//				//CalendarContract.Events.TITLE
+				//				title = mCursor.getString(0);
+				//				//CalendarContract.Events.DTSTART
+				//				start = mCursor.getLong(1);
+				//				//CalendarContract.Events.DTEND
+				//				end = mCursor.getLong(2);
+				//				//CalendarContract.Events.EVENT_COLOR
+				//				color = mCursor.getString(3);
+				//				//CalendarContract.Events.DESCRIPTION
+				//				desc = mCursor.getString(4);
+				//				//CalendarContract.Events._ID
+				//				eventId = mCursor.getString(5);
 
-			} catch (Exception e) {
-				//ignore
-				return new EventCard("no event");
-			}
+//				CalendarContract.Instances.EVENT_ID,
+				eventId = mCursor.getString(0);
+//				CalendarContract.Instances.TITLE,
+				title = mCursor.getString(1);
+//				CalendarContract.Events.DESCRIPTION, 
+				desc = mCursor.getString(2);
+//				CalendarContract.Instances.START_DAY, 
+//				CalendarContract.Instances.START_MINUTE,
+				start = mCursor.getInt(4);
+//				CalendarContract.Instances.END_DAY, 
+//				CalendarContract.Instances.END_MINUTE,
+				end = mCursor.getInt(6);
+//				CalendarContract.Instances.EVENT_COLOR_KEY,
+				colorKey = mCursor.getString(7);
+//				CalendarContract.Instances.EVENT_COLOR};
 
-			if(mCursor.isLast()) 
-			{
-				last = true;
-			}
-			else
-			{
-				mCursor.moveToNext();
-			}
-			event = new EventCard(title, desc, start, end, color, false, true, eventId, last);
 
-			return event;
-		}
-		catch(Exception ex)
-		{
+		} catch (Exception e) {
+			//ignore
 			return new EventCard("no event");
 		}
+
+		if(mCursor.isLast()) 
+		{
+			last = true;
+		}
+		else
+		{
+			mCursor.moveToNext();
+		}
+		event = new EventCard(title, desc, start, end, colorKey, false, true, eventId, last);
+
+		return event;
 	}
+	catch(Exception ex)
+	{
+		return new EventCard("no event");
+	}
+}
 
 }
