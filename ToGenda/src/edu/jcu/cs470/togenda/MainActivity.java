@@ -229,11 +229,11 @@ public class MainActivity extends Activity {
 //				CalendarContract.Instances.START_DAY,
 				
 //				CalendarContract.Instances.START_MINUTE,
-				start = mCursor.getInt(4);
+				start = mCursor.getInt(4);					//MIGHT REQUIRE LONG
 //				CalendarContract.Instances.END_DAY,
 				
 //				CalendarContract.Instances.END_MINUTE,
-				end = mCursor.getInt(6);
+				end = mCursor.getInt(6);					//MIGHT REQUIRE LONG
 //				CalendarContract.Instances.EVENT_COLOR_KEY,
 				colorKey = mCursor.getString(7);
 //				CalendarContract.Instances.EVENT_COLOR};
