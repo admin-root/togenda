@@ -33,7 +33,10 @@ import android.text.format.Time;
 
 public class MainActivity extends Activity {
 
-	private Cursor mCursor = null; private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
+	private Cursor mCursor = null; 
+	
+	//Contains all columns we are to recieve from Google Calendar.
+	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
 		CalendarContract.Instances.TITLE,  CalendarContract.Events.DESCRIPTION, CalendarContract.Instances.START_DAY, 
 		CalendarContract.Instances.START_MINUTE, CalendarContract.Instances.END_DAY, CalendarContract.Instances.END_MINUTE, 
 		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR};
@@ -45,29 +48,29 @@ public class MainActivity extends Activity {
 
 		// init CardView
 		CardUI CardView = (CardUI) findViewById(R.id.cardsview);
-		CardView.setSwipeable(true);
+		CardView.setSwipeable(true); //Global variable for now. Need to change library so we can set swipable on per-card basis.
 
+		//Date formating
 		Format df = DateFormat.getDateFormat(this);
 		Format tf = DateFormat.getTimeFormat(this); 
 		SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
 		Date d = new Date();
 
+		//setting TimeDate label
 		TextView timedate = (TextView)findViewById(R.id.TimeandDate);
 		timedate.setText(sdf.format(d)+", "+tf.format(d)+", "+df.format(d));
-
-		//mCursor = getContentResolver().query(CalendarContract.Events.CONTENT_URI, COLS, null, null, null);
-
-
-		//Cursor cur = null;
-		//String selection = "((" + CalendarContract.Events.DTSTART + " >= ?) AND (" + CalendarContract.Events.DTEND + " <= ?))";
+		
+		//getting current time for use in query
 		Time t = new Time();
 		t.setToNow();
 
+		//Getting URI for callendar
 		Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI.buildUpon();
-		ContentUris.appendId(eventsUriBuilder, t.toMillis(true));
-		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)+604800000);
+		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)); //start time = now
+		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)+604800000);//End time = (now + 1 week)
 		Uri eventsUri = eventsUriBuilder.build();
-		//Cursor cursor = null;       
+		
+		//Fill cursor with desired calendar events.
 		mCursor = getContentResolver().query(eventsUri, COLS, null, null, CalendarContract.Instances.DTSTART + " ASC");
 		mCursor.moveToFirst();
 
@@ -78,13 +81,13 @@ public class MainActivity extends Activity {
 		while(makeCards)
 		{
 			EventCard newCard = getEvent();
-			if (newCard.getTitle() != "no event")
+			if (newCard.getTitle() != "no event") //"no event" == try-catch block
 			{
 				cardList.add(newCard);
 			}
 			else
 			{
-				makeCards = false;
+				makeCards = false; //do not add card
 			}
 			if (newCard.isLast() == true)
 			{
@@ -94,20 +97,22 @@ public class MainActivity extends Activity {
 		}
 
 
-		//Collections.sort(cardList); //Doesn't work
+		//Collections.sort(cardList); //Doesn't yet work.
 
-		//get tasks
+		//GET TASKS HERE
 
-		//Add sort here.
+		//SORT TASKS + EVENTS TOGETHER HERE
 
 		if (!cardList.isEmpty())
 		{
 			for (int cards = cardList.size(); cards >= 1; cards--)
 			{
-				CardView.addCard(cardList.get(cards-1));
+				CardView.addCard(cardList.get(cards-1));	//Draws cards on Card View.
 			}
 		}
 
+		//Example cards below.
+		
 		//		// add AndroidViews Cards
 		//		eventCardView.addCard(new MyCard("Get the CardsUI view"));
 		//		eventCardView.addCardToLastStack(new MyCard("for Android at"));
@@ -147,9 +152,6 @@ public class MainActivity extends Activity {
 
 		// draw cards
 		CardView.refresh();
-
-
-
 	}
 
 	@Override
@@ -191,7 +193,6 @@ public class MainActivity extends Activity {
 
 
 	public EventCard getEvent() {
-		//TextView tv = (TextView)findViewById(R.id.data);
 		try
 		{
 			EventCard event;
@@ -205,6 +206,7 @@ public class MainActivity extends Activity {
 			boolean last = false;
 
 			try {
+				//				OLD
 				//				//CalendarContract.Events.TITLE
 				//				title = mCursor.getString(0);
 				//				//CalendarContract.Events.DTSTART
@@ -224,10 +226,12 @@ public class MainActivity extends Activity {
 				title = mCursor.getString(1);
 //				CalendarContract.Events.DESCRIPTION, 
 				desc = mCursor.getString(2);
-//				CalendarContract.Instances.START_DAY, 
+//				CalendarContract.Instances.START_DAY,
+				
 //				CalendarContract.Instances.START_MINUTE,
 				start = mCursor.getInt(4);
-//				CalendarContract.Instances.END_DAY, 
+//				CalendarContract.Instances.END_DAY,
+				
 //				CalendarContract.Instances.END_MINUTE,
 				end = mCursor.getInt(6);
 //				CalendarContract.Instances.EVENT_COLOR_KEY,
