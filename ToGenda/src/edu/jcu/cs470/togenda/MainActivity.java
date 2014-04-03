@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 	//Contains all columns we are to recieve from Google Calendar.
 	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
 		CalendarContract.Instances.TITLE,  CalendarContract.Events.DESCRIPTION, CalendarContract.Instances.START_DAY, 
-		CalendarContract.Instances.START_MINUTE, CalendarContract.Instances.END_DAY, CalendarContract.Instances.END_MINUTE, 
+		CalendarContract.Instances.BEGIN, CalendarContract.Instances.END, CalendarContract.Instances.END_MINUTE, 
 		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR};
 
 	@Override
@@ -233,7 +233,7 @@ public class MainActivity extends Activity {
 //				CalendarContract.Instances.END_DAY,
 				
 //				CalendarContract.Instances.END_MINUTE,
-				end = mCursor.getLong(6);					//MIGHT REQUIRE LONG
+				end = mCursor.getLong(5);					//MIGHT REQUIRE LONG
 //				CalendarContract.Instances.EVENT_COLOR_KEY,
 				colorKey = mCursor.getString(7);
 				colorKey2 = mCursor.getString(8);

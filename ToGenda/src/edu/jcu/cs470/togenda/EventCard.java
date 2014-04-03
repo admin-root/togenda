@@ -35,7 +35,7 @@ public class EventCard extends RecyclableCard implements Comparable{
 	protected void applyTo(View convertView) {
 		((TextView) convertView.findViewById(R.id.EventLabel)).setText(titlePlay);
 		((TextView) convertView.findViewById(R.id.description)).setText(description);
-		((TextView) convertView.findViewById(R.id.Time)).setText(start+" - "+end);
+		((TextView) convertView.findViewById(R.id.Time)).setText(start + " - " + end);
 
 		if (color!=null){
 
@@ -81,17 +81,16 @@ public class EventCard extends RecyclableCard implements Comparable{
 		this.onCardSwipedListener = onEpisodeSwipedListener;
 	}
 
-	public EventCard(String titlePlay, String description, long start2, long end2, String color, String color2, Boolean hasOverflow, Boolean isClickable, String eventId, boolean last) {
+	public EventCard(String titlePlay, String description, long start, long end, String color, String color2, Boolean hasOverflow, Boolean isClickable, String eventId, boolean last) {
 		//super(titlePlay, description, color, color, hasOverflow, isClickable);
 		this.titlePlay = titlePlay;
 		this.description = description;
-		
 		//FIX TIME
 		//SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("d/M h:mm a");
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
-		this.start = _12HourSDFwDM.format(new Time(start2));
-		this.end = _12HourSDF.format(new Time(end2));
+		this.start = _12HourSDFwDM.format(new Time(start));
+		this.end = _12HourSDF.format(new Time(end));
 		
 		if (color != "" && color != null)
 		{
@@ -101,6 +100,7 @@ public class EventCard extends RecyclableCard implements Comparable{
 		{
 			this.color = color2;
 		}
+		
 		this.hasOverflow = hasOverflow;
 		this.isClickable = isClickable;
 		this.eventId = eventId;
