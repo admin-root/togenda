@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
 	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
 		CalendarContract.Instances.TITLE,  CalendarContract.Events.DESCRIPTION, CalendarContract.Instances.START_DAY, 
 		CalendarContract.Instances.START_MINUTE, CalendarContract.Instances.END_DAY, CalendarContract.Instances.END_MINUTE, 
-		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR};
+		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -197,10 +197,10 @@ public class MainActivity extends Activity {
 		{
 			EventCard event;
 			String title;
-			int start;
-			int end;
+			long start;
+			long end;
 			int color;
-			String colorKey;
+			String colorKey, colorKey2;
 			String desc;
 			String eventId;
 			boolean last = false;
@@ -229,13 +229,14 @@ public class MainActivity extends Activity {
 //				CalendarContract.Instances.START_DAY,
 				
 //				CalendarContract.Instances.START_MINUTE,
-				start = mCursor.getInt(4);					//MIGHT REQUIRE LONG
+				start = mCursor.getLong(4);					//MIGHT REQUIRE LONG
 //				CalendarContract.Instances.END_DAY,
 				
 //				CalendarContract.Instances.END_MINUTE,
-				end = mCursor.getInt(6);					//MIGHT REQUIRE LONG
+				end = mCursor.getLong(6);					//MIGHT REQUIRE LONG
 //				CalendarContract.Instances.EVENT_COLOR_KEY,
 				colorKey = mCursor.getString(7);
+				colorKey2 = mCursor.getString(8);
 //				CalendarContract.Instances.EVENT_COLOR};
 
 
@@ -252,7 +253,7 @@ public class MainActivity extends Activity {
 		{
 			mCursor.moveToNext();
 		}
-		event = new EventCard(title, desc, start, end, colorKey, false, true, eventId, last);
+		event = new EventCard(title, desc, start, end, colorKey, colorKey2, false, true, eventId, last);
 
 		return event;
 	}

@@ -81,16 +81,26 @@ public class EventCard extends RecyclableCard implements Comparable{
 		this.onCardSwipedListener = onEpisodeSwipedListener;
 	}
 
-	public EventCard(String titlePlay, String description, int start2, int end2, String color, Boolean hasOverflow, Boolean isClickable, String eventId, boolean last) {
+	public EventCard(String titlePlay, String description, long start2, long end2, String color, String color2, Boolean hasOverflow, Boolean isClickable, String eventId, boolean last) {
 		//super(titlePlay, description, color, color, hasOverflow, isClickable);
 		this.titlePlay = titlePlay;
 		this.description = description;
+		
+		//FIX TIME
 		//SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("d/M h:mm a");
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
 		this.start = _12HourSDFwDM.format(new Time(start2));
 		this.end = _12HourSDF.format(new Time(end2));
-		this.color = color;
+		
+		if (color != "" && color != null)
+		{
+			this.color = color;
+		}
+		else
+		{
+			this.color = color2;
+		}
 		this.hasOverflow = hasOverflow;
 		this.isClickable = isClickable;
 		this.eventId = eventId;
@@ -98,7 +108,7 @@ public class EventCard extends RecyclableCard implements Comparable{
 
 	}
 
-
+//SET onClick EVENT TO GO TO GOOGLE CAL
 //	public void onClick(View v) {
 //		Intent intent = new Intent(Intent.ACTION_VIEW);
 //		//Android 2.2+
