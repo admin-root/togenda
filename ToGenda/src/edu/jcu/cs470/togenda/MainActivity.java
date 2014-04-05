@@ -97,7 +97,7 @@ public class MainActivity extends Activity {
 		}
 
 
-		Collections.sort(cardList); //Doesn't yet work.
+		Collections.sort(cardList);
 
 		//GET TASKS HERE
 
