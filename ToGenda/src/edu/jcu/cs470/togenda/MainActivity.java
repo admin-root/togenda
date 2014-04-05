@@ -119,10 +119,10 @@ public class MainActivity extends Activity {
 				if (cardList.get(cards-1).getStart() < prevEnd)
 				{
 					CardView.addCardToLastStack(cardList.get(cards-1));	//Draws card stacked.
-					if (cardList.get(cards-1).getEnd() > prevEnd)
-					{
-						prevEnd = cardList.get(cards-1).getEnd();
-					}
+//					if (cardList.get(cards-1).getEnd() > prevEnd) //Commenting out for stability untill All-day events are removed.
+//					{
+//						prevEnd = cardList.get(cards-1).getEnd();
+//					}
 				}
 				else
 				{
