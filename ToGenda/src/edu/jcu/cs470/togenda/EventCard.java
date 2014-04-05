@@ -14,8 +14,10 @@ import com.fima.cardsui.objects.RecyclableCard;
 
 public class EventCard extends RecyclableCard implements Comparable{
 
-	String start;
-	String end;
+	Long startTime;
+	Long endTime;
+	String startLabel;
+	String endLabel;
 	boolean last = false;
 
 	int[] colors;
@@ -35,7 +37,7 @@ public class EventCard extends RecyclableCard implements Comparable{
 	protected void applyTo(View convertView) {
 		((TextView) convertView.findViewById(R.id.EventLabel)).setText(titlePlay);
 		((TextView) convertView.findViewById(R.id.description)).setText(description);
-		((TextView) convertView.findViewById(R.id.Time)).setText(start + " - " + end);
+		((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);
 
 		if (color!=null){
 
@@ -87,10 +89,12 @@ public class EventCard extends RecyclableCard implements Comparable{
 		this.description = description;
 		//FIX TIME
 		//SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
-		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("d/M h:mm a");
+		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
-		this.start = _12HourSDFwDM.format(new Time(start));
-		this.end = _12HourSDF.format(new Time(end));
+		this.startTime = start;
+		this.endTime = end;
+		this.startLabel = _12HourSDFwDM.format(new Time(start));
+		this.endLabel = _12HourSDF.format(new Time(end));
 		
 		if (color != "" && color != null)
 		{
@@ -136,12 +140,12 @@ public class EventCard extends RecyclableCard implements Comparable{
 	
 	public long getStart()
 	{
-		return Integer.parseInt(start);
+		return this.startTime;
 	}
 
 	public long getEnd()
 	{
-		return Integer.parseInt(end);
+		return this.endTime;
 	}
 
 	public int compareTo(Object another) {
@@ -149,10 +153,21 @@ public class EventCard extends RecyclableCard implements Comparable{
 		{
 			return 1;
 		}
-//		else if (Long.parseLong(start) > ((EventCard) another).getStart())
-//		{
-//			return -1;
-//		}
+		else if (this.getStart() > ((EventCard) another).getStart())
+		{
+			return -1;
+		}
+		else if (this.getStart() == ((EventCard) another).getStart())
+		{
+			if (this.getEnd() < ((EventCard) another).getEnd())
+			{
+				return 1;
+			}
+			else if (this.getEnd() < ((EventCard) another).getEnd())
+			{
+				return -1;
+			}
+		}
 		return 0;
 	}
 }
