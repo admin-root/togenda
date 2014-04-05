@@ -3,6 +3,7 @@ package edu.jcu.cs470.togenda;
 
 import com.fima.cardsui.views.CardUI;
 
+import android.R.integer;
 import android.app.Activity;
 import android.app.Fragment;
 import android.net.Uri;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Stack;
 
 import android.content.ContentUris;
 import android.content.DialogInterface;
@@ -33,13 +35,15 @@ import android.text.format.Time;
 
 public class MainActivity extends Activity {
 
+	private static final int MiliSecDay = 86400000;
+	
 	private Cursor mCursor = null; 
 	
 	//Contains all columns we are to recieve from Google Calendar.
 	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
 		CalendarContract.Instances.TITLE,  CalendarContract.Events.DESCRIPTION, CalendarContract.Instances.START_DAY, 
 		CalendarContract.Instances.BEGIN, CalendarContract.Instances.END, CalendarContract.Instances.END_MINUTE, 
-		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR};
+		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR, CalendarContract.Events.ALL_DAY};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +52,7 @@ public class MainActivity extends Activity {
 
 		// init CardView
 		CardUI CardView = (CardUI) findViewById(R.id.cardsview);
-		CardView.setSwipeable(true); //Global variable for now. Need to change library so we can set swipable on per-card basis.
+		CardView.setSwipeable(false); //Global variable for now. Need to change library so we can set swipable on per-card basis.
 
 		//Date formating
 		Format df = DateFormat.getDateFormat(this);
@@ -67,7 +71,7 @@ public class MainActivity extends Activity {
 		//Getting URI for callendar
 		Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI.buildUpon();
 		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)); //start time = now
-		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)+604800000);//End time = (now + 1 week)
+		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)+(MiliSecDay*7));//End time = (now + 1 week)
 		Uri eventsUri = eventsUriBuilder.build();
 		
 		//Fill cursor with desired calendar events.
@@ -81,7 +85,11 @@ public class MainActivity extends Activity {
 		while(makeCards)
 		{
 			EventCard newCard = getEvent();
-			if (newCard.getTitle() != "no event") //"no event" == try-catch block
+			if (newCard.getTitle() == "allDay")
+			{
+				//skip
+			}
+			else if (newCard.getTitle() != "no event") //"no event" == try-catch block
 			{
 				cardList.add(newCard);
 			}
@@ -93,21 +101,34 @@ public class MainActivity extends Activity {
 			{
 				makeCards = false;
 			}
-
 		}
 
 
-		Collections.sort(cardList);
+		Collections.sort(cardList); //works
 
 		//GET TASKS HERE
 
 		//SORT TASKS + EVENTS TOGETHER HERE
-
+		
 		if (!cardList.isEmpty())
 		{
+			Long prevEnd = (long) 0;
+			
 			for (int cards = cardList.size(); cards >= 1; cards--)
 			{
-				CardView.addCard(cardList.get(cards-1));	//Draws cards on Card View.
+				if (cardList.get(cards-1).getStart() < prevEnd)
+				{
+					CardView.addCardToLastStack(cardList.get(cards-1));	//Draws card stacked.
+					if (cardList.get(cards-1).getEnd() > prevEnd)
+					{
+						prevEnd = cardList.get(cards-1).getEnd();
+					}
+				}
+				else
+				{
+					CardView.addCard(cardList.get(cards-1));
+					prevEnd = cardList.get(cards-1).getEnd();
+				}
 			}
 		}
 
@@ -253,6 +274,7 @@ public class MainActivity extends Activity {
 		{
 			mCursor.moveToNext();
 		}
+		
 		event = new EventCard(title, desc, start, end, colorKey, colorKey2, false, true, eventId, last);
 
 		return event;

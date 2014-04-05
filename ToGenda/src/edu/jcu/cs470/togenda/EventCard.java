@@ -87,6 +87,7 @@ public class EventCard extends RecyclableCard implements Comparable{
 		//super(titlePlay, description, color, color, hasOverflow, isClickable);
 		this.titlePlay = titlePlay;
 		this.description = description;
+		//this.description = String.valueOf(start) + " - " + String.valueOf(end);
 		//FIX TIME
 		//SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
