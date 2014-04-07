@@ -112,23 +112,30 @@ public class MainActivity extends Activity {
 		
 		if (!cardList.isEmpty())
 		{
-			Long prevEnd = (long) 0;
+			//Stacked cards are kind of awkward to use, and when placed in excession they cause lag.
+			//Ordinary events will no longer be stacked. Instead, only full-day events will be stacked with each other when
+			//multiple full-day events exist on the same day.
+			//full day events aren't properly implemented yet.
+			//Will use a different card format for full day events, as well as tasks so that different types of entries are
+			//easily identified.
+			
+//			Long prevEnd = (long) 0;
 			
 			for (int cards = cardList.size(); cards >= 1; cards--)
 			{
-				if (cardList.get(cards-1).getStart() < prevEnd)
-				{
-					CardView.addCardToLastStack(cardList.get(cards-1));	//Draws card stacked.
+//				if (cardList.get(cards-1).getStart() < prevEnd)
+//				{
+//					CardView.addCardToLastStack(cardList.get(cards-1));	//Draws card stacked.
 //					if (cardList.get(cards-1).getEnd() > prevEnd) //Commenting out for stability untill All-day events are removed.
 //					{
 //						prevEnd = cardList.get(cards-1).getEnd();
 //					}
-				}
-				else
-				{
+//				}
+//				else
+//				{
 					CardView.addCard(cardList.get(cards-1));
-					prevEnd = cardList.get(cards-1).getEnd();
-				}
+//					prevEnd = cardList.get(cards-1).getEnd();
+//				}
 			}
 		}
 
