@@ -2,8 +2,6 @@ package edu.jcu.cs470.togenda;
 
 
 import com.fima.cardsui.views.CardUI;
-
-import android.R.integer;
 import android.app.Activity;
 import android.app.Fragment;
 import android.net.Uri;
@@ -14,22 +12,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import java.text.Format; 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Stack;
-
 import android.content.ContentUris;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.database.Cursor; 
-import android.provider.CalendarContract; 
-import android.provider.CalendarContract.Calendars;
+import android.provider.CalendarContract;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 
@@ -43,7 +33,8 @@ public class MainActivity extends Activity {
 	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
 		CalendarContract.Instances.TITLE,  CalendarContract.Events.DESCRIPTION, CalendarContract.Instances.START_DAY, 
 		CalendarContract.Instances.BEGIN, CalendarContract.Instances.END, CalendarContract.Instances.END_MINUTE, 
-		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR, CalendarContract.Events.ALL_DAY};
+		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR, 
+		CalendarContract.Events.ALL_DAY};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

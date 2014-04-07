@@ -2,10 +2,6 @@ package edu.jcu.cs470.togenda;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
-
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
