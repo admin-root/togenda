@@ -7,8 +7,10 @@
     <string name="title_activity_main">To-Genda</string>
     <string name="title">Title</string>
     <string name="desc">Description</string>
-	<string name="overflow">Menu Overflow</string>
-	<string name="color_stripe">Color Stripe</string>
-	<string name="new_event">New Event</string>
+    <string name="overflow">Menu Overflow</string>
+    <string name="color_stripe">Color Stripe</string>
+    <string name="new_event">New Event</string>
+    <string name="title_activity_task">TaskActivity</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

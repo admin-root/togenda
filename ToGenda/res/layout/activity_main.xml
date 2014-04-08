@@ -4,16 +4,10 @@
     android:background="@color/LightGrey"
     android:orientation="vertical" >
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="4dp"
-        android:background="@color/White" />
-
     <com.fima.cardsui.views.CardUI
         android:id="@+id/cardsview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/White" />
+        android:background="@color/card_border" />
 
 </LinearLayout>
