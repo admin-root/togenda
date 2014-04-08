@@ -145,6 +145,7 @@ public class EventCard extends RecyclableCard implements Comparable{
 		return this.endTime;
 	}
 
+	@Override
 	public int compareTo(Object another) {
 		if (this.getStart() < ((EventCard) another).getStart())
 		{

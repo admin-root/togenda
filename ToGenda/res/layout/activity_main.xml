@@ -4,23 +4,6 @@
     android:background="@color/LightGrey"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/White" >
-
-        <TextView
-            android:id="@+id/TimeandDate"
-            style="@style/CardTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:gravity="center"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    </LinearLayout>
-
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"

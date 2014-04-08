@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="6dp" >
+
+    <TextView
+        android:id="@+id/EventLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="8dip"
+        android:fontFamily="sans-serif-thin"
+        android:text="@string/title"
+        android:textColor="#33B6EA"
+        android:textSize="24sp" />
+
+</LinearLayout>

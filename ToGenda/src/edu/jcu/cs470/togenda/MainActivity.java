@@ -52,8 +52,9 @@ public class MainActivity extends Activity {
 		Date d = new Date();
 
 		//setting TimeDate label
-		TextView timedate = (TextView)findViewById(R.id.TimeandDate);
-		timedate.setText(sdf.format(d)+", "+tf.format(d)+", "+df.format(d));
+		//TextView timedate = (TextView)findViewById(R.id.TimeandDate);
+		//timedate.setText(sdf.format(d)+", "+tf.format(d)+", "+df.format(d));
+		CardView.addCard(new DateHolder(sdf.format(d)+", "+tf.format(d)+", "+df.format(d)));
 		
 		//getting current time for use in query
 		Time t = new Time();
@@ -72,7 +73,7 @@ public class MainActivity extends Activity {
 		ArrayList<EventCard> cardList = new ArrayList<EventCard>();
 
 		boolean makeCards = true;
-
+		
 		while(makeCards)
 		{
 			EventCard newCard = getEvent();
@@ -154,7 +155,7 @@ public class MainActivity extends Activity {
 		//
 		//		// add one card
 		//		CardView.addCard(new TaskCard("Task Name"));
-		//		CardView.addCard(new TaskCard("Stack Event"));
+		//		CardView.addCard(new EventCard("Example Card"));
 		//		CardView.addCardToLastStack(new EventCard("Stack Event"));
 		//
 		//		// create a stack

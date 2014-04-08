@@ -199,27 +199,27 @@ public final class R {
 		public static final int top_shadow = 0x7f02000a;
 	}
 	public static final class id {
-		public static final int ScrollView1 = 0x7f09000c;
-		public static final int cardContent = 0x7f090010;
-		public static final int footer = 0x7f09000e;
-		public static final int listView = 0x7f09000a;
-		public static final int placeholder = 0x7f09000f;
-		public static final int stackContainer = 0x7f090013;
-		public static final int stackRoot = 0x7f090011;
-		public static final int stackTitle = 0x7f090012;
-		public static final int sticky = 0x7f09000b;
-		public static final int tableLayout = 0x7f09000d;
+		public static final int ScrollView1 = 0x7f09000b;
+		public static final int cardContent = 0x7f09000f;
+		public static final int footer = 0x7f09000d;
+		public static final int listView = 0x7f090009;
+		public static final int placeholder = 0x7f09000e;
+		public static final int stackContainer = 0x7f090012;
+		public static final int stackRoot = 0x7f090010;
+		public static final int stackTitle = 0x7f090011;
+		public static final int sticky = 0x7f09000a;
+		public static final int tableLayout = 0x7f09000c;
 	}
 	public static final class layout {
 		public static final int cards_view = 0x7f030004;
 		public static final int cards_view_multicolumn = 0x7f030005;
-		public static final int footer_fragment = 0x7f030006;
-		public static final int header = 0x7f030008;
-		public static final int item_card = 0x7f030009;
-		public static final int item_card_empty_first = 0x7f03000a;
-		public static final int item_card_empty_last = 0x7f03000b;
-		public static final int item_play_card_empty_first = 0x7f03000c;
-		public static final int item_stack = 0x7f03000d;
+		public static final int footer_fragment = 0x7f030007;
+		public static final int header = 0x7f030009;
+		public static final int item_card = 0x7f03000a;
+		public static final int item_card_empty_first = 0x7f03000b;
+		public static final int item_card_empty_last = 0x7f03000c;
+		public static final int item_play_card_empty_first = 0x7f03000d;
+		public static final int item_stack = 0x7f03000e;
 	}
 	public static final class style {
 		public static final int CardLightText = 0x7f060001;
