@@ -361,7 +361,7 @@ int drawable url3 0x7f02000d
 int id EventLabel 0x7f090003
 int id ScrollView1 0x7f09000b
 int id Time 0x7f090005
-int id action_settings 0x7f090013
+int id action_settings 0x7f090014
 int id background 0x7f090001
 int id cardContent 0x7f09000f
 int id cardsview 0x7f090000
@@ -370,6 +370,7 @@ int id description 0x7f090004
 int id footer 0x7f09000d
 int id imageView1 0x7f090002
 int id listView 0x7f090009
+int id new_event 0x7f090013
 int id overflow 0x7f090008
 int id placeholder 0x7f09000e
 int id stackContainer 0x7f090012
@@ -399,6 +400,7 @@ int string color_stripe 0x7f070007
 int string desc 0x7f070005
 int string hello_world 0x7f070001
 int string menu_settings 0x7f070002
+int string new_event 0x7f070008
 int string overflow 0x7f070006
 int string title 0x7f070004
 int string title_activity_main 0x7f070003
