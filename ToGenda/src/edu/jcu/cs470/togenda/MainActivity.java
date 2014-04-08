@@ -24,7 +24,9 @@ import android.text.format.Time;
 public class MainActivity extends Activity {
 
 	private static final int MiliSecDay = 86400000;	//Number of Milliseconds in a day.
-	private Cursor mCursor = null; 
+	private Cursor mCursor = null;
+	private String whereClauseTrue = "CalendarContract.Events.ALL_DAY=1";
+	private String whereClauseFalse = "CalendarContract.Events.ALL_DAY=0";
 
 	//Contains all columns we are to recieve from Google Calendar.
 	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
@@ -62,7 +64,7 @@ public class MainActivity extends Activity {
 		Uri eventsUri = eventsUriBuilder.build();
 
 		//Fill cursor with desired calendar events.
-		mCursor = getContentResolver().query(eventsUri, COLS, null, null, CalendarContract.Instances.DTSTART + " ASC");
+		mCursor = getContentResolver().query(eventsUri, COLS, whereClauseFalse, null, CalendarContract.Instances.DTSTART + " ASC");
 		mCursor.moveToFirst();
 
 		ArrayList<CardTemplate> cardList = new ArrayList<CardTemplate>();
