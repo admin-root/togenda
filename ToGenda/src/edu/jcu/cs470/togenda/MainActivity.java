@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
 		mCursor = getContentResolver().query(eventsUri, COLS, null, null, CalendarContract.Instances.DTSTART + " ASC");
 		mCursor.moveToFirst();
 
-		ArrayList<EventCard> cardList = new ArrayList<EventCard>();
+		ArrayList<CardTemplate> cardList = new ArrayList<CardTemplate>();
 
 		boolean makeCards = true;
 
@@ -90,9 +90,13 @@ public class MainActivity extends Activity {
 			}
 		}
 
+		
 
 		Collections.sort(cardList); //works now
 
+		cardList.add(new EventCard("sample card"));
+		cardList.add(new TaskCard("sample card"));
+		
 		//GET TASKS HERE
 
 		//SORT TASKS + EVENTS TOGETHER HERE
@@ -203,7 +207,7 @@ public class MainActivity extends Activity {
 				mCursor.moveToNext();
 			}
 
-			//creates event
+			//creates event (title,description,star time,end time,event color, calendar color,is clickable,have overflow button,id,is last)
 			event = new EventCard(title, desc, start, end, colorKey, colorKey2, false, true, eventId, last);
 
 			return event;

@@ -1,6 +1,7 @@
 package edu.jcu.cs470.togenda;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fima.cardsui.objects.RecyclableCard;
@@ -11,6 +12,7 @@ public class DateHolder extends RecyclableCard {
 	protected void applyTo(View convertView) {
 		// TODO Auto-generated method stub
 		((TextView) convertView.findViewById(R.id.EventLabel)).setText(title);
+		((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(R.color.card_border);
 	}
 
 	@Override

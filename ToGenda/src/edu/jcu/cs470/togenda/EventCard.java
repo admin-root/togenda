@@ -6,9 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.fima.cardsui.objects.RecyclableCard;
-
-public class EventCard extends RecyclableCard implements Comparable{
+public class EventCard extends CardTemplate implements Comparable{
 
 	Long startTime;
 	Long endTime;
@@ -161,5 +159,10 @@ public class EventCard extends RecyclableCard implements Comparable{
 			}
 		}
 		return 0;
+	}
+	
+	public EventCard()
+	{
+		super();
 	}
 }
