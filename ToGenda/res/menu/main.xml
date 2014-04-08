@@ -2,6 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="edu.jcu.cs470.togenda.MainActivity" >
 
+    <item android:id="@+id/new_event"
+          android:icon="@drawable/ic_action_new_event"
+          android:title="@string/new_event"
+          android:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

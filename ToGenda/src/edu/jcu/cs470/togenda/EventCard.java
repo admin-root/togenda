@@ -39,9 +39,8 @@ public class EventCard extends RecyclableCard implements Comparable{
 
 			if (Integer.parseInt(color) < 25 && Integer.parseInt(color) > 0) //Later: compensate for custom colors
 			{
-
+				//Chooses color based on google defualts.
 				colors = new int[25];
-
 				colors[1] = R.color.gCal1;
 				colors[2] = R.color.gCal2;
 				colors[3] = R.color.gCal3;
@@ -66,12 +65,9 @@ public class EventCard extends RecyclableCard implements Comparable{
 				colors[22] = R.color.gCal22;
 				colors[23] = R.color.gCal23;
 				colors[24] = R.color.gCal24;
-
 				((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[Integer.parseInt(color)]);
 			}
-
 		}
-
 	}
 
 	@Override
@@ -79,13 +75,10 @@ public class EventCard extends RecyclableCard implements Comparable{
 		this.onCardSwipedListener = onEpisodeSwipedListener;
 	}
 
-	public EventCard(String titlePlay, String description, long start, long end, String color, String color2, Boolean hasOverflow, Boolean isClickable, String eventId, boolean last) {
-		//super(titlePlay, description, color, color, hasOverflow, isClickable);
+	public EventCard(String titlePlay, String description, long start, long end, String color, String color2, Boolean hasOverflow, 
+			Boolean isClickable, String eventId, boolean last) {
 		this.titlePlay = titlePlay;
 		this.description = description;
-		//this.description = String.valueOf(start) + " - " + String.valueOf(end);
-		//FIX TIME
-		//SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
 		this.startTime = start;
@@ -110,6 +103,7 @@ public class EventCard extends RecyclableCard implements Comparable{
 	}
 
 //SET onClick EVENT TO GO TO GOOGLE CAL
+	//does not yet work
 //	public void onClick(View v) {
 //		Intent intent = new Intent(Intent.ACTION_VIEW);
 //		//Android 2.2+
@@ -146,7 +140,7 @@ public class EventCard extends RecyclableCard implements Comparable{
 	}
 
 	@Override
-	public int compareTo(Object another) {
+	public int compareTo(Object another) { //for sorting
 		if (this.getStart() < ((EventCard) another).getStart())
 		{
 			return 1;

@@ -1,6 +1,5 @@
 package edu.jcu.cs470.togenda;
 
-
 import com.fima.cardsui.views.CardUI;
 import android.app.Activity;
 import android.app.Fragment;
@@ -11,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import java.text.Format; 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,10 +23,9 @@ import android.text.format.Time;
 
 public class MainActivity extends Activity {
 
-	private static final int MiliSecDay = 86400000;
-	
+	private static final int MiliSecDay = 86400000;	//Number of Milliseconds in a day.
 	private Cursor mCursor = null; 
-	
+
 	//Contains all columns we are to recieve from Google Calendar.
 	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
 		CalendarContract.Instances.TITLE,  CalendarContract.Events.DESCRIPTION, CalendarContract.Instances.START_DAY, 
@@ -51,21 +48,19 @@ public class MainActivity extends Activity {
 		SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
 		Date d = new Date();
 
-		//setting TimeDate label
-		//TextView timedate = (TextView)findViewById(R.id.TimeandDate);
-		//timedate.setText(sdf.format(d)+", "+tf.format(d)+", "+df.format(d));
+		//Date Card
 		CardView.addCard(new DateHolder(sdf.format(d)+", "+tf.format(d)+", "+df.format(d)));
-		
+
 		//getting current time for use in query
 		Time t = new Time();
 		t.setToNow();
 
-		//Getting URI for callendar
+		//Getting URI for calendar
 		Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI.buildUpon();
 		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)); //start time = now
 		ContentUris.appendId(eventsUriBuilder, t.toMillis(true)+(MiliSecDay*7));//End time = (now + 1 week)
 		Uri eventsUri = eventsUriBuilder.build();
-		
+
 		//Fill cursor with desired calendar events.
 		mCursor = getContentResolver().query(eventsUri, COLS, null, null, CalendarContract.Instances.DTSTART + " ASC");
 		mCursor.moveToFirst();
@@ -73,7 +68,7 @@ public class MainActivity extends Activity {
 		ArrayList<EventCard> cardList = new ArrayList<EventCard>();
 
 		boolean makeCards = true;
-		
+
 		while(makeCards)
 		{
 			EventCard newCard = getEvent();
@@ -96,12 +91,12 @@ public class MainActivity extends Activity {
 		}
 
 
-		Collections.sort(cardList); //works
+		Collections.sort(cardList); //works now
 
 		//GET TASKS HERE
 
 		//SORT TASKS + EVENTS TOGETHER HERE
-		
+
 		if (!cardList.isEmpty())
 		{
 			//Stacked cards are kind of awkward to use, and when placed in excession they cause lag.
@@ -110,65 +105,12 @@ public class MainActivity extends Activity {
 			//full day events aren't properly implemented yet.
 			//Will use a different card format for full day events, as well as tasks so that different types of entries are
 			//easily identified.
-			
-//			Long prevEnd = (long) 0;
-			
+
 			for (int cards = cardList.size(); cards >= 1; cards--)
 			{
-//				if (cardList.get(cards-1).getStart() < prevEnd)
-//				{
-//					CardView.addCardToLastStack(cardList.get(cards-1));	//Draws card stacked.
-//					if (cardList.get(cards-1).getEnd() > prevEnd) //Commenting out for stability untill All-day events are removed.
-//					{
-//						prevEnd = cardList.get(cards-1).getEnd();
-//					}
-//				}
-//				else
-//				{
-					CardView.addCard(cardList.get(cards-1));
-//					prevEnd = cardList.get(cards-1).getEnd();
-//				}
+				CardView.addCard(cardList.get(cards-1));
 			}
 		}
-
-		//Example cards below.
-		
-		//		// add AndroidViews Cards
-		//		eventCardView.addCard(new MyCard("Get the CardsUI view"));
-		//		eventCardView.addCardToLastStack(new MyCard("for Android at"));
-		//		MyCard androidViewsCard = new MyCard("www.androidviews.net");
-		//		androidViewsCard.setOnClickListener(new OnClickListener() {
-		//
-		//			@Override
-		//			public void onClick(View v) {
-		//				Intent intent = new Intent(Intent.ACTION_VIEW);
-		//				intent.setData(Uri.parse("http://www.androidviews.net/"));
-		//				startActivity(intent);
-		//
-		//			}
-		//		});
-		//		eventCardView.addCardToLastStack(androidViewsCard);
-		//
-		//		// add one card, and then add another one to the last stack.
-		//		eventCardView.addCard(new MyCard("2 cards"));
-		//		eventCardView.addCardToLastStack(new MyCard("2 cards"));
-		//
-		//		// add one card
-		//		CardView.addCard(new TaskCard("Task Name"));
-		//		CardView.addCard(new EventCard("Example Card"));
-		//		CardView.addCardToLastStack(new EventCard("Stack Event"));
-		//
-		//		// create a stack
-		//		CardStack stack = new CardStack();
-		//		stack.setTitle("title test");
-		//
-		//		// add 3 cards to stack
-		//		stack.add(new MyCard("3 cards"));
-		//		stack.add(new MyCard("3 cards"));
-		//		stack.add(new MyCard("3 cards"));
-		//
-		//		// add stack to cardView
-		//		eventCardView.addStack(stack);
 
 		// draw cards
 		CardView.refresh();
@@ -219,69 +161,57 @@ public class MainActivity extends Activity {
 			String title;
 			long start;
 			long end;
-			int color;
+			int color; //holds custom color case
 			String colorKey, colorKey2;
 			String desc;
 			String eventId;
 			boolean last = false;
 
 			try {
-				//				OLD
-				//				//CalendarContract.Events.TITLE
-				//				title = mCursor.getString(0);
-				//				//CalendarContract.Events.DTSTART
-				//				start = mCursor.getLong(1);
-				//				//CalendarContract.Events.DTEND
-				//				end = mCursor.getLong(2);
-				//				//CalendarContract.Events.EVENT_COLOR
-				//				color = mCursor.getString(3);
-				//				//CalendarContract.Events.DESCRIPTION
-				//				desc = mCursor.getString(4);
-				//				//CalendarContract.Events._ID
-				//				eventId = mCursor.getString(5);
 
-//				CalendarContract.Instances.EVENT_ID,
+				//				CalendarContract.Instances.EVENT_ID,
 				eventId = mCursor.getString(0);
-//				CalendarContract.Instances.TITLE,
+				//				CalendarContract.Instances.TITLE,
 				title = mCursor.getString(1);
-//				CalendarContract.Events.DESCRIPTION, 
+				//				CalendarContract.Events.DESCRIPTION, 
 				desc = mCursor.getString(2);
-//				CalendarContract.Instances.START_DAY,
-				
-//				CalendarContract.Instances.START_MINUTE,
+				//				CalendarContract.Instances.START_DAY,
+
+				//				CalendarContract.Instances.START_MINUTE,
 				start = mCursor.getLong(4);					//MIGHT REQUIRE LONG
-//				CalendarContract.Instances.END_DAY,
-				
-//				CalendarContract.Instances.END_MINUTE,
+				//				CalendarContract.Instances.END_DAY,
+
+				//				CalendarContract.Instances.END_MINUTE,
 				end = mCursor.getLong(5);					//MIGHT REQUIRE LONG
-//				CalendarContract.Instances.EVENT_COLOR_KEY,
+				//				CalendarContract.Instances.EVENT_COLOR_KEY,
 				colorKey = mCursor.getString(7);
 				colorKey2 = mCursor.getString(8);
-//				CalendarContract.Instances.EVENT_COLOR};
+				//				CalendarContract.Instances.EVENT_COLOR};
 
 
-		} catch (Exception e) {
-			//ignore
+			} catch (Exception e) {
+				//ignore
+				return new EventCard("no event");
+			}
+
+			if(mCursor.isLast()) 
+			{
+				last = true;
+			}
+			else
+			{
+				mCursor.moveToNext();
+			}
+
+			//creates event
+			event = new EventCard(title, desc, start, end, colorKey, colorKey2, false, true, eventId, last);
+
+			return event;
+		}
+		catch(Exception ex)
+		{
 			return new EventCard("no event");
 		}
-
-		if(mCursor.isLast()) 
-		{
-			last = true;
-		}
-		else
-		{
-			mCursor.moveToNext();
-		}
-		
-		event = new EventCard(title, desc, start, end, colorKey, colorKey2, false, true, eventId, last);
-
-		return event;
 	}
-	catch(Exception ex)
-	{
-		return new EventCard("no event");
-	}
-}
 
 }
