@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 		Uri eventsUri = eventsUriBuilder.build();
 
 		//Fill cursor with desired calendar events.
-		mCursor = getContentResolver().query(eventsUri, COLS, whereClauseFalse, null, CalendarContract.Instances.DTSTART + " ASC");
+		mCursor = getContentResolver().query(eventsUri, COLS, null, null, CalendarContract.Instances.DTSTART + " ASC");
 		mCursor.moveToFirst();
 
 		ArrayList<CardTemplate> cardList = new ArrayList<CardTemplate>();
@@ -96,8 +96,8 @@ public class MainActivity extends Activity {
 
 		Collections.sort(cardList); //works now
 
-		cardList.add(new EventCard("sample card"));
-		cardList.add(new TaskCard("sample card"));
+		//cardList.add(new EventCard("sample card"));
+		cardList.add(new TaskCard("sample task"));
 		
 		//GET TASKS HERE
 

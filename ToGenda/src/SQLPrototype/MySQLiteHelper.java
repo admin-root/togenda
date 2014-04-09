@@ -13,9 +13,9 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_NAME = "comment";
 	//construct the structure of the database
 	private static final String DATABASE_NAME = "comments.db";
-//	private static final String DATABASE_CREATE = "create table if not exists "+TABLE_NAME+
-//		"("+COLUMN_KEY+" integer primary key autoincrement, "+COLUMN_NAME+" TEXT not null)";
-//	private static final int DATABASE_VERSION = 1;
+	private static final String DATABASE_CREATE = "create table if not exists "+TABLE_NAME+
+		"("+COLUMN_KEY+" integer primary key autoincrement, "+COLUMN_NAME+" TEXT not null)";
+	private static final int DATABASE_VERSION = 1;
 	
 	public MySQLiteHelper(Context context) 
 	{
