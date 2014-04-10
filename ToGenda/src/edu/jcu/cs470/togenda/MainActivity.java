@@ -147,14 +147,18 @@ public class MainActivity extends Activity{
 			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
 			alertDialog.setTitle("New Task");
 			alertDialog.setMessage("Are you sure?");
+			//interface
 			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					// here you can add functions
+					//do nothing
 				}
 			});
 			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					// here you can add functions
+					//add to database
+					//refresh cardview
 				}
 			});
 			alertDialog.setIcon(R.drawable.ic_action_new_event);
