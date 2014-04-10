@@ -3,6 +3,7 @@ package edu.jcu.cs470.togenda;
 import com.fima.cardsui.views.CardUI;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,9 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.Format; 
@@ -24,6 +22,7 @@ import java.util.Collections;
 import java.util.Date;
 
 import android.content.ContentUris;
+import android.content.DialogInterface;
 import android.database.Cursor; 
 import android.provider.CalendarContract;
 import android.text.format.DateFormat;
@@ -143,7 +142,23 @@ public class MainActivity extends Activity{
 		switch (item.getItemId()) 
 		{        
 		case R.id.new_event:
-			Toast.makeText(getApplicationContext(), "Unimplemented", Toast.LENGTH_SHORT).show();
+			//DANNY, TYPE HERE
+			//CREATES DIALOG POPUP
+			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog.setTitle("New Task");
+			alertDialog.setMessage("Are you sure?");
+			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					// here you can add functions
+				}
+			});
+			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					// here you can add functions
+				}
+			});
+			alertDialog.setIcon(R.drawable.ic_action_new_event);
+			alertDialog.show();
 			return true;        
 		default:            
 			return super.onOptionsItemSelected(item);
@@ -228,5 +243,7 @@ public class MainActivity extends Activity{
 			return new EventCard("no event");
 		}
 	}
+
+
 
 }
