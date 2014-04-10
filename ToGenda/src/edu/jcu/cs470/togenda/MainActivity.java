@@ -1,6 +1,7 @@
 package edu.jcu.cs470.togenda;
 
 import com.fima.cardsui.views.CardUI;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.net.Uri;
@@ -10,18 +11,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.Format; 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+
 import android.content.ContentUris;
 import android.database.Cursor; 
 import android.provider.CalendarContract;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity{
 
 	private static final int MiliSecDay = 86400000;	//Number of Milliseconds in a day.
 	private Cursor mCursor = null;
@@ -92,13 +100,13 @@ public class MainActivity extends Activity {
 			}
 		}
 
-		
+
 
 		Collections.sort(cardList); //works now
 
 		//cardList.add(new EventCard("sample card"));
 		cardList.add(new TaskCard("sample task"));
-		
+
 		//GET TASKS HERE
 
 		//SORT TASKS + EVENTS TOGETHER HERE
@@ -132,14 +140,15 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		switch (item.getItemId()) 
+		{        
+		case R.id.new_event:
+			Toast.makeText(getApplicationContext(), "Unimplemented", Toast.LENGTH_SHORT).show();
+			return true;        
+		default:            
+			return super.onOptionsItemSelected(item);
+
 		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	/**
