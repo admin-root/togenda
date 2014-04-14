@@ -321,18 +321,13 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textMultiLine"
-        android:hint="test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test,test" />
+        android:hint="Task Discrption" />
 
-    <Button
-        android:id="@+id/button26"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Submit" />
 
-    <Button
+    <!--  <Button
         android:id="@+id/colorTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Color test" />
+        android:text="Color test" />-->
 
 </LinearLayout>

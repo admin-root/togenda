@@ -4,6 +4,7 @@ import com.fima.cardsui.views.CardUI;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
@@ -144,25 +145,30 @@ public class MainActivity extends Activity{
 		case R.id.new_event:
 			//DANNY, TYPE HERE
 			//CREATES DIALOG POPUP
-			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-			alertDialog.setTitle("New Task");
-			alertDialog.setMessage("Are you sure?");
-			//interface
-			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					// here you can add functions
-					//do nothing
-				}
-			});
-			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					// here you can add functions
-					//add to database
-					//refresh cardview
-				}
-			});
-			alertDialog.setIcon(R.drawable.ic_action_new_event);
-			alertDialog.show();
+			
+			
+			
+			
+			
+//			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+//			alertDialog.setTitle("New Task");
+//			alertDialog.setMessage("Are you sure?");
+//			//interface
+//			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int which) {
+//					// here you can add functions
+//					//do nothing
+//				}
+//			});
+//			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int which) {
+//					// here you can add functions
+//					//add to database
+//					//refresh cardview
+//				}
+//			});
+//			alertDialog.setIcon(R.drawable.ic_action_new_event);
+//			alertDialog.show();
 			return true;        
 		default:            
 			return super.onOptionsItemSelected(item);
@@ -170,6 +176,32 @@ public class MainActivity extends Activity{
 		}
 	}
 
+	public Dialog onCreateDialog(Bundle savedInstanceState) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+		// Get the layout inflater
+		LayoutInflater inflater = this.getLayoutInflater();
+		// Inflate and set the layout for the dialog
+		// Pass null as the parent view because its going in the dialog layout
+		builder.setView(inflater.inflate(R.layout.dialogue_task_creator, null))
+		// Add action buttons
+		.setPositiveButton(R.string.hello_world, new DialogInterface.OnClickListener() 
+		{
+			@Override
+			public void onClick(DialogInterface dialog, int id) 
+			{
+				// sign in the user ...
+			}
+		});
+//		.setNegativeButton(R.string.hello_world, new DialogInterface.OnClickListener() 
+//		{
+//			public void onClick(DialogInterface dialog, int id) {
+//				this.getDialog().cancel();
+//			}
+//		});      
+		return builder.create();
+	}
+	
+	
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
