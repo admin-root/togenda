@@ -43,6 +43,20 @@
             android:text="LIB" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Color:"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    </LinearLayout>
+
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,12 +66,12 @@
         <Button
             android:id="@+id/button2"
             style="?android:attr/buttonStyleSmall"
+            android:background="@color/gCal1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_column="0"
             android:layout_gravity="left|top"
             android:layout_row="0"
-            android:background="@color/gCal1"
             android:onClick="@string/getColor" />
 
         <Button
@@ -320,9 +334,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textMultiLine"
-        android:hint="Task Discrption" />
-
+        android:hint="Task Discrption"
+        android:inputType="textMultiLine" />
 
     <!--  <Button
         android:id="@+id/colorTest"
