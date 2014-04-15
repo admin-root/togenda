@@ -40,7 +40,7 @@ public class DBAdapter {
 	{
 		public DatabaseHelper(Context context)
 		{
-			super(context,DATABASE_NAME,null,DATABASE_VERSION);
+			super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		}
 
 		@Override
@@ -52,7 +52,7 @@ public class DBAdapter {
 			}
 			catch(SQLException sqlex)
 			{
-				sqlex.printStackTrace(); //should use LOG
+				sqlex.printStackTrace();
 			}
 		}
 
@@ -66,20 +66,17 @@ public class DBAdapter {
 		}
 	}
 
-	//opens the database
 	public DBAdapter open() throws SQLException
 	{
 		db = DBHelper.getWritableDatabase();
 		return this;
 	}
 
-	//close database
 	public void close()
 	{
 		DBHelper.close();
 	}
 
-	//inserting blogger into database
 	public long insertBlogger(String title, String content, long start, long end, long due,
 			int color, int priority)
 	{
@@ -94,14 +91,12 @@ public class DBAdapter {
 		return db.insert(DATABASE_TABLE, null, row);
 	}
 
-	//delete a particular blogger
-	public boolean deleteBlogger(long rowId)
+	public boolean deleteTask(long rowId)
 	{
 		return db.delete(DATABASE_TABLE, KEY_ID+"="+rowId, null) > 0;
 	}
 
-	//get all bloggers
-	public Cursor getAllBloggers()
+	public Cursor getAllTasks()
 	{
 		Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT,
 				COLUMN_START, COLUMN_END, COLUMN_DUE, COLUMN_COLOR, COLUMN_PRIORITY}, null, null, 
@@ -113,8 +108,7 @@ public class DBAdapter {
 		return cursor;
 	}
 
-	//retrieve a particular blogger
-	public Cursor getBlogger(long rowId) throws SQLException
+	public Cursor getTask(long rowId) throws SQLException
 	{
 		Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT,
 				COLUMN_START, COLUMN_END, COLUMN_DUE, COLUMN_COLOR, COLUMN_PRIORITY}, 
@@ -124,6 +118,20 @@ public class DBAdapter {
 			cursor.moveToFirst();
 		}
 		return cursor;
+	}
+	
+	public boolean updateTask(long rowID, String title, String content, long start, long end, long due,
+		int color, int priority)
+	{
+		ContentValues args = new ContentValues();
+		args.put(COLUMN_NAME, title);
+		args.put(COLUMN_CONTENT, content);
+		args.put(COLUMN_START, start);
+		args.put(COLUMN_END, end);
+		args.put(COLUMN_DUE, due);
+		args.put(COLUMN_COLOR, color);
+		args.put(COLUMN_PRIORITY, priority);
+		return db.update(DATABASE_TABLE, args, KEY_ID+"="+rowID, null) > 0;
 	}
 }
 
