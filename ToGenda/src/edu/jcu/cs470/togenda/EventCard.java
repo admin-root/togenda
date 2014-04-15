@@ -32,7 +32,13 @@ public class EventCard extends CardTemplate implements Comparable{
 	protected void applyTo(View convertView) {
 		((TextView) convertView.findViewById(R.id.EventLabel)).setText(titlePlay);
 		((TextView) convertView.findViewById(R.id.description)).setText(description);
+		if (AllDay)
+		{
+			((TextView) convertView.findViewById(R.id.Time)).setText("All day");
+		}
+		else{
 		((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);
+		}
 
 		if (color!=null){
 

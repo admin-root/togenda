@@ -183,33 +183,7 @@ public class MainActivity extends Activity{
 
 		}
 	}
-
-	public Dialog onCreateDialog(Bundle savedInstanceState) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-		// Get the layout inflater
-		LayoutInflater inflater = this.getLayoutInflater();
-		// Inflate and set the layout for the dialog
-		// Pass null as the parent view because its going in the dialog layout
-		builder.setView(inflater.inflate(R.layout.dialogue_task_creator, null))
-		// Add action buttons
-		.setPositiveButton(R.string.hello_world, new DialogInterface.OnClickListener() 
-		{
-			@Override
-			public void onClick(DialogInterface dialog, int id) 
-			{
-				// sign in the user ...
-			}
-		});
-		//		.setNegativeButton(R.string.hello_world, new DialogInterface.OnClickListener() 
-		//		{
-		//			public void onClick(DialogInterface dialog, int id) {
-		//				this.getDialog().cancel();
-		//			}
-		//		});      
-		return builder.create();
-	}
-
-
+	
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
