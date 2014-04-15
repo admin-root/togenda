@@ -121,7 +121,7 @@ public class DBAdapter {
 	}
 	
 	public boolean updateTask(long rowID, String title, String content, long start, long end, long due,
-		int color, int priority)
+			int color, int priority)
 	{
 		ContentValues args = new ContentValues();
 		args.put(COLUMN_NAME, title);
