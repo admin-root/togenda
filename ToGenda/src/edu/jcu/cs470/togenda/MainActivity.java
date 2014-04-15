@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+import javax.xml.datatype.Duration;
+
 import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.database.Cursor; 
@@ -267,4 +269,9 @@ public class MainActivity extends Activity{
 		}
 	}
 
+	public void colorpick(View v){
+		Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		v.getBackground();
+	}
+	
 }

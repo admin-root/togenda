@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:layout_marginBottom="50dp" >
+    android:layout_marginBottom="50dp"
+    android:orientation="vertical" >
 
     <EditText
         android:id="@+id/editText1"
@@ -23,7 +23,7 @@
             android:id="@+id/checkBox1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="false"/>
+            android:checked="false" />
 
         <TextView
             android:id="@+id/textView1"
@@ -52,282 +52,189 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Color:"
-            android:textAppearance="?android:attr/textAppearanceMedium"/>
-
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="8"
-        android:rowCount="4" >
+    <edu.jcu.cs470.togenda.ToggleButtonGroupLayoutTable
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:id="@+id/radGroup1">
 
-        <Button
-            android:id="@+id/button2"
-            style="?android:attr/buttonStyleSmall"
-            android:background="@color/gCal1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="0"
-            android:layout_gravity="left|top"
-            android:layout_row="0"
-            android:onClick="@string/getColor" />
+    <TableRow>
 
-        <Button
-            android:id="@+id/button3"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="1"
-            android:layout_gravity="center_horizontal|top"
-            android:layout_row="0"
-            android:background="@color/gCal2"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd1"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button4"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="2"
-            android:layout_gravity="right|top"
-            android:layout_row="0"
-            android:background="@color/gCal3"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd2"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button5"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="3"
-            android:layout_gravity="left|top"
-            android:layout_row="0"
-            android:background="@color/gCal4"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd3"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button6"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="4"
-            android:layout_gravity="left|top"
-            android:layout_row="0"
-            android:background="@color/gCal5"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd4"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button7"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="5"
-            android:layout_gravity="left|top"
-            android:layout_row="0"
-            android:background="@color/gCal6"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd5"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button8"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="6"
-            android:layout_gravity="center_horizontal|top"
-            android:layout_row="0"
-            android:background="@color/gCal7"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd6"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button9"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_column="7"
-            android:layout_gravity="left|top"
-            android:layout_row="0"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@color/gCal8"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd7"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button10"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="0"
-            android:layout_gravity="center_horizontal|top"
-            android:layout_row="1"
-            android:background="@color/gCal9"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd8"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
+    </TableRow>
 
-        <Button
-            android:id="@+id/button11"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="1"
-            android:layout_gravity="left|top"
-            android:layout_row="1"
-            android:background="@color/gCal10"
-            android:onClick="@string/getColor" />
+    	<RadioButton
+            android:id="@+id/rd9"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button12"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="2"
-            android:layout_gravity="left|top"
-            android:layout_row="1"
-            android:background="@color/gCal11"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd10"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button13"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="3"
-            android:layout_gravity="left|top"
-            android:layout_row="1"
-            android:background="@color/gCal12"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd11"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button14"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="4"
-            android:layout_gravity="left|top"
-            android:layout_row="1"
-            android:background="@color/gCal13"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd12"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button15"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_column="5"
-            android:layout_gravity="left|top"
-            android:layout_row="1"
-            android:background="@color/gCal14"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd13"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button16"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_column="6"
-            android:layout_gravity="left|top"
-            android:layout_row="1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@color/gCal15"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd14"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button17"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_column="7"
-            android:layout_gravity="left|top"
-            android:layout_row="1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@color/gCal16"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd15"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button18"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_column="0"
-            android:layout_gravity="left|top"
-            android:layout_row="2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@color/gCal17"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd16"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
+    <TableRow>
+    </TableRow>
+    <TableRow>
+            <RadioButton
+            android:id="@+id/rd17"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button19"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_column="1"
-            android:layout_gravity="left|top"
-            android:layout_row="2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@color/gCal18"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd18"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button20"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_column="2"
-            android:layout_gravity="left|top"
-            android:layout_row="2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@color/gCal19"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd19"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button21"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_column="3"
-            android:layout_gravity="left|top"
-            android:layout_row="2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@color/gCal20"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd20"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button22"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_column="4"
-            android:layout_gravity="left|top"
-            android:layout_row="2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@color/gCal21"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd21"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button23"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_column="5"
-            android:layout_gravity="left|top"
-            android:layout_row="2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@color/gCal22"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd22"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button24"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_column="6"
-            android:layout_gravity="left|top"
-            android:layout_row="2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@color/gCal23"
-            android:onClick="@string/getColor" />
+        <RadioButton
+            android:id="@+id/rd23"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
 
-        <Button
-            android:id="@+id/button25"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_column="7"
-            android:layout_gravity="left|top"
-            android:layout_row="2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@color/gCal24"
-            android:onClick="@string/getColor" />
-
-    </GridLayout>
-
+        <RadioButton
+            android:id="@+id/rd24"
+            android:layout_width="105px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="13px" />
+    </TableRow>
+</edu.jcu.cs470.togenda.ToggleButtonGroupLayoutTable>
+    
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
@@ -335,11 +242,4 @@
         android:ems="10"
         android:hint="Task Discrption"
         android:inputType="textMultiLine" />
-
-    <!--  <Button
-        android:id="@+id/colorTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Color test" />-->
-
 </LinearLayout>
