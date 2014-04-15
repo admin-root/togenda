@@ -1,6 +1,8 @@
 package edu.jcu.cs470.togenda;
 
+import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,11 +18,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import java.text.Format; 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+
 import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.database.Cursor; 
@@ -58,7 +62,7 @@ public class MainActivity extends Activity{
 		Date d = new Date();
 
 		//Date Card
-		CardView.addCard(new DateHolder(sdf.format(d)+", "+tf.format(d)+", "+df.format(d)));
+		String datelabel = sdf.format(d)+", "+tf.format(d)+", "+df.format(d);
 
 		//getting current time for use in query
 		Time t = new Time();
@@ -78,12 +82,19 @@ public class MainActivity extends Activity{
 
 		boolean makeCards = true;
 
+		CardStack stack = new CardStack();
+		stack.setTitle(datelabel);
+		stack.setColor("#33b5e5");
+
 		while(makeCards)
-		{
+		{		
 			EventCard newCard = getEvent();
-			if (newCard.getTitle() == "allDay")
+			if (newCard.AllDay == true)
 			{
-				//skip
+				if (newCard.startTime <= t.toMillis(true))
+				{
+					stack.add(newCard);
+				}
 			}
 			else if (newCard.getTitle() != "no event") //"no event" == try-catch block
 			{
@@ -99,8 +110,6 @@ public class MainActivity extends Activity{
 			}
 		}
 
-
-
 		Collections.sort(cardList); //works now
 
 		//cardList.add(new EventCard("sample card"));
@@ -109,6 +118,8 @@ public class MainActivity extends Activity{
 		//GET TASKS HERE
 
 		//SORT TASKS + EVENTS TOGETHER HERE
+
+		CardView.addStack(stack);
 
 		if (!cardList.isEmpty())
 		{
@@ -189,16 +200,16 @@ public class MainActivity extends Activity{
 				// sign in the user ...
 			}
 		});
-//		.setNegativeButton(R.string.hello_world, new DialogInterface.OnClickListener() 
-//		{
-//			public void onClick(DialogInterface dialog, int id) {
-//				this.getDialog().cancel();
-//			}
-//		});      
+		//		.setNegativeButton(R.string.hello_world, new DialogInterface.OnClickListener() 
+		//		{
+		//			public void onClick(DialogInterface dialog, int id) {
+		//				this.getDialog().cancel();
+		//			}
+		//		});      
 		return builder.create();
 	}
-	
-	
+
+
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
@@ -229,6 +240,7 @@ public class MainActivity extends Activity{
 			String desc;
 			String eventId;
 			boolean last = false;
+			boolean allday = false;
 
 			try {
 
@@ -251,6 +263,10 @@ public class MainActivity extends Activity{
 				colorKey2 = mCursor.getString(8);
 				//				CalendarContract.Instances.EVENT_COLOR};
 
+				if (mCursor.getInt(10) == 1)
+				{
+					allday = true;
+				}
 
 			} catch (Exception e) {
 				//ignore
@@ -267,7 +283,7 @@ public class MainActivity extends Activity{
 			}
 
 			//creates event (title,description,star time,end time,event color, calendar color,is clickable,have overflow button,id,is last)
-			event = new EventCard(title, desc, start, end, colorKey, colorKey2, false, true, eventId, last);
+			event = new EventCard(title, desc, start, end, colorKey, colorKey2, false, true, eventId, last, allday);
 
 			return event;
 		}
@@ -276,7 +292,5 @@ public class MainActivity extends Activity{
 			return new EventCard("no event");
 		}
 	}
-
-
 
 }

@@ -23,8 +23,7 @@
             android:id="@+id/checkBox1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="false"
-            android:onClick="onClick" />
+            android:checked="false"/>
 
         <TextView
             android:id="@+id/textView1"

@@ -13,6 +13,7 @@ public class EventCard extends CardTemplate implements Comparable{
 	String startLabel;
 	String endLabel;
 	boolean last = false;
+	boolean AllDay = false;
 
 	int[] colors;
 	private OnCardSwiped onCardSwipedListener;
@@ -74,7 +75,7 @@ public class EventCard extends CardTemplate implements Comparable{
 	}
 
 	public EventCard(String titlePlay, String description, long start, long end, String color, String color2, Boolean hasOverflow, 
-			Boolean isClickable, String eventId, boolean last) {
+			Boolean isClickable, String eventId, boolean last, boolean fullday) {
 		this.titlePlay = titlePlay;
 		this.description = description;
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
@@ -83,6 +84,7 @@ public class EventCard extends CardTemplate implements Comparable{
 		this.endTime = end;
 		this.startLabel = _12HourSDFwDM.format(new Time(start));
 		this.endLabel = _12HourSDF.format(new Time(end));
+		this.AllDay = fullday;
 		
 		if (color != "" && color != null)
 		{
