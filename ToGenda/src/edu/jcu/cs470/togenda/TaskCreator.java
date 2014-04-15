@@ -32,8 +32,8 @@ public class TaskCreator extends Activity implements OnClickListener{
 	{
 		Button colorSelect = (Button)(v);
 		newColor = (ColorDrawable)colorSelect.getBackground();
-		Button testType = (Button)findViewById(R.id.colorTest);
-		testType.setBackground(newColor);
+//		Button testType = (Button)findViewById(R.id.colorTest);
+//		testType.setBackground(newColor);
 	}
 
 	@Override
