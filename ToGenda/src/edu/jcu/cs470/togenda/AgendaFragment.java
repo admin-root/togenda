@@ -9,7 +9,6 @@ import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -21,7 +20,6 @@ import java.util.Collections;
 import java.util.Date;
 
 import android.content.ContentUris;
-import android.content.DialogInterface;
 import android.database.Cursor; 
 import android.graphics.drawable.Drawable;
 import android.provider.CalendarContract;
@@ -47,6 +45,7 @@ public class AgendaFragment extends Fragment{
 	public Drawable backgroundColor;
 	AlertDialog alertDialog;
 
+	@SuppressWarnings("unchecked")
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for getActivity() fragment
@@ -143,40 +142,40 @@ public class AgendaFragment extends Fragment{
 		return myFragmentView;
 	}
 
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) 
-		{        
-		case R.id.new_event:
-			//DANNY, TYPE HERE
-			//CREATES DIALOG POPUP
-			alertDialog = new AlertDialog.Builder(getActivity()).create();
-			alertDialog.setTitle("New Task");
-			//EditText taskname = new EditText(getApplicationContext());
-			//taskname.setTextColor(000000);
-			LayoutInflater inflater = getActivity().getLayoutInflater();
-			alertDialog.setView(inflater.inflate(R.layout.dialogue_task_creator, null));
-			//interface
-			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					// here you can add functions
-					//do nothing
-				}
-			});
-			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					// here you can add functions
-					//add to database
-					//refresh cardview
-				}
-			});
-			alertDialog.setIcon(R.drawable.ic_action_new_event);
-			alertDialog.show();
-			return true;        
-		default:            
-			return super.onOptionsItemSelected(item);
-
-		}
-	}
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		switch (item.getItemId()) 
+//		{        
+//		case R.id.new_event:
+//			//DANNY, TYPE HERE
+//			//CREATES DIALOG POPUP
+//			alertDialog = new AlertDialog.Builder(getActivity()).create();
+//			alertDialog.setTitle("New Task");
+//			//EditText taskname = new EditText(getApplicationContext());
+//			//taskname.setTextColor(000000);
+//			LayoutInflater inflater = getActivity().getLayoutInflater();
+//			alertDialog.setView(inflater.inflate(R.layout.dialogue_task_creator, null));
+//			//interface
+//			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int which) {
+//					// here you can add functions
+//					//do nothing
+//				}
+//			});
+//			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int which) {
+//					// here you can add functions
+//					//add to database
+//					//refresh cardview
+//				}
+//			});
+//			alertDialog.setIcon(R.drawable.ic_action_new_event);
+//			alertDialog.show();
+//			return true;        
+//		default:            
+//			return super.onOptionsItemSelected(item);
+//
+//		}
+//	}
 
 	/**
 	 * A placeholder fragment containing a simple view.

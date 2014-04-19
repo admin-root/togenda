@@ -377,18 +377,19 @@ public final class R {
         public static final int card_shadow=0x7f020003;
         public static final int drawer_shadow=0x7f020004;
         public static final int ic_action_event=0x7f020005;
-        public static final int ic_action_new=0x7f020006;
-        public static final int ic_action_new_event=0x7f020007;
-        public static final int ic_action_search=0x7f020008;
-        public static final int ic_drawer=0x7f020009;
-        public static final int ic_launcher=0x7f02000a;
-        public static final int ic_menu_moreoverflow_normal_holo_light=0x7f02000b;
-        public static final int roundbutton=0x7f02000c;
-        public static final int selectable_background_cardbank=0x7f02000d;
-        public static final int top_shadow=0x7f02000e;
-        public static final int url1=0x7f02000f;
-        public static final int url2=0x7f020010;
-        public static final int url3=0x7f020011;
+        public static final int ic_date=0x7f020006;
+        public static final int ic_drawer=0x7f020007;
+        public static final int ic_edit=0x7f020008;
+        public static final int ic_launcher=0x7f020009;
+        public static final int ic_menu_moreoverflow_normal_holo_light=0x7f02000a;
+        public static final int ic_navigation_drawer=0x7f02000b;
+        public static final int ic_new=0x7f02000c;
+        public static final int roundbutton=0x7f02000d;
+        public static final int selectable_background_cardbank=0x7f02000e;
+        public static final int top_shadow=0x7f02000f;
+        public static final int url1=0x7f020010;
+        public static final int url2=0x7f020011;
+        public static final int url3=0x7f020012;
     }
     public static final class id {
         public static final int EventLabel=0x7f0a0006;
@@ -527,14 +528,21 @@ public final class R {
         <item name="android:textColor">@color/text_light</item>
         <item name="android:fontFamily">sans-serif-thin</item>
     </style>
+
     
          */
         public static final int CardText=0x7f060000;
         public static final int CardTitle=0x7f060002;
         public static final int CardTitleBold=0x7f060003;
+        /**  the theme applied to the application or activity 
+         */
+        public static final int CustomActionBarTheme=0x7f060009;
         public static final int Item=0x7f060005;
         public static final int Item_Sticky=0x7f060007;
         public static final int Item_Top=0x7f060006;
+        /**  ActionBar styles 
+         */
+        public static final int MyActionBar=0x7f06000a;
         public static final int StackTitle=0x7f060004;
     }
 }

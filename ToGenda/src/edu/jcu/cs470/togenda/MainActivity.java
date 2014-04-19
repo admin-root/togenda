@@ -34,6 +34,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -97,24 +98,30 @@ public class MainActivity extends FragmentActivity {
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setIcon(R.drawable.ic_date);
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
-                R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
+                R.drawable.ic_navigation_drawer,  /* nav drawer image to replace 'Up' caret */
                 R.string.drawer_open,  /* "open drawer" description for accessibility */
                 R.string.drawer_close  /* "close drawer" description for accessibility */
                 ) {
             public void onDrawerClosed(View view) {
                 //getActionBar().setTitle(mTitle);
                 getActionBar().setTitle(pageList[gPosition]);
+                if (gPosition == 0)
+                {
+                	getActionBar().setIcon(R.drawable.ic_date);
+                }
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             public void onDrawerOpened(View drawerView) {
                 getActionBar().setTitle(mDrawerTitle);
+                getActionBar().setIcon(R.drawable.ic_launcher);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
@@ -171,7 +178,7 @@ public class MainActivity extends FragmentActivity {
 					//refresh cardview
 				}
 			});
-			alertDialog.setIcon(R.drawable.ic_action_new_event);
+			alertDialog.setIcon(R.drawable.ic_edit);
 			alertDialog.show();
 			return true;
         default:
