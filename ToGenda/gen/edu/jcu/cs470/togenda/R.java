@@ -376,20 +376,21 @@ public final class R {
         public static final int card_background_shadow=0x7f020002;
         public static final int card_shadow=0x7f020003;
         public static final int drawer_shadow=0x7f020004;
-        public static final int ic_action_event=0x7f020005;
-        public static final int ic_date=0x7f020006;
-        public static final int ic_drawer=0x7f020007;
-        public static final int ic_edit=0x7f020008;
+        public static final int ic_date=0x7f020005;
+        public static final int ic_drawer=0x7f020006;
+        public static final int ic_edit=0x7f020007;
+        public static final int ic_event=0x7f020008;
         public static final int ic_launcher=0x7f020009;
-        public static final int ic_menu_moreoverflow_normal_holo_light=0x7f02000a;
-        public static final int ic_navigation_drawer=0x7f02000b;
-        public static final int ic_new=0x7f02000c;
-        public static final int roundbutton=0x7f02000d;
-        public static final int selectable_background_cardbank=0x7f02000e;
-        public static final int top_shadow=0x7f02000f;
-        public static final int url1=0x7f020010;
-        public static final int url2=0x7f020011;
-        public static final int url3=0x7f020012;
+        public static final int ic_list=0x7f02000a;
+        public static final int ic_menu_moreoverflow_normal_holo_light=0x7f02000b;
+        public static final int ic_navigation_drawer=0x7f02000c;
+        public static final int ic_new=0x7f02000d;
+        public static final int roundbutton=0x7f02000e;
+        public static final int selectable_background_cardbank=0x7f02000f;
+        public static final int top_shadow=0x7f020010;
+        public static final int url1=0x7f020011;
+        public static final int url2=0x7f020012;
+        public static final int url3=0x7f020013;
     }
     public static final class id {
         public static final int EventLabel=0x7f0a0006;
@@ -469,11 +470,13 @@ public final class R {
         public static final int item_card_empty_last=0x7f030011;
         public static final int item_play_card_empty_first=0x7f030012;
         public static final int item_stack=0x7f030013;
+        public static final int todo_fragment=0x7f030014;
     }
     public static final class menu {
         public static final int main=0x7f090000;
         public static final int task=0x7f090001;
         public static final int task_creator=0x7f090002;
+        public static final int to_do=0x7f090003;
     }
     public static final class string {
         public static final int action_settings=0x7f07000a;
@@ -491,6 +494,7 @@ public final class R {
         public static final int title_activity_main=0x7f070003;
         public static final int title_activity_task=0x7f070009;
         public static final int title_activity_task_creator=0x7f07000b;
+        public static final int title_activity_to_do_fragment=0x7f07000f;
     }
     public static final class style {
         /** 

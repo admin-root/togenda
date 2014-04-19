@@ -32,6 +32,10 @@
             android:name="edu.jcu.cs470.togenda.TaskCreator"
             android:label="@string/title_activity_task_creator" >
         </activity>
+        <activity
+            android:name="edu.jcu.cs470.togenda.ToDoFragment"
+            android:label="@string/title_activity_to_do_fragment" >
+        </activity>
     </application>
 
 </manifest>

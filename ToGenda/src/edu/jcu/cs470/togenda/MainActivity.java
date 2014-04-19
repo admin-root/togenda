@@ -116,6 +116,10 @@ public class MainActivity extends FragmentActivity {
                 {
                 	getActionBar().setIcon(R.drawable.ic_date);
                 }
+                else if (gPosition == 1)
+                {
+                	getActionBar().setIcon(R.drawable.ic_list);
+                }
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
@@ -207,7 +211,12 @@ public class MainActivity extends FragmentActivity {
                 transaction.addToBackStack(null);
                 transaction.commit();
                 break;
-
+            case 1:
+            	newFragment = new ToDoFragment();
+                transaction.replace(R.id.content_frame, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                break;
 
             }
             gPosition = position;
