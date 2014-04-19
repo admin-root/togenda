@@ -14,5 +14,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_task_creator">TaskCreator</string>
     <string name="getColor">getColor</string>
+    <string-array name="navList">
+        <item>Agenda</item>
+    </string-array>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 
 </resources>
