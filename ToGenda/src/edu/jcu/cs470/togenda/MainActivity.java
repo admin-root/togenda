@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.Format; 
@@ -36,8 +35,8 @@ public class MainActivity extends Activity{
 
 	private static final int MiliSecDay = 86400000;	//Number of Milliseconds in a day.
 	private Cursor mCursor = null;
-//	private String whereClauseTrue = "CalendarContract.Events.ALL_DAY=1";
-//	private String whereClauseFalse = "CalendarContract.Events.ALL_DAY=0";
+	//	private String whereClauseTrue = "CalendarContract.Events.ALL_DAY=1";
+	//	private String whereClauseFalse = "CalendarContract.Events.ALL_DAY=0";
 
 	//Contains all columns we are to recieve from Google Calendar.
 	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
@@ -45,7 +44,7 @@ public class MainActivity extends Activity{
 		CalendarContract.Instances.BEGIN, CalendarContract.Instances.END, CalendarContract.Instances.END_MINUTE, 
 		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR, 
 		CalendarContract.Events.ALL_DAY};
-	
+
 	public Drawable backgroundColor;
 	AlertDialog alertDialog;
 
@@ -187,7 +186,7 @@ public class MainActivity extends Activity{
 
 		}
 	}
-	
+
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
@@ -213,7 +212,7 @@ public class MainActivity extends Activity{
 			String title;
 			long start;
 			long end;
-//			int color; //holds custom color case
+			//			int color; //holds custom color case
 			String colorKey, colorKey2;
 			String desc;
 			String eventId;
@@ -273,7 +272,58 @@ public class MainActivity extends Activity{
 
 	public void colorpick(View v){
 		backgroundColor = v.getBackground();
-		Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		switch (v.getId()) 
+		{
+		case R.id.button2:
+			Toast.makeText(this, "color picked Brown", Toast.LENGTH_SHORT).show();
+		case R.id.button3:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button4:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button5:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button6:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button7:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button8:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button9:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button10:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button11:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button12:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button13:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button14:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button15:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button16:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button17:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button18:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button19:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button20:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button21:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button22:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button23:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button24:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		case R.id.button25:
+			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
+		default:
+
+		}
 	}
-	
 }
