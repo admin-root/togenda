@@ -4,7 +4,11 @@ import java.sql.Time;
 import java.text.SimpleDateFormat;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.WebView.FindListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,8 +23,8 @@ public class EventCard extends CardTemplate implements Comparable{
 	boolean AllDay = false;
 
 	int[] colors;
-//	private OnCardSwiped onCardSwipedListener;
-//	private String eventId = "0";
+	//	private OnCardSwiped onCardSwipedListener;
+	private String eventId = "0";
 
 	public EventCard(String title){
 		super(title);
@@ -40,7 +44,7 @@ public class EventCard extends CardTemplate implements Comparable{
 			((TextView) convertView.findViewById(R.id.Time)).setText("All day");
 		}
 		else{
-		((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);
+			((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);
 		}
 
 		if (color!=null){
@@ -78,24 +82,32 @@ public class EventCard extends CardTemplate implements Comparable{
 		}
 	}
 
-//	@Override
-//	public void setOnCardSwipedListener(OnCardSwiped onEpisodeSwipedListener) {
-//		this.onCardSwipedListener = onEpisodeSwipedListener;
-//	}
+	//	@Override
+	//	public void setOnCardSwipedListener(OnCardSwiped onEpisodeSwipedListener) {
+	//		this.onCardSwipedListener = onEpisodeSwipedListener;
+	//	}
 
 	@SuppressLint("SimpleDateFormat")
 	public EventCard(String titlePlay, String description, long start, long end, String color, String color2, Boolean hasOverflow, 
-			Boolean isClickable, String eventId, boolean last, boolean fullday) {
+			Boolean isClickable, final String eventId, boolean last, boolean fullday) {
 		this.titlePlay = titlePlay;
 		this.description = description;
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
+		SimpleDateFormat _DaySDF = new SimpleDateFormat("M/d");
 		this.startTime = start;
 		this.endTime = end;
 		this.startLabel = _12HourSDFwDM.format(new Time(start));
-		this.endLabel = _12HourSDF.format(new Time(end));
+		if (_DaySDF.format(new Time(start))==_DaySDF.format(new Time(end)))
+		{
+			this.endLabel = _12HourSDFwDM.format(new Time(end));
+		}
+		else
+		{
+			this.endLabel = _12HourSDF.format(new Time(end));
+		}
 		this.AllDay = fullday;
-		
+
 		if (color != "" && color != null)
 		{
 			this.color = color;
@@ -104,41 +116,45 @@ public class EventCard extends CardTemplate implements Comparable{
 		{
 			this.color = color2;
 		}
-		
+
 		this.hasOverflow = hasOverflow;
-		this.isClickable = isClickable;
-//		this.eventId = eventId;
+		this.eventId = eventId;
 		this.last = last;
 
-	}
+		if (isClickable)
+		{
+			this.setOnClickListener( new OnClickListener() {
 
-//SET onClick EVENT TO GO TO GOOGLE CAL
-	//does not yet work
-//	public void onClick(View v) {
-//		Intent intent = new Intent(Intent.ACTION_VIEW);
-//		//Android 2.2+
-//		intent.setData(Uri.parse("content://com.android.calendar/events/" + eventId));  
-//		//Android 2.1 and below.
-//		//intent.setData(Uri.parse("content://calendar/events/" + String.valueOf(calendarEventID)));    
-//		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-//				| Intent.FLAG_ACTIVITY_SINGLE_TOP
-//				| Intent.FLAG_ACTIVITY_CLEAR_TOP
-//				| Intent.FLAG_ACTIVITY_NO_HISTORY
-//				| Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-//		v.getContext().startActivity(intent);
-//
-//	}
+				public void onClick(View v) {
+					Intent intent = new Intent(Intent.ACTION_VIEW);
+					//Android 2.2+
+					intent.setData(Uri.parse("content://com.android.calendar/events/" + String.valueOf(eventId)));  
+					//Android 2.1 and below.
+					//intent.setData(Uri.parse("content://calendar/events/" + String.valueOf(calendarEventID)));    
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+							| Intent.FLAG_ACTIVITY_SINGLE_TOP
+							| Intent.FLAG_ACTIVITY_CLEAR_TOP
+							| Intent.FLAG_ACTIVITY_NO_HISTORY
+							| Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+					v.getContext().startActivity(intent);
+
+				}
+			}
+					);
+		};
+
+	}
 
 	public void setDescription(String desc)
 	{
 		this.description = desc;
 	}
-	
+
 	public boolean isLast()
 	{
 		return last;
 	}
-	
+
 	public long getStart()
 	{
 		return this.startTime;
@@ -172,7 +188,7 @@ public class EventCard extends CardTemplate implements Comparable{
 		}
 		return 0;
 	}
-	
+
 	public EventCard()
 	{
 		super();

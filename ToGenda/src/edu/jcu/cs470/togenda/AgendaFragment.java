@@ -250,7 +250,7 @@ public class AgendaFragment extends Fragment{
 			}
 
 			//creates event (title,description,star time,end time,event color, calendar color,is clickable,have overflow button,id,is last)
-			event = new EventCard(title, desc, start, end, colorKey, colorKey2, false, true, eventId, last, allday);
+			event = new EventCard(title, desc, start, end, colorKey, colorKey2, true, true, eventId, last, allday);
 
 			return event;
 		}
