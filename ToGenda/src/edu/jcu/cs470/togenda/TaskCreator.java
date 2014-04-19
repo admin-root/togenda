@@ -1,19 +1,13 @@
 package edu.jcu.cs470.togenda;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.os.Build;
 
 public class TaskCreator extends Activity implements OnClickListener{
 	ColorDrawable newColor;

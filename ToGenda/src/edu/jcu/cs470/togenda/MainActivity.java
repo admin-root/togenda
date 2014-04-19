@@ -6,7 +6,6 @@ import com.fima.cardsui.views.CardUI;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,8 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import java.text.Format; 
@@ -25,8 +22,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-import javax.xml.datatype.Duration;
-
 import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.database.Cursor; 
@@ -34,12 +29,13 @@ import android.provider.CalendarContract;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 
+@SuppressLint("SimpleDateFormat")
 public class MainActivity extends Activity{
 
 	private static final int MiliSecDay = 86400000;	//Number of Milliseconds in a day.
 	private Cursor mCursor = null;
-	private String whereClauseTrue = "CalendarContract.Events.ALL_DAY=1";
-	private String whereClauseFalse = "CalendarContract.Events.ALL_DAY=0";
+//	private String whereClauseTrue = "CalendarContract.Events.ALL_DAY=1";
+//	private String whereClauseFalse = "CalendarContract.Events.ALL_DAY=0";
 
 	//Contains all columns we are to recieve from Google Calendar.
 	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
@@ -48,6 +44,7 @@ public class MainActivity extends Activity{
 		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR, 
 		CalendarContract.Events.ALL_DAY};
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -211,7 +208,7 @@ public class MainActivity extends Activity{
 			String title;
 			long start;
 			long end;
-			int color; //holds custom color case
+//			int color; //holds custom color case
 			String colorKey, colorKey2;
 			String desc;
 			String eventId;

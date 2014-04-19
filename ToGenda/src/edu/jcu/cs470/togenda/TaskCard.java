@@ -2,10 +2,11 @@ package edu.jcu.cs470.togenda;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+import android.annotation.SuppressLint;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+@SuppressWarnings("rawtypes")
 public class TaskCard extends CardTemplate implements Comparable{
 
 	Long startTime;
@@ -15,8 +16,8 @@ public class TaskCard extends CardTemplate implements Comparable{
 	boolean last = false;
 
 	int[] colors;
-	private OnCardSwiped onCardSwipedListener;
-	private String eventId = "0";
+//	private OnCardSwiped onCardSwipedListener;
+//	private String eventId = "0";
 
 	public TaskCard(String thisTitle){
 		title = thisTitle;
@@ -68,11 +69,12 @@ public class TaskCard extends CardTemplate implements Comparable{
 //		}
 	}
 
-	@Override
-	public void setOnCardSwipedListener(OnCardSwiped onEpisodeSwipedListener) {
-		this.onCardSwipedListener = onEpisodeSwipedListener;
-	}
+//	@Override
+//	public void setOnCardSwipedListener(OnCardSwiped onEpisodeSwipedListener) {
+//		this.onCardSwipedListener = onEpisodeSwipedListener;
+//	}
 
+	@SuppressLint("SimpleDateFormat")
 	public TaskCard(String titlePlay, String description, long start, long end, String color, String color2, Boolean hasOverflow, 
 			Boolean isClickable, String eventId, boolean last) {
 		this.titlePlay = "TEST";
@@ -95,7 +97,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 		
 		this.hasOverflow = hasOverflow;
 		this.isClickable = isClickable;
-		this.eventId = eventId;
+//		this.eventId = eventId;
 		this.last = last;
 
 	}
