@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.Format; 
@@ -25,6 +26,7 @@ import java.util.Date;
 import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.database.Cursor; 
+import android.graphics.drawable.Drawable;
 import android.provider.CalendarContract;
 import android.text.format.DateFormat;
 import android.text.format.Time;
@@ -43,6 +45,9 @@ public class MainActivity extends Activity{
 		CalendarContract.Instances.BEGIN, CalendarContract.Instances.END, CalendarContract.Instances.END_MINUTE, 
 		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR, 
 		CalendarContract.Events.ALL_DAY};
+	
+	public Drawable backgroundColor;
+	AlertDialog alertDialog;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -154,7 +159,7 @@ public class MainActivity extends Activity{
 		case R.id.new_event:
 			//DANNY, TYPE HERE
 			//CREATES DIALOG POPUP
-			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+			alertDialog = new AlertDialog.Builder(this).create();
 			alertDialog.setTitle("New Task");
 			//EditText taskname = new EditText(getApplicationContext());
 			//taskname.setTextColor(000000);
@@ -267,8 +272,8 @@ public class MainActivity extends Activity{
 	}
 
 	public void colorpick(View v){
+		backgroundColor = v.getBackground();
 		Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		v.getBackground();
 	}
 	
 }

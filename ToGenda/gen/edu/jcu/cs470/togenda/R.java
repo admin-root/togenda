@@ -419,6 +419,7 @@ public final class R {
         public static final int cardContent=0x7f09002e;
         public static final int cardsview=0x7f090000;
         public static final int checkBox1=0x7f09000f;
+        public static final int colorLabel=0x7f090012;
         public static final int container=0x7f090001;
         public static final int contentLayout=0x7f090008;
         public static final int description=0x7f090005;
@@ -437,7 +438,6 @@ public final class R {
         public static final int stripe=0x7f090007;
         public static final int tableLayout=0x7f09000d;
         public static final int textView1=0x7f090010;
-        public static final int textView2=0x7f090012;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
