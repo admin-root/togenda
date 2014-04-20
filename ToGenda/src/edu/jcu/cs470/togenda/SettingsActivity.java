@@ -45,6 +45,7 @@ public class SettingsActivity extends PreferenceActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setupActionBar();
+		getActionBar().setIcon(R.drawable.ic_cog);
 	}
 
 	/**
