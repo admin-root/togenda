@@ -4,8 +4,7 @@ public class Tasks {
 	private long id;
 	private String name;
 	private String comment;
-	private long timeStart;
-	private long timeEnd;
+//	private long timeEnd;
 	private long dueDate;
 	private int colorID;
 	private int priority;
@@ -39,22 +38,14 @@ public class Tasks {
 	{
 		this.comment = comment;
 	}
-	
-	public long getTimeStart() {
-		return timeStart;
-	}
 
-	public void setTimeStart(long timeStart) {
-		this.timeStart = timeStart;
-	}
-
-	public long getTimeEnd() {
-		return timeEnd;
-	}
-
-	public void setTimeEnd(long timeEnd) {
-		this.timeEnd = timeEnd;
-	}
+//	public long getTimeEnd() {
+//		return timeEnd;
+//	}
+//
+//	public void setTimeEnd(long timeEnd) {
+//		this.timeEnd = timeEnd;
+//	}
 
 	public long getDueDate() {
 		return dueDate;
