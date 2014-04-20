@@ -16,12 +16,16 @@ package edu.jcu.cs470.togenda;
  * limitations under the License.
  */
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -78,6 +82,11 @@ public class MainActivity extends FragmentActivity {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] pageList;
+    
+    private List<RowItem> rowItems;
+    private NavListAdapter adapter;
+    String[] menutitles;
+    TypedArray menuIcons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,17 +94,34 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         mTitle = mDrawerTitle = getTitle();
-        pageList = getResources().getStringArray(R.array.navList);
+        pageList = getResources().getStringArray(R.array.navItemList);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         // set up the drawer's list view with items and click listener
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, pageList));
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        //mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
+        rowItems = new ArrayList<RowItem>();
+        
+        menutitles = getResources().getStringArray(R.array.navItemList);
+        menuIcons = getResources().obtainTypedArray(R.array.navIconList);
+
+        for (int i = 0; i < menutitles.length; i++) {
+         RowItem items = new RowItem(menutitles[i], menuIcons.getResourceId(
+           i, -1));
+         rowItems.add(items);
+        }
+
+        menuIcons.recycle();
+
+        adapter = new NavListAdapter(getApplicationContext(), rowItems);
+
+        mDrawerList.setAdapter(adapter);
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);

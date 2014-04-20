@@ -15,12 +15,19 @@
     <string name="title_activity_task_creator">TaskCreator</string>
     <string name="getColor">getColor</string>
 
-    <string-array name="navList">
+    <string-array name="navItemList">
         <item>Agenda</item>
         <item>To-do List</item>
         <item>Calendar</item>
         <item>Settings</item>
     </string-array>
+    
+    <array name="navIconList">
+        <item>@drawable/ic_event</item>
+        <item>@drawable/ic_list</item>
+        <item>@drawable/ic_date</item>
+        <item>@drawable/ic_cogs</item>
+    </array>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
