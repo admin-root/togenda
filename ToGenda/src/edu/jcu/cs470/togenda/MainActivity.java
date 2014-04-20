@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -98,7 +99,7 @@ public class MainActivity extends FragmentActivity {
         // enable ActionBar app icon to behave as action to toggle nav drawer
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-        getActionBar().setIcon(R.drawable.ic_date);
+        getActionBar().setIcon(R.drawable.ic_event);
 
         // ActionBarDrawerToggle ties together the the proper interactions
         // between the sliding drawer and the action bar app icon
@@ -114,11 +115,15 @@ public class MainActivity extends FragmentActivity {
                 getActionBar().setTitle(pageList[gPosition]);
                 if (gPosition == 0)
                 {
-                	getActionBar().setIcon(R.drawable.ic_date);
+                	getActionBar().setIcon(R.drawable.ic_event);
                 }
                 else if (gPosition == 1)
                 {
                 	getActionBar().setIcon(R.drawable.ic_list);
+                }
+                else if (gPosition == 2)
+                {
+                	getActionBar().setIcon(R.drawable.ic_date);
                 }
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
@@ -217,7 +222,16 @@ public class MainActivity extends FragmentActivity {
                 transaction.addToBackStack(null);
                 transaction.commit();
                 break;
-
+            case 2:
+            	newFragment = new CalendarFragment();
+                transaction.replace(R.id.content_frame, newFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            	break;
+            case 3:
+            	Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+            	break;
             }
             gPosition = position;
             setTitle(pageList[position]);

@@ -18,10 +18,13 @@
     <string-array name="navList">
         <item>Agenda</item>
         <item>To-do List</item>
+        <item>Calendar</item>
+        <item>Settings</item>
     </string-array>
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_to_do_fragment">ToDoFragment</string>
+    <string name="title_activity_calendar_fragment">CalendarFragment</string>
 
 </resources>
