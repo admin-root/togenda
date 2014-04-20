@@ -3,15 +3,9 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <com.tyczj.extendedcalendarview.ExtendedCalendarView
-        android:id="@+id/calendar"
+    <com.squareup.timessquare.CalendarPickerView
+        android:id="@+id/calendar_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    
-    <com.fima.cardsui.views.CardUI
-        android:id="@+id/cardsview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/card_border" />
 
 </LinearLayout>
