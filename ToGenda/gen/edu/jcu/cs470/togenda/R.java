@@ -489,30 +489,31 @@ containing a value of this type.
         public static final int widget_margin_top_bottom=0x7f06001f;
     }
     public static final class drawable {
-        public static final int calendar_bg_selector=0x7f020000;
-        public static final int card=0x7f020001;
-        public static final int card_background=0x7f020002;
-        public static final int card_background_shadow=0x7f020003;
-        public static final int card_shadow=0x7f020004;
-        public static final int drawer_shadow=0x7f020005;
-        public static final int ic_cog=0x7f020006;
-        public static final int ic_cogs=0x7f020007;
-        public static final int ic_date=0x7f020008;
-        public static final int ic_drawer=0x7f020009;
-        public static final int ic_edit=0x7f02000a;
-        public static final int ic_event=0x7f02000b;
-        public static final int ic_event_dark=0x7f02000c;
-        public static final int ic_launcher=0x7f02000d;
-        public static final int ic_list=0x7f02000e;
-        public static final int ic_menu_moreoverflow_normal_holo_light=0x7f02000f;
-        public static final int ic_navigation_drawer=0x7f020010;
-        public static final int ic_new=0x7f020011;
-        public static final int roundbutton=0x7f020012;
-        public static final int selectable_background_cardbank=0x7f020013;
-        public static final int top_shadow=0x7f020014;
-        public static final int url1=0x7f020015;
-        public static final int url2=0x7f020016;
-        public static final int url3=0x7f020017;
+        public static final int activated_background=0x7f020000;
+        public static final int calendar_bg_selector=0x7f020001;
+        public static final int card=0x7f020002;
+        public static final int card_background=0x7f020003;
+        public static final int card_background_shadow=0x7f020004;
+        public static final int card_shadow=0x7f020005;
+        public static final int drawer_shadow=0x7f020006;
+        public static final int ic_cog=0x7f020007;
+        public static final int ic_cogs=0x7f020008;
+        public static final int ic_date=0x7f020009;
+        public static final int ic_drawer=0x7f02000a;
+        public static final int ic_edit=0x7f02000b;
+        public static final int ic_event=0x7f02000c;
+        public static final int ic_event_dark=0x7f02000d;
+        public static final int ic_launcher=0x7f02000e;
+        public static final int ic_list=0x7f02000f;
+        public static final int ic_menu_moreoverflow_normal_holo_light=0x7f020010;
+        public static final int ic_navigation_drawer=0x7f020011;
+        public static final int ic_new=0x7f020012;
+        public static final int roundbutton=0x7f020013;
+        public static final int selectable_background_cardbank=0x7f020014;
+        public static final int top_shadow=0x7f020015;
+        public static final int url1=0x7f020016;
+        public static final int url2=0x7f020017;
+        public static final int url3=0x7f020018;
     }
     public static final class id {
         public static final int CardBody=0x7f0b0007;
@@ -557,8 +558,6 @@ containing a value of this type.
         public static final int content_frame=0x7f0b0001;
         public static final int description=0x7f0b0008;
         public static final int drawer_layout=0x7f0b0000;
-        public static final int editText1=0x7f0b0011;
-        public static final int editText2=0x7f0b002e;
         public static final int footer=0x7f0b0030;
         public static final int left_drawer=0x7f0b0002;
         public static final int listView=0x7f0b000d;
@@ -573,6 +572,8 @@ containing a value of this type.
         public static final int sticky=0x7f0b000e;
         public static final int stripe=0x7f0b000a;
         public static final int tableLayout=0x7f0b0010;
+        public static final int taskInfo=0x7f0b002e;
+        public static final int taskTitle=0x7f0b0011;
         public static final int textView1=0x7f0b0013;
         public static final int title=0x7f0b0038;
     }

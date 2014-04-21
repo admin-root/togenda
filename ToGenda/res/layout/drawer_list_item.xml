@@ -15,14 +15,12 @@
         android:id="@+id/navItemText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/activatedBackgroundIndicator"
         android:gravity="center_vertical"
         android:minHeight="?android:attr/listPreferredItemHeightSmall"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="3dp"
-        android:text="22dp"
-        android:textAppearance="?android:attr/textAppearanceListItemSmall"
-        android:textColor="#fff" />
+        android:textColor="@color/White"
+        android:textSize="18sp" />
 
 </LinearLayout>
