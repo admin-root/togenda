@@ -34,5 +34,8 @@
     <string name="title_activity_to_do_fragment">ToDoFragment</string>
     <string name="title_activity_calendar_fragment">CalendarFragment</string>
     <string name="cancel_button">Cancel</string>
+    <string name="create_button">Create</string>
+    <string name="due_date">Due Date</string>
+    <string name="discription_hint">Task Discrption</string>
 
 </resources>

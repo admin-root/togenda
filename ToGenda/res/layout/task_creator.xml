@@ -51,7 +51,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Due Date"
+            android:text="@string/due_date"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <Button
@@ -69,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Task Discrption"
+        android:hint="@string/discription_hint"
         android:inputType="textMultiLine"
         android:paddingTop="10dp" />
 
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/card_separator"
-            android:text="Create" />
+            android:text="@string/create_button" />
     </LinearLayout>
     
 </RelativeLayout>
