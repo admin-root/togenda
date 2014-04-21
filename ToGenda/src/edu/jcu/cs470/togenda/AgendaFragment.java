@@ -137,8 +137,17 @@ public class AgendaFragment extends Fragment{
 			}
 		}
 
+		CardView.addCard(new EventCard("No events"));
+		
+		
+		if (cardList.isEmpty())
+		{
+			//Create cardtype that explains that there are no current events.
+		}
+		
 		// draw cards
 		CardView.refresh();
+		
 		return myFragmentView;
 	}
 
@@ -257,63 +266,6 @@ public class AgendaFragment extends Fragment{
 		catch(Exception ex)
 		{
 			return new EventCard("no event");
-		}
-	}
-
-	public void colorpick(View v){
-		backgroundColor = v.getBackground();
-		switch (v.getId()) 
-		{
-		case R.id.button2:
-			Toast.makeText(getActivity(), "color picked Brown", Toast.LENGTH_SHORT).show();
-		case R.id.button3:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button4:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button5:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button6:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button7:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button8:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button9:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button10:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button11:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button12:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button13:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button14:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button15:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button16:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button17:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button18:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button19:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button20:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button21:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button22:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button23:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button24:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button25:
-			Toast.makeText(getActivity(), "color picked", Toast.LENGTH_SHORT).show();
-		default:
-
 		}
 	}
 }

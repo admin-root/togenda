@@ -30,7 +30,8 @@
         </activity>
         <activity
             android:name="edu.jcu.cs470.togenda.TaskCreator"
-            android:label="@string/title_activity_task_creator" >
+            android:label="@string/title_activity_task_creator"
+            android:parentActivityName="edu.jcu.cs470.togenda.MainActivity" >
         </activity>
         <activity
             android:name="edu.jcu.cs470.togenda.ToDoFragment"
@@ -43,6 +44,14 @@
         <activity
             android:name="edu.jcu.cs470.togenda.SettingsActivity"
             android:label="@string/title_activity_settings"
+            android:parentActivityName="edu.jcu.cs470.togenda.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.jcu.cs470.togenda.MainActivity" />
+        </activity>
+        <activity
+            android:name="edu.jcu.cs470.togenda.Test"
+            android:label="@string/title_activity_test"
             android:parentActivityName="edu.jcu.cs470.togenda.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

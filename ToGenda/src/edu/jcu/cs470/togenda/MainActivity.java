@@ -196,38 +196,40 @@ public class MainActivity extends FragmentActivity {
 		// Handle action buttons
 		switch(item.getItemId()) {
 		case R.id.new_event:
-			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-			alertDialog.setTitle("New Task");
-			//EditText taskname = new EditText(getApplicationContext());
-			//taskname.setTextColor(000000);
-			LayoutInflater inflater = this.getLayoutInflater();
-			alertDialog.setView(inflater.inflate(R.layout.dialogue_task_creator, null));
-			
-			//danny workspace
-			EditText taskName = (EditText)findViewById(R.id.taskTitle);
-			String title = taskName.getText().toString();
-			EditText taskContent = (EditText)findViewById(R.id.taskInfo);
-			String content = taskContent.getText().toString();
-			//import code from SQLPrototype-Main activity to here (add,delete,update,get)
-			//import DBAdapter and Tasks to this package
-			
-			
-			//interface
-			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					// here you can add functions
-					//do nothing
-				}
-			});
-			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					// here you can add functions
-					//add to database
-					//refresh cardview
-				}
-			});
-			alertDialog.setIcon(R.drawable.ic_edit);
-			alertDialog.show();
+			Intent intent = new Intent(this, TaskCreator.class);
+			startActivity(intent);
+//			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+//			alertDialog.setTitle("New Task");
+//			//EditText taskname = new EditText(getApplicationContext());
+//			//taskname.setTextColor(000000);
+//			LayoutInflater inflater = this.getLayoutInflater();
+//			alertDialog.setView(inflater.inflate(R.layout.task_creator, null));
+//			
+//			//danny workspace
+//			EditText taskName = (EditText)findViewById(R.id.taskTitle);
+//			String title = taskName.getText().toString();
+//			EditText taskContent = (EditText)findViewById(R.id.taskInfo);
+//			String content = taskContent.getText().toString();
+//			//import code from SQLPrototype-Main activity to here (add,delete,update,get)
+//			//import DBAdapter and Tasks to this package
+//			
+//			
+//			//interface
+//			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int which) {
+//					// here you can add functions
+//					//do nothing
+//				}
+//			});
+//			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int which) {
+//					// here you can add functions
+//					//add to database
+//					//refresh cardview
+//				}
+//			});
+//			alertDialog.setIcon(R.drawable.ic_edit);
+//			alertDialog.show();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -253,6 +255,11 @@ public class MainActivity extends FragmentActivity {
 			View v = mDrawerList.getChildAt(i);
 			TextView txtview = ((TextView) v.findViewById(R.id.navItemText));
 			txtview.setTypeface(Typeface.DEFAULT);
+			
+			//Android 4.1 has a thinner "condensed" fontface available.
+			//we can import it through assets later if we want, or just move the min version up to 4.1
+			//condensed typeface will contrast the selected item more.
+			//txtview.setTypeface(Typeface.Condensed);
 		}
 	}
 
@@ -307,62 +314,5 @@ public class MainActivity extends FragmentActivity {
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
-	}
-
-	public void colorpick(View v){
-		backgroundColor = v.getBackground();
-		switch (v.getId()) 
-		{
-		case R.id.button2:
-			Toast.makeText(this, "color picked Brown", Toast.LENGTH_SHORT).show();
-		case R.id.button3:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button4:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button5:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button6:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button7:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button8:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button9:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button10:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button11:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button12:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button13:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button14:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button15:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button16:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button17:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button18:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button19:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button20:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button21:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button22:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button23:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button24:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		case R.id.button25:
-			Toast.makeText(this, "color picked", Toast.LENGTH_SHORT).show();
-		default:
-
-		}
 	}
 }

@@ -15,7 +15,7 @@ public class ToDoFragment extends Fragment {
 			Bundle savedInstanceState) {
 		// Inflate the layout for getActivity() fragment
 
-		myFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
+		myFragmentView = inflater.inflate(R.layout.todo_fragment, container, false);
 
 		return myFragmentView;
 	}

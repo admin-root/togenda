@@ -21,7 +21,7 @@
         <item>Calendar</item>
         <item>Settings</item>
     </string-array>
-    
+
     <array name="navIconList">
         <item>@drawable/ic_event</item>
         <item>@drawable/ic_list</item>
@@ -33,5 +33,6 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_to_do_fragment">ToDoFragment</string>
     <string name="title_activity_calendar_fragment">CalendarFragment</string>
+    <string name="title_activity_test">Test</string>
 
 </resources>
