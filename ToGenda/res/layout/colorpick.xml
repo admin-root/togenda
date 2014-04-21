@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/Button13"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1"
+            android:background="@color/gCal1"/>
+
+        <Button
+            android:id="@+id/Button14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal2"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button15"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal3"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal4"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button17"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal5"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button18"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal6"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/Button07"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal7"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button08"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal8"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button09"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal9"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal10"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal11"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal12"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/Button01"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal13"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button02"
+            android:layout_width="0dp"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_height="wrap_content"
+            android:background="@color/gCal14"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button03"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal15"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button04"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal16"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button05"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal17"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Button06"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal18"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal19"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal20"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal21"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal22"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal23"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/gCal24"
+            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+</LinearLayout>
