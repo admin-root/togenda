@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 
 public class TaskCreator extends Activity{
 	
@@ -29,16 +30,13 @@ public class TaskCreator extends Activity{
 //		//taskname.setTextColor(000000);
 //		LayoutInflater inflater = this.getLayoutInflater();
 //		alertDialog.setView(inflater.inflate(R.layout.task_creator, null));
-//		
-//		//danny workspace
+
+		//danny workspace
 //		EditText taskName = (EditText)findViewById(R.id.taskTitle);
 //		String title = taskName.getText().toString();
 //		EditText taskContent = (EditText)findViewById(R.id.taskInfo);
 //		String content = taskContent.getText().toString();
-//		//import code from SQLPrototype-Main activity to here (add,delete,update,get)
-//		//import DBAdapter and Tasks to this package
-//		
-//		
+
 //		//interface
 		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
