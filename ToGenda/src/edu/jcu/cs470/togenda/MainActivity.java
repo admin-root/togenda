@@ -41,6 +41,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -201,6 +202,16 @@ public class MainActivity extends FragmentActivity {
 			//taskname.setTextColor(000000);
 			LayoutInflater inflater = this.getLayoutInflater();
 			alertDialog.setView(inflater.inflate(R.layout.dialogue_task_creator, null));
+			
+			//danny workspace
+			EditText taskName = (EditText)findViewById(R.id.taskTitle);
+			String title = taskName.getText().toString();
+			EditText taskContent = (EditText)findViewById(R.id.taskInfo);
+			String content = taskContent.getText().toString();
+			//import code from SQLPrototype-Main activity to here (add,delete,update,get)
+			//import DBAdapter and Tasks to this package
+			
+			
 			//interface
 			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
