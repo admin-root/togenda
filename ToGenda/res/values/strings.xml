@@ -37,5 +37,7 @@
     <string name="create_button">Create</string>
     <string name="due_date">Due Date</string>
     <string name="discription_hint">Task Discrption</string>
+    <string name="task_name_hint">Task Name</string>
+    <string name="new_task">New Task</string>
 
 </resources>

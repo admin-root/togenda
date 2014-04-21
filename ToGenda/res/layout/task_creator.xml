@@ -17,13 +17,13 @@
 
             <EditText
                 android:id="@+id/taskTitle"
-                android:layout_width="228dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
                 android:ems="10"
-                android:hint="Task Name"
+                android:hint="@string/task_name_hint"
                 android:paddingTop="10dp"
-                android:text="New Task"
+                android:text="@string/new_task"
                 android:textColor="@color/White" />
 
             <Button
