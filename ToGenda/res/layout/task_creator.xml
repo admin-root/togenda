@@ -23,6 +23,7 @@
                 android:ems="10"
                 android:hint="Task Name"
                 android:paddingTop="10dp"
+                android:text="New Task"
                 android:textColor="@color/White" />
 
             <Button

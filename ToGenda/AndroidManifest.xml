@@ -49,14 +49,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.jcu.cs470.togenda.MainActivity" />
         </activity>
-        <activity
-            android:name="edu.jcu.cs470.togenda.Test"
-            android:label="@string/title_activity_test"
-            android:parentActivityName="edu.jcu.cs470.togenda.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.jcu.cs470.togenda.MainActivity" />
-        </activity>
     </application>
 
 </manifest>
