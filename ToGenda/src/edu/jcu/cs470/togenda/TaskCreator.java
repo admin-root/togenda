@@ -62,6 +62,12 @@ public class TaskCreator extends Activity{
 		alertDialog.dismiss();
 	}
 	
+	public void create(View v)
+	{
+		//implement creation actions
+		finish();
+	}
+	
 	public void cancel(View v)
 	{
 		finish();
