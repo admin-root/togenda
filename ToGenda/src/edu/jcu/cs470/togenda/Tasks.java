@@ -4,7 +4,6 @@ public class Tasks {
 	private long id;
 	private String name;
 	private String comment;
-//	private long timeEnd;
 	private long dueDate;
 	private int colorID;
 	private int priority;
@@ -38,14 +37,6 @@ public class Tasks {
 	{
 		this.comment = comment;
 	}
-
-//	public long getTimeEnd() {
-//		return timeEnd;
-//	}
-//
-//	public void setTimeEnd(long timeEnd) {
-//		this.timeEnd = timeEnd;
-//	}
 
 	public long getDueDate() {
 		return dueDate;

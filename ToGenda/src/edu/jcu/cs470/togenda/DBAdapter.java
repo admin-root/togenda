@@ -12,7 +12,6 @@ public class DBAdapter {
 	public static final String KEY_ID = "_id";
 	public static final String COLUMN_NAME = "title";
 	public static final String COLUMN_CONTENT = "content";
-//	public static final String COLUMN_END = "time_end";
 	public static final String COLUMN_DUE = "due_date";
 	public static final String COLUMN_COLOR = "color_id";
 	public static final String COLUMN_PRIORITY = "priority";
@@ -21,9 +20,8 @@ public class DBAdapter {
 	private static final String DATABASE_TABLE = "tasks";
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_CREATE = "create table "+DATABASE_TABLE+" ("+KEY_ID+
-		" integer primary key autoincremented, "+COLUMN_NAME+" text not null, "+COLUMN_CONTENT+
-		" text not null, "/*+COLUMN_END+" text not null, "*/+COLUMN_DUE+" text not null, "
-		+COLUMN_COLOR+" text not null, "+COLUMN_PRIORITY+" text not null)";
+		" integer primary key autoincremented, "+COLUMN_NAME+" text not null, "+COLUMN_CONTENT+" text not null, "
+		+COLUMN_DUE+" text not null, "+COLUMN_COLOR+" text not null, "+COLUMN_PRIORITY+" text not null)";
 	//variables
 	DatabaseHelper DBHelper;
 	SQLiteDatabase db;
@@ -76,13 +74,11 @@ public class DBAdapter {
 		DBHelper.close();
 	}
 
-	public long insertBlogger(String title, String content,/* long end,*/ long due,
-			int color, int priority)
+	public long insertBlogger(String title, String content, long due, int color, int priority)
 	{
 		ContentValues row = new ContentValues();
 		row.put(COLUMN_NAME, title);
 		row.put(COLUMN_CONTENT, content);
-//		row.put(COLUMN_END, end);
 		row.put(COLUMN_DUE, due);
 		row.put(COLUMN_COLOR, color);
 		row.put(COLUMN_PRIORITY, priority);
@@ -96,9 +92,8 @@ public class DBAdapter {
 
 	public Cursor getAllTasks()
 	{
-		Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT,
-				/*COLUMN_END,*/ COLUMN_DUE, COLUMN_COLOR, COLUMN_PRIORITY}, null, null, 
-				null, null, null);
+		Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT, COLUMN_DUE, 
+			COLUMN_COLOR, COLUMN_PRIORITY}, null, null, null, null, null);
 		if(cursor != null)
 		{
 			cursor.moveToFirst();
@@ -108,9 +103,8 @@ public class DBAdapter {
 
 	public Cursor getTask(long rowId) throws SQLException
 	{
-		Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT,
-				/*COLUMN_END,*/ COLUMN_DUE, COLUMN_COLOR, COLUMN_PRIORITY}, 
-				KEY_ID+"="+rowId, null, null, null, null, null);
+		Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT, COLUMN_DUE, 
+			COLUMN_COLOR, COLUMN_PRIORITY}, KEY_ID+"="+rowId, null, null, null, null, null);
 		if(cursor != null)
 		{
 			cursor.moveToFirst();
@@ -118,13 +112,11 @@ public class DBAdapter {
 		return cursor;
 	}
 	
-	public boolean updateTask(long rowID, String title, String content,/* long end,*/ long due,
-			int color, int priority)
+	public boolean updateTask(long rowID, String title, String content, long due, int color, int priority)
 	{
 		ContentValues args = new ContentValues();
 		args.put(COLUMN_NAME, title);
 		args.put(COLUMN_CONTENT, content);
-//		args.put(COLUMN_END, end);
 		args.put(COLUMN_DUE, due);
 		args.put(COLUMN_COLOR, color);
 		args.put(COLUMN_PRIORITY, priority);
