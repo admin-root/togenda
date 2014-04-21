@@ -57,10 +57,15 @@ public class TaskCreator extends Activity{
 		alertDialog.show();
 	}
 	
-	public void colorButton(View v){
+	public void colorButton(View v)
+	{
 		color = v.getBackground();
 		findViewById(R.id.colorBack).setBackgroundDrawable(color);
 		alertDialog.dismiss();
-		
+	}
+	
+	public void cancel(View v)
+	{
+		finish();
 	}
 }
