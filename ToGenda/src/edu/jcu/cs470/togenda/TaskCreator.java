@@ -1,27 +1,17 @@
 package edu.jcu.cs470.togenda;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.res.TypedArray;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 
 public class TaskCreator extends Activity{
+	
+	AlertDialog alertDialog;
+	Drawable color;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +21,7 @@ public class TaskCreator extends Activity{
 	}
 	
 	public void colorPick(View v){
-		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog = new AlertDialog.Builder(this).create();
 		alertDialog.setTitle("Task Color");
 		LayoutInflater inflater = this.getLayoutInflater();
 		alertDialog.setView(inflater.inflate(R.layout.colorpick, null));
@@ -68,6 +58,9 @@ public class TaskCreator extends Activity{
 	}
 	
 	public void colorButton(View v){
+		color = v.getBackground();
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);
+		alertDialog.dismiss();
 		
 	}
 }

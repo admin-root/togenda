@@ -537,17 +537,17 @@ containing a value of this type.
         public static final int Button16=0x7f0b0014;
         public static final int Button17=0x7f0b0015;
         public static final int Button18=0x7f0b0016;
-        public static final int CancelButton=0x7f0b0039;
+        public static final int CancelButton=0x7f0b003a;
         public static final int CardBody=0x7f0b0007;
-        public static final int CreateButton=0x7f0b003a;
+        public static final int CreateButton=0x7f0b003b;
         public static final int EventLabel=0x7f0b0006;
         public static final int ScrollView1=0x7f0b000f;
         public static final int Time=0x7f0b0009;
-        public static final int action_settings=0x7f0b003b;
+        public static final int action_settings=0x7f0b003c;
         public static final int background=0x7f0b0004;
         public static final int button1=0x7f0b0023;
         public static final int button2=0x7f0b0024;
-        public static final int button25=0x7f0b0035;
+        public static final int button25=0x7f0b0036;
         public static final int button3=0x7f0b0025;
         public static final int button4=0x7f0b0026;
         public static final int button5=0x7f0b0027;
@@ -556,7 +556,8 @@ containing a value of this type.
         public static final int calendar_view=0x7f0b002b;
         public static final int cardContent=0x7f0b002e;
         public static final int cardsview=0x7f0b002c;
-        public static final int checkBox1=0x7f0b0036;
+        public static final int checkBox1=0x7f0b0037;
+        public static final int colorBack=0x7f0b0034;
         public static final int container=0x7f0b0003;
         public static final int contentLayout=0x7f0b000b;
         public static final int content_frame=0x7f0b0001;
@@ -567,7 +568,7 @@ containing a value of this type.
         public static final int listView=0x7f0b000d;
         public static final int navItemIcon=0x7f0b0005;
         public static final int navItemText=0x7f0b0029;
-        public static final int new_event=0x7f0b003c;
+        public static final int new_event=0x7f0b003d;
         public static final int overflow=0x7f0b000c;
         public static final int placeholder=0x7f0b002d;
         public static final int stackContainer=0x7f0b0031;
@@ -576,9 +577,9 @@ containing a value of this type.
         public static final int sticky=0x7f0b000e;
         public static final int stripe=0x7f0b000a;
         public static final int tableLayout=0x7f0b0010;
-        public static final int taskInfo=0x7f0b0038;
-        public static final int taskTitle=0x7f0b0034;
-        public static final int textView1=0x7f0b0037;
+        public static final int taskInfo=0x7f0b0039;
+        public static final int taskTitle=0x7f0b0035;
+        public static final int textView1=0x7f0b0038;
         public static final int title=0x7f0b0032;
     }
     public static final class layout {
