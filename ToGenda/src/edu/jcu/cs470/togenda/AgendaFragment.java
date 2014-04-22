@@ -53,7 +53,7 @@ public class AgendaFragment extends Fragment{
 		myFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
 		
 		// init CardView
-		CardUI CardView = (CardUI) myFragmentView.findViewById(R.id.cardsview);
+		CardUI CardView = (CardUI) myFragmentView.findViewById(R.id.cardsviewday);
 		CardView.setSwipeable(false); //Global variable for now. Need to change library so we can set swipable on per-card basis.
 
 		//Date formating

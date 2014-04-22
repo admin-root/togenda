@@ -645,7 +645,7 @@ containing a value of this type.
         public static final int calendar_grid=0x7f080041;
         public static final int calendar_view=0x7f080038;
         public static final int cardContent=0x7f08003c;
-        public static final int cardsview=0x7f080035;
+        public static final int cardsviewday=0x7f080035;
         public static final int center_view=0x7f080049;
         public static final int colorBack=0x7f080042;
         public static final int container=0x7f08000f;
