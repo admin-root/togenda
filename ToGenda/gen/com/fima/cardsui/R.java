@@ -196,19 +196,19 @@ public final class R {
 		public static final int card_background = 0x7f020003;
 		public static final int card_background_shadow = 0x7f020004;
 		public static final int card_shadow = 0x7f020005;
-		public static final int top_shadow = 0x7f020018;
+		public static final int top_shadow = 0x7f020020;
 	}
 	public static final class id {
-		public static final int ScrollView1 = 0x7f0b000f;
-		public static final int cardContent = 0x7f0b002e;
-		public static final int footer = 0x7f0b002a;
-		public static final int listView = 0x7f0b000d;
-		public static final int placeholder = 0x7f0b002d;
-		public static final int stackContainer = 0x7f0b0031;
-		public static final int stackRoot = 0x7f0b002f;
-		public static final int stackTitle = 0x7f0b0030;
-		public static final int sticky = 0x7f0b000e;
-		public static final int tableLayout = 0x7f0b0010;
+		public static final int ScrollView1 = 0x7f090012;
+		public static final int cardContent = 0x7f090031;
+		public static final int footer = 0x7f09002d;
+		public static final int listView = 0x7f090010;
+		public static final int placeholder = 0x7f090030;
+		public static final int stackContainer = 0x7f090034;
+		public static final int stackRoot = 0x7f090032;
+		public static final int stackTitle = 0x7f090033;
+		public static final int sticky = 0x7f090011;
+		public static final int tableLayout = 0x7f090013;
 	}
 	public static final class layout {
 		public static final int cards_view = 0x7f030006;
@@ -222,13 +222,13 @@ public final class R {
 		public static final int item_stack = 0x7f030014;
 	}
 	public static final class style {
-		public static final int CardLightText = 0x7f080005;
-		public static final int CardText = 0x7f080004;
-		public static final int CardTitle = 0x7f080006;
-		public static final int CardTitleBold = 0x7f080007;
-		public static final int Item = 0x7f080009;
-		public static final int Item_Sticky = 0x7f08000b;
-		public static final int Item_Top = 0x7f08000a;
-		public static final int StackTitle = 0x7f080008;
+		public static final int CardLightText = 0x7f080009;
+		public static final int CardText = 0x7f080008;
+		public static final int CardTitle = 0x7f08000a;
+		public static final int CardTitleBold = 0x7f08000b;
+		public static final int Item = 0x7f08000d;
+		public static final int Item_Sticky = 0x7f08000f;
+		public static final int Item_Top = 0x7f08000e;
+		public static final int StackTitle = 0x7f08000c;
 	}
 }

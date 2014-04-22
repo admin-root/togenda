@@ -1,15 +1,14 @@
 package edu.jcu.cs470.togenda;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
+import android.support.v4.app.FragmentActivity;
 
-public class TaskCreator extends Activity{
+public class TaskCreator extends FragmentActivity {//implements OnDateSetListener, TimePickerDialog.OnTimeSetListener{
 	
 	AlertDialog alertDialog;
 	Drawable color;
@@ -72,4 +71,14 @@ public class TaskCreator extends Activity{
 	{
 		finish();
 	}
+
+//    @Override
+//    public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
+//        Toast.makeText(this, "new date:" + year + "-" + month + "-" + day, Toast.LENGTH_LONG).show();
+//    }
+//
+//    @Override
+//    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
+//        Toast.makeText(this, "new time:" + hourOfDay + "-" + minute, Toast.LENGTH_LONG).show();
+//    }
 }
