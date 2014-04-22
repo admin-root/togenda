@@ -9,6 +9,7 @@ import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,7 +22,7 @@ import android.support.v4.app.FragmentActivity;
 
 public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	private AlertDialog alertDialog;
-	private Drawable color;
+	private ColorDrawable color;
 	int[] colors;
 	private DatePickerDialog datePickerDialog;
 	private Calendar calendar;
@@ -58,7 +59,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 
 	public void colorButton(View v)
 	{
-		color = v.getBackground();
+		color = (ColorDrawable) v.getBackground();
 		findViewById(R.id.colorBack).setBackgroundDrawable(color);
 		//Can't use newer method without increasing our min version
 		//this method will still be good for a very long time.
@@ -162,6 +163,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		colors[24] = R.color.gCal24;
 		for(int i = 1; i < 25; i ++)
 		{
+			//if(color.getColor() == findViewById(R.id.colorBack).getBackground(color[i]))
 			if(color == getResources().getDrawable(colors[i]))
 			{
 				return i;
