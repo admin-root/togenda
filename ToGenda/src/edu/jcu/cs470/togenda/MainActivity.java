@@ -90,6 +90,11 @@ public class MainActivity extends FragmentActivity {
 	private NavListAdapter adapter;
 	String[] menutitles;
 	TypedArray menuIcons;
+	
+	public Typeface robotoLight;
+	public Typeface robotoBold;
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -100,6 +105,9 @@ public class MainActivity extends FragmentActivity {
 		pageList = getResources().getStringArray(R.array.navItemList);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
+		
+		robotoLight=Typeface.createFromAsset(getAssets(),"fonts/Roboto-Thin.ttf");
+		robotoBold=Typeface.createFromAsset(getAssets(),"fonts/Roboto-Black.ttf");
 
 		// set a custom shadow that overlays the main content when the drawer opens
 		mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -168,6 +176,8 @@ public class MainActivity extends FragmentActivity {
 		if (savedInstanceState == null) {
 			selectItem(0);
 		}
+		
+		
 	}
 
 	@Override
@@ -244,7 +254,7 @@ public class MainActivity extends FragmentActivity {
 			selectItem(position);
 			setNavDrawerItemNormal();
 			TextView txtview = ((TextView) view.findViewById(R.id.navItemText));
-			txtview.setTypeface(Typeface.DEFAULT_BOLD);
+			txtview.setTypeface(robotoBold);
 		}
 	}
 
@@ -254,12 +264,7 @@ public class MainActivity extends FragmentActivity {
 		{
 			View v = mDrawerList.getChildAt(i);
 			TextView txtview = ((TextView) v.findViewById(R.id.navItemText));
-			txtview.setTypeface(Typeface.DEFAULT);
-			
-			//Android 4.1 has a thinner "condensed" fontface available.
-			//we can import it through assets later if we want, or just move the min version up to 4.1
-			//condensed typeface will contrast the selected item more.
-			//txtview.setTypeface(Typeface.Condensed);
+			txtview.setTypeface(robotoLight);
 		}
 	}
 
