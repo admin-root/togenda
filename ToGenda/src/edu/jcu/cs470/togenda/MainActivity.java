@@ -17,7 +17,6 @@ package edu.jcu.cs470.togenda;
 import java.util.ArrayList;
 import java.util.List;
 import com.squareup.timessquare.CalendarPickerView;
-
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -220,7 +219,7 @@ public class MainActivity extends FragmentActivity {
 //			//get date
 //			Long date = taskCreator.getDate();
 //			//get color ID
-//			int colorId = taskCreator.getColorId(); //eventCard.getColorID();
+//			int colorId = taskCreator.getColorId();
 //			//get priority
 //			int priority = 1; //test values
 //			db.open();
