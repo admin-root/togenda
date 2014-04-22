@@ -19,7 +19,7 @@ import com.squareup.timessquare.CalendarPickerView.SelectionMode;
 public class CalendarFragment extends Fragment{
 
 	private View myFragmentView;
-	private CalendarPickerView calendar;
+	public CalendarPickerView calendar;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -36,10 +36,6 @@ public class CalendarFragment extends Fragment{
 		
 
 		return myFragmentView;
-	}
-	public void openCal(View v){
-		//Log.d(getTag(), "Selected time in millis: " + calendar.getSelectedDate().getTime());
-        //Toast.makeText(getActivity(), "Selected: " + calendar.getSelectedDate().getTime(), Toast.LENGTH_SHORT).show();
 	}
 
 }

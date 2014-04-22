@@ -635,6 +635,7 @@ containing a value of this type.
         public static final int ampm_label=0x7f080050;
         public static final int animator=0x7f080007;
         public static final int background=0x7f080010;
+        public static final int button1=0x7f08003a;
         public static final int button2=0x7f080030;
         public static final int button25=0x7f080044;
         public static final int button3=0x7f080031;
@@ -676,7 +677,6 @@ containing a value of this type.
         public static final int navItemIcon=0x7f080011;
         public static final int navItemText=0x7f080036;
         public static final int new_event=0x7f080055;
-        public static final int openCalDay=0x7f08003a;
         public static final int overflow=0x7f080018;
         public static final int placeholder=0x7f08003b;
         public static final int separator=0x7f08004b;
