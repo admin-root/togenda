@@ -17,8 +17,7 @@ public class NavListAdapter extends BaseAdapter {
 	Context context;
 	List<RowItem> rowItem;
 
-	public Typeface robotoLight;
-	public Typeface robotoBold;
+	public Typeface roboto;
 	
 	NavListAdapter(Context context, List<RowItem> rowItem) {
 		this.context = context;
@@ -54,13 +53,13 @@ public class NavListAdapter extends BaseAdapter {
 		}
 
 		if (position == 0) {
-			robotoBold = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Black.ttf"); 
-			holder.title.setTypeface(robotoBold);
+			roboto = Typeface.createFromAsset(context.getAssets(), "fonts/RobotoCondensed-Bold.ttf"); 
+			holder.title.setTypeface(roboto);
 		}
 		else
 		{
-			robotoLight = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Thin.ttf"); 
-			holder.title.setTypeface(robotoLight);
+			roboto = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Thin.ttf"); 
+			holder.title.setTypeface(roboto);
 		}
 
 		return convertView;

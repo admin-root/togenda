@@ -3,15 +3,20 @@ package edu.jcu.cs470.togenda;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.squareup.timessquare.CalendarPickerView;
-
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-public class CalendarFragment extends Fragment {
+import com.squareup.timessquare.CalendarPickerView;
+import com.squareup.timessquare.CalendarPickerView.SelectionMode;
+
+public class CalendarFragment extends Fragment{
 
 	private View myFragmentView;
 	private CalendarPickerView calendar;
@@ -26,9 +31,15 @@ public class CalendarFragment extends Fragment {
 
 		calendar = (CalendarPickerView) myFragmentView.findViewById(R.id.calendar_view);
 		Date today = new Date();
-		calendar.init(today, nextYear.getTime()).withSelectedDate(today);
+		calendar.init(today, nextYear.getTime()).inMode(SelectionMode.SINGLE).withSelectedDate(today);
+		
+		
 
 		return myFragmentView;
+	}
+	public void openCal(View v){
+		//Log.d(getTag(), "Selected time in millis: " + calendar.getSelectedDate().getTime());
+        //Toast.makeText(getActivity(), "Selected: " + calendar.getSelectedDate().getTime(), Toast.LENGTH_SHORT).show();
 	}
 
 }
