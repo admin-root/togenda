@@ -15,6 +15,7 @@ public class DBAdapter {
 	public static final String COLUMN_DUE = "due_date";
 	public static final String COLUMN_COLOR = "color_id";
 	public static final String COLUMN_PRIORITY = "priority";
+	public static final String COLUMN_SIZE = "size";
 	//construct the structure of the database
 	private static final String DATABASE_NAME = "tasks.db";
 	private static final String DATABASE_TABLE = "tasks";
