@@ -1,6 +1,9 @@
 package edu.jcu.cs470.togenda;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
@@ -11,7 +14,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
 
 public class TaskCreator extends FragmentActivity implements OnDateSetListener{
@@ -89,7 +94,21 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	@Override
 	public void onDateSet(DatePickerDialog datePickerDialog, int year,
 			int month, int day) {
-		// TODO Auto-generated method stub
+		Button thisButton = (Button)findViewById(R.id.dateButton);
+		thisButton.setText(String.valueOf(month) + "/" + String.valueOf(day) + "/" + String.valueOf(year));
+		
+		String string_date = String.valueOf(month) + "-" + String.valueOf(day) + "-" + String.valueOf(year);
+
+		SimpleDateFormat f = new SimpleDateFormat("d-M-yyyy");
+		Date d;
+		try {
+			d = f.parse(string_date);
+			long milliseconds = d.getTime(); //THIS IS OUR TIME IN LONG FORMAT
+			//Toast.makeText(this, "long:" + String.valueOf(milliseconds), Toast.LENGTH_SHORT).show();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }
