@@ -26,6 +26,8 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	
 	private DatePickerDialog datePickerDialog;
 	private Calendar calendar;
+	
+	long milliseconds;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,23 +94,27 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	}
 
 	@Override
-	public void onDateSet(DatePickerDialog datePickerDialog, int year,
-			int month, int day) {
+	public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) 
+	{
 		Button thisButton = (Button)findViewById(R.id.dateButton);
 		thisButton.setText(String.valueOf(month) + "/" + String.valueOf(day) + "/" + String.valueOf(year));
-		
 		String string_date = String.valueOf(month) + "-" + String.valueOf(day) + "-" + String.valueOf(year);
-
 		SimpleDateFormat f = new SimpleDateFormat("d-M-yyyy");
 		Date d;
-		try {
+		try 
+		{
 			d = f.parse(string_date);
-			long milliseconds = d.getTime(); //THIS IS OUR TIME IN LONG FORMAT
+			milliseconds = d.getTime(); //THIS IS OUR TIME IN LONG FORMAT
 			//Toast.makeText(this, "long:" + String.valueOf(milliseconds), Toast.LENGTH_SHORT).show();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (ParseException e) 
+		{
 			e.printStackTrace();
 		}
-		
+	}
+	
+	public long getDate()
+	{
+		return milliseconds;
 	}
 }

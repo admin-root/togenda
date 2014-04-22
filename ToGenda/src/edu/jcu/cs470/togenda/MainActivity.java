@@ -1,5 +1,4 @@
 package edu.jcu.cs470.togenda;
-
 /*
  * Copyright 2013 The Android Open Source Project
  *
@@ -15,10 +14,8 @@ package edu.jcu.cs470.togenda;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import java.util.ArrayList;
 import java.util.List;
-
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -45,7 +42,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 /**
  * This example illustrates a common usage of the DrawerLayout widget
  * in the Android support library.
@@ -73,6 +69,7 @@ import android.widget.Toast;
  * An action should be an operation performed on the current contents of the window,
  * for example enabling or disabling a data overlay on top of the current content.</p>
  */
+
 public class MainActivity extends FragmentActivity {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
@@ -94,8 +91,11 @@ public class MainActivity extends FragmentActivity {
 	public Typeface robotoLight;
 	public Typeface robotoBold;
 	
+	TaskCreator taskCreator;
+	EventCard eventCard;
+	DBAdapter db;
 	
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -173,11 +173,10 @@ public class MainActivity extends FragmentActivity {
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-		if (savedInstanceState == null) {
+		if (savedInstanceState == null) 
+		{
 			selectItem(0);
 		}
-		
-		
 	}
 
 	@Override
@@ -208,38 +207,23 @@ public class MainActivity extends FragmentActivity {
 		case R.id.new_event:
 			Intent intent = new Intent(this, TaskCreator.class);
 			startActivity(intent);
-//			AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-//			alertDialog.setTitle("New Task");
-//			//EditText taskname = new EditText(getApplicationContext());
-//			//taskname.setTextColor(000000);
-//			LayoutInflater inflater = this.getLayoutInflater();
-//			alertDialog.setView(inflater.inflate(R.layout.task_creator, null));
-//			
+			
 //			//danny workspace
+//			//get title
 //			EditText taskName = (EditText)findViewById(R.id.taskTitle);
 //			String title = taskName.getText().toString();
+//			//get content
 //			EditText taskContent = (EditText)findViewById(R.id.taskInfo);
 //			String content = taskContent.getText().toString();
-//			//import code from SQLPrototype-Main activity to here (add,delete,update,get)
-//			//import DBAdapter and Tasks to this package
-//			
-//			
-//			//interface
-//			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-//				public void onClick(DialogInterface dialog, int which) {
-//					// here you can add functions
-//					//do nothing
-//				}
-//			});
-//			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
-//				public void onClick(DialogInterface dialog, int which) {
-//					// here you can add functions
-//					//add to database
-//					//refresh cardview
-//				}
-//			});
-//			alertDialog.setIcon(R.drawable.ic_edit);
-//			alertDialog.show();
+//			//get date
+//			Long date = taskCreator.getDate();
+//			//get color ID
+//			int colorId = 4; //eventCard.getColorID();
+//			int priority = 1; //test values
+//			db.open();
+//			db.insertBlogger(title, content, date, colorId, priority);
+//			db.close();
+			
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
