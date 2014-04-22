@@ -220,7 +220,8 @@ public class MainActivity extends FragmentActivity {
 //			//get date
 //			Long date = taskCreator.getDate();
 //			//get color ID
-//			int colorId = 4; //eventCard.getColorID();
+//			int colorId = taskCreator.getColorId(); //eventCard.getColorID();
+//			//get priority
 //			int priority = 1; //test values
 //			db.open();
 //			db.insertBlogger(title, content, date, colorId, priority);

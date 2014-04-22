@@ -1,13 +1,10 @@
 package edu.jcu.cs470.togenda;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
@@ -20,13 +17,10 @@ import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
 
 public class TaskCreator extends FragmentActivity implements OnDateSetListener{
-
 	private AlertDialog alertDialog;
 	private Drawable color;
-	
 	private DatePickerDialog datePickerDialog;
 	private Calendar calendar;
-	
 	long milliseconds;
 
 	@Override
@@ -36,17 +30,19 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		getActionBar().setIcon(R.drawable.ic_new_event);
 		
 		calendar = Calendar.getInstance();
-		
 		datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
 	}
 
-	public void colorPick(View v){
+	public void colorPick(View v)
+	{
 		alertDialog = new AlertDialog.Builder(this).create();
 		alertDialog.setTitle("Task Color");
 		LayoutInflater inflater = this.getLayoutInflater();
 		alertDialog.setView(inflater.inflate(R.layout.colorpick, null));
-		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
+		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() 
+		{
+			public void onClick(DialogInterface dialog, int which) 
+			{
 				// here you can add functions
 				//do nothing
 			}
@@ -81,7 +77,6 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
         datePickerDialog.setYearRange(1985, 2028);
         datePickerDialog.setCloseOnSingleTapDay(false);
         datePickerDialog.show(getSupportFragmentManager(), "Due Date");
-		
 	}
 	
 	public void dateCheck(View v){
@@ -105,7 +100,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		{
 			d = f.parse(string_date);
 			milliseconds = d.getTime(); //THIS IS OUR TIME IN LONG FORMAT
-			//Toast.makeText(this, "long:" + String.valueOf(milliseconds), Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, getColorId(), Toast.LENGTH_LONG).show();
 		} 
 		catch (ParseException e) 
 		{
@@ -116,5 +111,10 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	public long getDate()
 	{
 		return milliseconds;
+	}
+	
+	public int getColorId()
+	{
+		return findViewById(R.id.colorBack).getId();
 	}
 }

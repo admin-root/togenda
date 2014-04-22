@@ -52,7 +52,7 @@ public class EventCard extends CardTemplate implements Comparable{
 			if (Integer.parseInt(color) < 25 && Integer.parseInt(color) > 0) //Later: compensate for custom colors
 			{
 				//Chooses color based on google defualts.
-				colors = new int[24];
+				colors = new int[25];
 				colors[1] = R.color.gCal1;
 				colors[2] = R.color.gCal2;
 				colors[3] = R.color.gCal3;
@@ -86,7 +86,7 @@ public class EventCard extends CardTemplate implements Comparable{
 //	{
 //		for(int index = 1; index <= 24; index++)
 //		{
-//			colors.
+//			return colors[index]
 //		}
 ////		return 0;
 //	}
