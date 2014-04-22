@@ -5,9 +5,10 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/messagebar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CardsUILib"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/TimeSquare"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/datetimepicker-library"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/messagebar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/NineOldAndroids"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/TimeSquare"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
