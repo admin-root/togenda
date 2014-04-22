@@ -2,13 +2,21 @@ package edu.jcu.cs470.togenda;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
+
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 @SuppressWarnings("rawtypes")
 public class TaskCard extends CardTemplate implements Comparable{
 
+	String title;
 	Long startTime;
 	Long endTime;
 	String startLabel;
@@ -75,16 +83,13 @@ public class TaskCard extends CardTemplate implements Comparable{
 //	}
 
 	@SuppressLint("SimpleDateFormat")
-	public TaskCard(String titlePlay, String description, long start, long end, String color, String color2, Boolean hasOverflow, 
-			Boolean isClickable, String eventId, boolean last) {
+	public TaskCard(String titlePlay, final String description, long due, String color, String color2, String eventId, boolean last) {
 		this.titlePlay = "TEST";
 		this.description = description;
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
-		this.startTime = start;
-		this.endTime = end;
-		this.startLabel = _12HourSDFwDM.format(new Time(start));
-		this.endLabel = _12HourSDF.format(new Time(end));
+		this.endTime = due;
+		this.endLabel = _12HourSDF.format(new Time(due));
 		
 		if (color != "" && color != null)
 		{
@@ -95,10 +100,39 @@ public class TaskCard extends CardTemplate implements Comparable{
 			this.color = color2;
 		}
 		
-		this.hasOverflow = hasOverflow;
-		this.isClickable = isClickable;
+		this.hasOverflow = false;
+		this.isClickable = true;
 //		this.eventId = eventId;
 		this.last = last;
+		this.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				AlertDialog alertDialog = new AlertDialog.Builder(v.getContext()).create();
+				alertDialog.setTitle(title);
+				LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				View dialogContent = inflater.inflate(R.layout.task_dialog, null);
+				
+				TextView tdDesc = (TextView) dialogContent.findViewById(R.id.td_desc);
+				tdDesc.setText(description);
+				TextView tdDue = (TextView) dialogContent.findViewById(R.id.td_due);
+				tdDesc.setText(String.valueOf(endTime));
+				
+				alertDialog.setView(dialogContent);
+				//interface
+				alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Complete", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				});
+				alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						//Do nothing.
+					}
+				});
+				alertDialog.setIcon(R.drawable.ic_time_dark);
+				alertDialog.show();
+			}
+		});
 
 	}
 
