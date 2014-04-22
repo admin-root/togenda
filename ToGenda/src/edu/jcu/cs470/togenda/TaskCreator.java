@@ -1,5 +1,10 @@
 package edu.jcu.cs470.togenda;
 
+import java.util.Calendar;
+
+import com.fourmob.datetimepicker.date.DatePickerDialog;
+import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
@@ -9,16 +14,23 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.support.v4.app.FragmentActivity;
 
-public class TaskCreator extends FragmentActivity {//implements OnDateSetListener, TimePickerDialog.OnTimeSetListener{
+public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 
-	AlertDialog alertDialog;
-	Drawable color;
+	private AlertDialog alertDialog;
+	private Drawable color;
+	
+	private DatePickerDialog datePickerDialog;
+	private Calendar calendar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.task_creator);
 		getActionBar().setIcon(R.drawable.ic_new_event);
+		
+		calendar = Calendar.getInstance();
+		
+		datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
 	}
 
 	public void colorPick(View v){
@@ -58,7 +70,13 @@ public class TaskCreator extends FragmentActivity {//implements OnDateSetListene
 
 	public void dateClick(View v){
 
+		datePickerDialog.setVibrate(false);
+        datePickerDialog.setYearRange(1985, 2028);
+        datePickerDialog.setCloseOnSingleTapDay(false);
+        datePickerDialog.show(getSupportFragmentManager(), "Due Date");
+		
 	}
+	
 	public void dateCheck(View v){
 		if (((CheckBox) v).isChecked()) {
 			findViewById(R.id.dateButton).setEnabled(true);
@@ -66,5 +84,12 @@ public class TaskCreator extends FragmentActivity {//implements OnDateSetListene
 		else{
 			findViewById(R.id.dateButton).setEnabled(false);
 		}
+	}
+
+	@Override
+	public void onDateSet(DatePickerDialog datePickerDialog, int year,
+			int month, int day) {
+		// TODO Auto-generated method stub
+		
 	}
 }
