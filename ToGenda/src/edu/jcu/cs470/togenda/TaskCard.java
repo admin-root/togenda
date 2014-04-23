@@ -17,6 +17,7 @@ import android.widget.TextView;
 public class TaskCard extends CardTemplate implements Comparable{
 
 	String title;
+	String description;
 	Long startTime;
 	Long endTime;
 	String startLabel;
@@ -83,9 +84,9 @@ public class TaskCard extends CardTemplate implements Comparable{
 //	}
 
 	@SuppressLint("SimpleDateFormat")
-	public TaskCard(String titlePlay, final String description, long due, String color, String color2, String eventId, boolean last) {
-		this.titlePlay = "TEST";
-		this.description = description;
+	public TaskCard(String titlePlay, String descText, long due, String color, String color2, String eventId, boolean last) {
+		this.title = titlePlay;
+		this.description = descText;
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
 		this.endTime = due;

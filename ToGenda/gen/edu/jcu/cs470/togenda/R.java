@@ -688,8 +688,8 @@ containing a value of this type.
         public static final int tableLayout=0x7f08001d;
         public static final int taskInfo=0x7f080046;
         public static final int taskTitle=0x7f080043;
-        public static final int td_desc=0x7f08004a;
-        public static final int td_due=0x7f080049;
+        public static final int td_desc=0x7f080049;
+        public static final int td_due=0x7f08004a;
         public static final int time_picker=0x7f080054;
         public static final int time_picker_dialog=0x7f080053;
         public static final int title=0x7f080040;

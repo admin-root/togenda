@@ -114,7 +114,8 @@ public class AgendaFragment extends Fragment{
 		Collections.sort(cardList); //works now
 
 		//cardList.add(new EventCard("sample card"));
-		cardList.add(new TaskCard("sample task"));
+		//cardList.add(new TaskCard("sample task"));
+		cardList.add(new TaskCard("Example Task", "Example Description", 0000000000,"5","5","0",true));
 
 		//GET TASKS HERE
 
