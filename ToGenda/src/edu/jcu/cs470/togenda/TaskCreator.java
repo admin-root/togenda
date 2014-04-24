@@ -9,8 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
@@ -33,6 +35,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	long milliseconds;
 	DBAdapter db;
 	String title, content, colorId;
+	ArrayList<CardTemplate> cardList = new ArrayList<CardTemplate>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -127,19 +130,29 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		
 		//get priority
 		int priority = 1; //test values
-		db.open();
-		db.insertTask(title, content, date, colorId, priority);
-		db.close();
 		
-		Toast.makeText(this, title, Toast.LENGTH_LONG).show();
-		Toast.makeText(this, content, Toast.LENGTH_LONG).show();
-		Toast.makeText(this, String.valueOf(date), Toast.LENGTH_LONG).show();
-		Toast.makeText(this, String.valueOf(colorId), Toast.LENGTH_LONG).show();
-		Toast.makeText(this, String.valueOf(priority), Toast.LENGTH_LONG).show();
+//		Toast.makeText(this, title, Toast.LENGTH_LONG).show();
+//		Toast.makeText(this, content, Toast.LENGTH_LONG).show();
+//		Toast.makeText(this, String.valueOf(date), Toast.LENGTH_LONG).show();
+//		Toast.makeText(this, String.valueOf(colorId), Toast.LENGTH_LONG).show();
+//		Toast.makeText(this, String.valueOf(priority), Toast.LENGTH_LONG).show();
 		
+		if(!title.equals(""))
+		{
+			db.open();
+			db.insertTask(title, content, date, colorId, priority);
+			db.close();
+			cardList.add(new TaskCard(title, content, date, colorId,"0",true));
+			finish();
+		}
+		else
+		{
+			if(title.equals(""))
+			{
+				Toast.makeText(this, "Insert a Title", Toast.LENGTH_LONG).show();
+			}
+		}
 		
-		
-		finish();
 	}
 
 	public void cancel(View v)
