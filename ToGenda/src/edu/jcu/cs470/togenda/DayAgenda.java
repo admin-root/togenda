@@ -23,6 +23,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.os.Build;
 import android.provider.CalendarContract;
 
@@ -55,9 +56,9 @@ public class DayAgenda extends Activity {
 		
 		getActionBar().setTitle(dateString);
 
-		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-		alertDialog.setTitle(dateString);
-		LayoutInflater inflater = this.getLayoutInflater();
+//		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+//		alertDialog.setTitle(dateString);
+//		LayoutInflater inflater = this.getLayoutInflater();
 
 		// init CardView
 		CardUI CardView = (CardUI) findViewById(R.id.cardsviewday);
@@ -128,8 +129,6 @@ public class DayAgenda extends Activity {
 
 		// draw cards
 		CardView.refresh();
-
-
 		
 	}
 	
