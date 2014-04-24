@@ -138,7 +138,6 @@ public class TaskCard extends CardTemplate implements Comparable{
 				alertDialog.show();
 			}
 		});
-
 	}
 
 	public void setDescription(String desc)
@@ -162,7 +161,8 @@ public class TaskCard extends CardTemplate implements Comparable{
 	}
 
 	@Override
-	public int compareTo(Object another) { //for sorting
+	public int compareTo(Object another)  //for sorting
+	{	
 		if (this.getStart() < ((TaskCard) another).getStart())
 		{
 			return 1;
