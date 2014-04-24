@@ -26,17 +26,20 @@ public class EventCard extends CardTemplate implements Comparable{
 	//	private OnCardSwiped onCardSwipedListener;
 	private String eventId = "0";
 
-	public EventCard(String title){
+	public EventCard(String title)
+	{
 		super(title);
 	}
 
 	@Override
-	protected int getCardLayoutId() {
+	protected int getCardLayoutId() 
+	{
 		return R.layout.card_ex;
 	}
 
 	@Override
-	protected void applyTo(View convertView) {
+	protected void applyTo(View convertView) 
+	{
 		((TextView) convertView.findViewById(R.id.EventLabel)).setText(titlePlay);
 		((TextView) convertView.findViewById(R.id.description)).setText(description);
 		if (AllDay)
@@ -98,7 +101,8 @@ public class EventCard extends CardTemplate implements Comparable{
 
 	@SuppressLint("SimpleDateFormat")
 	public EventCard(String titlePlay, String description, long start, long end, String color, String color2, Boolean hasOverflow, 
-			Boolean isClickable, final String eventId, boolean last, boolean fullday) {
+			Boolean isClickable, final String eventId, boolean last, boolean fullday) 
+	{
 		this.titlePlay = titlePlay;
 		this.description = description;
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
@@ -132,9 +136,10 @@ public class EventCard extends CardTemplate implements Comparable{
 
 		if (isClickable)
 		{
-			this.setOnClickListener( new OnClickListener() {
-
-				public void onClick(View v) {
+			this.setOnClickListener( new OnClickListener() 
+			{
+				public void onClick(View v) 
+				{
 					Intent intent = new Intent(Intent.ACTION_VIEW);
 					//Android 2.2+
 					intent.setData(Uri.parse("content://com.android.calendar/events/" + String.valueOf(eventId)));  
@@ -148,8 +153,7 @@ public class EventCard extends CardTemplate implements Comparable{
 					v.getContext().startActivity(intent);
 
 				}
-			}
-					);
+			});
 		};
 
 	}

@@ -204,21 +204,6 @@ public class MainActivity extends FragmentActivity {
 		case R.id.new_event:
 			Intent intent = new Intent(this, TaskCreator.class);
 			startActivity(intent);
-			//			//danny workspace
-			//			//get title
-			//			EditText taskName = (EditText)findViewById(R.id.taskTitle);
-			//			String title = taskName.getText().toString();
-			//			//get content
-			//			EditText taskContent = (EditText)findViewById(R.id.taskInfo);
-			//			String content = taskContent.getText().toString();
-			//			//get date
-			//			Long date = taskCreator.getDate();
-			//			//get color ID
-			//			int colorId = 4; //eventCard.getColorID();
-			//			int priority = 1; //test values
-			//			db.open();
-			//			db.insertBlogger(title, content, date, colorId, priority);
-			//			db.close();
 
 			return true;
 		default:
@@ -229,8 +214,8 @@ public class MainActivity extends FragmentActivity {
 	/* The click listner for ListView in the navigation drawer */
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) 
+		{
 			selectItem(position);
 			setNavDrawerItemNormal();
 			TextView txtview = ((TextView) view.findViewById(R.id.navItemText));
@@ -248,11 +233,10 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
-	private void selectItem(int position) {
-
+	private void selectItem(int position) 
+	{
 		Fragment newFragment;
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
 		switch (position) {
 		case 0:
 			newFragment = new AgendaFragment();
@@ -296,15 +280,13 @@ public class MainActivity extends FragmentActivity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	public void openCal(View v){
+	public void openCal(View v)
+	{
 		//Log.d(getTag(), "Selected time in millis: " + calendar.getSelectedDate().getTime());
-		Long ldate = ((CalendarPickerView) findViewById(R.id.calendar_view)).getSelectedDate().getTime();
-		
+		Long ldate = ((CalendarPickerView) findViewById(R.id.calendar_view)).getSelectedDate().getTime();	
 		Intent intent = new Intent(this, DayAgenda.class);
 		intent.putExtra("longdate",ldate);
 		startActivity(intent);
-		
 	}
-
-
 }
+
