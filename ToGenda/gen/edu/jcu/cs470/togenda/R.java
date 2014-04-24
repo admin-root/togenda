@@ -727,12 +727,13 @@ containing a value of this type.
         public static final int month=0x7f03001c;
         public static final int task_creator=0x7f03001d;
         public static final int task_dialog=0x7f03001e;
-        public static final int time_header_label=0x7f03001f;
-        public static final int time_picker_dialog=0x7f030020;
-        public static final int todo_fragment=0x7f030021;
-        public static final int week=0x7f030022;
-        public static final int widget_layout=0x7f030023;
-        public static final int year_label_text_view=0x7f030024;
+        public static final int task_edit=0x7f03001f;
+        public static final int time_header_label=0x7f030020;
+        public static final int time_picker_dialog=0x7f030021;
+        public static final int todo_fragment=0x7f030022;
+        public static final int week=0x7f030023;
+        public static final int widget_layout=0x7f030024;
+        public static final int year_label_text_view=0x7f030025;
     }
     public static final class menu {
         public static final int calendar=0x7f0b0000;
@@ -747,11 +748,11 @@ containing a value of this type.
         public static final int action_settings=0x7f070027;
         public static final int ampm_circle_radius_multiplier=0x7f070003;
         public static final int app_name=0x7f07001d;
-        public static final int cancel_button=0x7f070030;
+        public static final int cancel_button=0x7f070031;
         public static final int circle_radius_multiplier=0x7f070000;
         public static final int circle_radius_multiplier_24HourMode=0x7f070001;
         public static final int color_stripe=0x7f070024;
-        public static final int create_button=0x7f070031;
+        public static final int create_button=0x7f070032;
         public static final int day_name_format=0x7f07001a;
         /**  DO NOT TRANSLATE 
          */
@@ -761,11 +762,12 @@ containing a value of this type.
          */
         public static final int deleted_key=0x7f070014;
         public static final int desc=0x7f070022;
-        public static final int discription_hint=0x7f070033;
+        public static final int discription_hint=0x7f070035;
         public static final int done_label=0x7f07000a;
-        public static final int drawer_close=0x7f07002d;
-        public static final int drawer_open=0x7f07002c;
-        public static final int due_date=0x7f070032;
+        public static final int drawer_close=0x7f07002e;
+        public static final int drawer_open=0x7f07002d;
+        public static final int due_date=0x7f070034;
+        public static final int finish=0x7f070033;
         public static final int getColor=0x7f070029;
         public static final int hello_world=0x7f07001e;
         /** 
@@ -785,34 +787,35 @@ containing a value of this type.
     
          */
         public static final int minute_picker_description=0x7f070016;
+        public static final int modify=0x7f07002c;
         public static final int month_name_format=0x7f07001c;
         public static final int new_event=0x7f070025;
-        public static final int new_task=0x7f070035;
+        public static final int new_task=0x7f070037;
         public static final int numbers_radius_multiplier_inner=0x7f070005;
         public static final int numbers_radius_multiplier_normal=0x7f070004;
         public static final int numbers_radius_multiplier_outer=0x7f070006;
         public static final int overflow=0x7f070023;
-        public static final int pref_default_display_name=0x7f07003c;
-        public static final int pref_description_social_recommendations=0x7f07003a;
+        public static final int pref_default_display_name=0x7f07003e;
+        public static final int pref_description_social_recommendations=0x7f07003c;
         /**  Example settings for Data & Sync 
          */
-        public static final int pref_header_data_sync=0x7f07003e;
+        public static final int pref_header_data_sync=0x7f070040;
         /**  Strings related to Settings 
  Example General settings 
          */
-        public static final int pref_header_general=0x7f070038;
+        public static final int pref_header_general=0x7f07003a;
         /**  Example settings for Notifications 
          */
-        public static final int pref_header_notifications=0x7f070041;
-        public static final int pref_ringtone_silent=0x7f070044;
-        public static final int pref_title_add_friends_to_messages=0x7f07003d;
-        public static final int pref_title_display_name=0x7f07003b;
-        public static final int pref_title_new_message_notifications=0x7f070042;
-        public static final int pref_title_ringtone=0x7f070043;
-        public static final int pref_title_social_recommendations=0x7f070039;
-        public static final int pref_title_sync_frequency=0x7f07003f;
-        public static final int pref_title_system_sync_settings=0x7f070040;
-        public static final int pref_title_vibrate=0x7f070045;
+        public static final int pref_header_notifications=0x7f070043;
+        public static final int pref_ringtone_silent=0x7f070046;
+        public static final int pref_title_add_friends_to_messages=0x7f07003f;
+        public static final int pref_title_display_name=0x7f07003d;
+        public static final int pref_title_new_message_notifications=0x7f070044;
+        public static final int pref_title_ringtone=0x7f070045;
+        public static final int pref_title_social_recommendations=0x7f07003b;
+        public static final int pref_title_sync_frequency=0x7f070041;
+        public static final int pref_title_system_sync_settings=0x7f070042;
+        public static final int pref_title_vibrate=0x7f070047;
         public static final int radial_numbers_typeface=0x7f070017;
         public static final int sans_serif=0x7f070010;
         public static final int select_day=0x7f07000d;
@@ -820,20 +823,20 @@ containing a value of this type.
         public static final int select_minutes=0x7f070019;
         public static final int select_year=0x7f07000e;
         public static final int selection_radius_multiplier=0x7f070002;
-        public static final int task_name_hint=0x7f070034;
+        public static final int task_name_hint=0x7f070036;
         public static final int text_size_multiplier_inner=0x7f070008;
         public static final int text_size_multiplier_normal=0x7f070007;
         public static final int text_size_multiplier_outer=0x7f070009;
         public static final int time_placeholder=0x7f070012;
         public static final int time_separator=0x7f070013;
         public static final int title=0x7f070021;
-        public static final int title_activity_calendar_fragment=0x7f07002f;
-        public static final int title_activity_day_agenda=0x7f070036;
+        public static final int title_activity_calendar_fragment=0x7f070030;
+        public static final int title_activity_day_agenda=0x7f070038;
         public static final int title_activity_main=0x7f070020;
-        public static final int title_activity_settings=0x7f070037;
+        public static final int title_activity_settings=0x7f070039;
         public static final int title_activity_task=0x7f070026;
         public static final int title_activity_task_creator=0x7f070028;
-        public static final int title_activity_to_do_fragment=0x7f07002e;
+        public static final int title_activity_to_do_fragment=0x7f07002f;
         public static final int viewCal=0x7f07002a;
         public static final int widgetTitle=0x7f07002b;
         public static final int year_picker_description=0x7f07000c;

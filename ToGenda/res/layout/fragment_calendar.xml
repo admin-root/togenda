@@ -16,7 +16,7 @@
         android:layout_height="1dp"
         android:layout_weight="0.01"
         android:adjustViewBounds="true"
-        android:background="@color/White"
+        android:background="@color/Black"
         android:baselineAlignBottom="true"
         android:contentDescription="@string/color_stripe"
         android:scaleType="centerCrop" />
@@ -25,10 +25,10 @@
         android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gCal16"
+        android:background="@color/card_separator"
         android:onClick="openCal"
         android:text="@string/viewCal"
-        android:textColor="@color/White" />
+        android:textColor="@color/Black" />
 
     <ImageView
         android:id="@+id/stripe"
@@ -36,7 +36,7 @@
         android:layout_height="1dp"
         android:layout_weight="0.01"
         android:adjustViewBounds="true"
-        android:background="@color/White"
+        android:background="@color/Black"
         android:baselineAlignBottom="true"
         android:contentDescription="@string/color_stripe"
         android:scaleType="centerCrop" />
