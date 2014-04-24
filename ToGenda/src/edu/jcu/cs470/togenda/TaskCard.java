@@ -125,6 +125,10 @@ public class TaskCard extends CardTemplate implements Comparable{
 					public void onClick(DialogInterface dialog, int which) {
 					}
 				});
+				alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Edit", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				});
 				alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						//Do nothing.
