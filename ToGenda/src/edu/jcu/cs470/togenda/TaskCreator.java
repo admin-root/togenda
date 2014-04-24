@@ -9,11 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
-
-import SQLPrototype2.DBAdapter;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
@@ -35,6 +32,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	private Calendar calendar;
 	long milliseconds;
 	DBAdapter db;
+	String title, content, colorId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -118,18 +116,19 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		//danny workspace
 		//get title
 		EditText taskName = (EditText)findViewById(R.id.taskTitle);
-		String title = taskName.getText().toString();
+		title = taskName.getText().toString();
 		//get content
 		EditText taskContent = (EditText)findViewById(R.id.taskInfo);
-		String content = taskContent.getText().toString();
+		content = taskContent.getText().toString();
 		//get date
 		Long date = getDate();
 		//get color ID
-		int colorId = getColorId(); //currently returning 0
+		colorId = getColorId(); //currently returning 0
+		
 		//get priority
 		int priority = 1; //test values
 		db.open();
-		db.insertBlogger(title, content, date, colorId, priority);
+		db.insertTask(title, content, date, colorId, priority);
 		db.close();
 		
 		Toast.makeText(this, title, Toast.LENGTH_LONG).show();
@@ -185,12 +184,17 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		}
 	}
 	
+	public String getContent()
+	{
+		return content;
+	}
+	
 	public long getDate()
 	{
 		return milliseconds;
 	}
 	
-	public int getColorId()
+	public String getColorId()
 	{
 		colors = new int[25];
 		colors[1] = R.color.gCal1;
@@ -222,9 +226,9 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			//if(color.getColor() == findViewById(R.id.colorBack).getBackground(color[i]))
 			if(color == getResources().getDrawable(colors[i]))
 			{
-				return i;
+				return String.valueOf(i);
 			}	
 		}
-		return 15;
+		return "15";
 	}
 }

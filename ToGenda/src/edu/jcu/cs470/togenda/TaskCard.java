@@ -84,22 +84,14 @@ public class TaskCard extends CardTemplate implements Comparable{
 //	}
 
 	@SuppressLint("SimpleDateFormat")
-	public TaskCard(String titlePlay, String descText, long due, String color, String color2, String eventId, boolean last) {
+	public TaskCard(String titlePlay, String descText, long due, String color, String priority, boolean last) {
 		this.title = titlePlay;
 		this.description = descText;
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
 		this.endTime = due;
 		this.endLabel = _12HourSDF.format(new Time(due));
-		
-		if (color != "" && color != null)
-		{
-			this.color = color;
-		}
-		else
-		{
-			this.color = color2;
-		}
+		this.color = color;
 		
 		this.hasOverflow = false;
 		this.isClickable = true;

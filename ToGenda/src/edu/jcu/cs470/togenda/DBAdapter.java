@@ -75,7 +75,7 @@ public class DBAdapter {
 		DBHelper.close();
 	}
 
-	public long insertBlogger(String title, String content, long due, int color, int priority)
+	public long insertTask(String title, String content, long due, String color, int priority)
 	{
 		ContentValues row = new ContentValues();
 		row.put(COLUMN_NAME, title);
@@ -113,7 +113,7 @@ public class DBAdapter {
 		return cursor;
 	}
 	
-	public boolean updateTask(long rowID, String title, String content, long due, int color, int priority)
+	public boolean updateTask(long rowID, String title, String content, long due, String color, int priority)
 	{
 		ContentValues args = new ContentValues();
 		args.put(COLUMN_NAME, title);

@@ -44,6 +44,7 @@ public class AgendaFragment extends Fragment{
 
 	public Drawable backgroundColor;
 	AlertDialog alertDialog;
+	TaskCreator taskCreator;
 
 	@SuppressWarnings("unchecked")
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,8 +114,10 @@ public class AgendaFragment extends Fragment{
 
 		Collections.sort(cardList); //works now
 
-		//cardList.add(new TaskCard(titlePlay, descText, due, color, color2, eventId, last))
-		cardList.add(new TaskCard("Example Task", "Example Description", 0000000000,"5","6","0",true));
+		//cardList.add(new TaskCard(titlePlay, descText, due, color, eventId, last))
+		cardList.add(new TaskCard("Example Task", "Example Description", 0000000000,"5","0",true));
+//		cardList.add(new TaskCard(taskCreator.getTitle(),taskCreator.getContent(),taskCreator.getDate(),
+//			taskCreator.getColorId(), "1", true));
 
 		//GET TASKS HERE
 

@@ -5,7 +5,7 @@ public class Tasks {
 	private String name;
 	private String comment;
 	private long dueDate;
-	private int colorID;
+	private String colorID;
 	private int priority;
 	
 	public long getId() 
@@ -46,11 +46,11 @@ public class Tasks {
 		this.dueDate = dueDate;
 	}
 
-	public int getColorID() {
+	public String getColorID() {
 		return colorID;
 	}
 
-	public void setColorID(int colorID) {
+	public void setColorID(String colorID) {
 		this.colorID = colorID;
 	}
 
