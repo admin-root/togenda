@@ -1,12 +1,19 @@
 package edu.jcu.cs470.togenda;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
 
+import SQLPrototype2.DBAdapter;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
@@ -37,6 +44,45 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		
 		calendar = Calendar.getInstance();
 		datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
+		
+		//copy the database from the assets folder to where the app can find it
+				String dir = "/data/data/"+getPackageName()+"/databases/";
+				String path = dir+"tasks.db";
+				//should not need to create the databases directory, will for testing purposes
+				File f = new File(dir);
+				if(!f.exists())
+				{
+					File directory = new File(dir);
+					directory.mkdirs();
+					try
+					{
+						//copy from input-stream to output-stream
+						copyDataBase(getBaseContext().getAssets().open("tasks.db"), new FileOutputStream(path));
+					}
+					catch(FileNotFoundException ex)
+					{
+						ex.printStackTrace();
+					}
+					catch(IOException ex)
+					{
+						ex.printStackTrace();
+					}
+				}
+				//exercise the database
+				db = new DBAdapter(this);
+	}
+	
+	private void copyDataBase(InputStream in, FileOutputStream out) throws IOException
+	{
+		//copy 1024 bytes at a time
+		byte[] buffer = new byte [1024];
+		int length;
+		while((length = in.read(buffer)) > 0)
+		{
+			out.write(buffer, 0, length);
+		}
+		in.close();
+		out.close();
 	}
 
 	public void colorPick(View v)
@@ -64,27 +110,36 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		//Can't use newer method without increasing our min version
 		//this method will still be good for a very long time.
 		alertDialog.dismiss();
-		Toast.makeText(this, String.valueOf(getColorId()), Toast.LENGTH_LONG).show();
+//		Toast.makeText(this, String.valueOf(getColorId()), Toast.LENGTH_LONG).show();
 	}
 
 	public void create(View v)
 	{
-//		//danny workspace
-//		//get title
-//		EditText taskName = (EditText)findViewById(R.id.taskTitle);
-//		String title = taskName.getText().toString();
-//		//get content
-//		EditText taskContent = (EditText)findViewById(R.id.taskInfo);
-//		String content = taskContent.getText().toString();
-//		//get date
-//		Long date = getDate();
-//		//get color ID
-//		int colorId = getColorId();
-//		//get priority
-//		int priority = 1; //test values
-//		db.open();
-//		db.insertBlogger(title, content, date, colorId, priority);
-//		db.close();
+		//danny workspace
+		//get title
+		EditText taskName = (EditText)findViewById(R.id.taskTitle);
+		String title = taskName.getText().toString();
+		//get content
+		EditText taskContent = (EditText)findViewById(R.id.taskInfo);
+		String content = taskContent.getText().toString();
+		//get date
+		Long date = getDate();
+		//get color ID
+		int colorId = getColorId(); //currently returning 0
+		//get priority
+		int priority = 1; //test values
+		db.open();
+		db.insertBlogger(title, content, date, colorId, priority);
+		db.close();
+		
+		Toast.makeText(this, title, Toast.LENGTH_LONG).show();
+		Toast.makeText(this, content, Toast.LENGTH_LONG).show();
+		Toast.makeText(this, String.valueOf(date), Toast.LENGTH_LONG).show();
+		Toast.makeText(this, String.valueOf(colorId), Toast.LENGTH_LONG).show();
+		Toast.makeText(this, String.valueOf(priority), Toast.LENGTH_LONG).show();
+		
+		
+		
 		finish();
 	}
 
@@ -93,15 +148,16 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		finish();
 	}
 
-	public void dateClick(View v){
-
+	public void dateClick(View v)
+	{
 		datePickerDialog.setVibrate(false);
         datePickerDialog.setYearRange(1985, 2028);
         datePickerDialog.setCloseOnSingleTapDay(false);
         datePickerDialog.show(getSupportFragmentManager(), "Due Date");
 	}
 	
-	public void dateCheck(View v){
+	public void dateCheck(View v)
+	{
 		if (((CheckBox) v).isChecked()) {
 			findViewById(R.id.dateButton).setEnabled(true);
 		}
@@ -169,6 +225,6 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 				return i;
 			}	
 		}
-		return 0;
+		return 15;
 	}
 }
