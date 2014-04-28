@@ -19,9 +19,9 @@ public class DBAdapter {
 	//construct the structure of the database
 	public static final String DATABASE_NAME = "tasks.db";
 	public static final String DATABASE_TABLE = "tasks";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 4;
 	private static final String DATABASE_CREATE = "create table "+DATABASE_TABLE+" ("+KEY_ID+
-		" integer primary key autoincremented, "+COLUMN_NAME+" text not null, "+COLUMN_CONTENT+" text not null, "
+		" integer primary key autoincrement, "+COLUMN_NAME+" text not null, "+COLUMN_CONTENT+" text not null, "
 		+COLUMN_DUE+" text not null, "+COLUMN_COLOR+" text not null, "+COLUMN_PRIORITY+" text not null)";
 	//variables
 	DatabaseHelper DBHelper;
@@ -93,15 +93,16 @@ public class DBAdapter {
 
 	public Cursor getAllTasks()
 	{
-		Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT, COLUMN_DUE, 
-			COLUMN_COLOR, COLUMN_PRIORITY}, null, null, null, null, null);
+		String[] COLS = new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT, COLUMN_DUE, 
+				COLUMN_COLOR, COLUMN_PRIORITY};
+		
+		Cursor cursor = db.query(DATABASE_TABLE, COLS, null, null, null, null, null);
 		if(cursor != null)
 		{
 			cursor.moveToFirst();
 		}
 		else
 		{
-			Log.d("Empty Cursor", "Cursor is Empty");
 		}
 		return cursor;
 	}
@@ -109,7 +110,7 @@ public class DBAdapter {
 	public Cursor getTask(long rowId) throws SQLException
 	{
 		Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT, COLUMN_DUE, 
-			COLUMN_COLOR, COLUMN_PRIORITY}, KEY_ID+"="+rowId, null, null, null, null, null);
+			COLUMN_COLOR, COLUMN_PRIORITY}, KEY_ID+"="+rowId, null, null, null, null);
 		if(cursor != null)
 		{
 			cursor.moveToFirst();

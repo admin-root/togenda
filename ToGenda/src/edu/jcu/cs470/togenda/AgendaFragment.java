@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class AgendaFragment extends Fragment{
 		CalendarContract.Instances.BEGIN, CalendarContract.Instances.END, CalendarContract.Instances.END_MINUTE, 
 		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR, 
 		CalendarContract.Events.ALL_DAY};
-	
+
 	DBAdapter db;
 
 	public Drawable backgroundColor;
@@ -53,7 +54,7 @@ public class AgendaFragment extends Fragment{
 		// Inflate the layout for getActivity() fragment
 
 		myFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
-		
+
 		// init CardView
 		CardUI CardView = (CardUI) myFragmentView.findViewById(R.id.cardsviewday);
 		CardView.setSwipeable(false); //Global variable for now. Need to change library so we can set swipable on per-card basis.
@@ -118,13 +119,33 @@ public class AgendaFragment extends Fragment{
 
 		//cardList.add(new TaskCard(titlePlay, descText, due, color, priority, last))
 		//cardList.add(new TaskCard("Example Task", "Example Description", 0000000000,"5","0",true));
-//		cardList.add(new TaskCard(taskCreator.getTitle(),taskCreator.getContent(),taskCreator.getDate(),
-//			taskCreator.getColorId(), "1", true));
+		//		cardList.add(new TaskCard(taskCreator.getTitle(),taskCreator.getContent(),taskCreator.getDate(),
+		//			taskCreator.getColorId(), "1", true));
 
 		//GET TASKS HERE
-		
+
+		db.open();
 		Cursor TaskCursor = db.getAllTasks();
-				 
+
+		if (TaskCursor != null)
+		{
+			makeCards = true;
+		}
+		int count = 0;
+		while(makeCards)
+		{
+			if(count <= TaskCursor.getCount())
+			{
+				makeCards = false;
+			}
+			else
+			{
+				cardList.add(new TaskCard(TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getString(4),String.valueOf(TaskCursor.getInt(5)),false));
+			}
+		}
+
+		db.close();
+
 
 		//SORT TASKS + EVENTS TOGETHER HERE
 
@@ -146,53 +167,53 @@ public class AgendaFragment extends Fragment{
 		}
 
 		//CardView.addCard(new EventCard("No events"));
-		
-		
+
+
 		if (cardList.isEmpty())
 		{
 			//Create cardtype that explains that there are no current events.
 		}
-		
+
 		// draw cards
 		CardView.refresh();
-		
+
 		return myFragmentView;
 	}
 
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//		switch (item.getItemId()) 
-//		{        
-//		case R.id.new_event:
-//			//DANNY, TYPE HERE
-//			//CREATES DIALOG POPUP
-//			alertDialog = new AlertDialog.Builder(getActivity()).create();
-//			alertDialog.setTitle("New Task");
-//			//EditText taskname = new EditText(getApplicationContext());
-//			//taskname.setTextColor(000000);
-//			LayoutInflater inflater = getActivity().getLayoutInflater();
-//			alertDialog.setView(inflater.inflate(R.layout.dialogue_task_creator, null));
-//			//interface
-//			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-//				public void onClick(DialogInterface dialog, int which) {
-//					// here you can add functions
-//					//do nothing
-//				}
-//			});
-//			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
-//				public void onClick(DialogInterface dialog, int which) {
-//					// here you can add functions
-//					//add to database
-//					//refresh cardview
-//				}
-//			});
-//			alertDialog.setIcon(R.drawable.ic_action_new_event);
-//			alertDialog.show();
-//			return true;        
-//		default:            
-//			return super.onOptionsItemSelected(item);
-//
-//		}
-//	}
+	//	public boolean onOptionsItemSelected(MenuItem item) {
+	//		switch (item.getItemId()) 
+	//		{        
+	//		case R.id.new_event:
+	//			//DANNY, TYPE HERE
+	//			//CREATES DIALOG POPUP
+	//			alertDialog = new AlertDialog.Builder(getActivity()).create();
+	//			alertDialog.setTitle("New Task");
+	//			//EditText taskname = new EditText(getApplicationContext());
+	//			//taskname.setTextColor(000000);
+	//			LayoutInflater inflater = getActivity().getLayoutInflater();
+	//			alertDialog.setView(inflater.inflate(R.layout.dialogue_task_creator, null));
+	//			//interface
+	//			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+	//				public void onClick(DialogInterface dialog, int which) {
+	//					// here you can add functions
+	//					//do nothing
+	//				}
+	//			});
+	//			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
+	//				public void onClick(DialogInterface dialog, int which) {
+	//					// here you can add functions
+	//					//add to database
+	//					//refresh cardview
+	//				}
+	//			});
+	//			alertDialog.setIcon(R.drawable.ic_action_new_event);
+	//			alertDialog.show();
+	//			return true;        
+	//		default:            
+	//			return super.onOptionsItemSelected(item);
+	//
+	//		}
+	//	}
 
 	/**
 	 * A placeholder fragment containing a simple view.
