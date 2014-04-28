@@ -16,10 +16,13 @@ package edu.jcu.cs470.togenda;
  */
 import java.util.ArrayList;
 import java.util.List;
+
 import com.squareup.timessquare.CalendarPickerView;
+
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;

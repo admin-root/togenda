@@ -142,7 +142,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			db.open();
 			db.insertTask(title, content, date, colorId, priority);
 			db.close();
-			cardList.add(new TaskCard(title, content, date, colorId,"0",true));
+			//cardList.add(new TaskCard(id, title, content, date, colorId,"0",true));
 			finish();
 		}
 		else

@@ -3,13 +3,18 @@ package edu.jcu.cs470.togenda;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 
+import com.fima.cardsui.views.CardUI;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentSender.SendIntentException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.WebView.FindListener;
 import android.widget.TextView;
 
 @SuppressWarnings("rawtypes")
@@ -22,6 +27,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 	String startLabel;
 	String endLabel;
 	boolean last = false;
+	DBAdapter db;
 
 	int[] colors;
 	//	private OnCardSwiped onCardSwipedListener;
@@ -83,7 +89,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 	//	}
 
 	@SuppressLint("SimpleDateFormat")
-	public TaskCard(String titlePlay, String descText, final long due, String color, String priority, boolean last) {
+	public TaskCard(final int taskID, String titlePlay, String descText, final long due, String color, String priority, final Context c) {
 		this.title = titlePlay;
 		this.description = descText;
 		@SuppressWarnings("unused")
@@ -96,7 +102,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 		this.hasOverflow = false;
 		this.isClickable = true;
 		//		this.eventId = eventId;
-		this.last = last;
+		db = new DBAdapter(c);
 		this.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -117,10 +123,18 @@ public class TaskCard extends CardTemplate implements Comparable{
 				//interface
 				alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Complete", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
+						db.open();
+						db.deleteTask(taskID);
+						db.close();
+						//AgendaFragment.();
+						
 					}
 				});
 				alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Edit", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
+						Intent intent = new Intent(c, TaskEditor.class);
+						intent.putExtra("TaskID",taskID);
+						c.startActivity(intent);
 					}
 				});
 				alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {

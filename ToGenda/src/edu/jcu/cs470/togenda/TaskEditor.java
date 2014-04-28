@@ -8,11 +8,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -38,6 +41,11 @@ public class TaskEditor extends FragmentActivity implements OnDateSetListener{
 		setContentView(R.layout.task_creator);
 		getActionBar().setIcon(R.drawable.ic_save);
 		getActionBar().setTitle(R.string.modify);
+		
+		Intent i= getIntent();
+		Long ldate = i.getLongExtra("TaskID", 0);
+
+		String dateString = new SimpleDateFormat("MM/dd/yyyy").format(new Date(ldate));
 		
 		calendar = Calendar.getInstance();
 		datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);

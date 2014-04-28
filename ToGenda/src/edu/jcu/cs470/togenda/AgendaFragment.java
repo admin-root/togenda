@@ -19,7 +19,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
+import android.content.BroadcastReceiver;
 import android.content.ContentUris;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor; 
 import android.graphics.drawable.Drawable;
 import android.provider.CalendarContract;
@@ -41,6 +44,8 @@ public class AgendaFragment extends Fragment{
 		CalendarContract.Instances.BEGIN, CalendarContract.Instances.END, CalendarContract.Instances.END_MINUTE, 
 		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR, 
 		CalendarContract.Events.ALL_DAY};
+	
+	public CardUI CardView;
 
 	DBAdapter db;
 
@@ -56,7 +61,7 @@ public class AgendaFragment extends Fragment{
 		myFragmentView = inflater.inflate(R.layout.fragment_main, container, false);
 
 		// init CardView
-		CardUI CardView = (CardUI) myFragmentView.findViewById(R.id.cardsviewday);
+		CardView = (CardUI) myFragmentView.findViewById(R.id.cardsviewday);
 		CardView.setSwipeable(false); //Global variable for now. Need to change library so we can set swipable on per-card basis.
 
 		//Date formating
@@ -72,6 +77,7 @@ public class AgendaFragment extends Fragment{
 		Time t = new Time();
 		t.setToNow();
 		db = new DBAdapter(getActivity());
+		BroadcastReceiver receiver;
 
 		//Getting URI for calendar
 		Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI.buildUpon();
@@ -122,6 +128,17 @@ public class AgendaFragment extends Fragment{
 		//		cardList.add(new TaskCard(taskCreator.getTitle(),taskCreator.getContent(),taskCreator.getDate(),
 		//			taskCreator.getColorId(), "1", true));
 
+		receiver = new BroadcastReceiver()
+		{
+			@Override
+			public void onReceive(Context context, Intent intent) {
+
+				CardView.refresh();
+
+			}
+
+		};
+		
 		//GET TASKS HERE
 
 		db.open();
@@ -132,18 +149,18 @@ public class AgendaFragment extends Fragment{
 		{
 			makeCards = true;
 		}
-		int count = 0;
 		while(makeCards)
 		{
-			if(count > TaskCursor.getCount())
+				cardList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
+						TaskCursor.getString(4),String.valueOf(TaskCursor.getInt(5)), getActivity()));
+			if(TaskCursor.isLast()) 
 			{
 				makeCards = false;
 			}
 			else
 			{
-				cardList.add(new TaskCard(TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getString(4),String.valueOf(TaskCursor.getInt(5)),false));
+				TaskCursor.moveToNext();
 			}
-			count++;
 		}
 
 		db.close();
