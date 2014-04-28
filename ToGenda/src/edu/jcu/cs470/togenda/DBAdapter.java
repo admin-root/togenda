@@ -17,8 +17,8 @@ public class DBAdapter {
 	public static final String COLUMN_PRIORITY = "priority";
 	public static final String COLUMN_SIZE = "size";
 	//construct the structure of the database
-	private static final String DATABASE_NAME = "tasks.db";
-	private static final String DATABASE_TABLE = "tasks";
+	public static final String DATABASE_NAME = "tasks.db";
+	public static final String DATABASE_TABLE = "tasks";
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_CREATE = "create table "+DATABASE_TABLE+" ("+KEY_ID+
 		" integer primary key autoincremented, "+COLUMN_NAME+" text not null, "+COLUMN_CONTENT+" text not null, "
@@ -98,6 +98,10 @@ public class DBAdapter {
 		if(cursor != null)
 		{
 			cursor.moveToFirst();
+		}
+		else
+		{
+			Log.d("Empty Cursor", "Cursor is Empty");
 		}
 		return cursor;
 	}

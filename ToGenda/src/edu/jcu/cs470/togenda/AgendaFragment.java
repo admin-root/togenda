@@ -40,6 +40,8 @@ public class AgendaFragment extends Fragment{
 		CalendarContract.Instances.BEGIN, CalendarContract.Instances.END, CalendarContract.Instances.END_MINUTE, 
 		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR, 
 		CalendarContract.Events.ALL_DAY};
+	
+	DBAdapter db;
 
 	public Drawable backgroundColor;
 	AlertDialog alertDialog;
@@ -68,6 +70,7 @@ public class AgendaFragment extends Fragment{
 		//getting current time for use in query
 		Time t = new Time();
 		t.setToNow();
+		db = new DBAdapter(getActivity());
 
 		//Getting URI for calendar
 		Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI.buildUpon();
@@ -114,11 +117,14 @@ public class AgendaFragment extends Fragment{
 		Collections.sort(cardList); //works now
 
 		//cardList.add(new TaskCard(titlePlay, descText, due, color, priority, last))
-		cardList.add(new TaskCard("Example Task", "Example Description", 0000000000,"5","0",true));
+		//cardList.add(new TaskCard("Example Task", "Example Description", 0000000000,"5","0",true));
 //		cardList.add(new TaskCard(taskCreator.getTitle(),taskCreator.getContent(),taskCreator.getDate(),
 //			taskCreator.getColorId(), "1", true));
 
 		//GET TASKS HERE
+		
+		Cursor TaskCursor = db.getAllTasks();
+				 
 
 		//SORT TASKS + EVENTS TOGETHER HERE
 
@@ -139,7 +145,7 @@ public class AgendaFragment extends Fragment{
 			}
 		}
 
-		CardView.addCard(new EventCard("No events"));
+		//CardView.addCard(new EventCard("No events"));
 		
 		
 		if (cardList.isEmpty())
