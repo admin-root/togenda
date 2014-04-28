@@ -10,7 +10,6 @@ import java.util.Calendar;
 import java.util.Date;
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
-import SQLPrototype2.DBAdapter;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -128,7 +127,7 @@ public class TaskEditor extends FragmentActivity implements OnDateSetListener{
 		//get priority
 		int priority = 1; //test values
 		db.open();
-		db.insertBlogger(title, content, date, colorId, priority);
+//		db.insertBlogger(title, content, date, colorId, priority);
 		db.close();
 		
 		Toast.makeText(this, title, Toast.LENGTH_LONG).show();
