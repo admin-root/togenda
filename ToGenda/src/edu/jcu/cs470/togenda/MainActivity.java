@@ -23,11 +23,9 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.database.Cursor;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
@@ -79,7 +77,7 @@ public class MainActivity extends FragmentActivity {
 	public int gPosition = 0;
 
 	private CharSequence mDrawerTitle;
-	private CharSequence mTitle;
+	public CharSequence mTitle;
 	private String[] pageList;
 
 	private List<RowItem> rowItems;

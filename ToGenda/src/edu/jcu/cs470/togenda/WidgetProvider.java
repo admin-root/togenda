@@ -1,7 +1,5 @@
 package edu.jcu.cs470.togenda;
 
-import java.util.Random;
-
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -21,8 +19,6 @@ public class WidgetProvider extends AppWidgetProvider{
 				WidgetProvider.class);
 		int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
 		for (int widgetId : allWidgetIds) {
-			// create some random data
-			int number = (new Random().nextInt(100));
 
 			RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
 					R.layout.widget_layout);

@@ -6,18 +6,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
-
 import SQLPrototype2.DBAdapter;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -104,6 +101,7 @@ public class TaskEditor extends FragmentActivity implements OnDateSetListener{
 		alertDialog.show();
 	}
 
+	@SuppressWarnings("deprecation")
 	public void colorButton(View v)
 	{
 		color = (ColorDrawable) v.getBackground();
@@ -167,6 +165,7 @@ public class TaskEditor extends FragmentActivity implements OnDateSetListener{
 		}
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) 
 	{

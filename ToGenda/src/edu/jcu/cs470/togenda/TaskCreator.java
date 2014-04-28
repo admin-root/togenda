@@ -9,14 +9,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
-
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +47,10 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		//copy the database from the assets folder to where the app can find it
 				String dir = "/data/data/"+getPackageName()+"/databases/";
 				String path = dir+"tasks.db";
+				//THERE'S A BETTER WAY TO DO THIS
+				//We shoudln't be storing the database on the SDcard.
+				//Too many incompatibility issues with different devices. Especially with Android 4.4
+				// -Saeed
 				//should not need to create the databases directory, will for testing purposes
 				File f = new File(dir);
 				if(!f.exists())
@@ -104,6 +106,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		alertDialog.show();
 	}
 
+	@SuppressWarnings("deprecation")
 	public void colorButton(View v)
 	{
 		color = (ColorDrawable) v.getBackground();
@@ -178,6 +181,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		}
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) 
 	{

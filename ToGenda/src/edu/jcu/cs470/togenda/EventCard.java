@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView.FindListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,7 +23,7 @@ public class EventCard extends CardTemplate implements Comparable{
 
 	int[] colors;
 	//	private OnCardSwiped onCardSwipedListener;
-	private String eventId = "0";
+	public String eventId = "0";
 
 	public EventCard(String title)
 	{

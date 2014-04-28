@@ -4,27 +4,15 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.AlertDialog;
-import android.app.Fragment;
 import android.content.ContentUris;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.os.Build;
 import android.provider.CalendarContract;
 
 public class DayAgenda extends Activity {
@@ -41,6 +29,8 @@ public class DayAgenda extends Activity {
 		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR, 
 		CalendarContract.Events.ALL_DAY};
 	
+	@SuppressLint("SimpleDateFormat")
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

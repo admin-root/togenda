@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
@@ -87,6 +86,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 	public TaskCard(String titlePlay, String descText, long due, String color, String priority, boolean last) {
 		this.title = titlePlay;
 		this.description = descText;
+		@SuppressWarnings("unused")
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
 		this.endTime = due;
