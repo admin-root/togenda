@@ -114,6 +114,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		//Can't use newer method without increasing our min version
 		//this method will still be good for a very long time.
 		alertDialog.dismiss();
+//		getColorId(findViewById(R.id.colorBack));
 //		Toast.makeText(this, String.valueOf(getColorId()), Toast.LENGTH_LONG).show();
 	}
 
@@ -129,15 +130,11 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		//get date
 		Long date = getDate();
 		//get color ID
-		colorId = getColorId(); //currently returning 0
-		
+		colorId = getColorId(findViewById(R.id.colorBack)); //currently returning 0
 		//get priority
 		int priority = 1; //test values
 		
-//		Toast.makeText(this, title, Toast.LENGTH_LONG).show();
-//		Toast.makeText(this, content, Toast.LENGTH_LONG).show();
-//		Toast.makeText(this, String.valueOf(date), Toast.LENGTH_LONG).show();
-//		Toast.makeText(this, String.valueOf(colorId), Toast.LENGTH_LONG).show();
+		Toast.makeText(this, colorId, Toast.LENGTH_LONG).show();
 //		Toast.makeText(this, String.valueOf(priority), Toast.LENGTH_LONG).show();
 		
 		if(!title.equals(""))
@@ -211,41 +208,65 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		return milliseconds;
 	}
 	
-	public String getColorId()
+	public String getColorId(View v)
 	{
-		colors = new int[25];
-		colors[1] = R.color.gCal1;
-		colors[2] = R.color.gCal2;
-		colors[3] = R.color.gCal3;
-		colors[4] = R.color.gCal4;
-		colors[5] = R.color.gCal5;
-		colors[6] = R.color.gCal6;
-		colors[7] = R.color.gCal7;
-		colors[8] = R.color.gCal8;
-		colors[9] = R.color.gCal9;
-		colors[10] = R.color.gCal10;
-		colors[11] = R.color.gCal11;
-		colors[12] = R.color.gCal12;
-		colors[13] = R.color.gCal13;
-		colors[14] = R.color.gCal14;
-		colors[15] = R.color.gCal15;
-		colors[16] = R.color.gCal16;
-		colors[17] = R.color.gCal17;
-		colors[18] = R.color.gCal18;
-		colors[19] = R.color.gCal19;
-		colors[20] = R.color.gCal20;
-		colors[21] = R.color.gCal21;
-		colors[22] = R.color.gCal22;
-		colors[23] = R.color.gCal23;
-		colors[24] = R.color.gCal24;
-		for(int i = 1; i < 25; i ++)
+		//if(findViewById(R.id.colorBack).getBackground().equals(findViewById(R.id.Button01).getBackground()))
+		//if(v.getBackground().equals(findViewById(R.id.Button01).getBackground()))
+		//if(v.getBackground().equals(findViewById(R.id.Button01)))
+//		if(findViewById(R.id.colorBack).equals(findViewById(R.id.Button01)))
+		if(v.getBackground().equals(getResources().getColor(R.color.gCal1)))
 		{
-			//if(color.getColor() == findViewById(R.id.colorBack).getBackground(color[i]))
-			if(color == getResources().getDrawable(colors[i]))
-			{
-				return String.valueOf(i);
-			}	
+			return "1";
 		}
-		return "15";
+//		else
+//		{
+			return "15";
+//		}
+//		Button button1 = (Button)findViewById(R.id.Button01);
+//		Button button2 = (Button)findViewById(R.id.Button02);
+//		Button button3 = (Button)findViewById(R.id.Button03);
+//		Button button4 = (Button)findViewById(R.id.Button04);
+//		if(button1.isEnabled())
+//		{
+//			return "1";
+//		}
+//		else
+//		{
+//			return "15";
+//		}
+//		colors = new int[25];
+//		colors[1] = R.color.gCal1;
+//		colors[2] = R.color.gCal2;
+//		colors[3] = R.color.gCal3;
+//		colors[4] = R.color.gCal4;
+//		colors[5] = R.color.gCal5;
+//		colors[6] = R.color.gCal6;
+//		colors[7] = R.color.gCal7;
+//		colors[8] = R.color.gCal8;
+//		colors[9] = R.color.gCal9;
+//		colors[10] = R.color.gCal10;
+//		colors[11] = R.color.gCal11;
+//		colors[12] = R.color.gCal12;
+//		colors[13] = R.color.gCal13;
+//		colors[14] = R.color.gCal14;
+//		colors[15] = R.color.gCal15;
+//		colors[16] = R.color.gCal16;
+//		colors[17] = R.color.gCal17;
+//		colors[18] = R.color.gCal18;
+//		colors[19] = R.color.gCal19;
+//		colors[20] = R.color.gCal20;
+//		colors[21] = R.color.gCal21;
+//		colors[22] = R.color.gCal22;
+//		colors[23] = R.color.gCal23;
+//		colors[24] = R.color.gCal24;
+//		for(int i = 1; i < 25; i ++)
+//		{
+//			//if(color.getColor() == findViewById(R.id.colorBack).getBackground(color[i]))
+//			if(color == getResources().getDrawable(colors[i]))
+//			{
+//				return String.valueOf(i);
+//			}	
+//		}
+//		return "15";
 	}
 }
