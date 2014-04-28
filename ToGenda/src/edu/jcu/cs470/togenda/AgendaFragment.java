@@ -125,6 +125,7 @@ public class AgendaFragment extends Fragment{
 		//GET TASKS HERE
 
 		db.open();
+		//db.insertTask("finish project", "Seriously", 0, "1", 0);
 		Cursor TaskCursor = db.getAllTasks();
 
 		if (TaskCursor != null)
@@ -134,7 +135,7 @@ public class AgendaFragment extends Fragment{
 		int count = 0;
 		while(makeCards)
 		{
-			if(count <= TaskCursor.getCount())
+			if(count > TaskCursor.getCount())
 			{
 				makeCards = false;
 			}
@@ -142,6 +143,7 @@ public class AgendaFragment extends Fragment{
 			{
 				cardList.add(new TaskCard(TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getString(4),String.valueOf(TaskCursor.getInt(5)),false));
 			}
+			count++;
 		}
 
 		db.close();
