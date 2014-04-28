@@ -145,6 +145,8 @@ public class AgendaFragment extends Fragment{
 		//db.insertTask("finish project", "Seriously", 0, "1", 0);
 		Cursor TaskCursor = db.getAllTasks();
 
+		try{
+		
 		if (TaskCursor != null)
 		{
 			makeCards = true;
@@ -162,7 +164,10 @@ public class AgendaFragment extends Fragment{
 				TaskCursor.moveToNext();
 			}
 		}
-
+		}
+		catch(Exception E)
+		{
+		}
 		db.close();
 
 
