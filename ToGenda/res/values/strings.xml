@@ -15,7 +15,7 @@
     <string name="title_activity_task_creator">New Task</string>
     <string name="getColor">getColor</string>
     <string name="viewCal">View Day Schedule</string>
-    <string name="widgetTitle">ToGenda Widget</string>
+    <string name="widgetTitle">A ToGenda Widget</string>
     <string name="modify">Change Event</string>
 
     <string-array name="navItemList">
