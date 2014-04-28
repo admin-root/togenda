@@ -7,6 +7,8 @@ import com.fima.cardsui.views.CardUI;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -89,7 +91,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 	//	}
 
 	@SuppressLint("SimpleDateFormat")
-	public TaskCard(final int taskID, String titlePlay, String descText, final long due, String color, String priority, final Context c) {
+	public TaskCard(final int taskID, String titlePlay, String descText, final long due, String color, String priority,  final Context c, final FragmentManager fm) {
 		this.title = titlePlay;
 		this.description = descText;
 		@SuppressWarnings("unused")
@@ -126,6 +128,11 @@ public class TaskCard extends CardTemplate implements Comparable{
 						db.open();
 						db.deleteTask(taskID);
 						db.close();
+						
+						FragmentTransaction tr = fm.beginTransaction();
+					    tr.replace(R.id.content_frame, new AgendaFragment());
+					    tr.commit();
+						
 					}
 				});
 				alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Edit", new DialogInterface.OnClickListener() {

@@ -23,6 +23,7 @@ import android.content.BroadcastReceiver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor; 
 import android.graphics.drawable.Drawable;
 import android.provider.CalendarContract;
@@ -77,7 +78,6 @@ public class AgendaFragment extends Fragment{
 		Time t = new Time();
 		t.setToNow();
 		db = new DBAdapter(getActivity());
-		BroadcastReceiver receiver;
 
 		//Getting URI for calendar
 		Uri.Builder eventsUriBuilder = CalendarContract.Instances.CONTENT_URI.buildUpon();
@@ -127,17 +127,6 @@ public class AgendaFragment extends Fragment{
 		//cardList.add(new TaskCard("Example Task", "Example Description", 0000000000,"5","0",true));
 		//		cardList.add(new TaskCard(taskCreator.getTitle(),taskCreator.getContent(),taskCreator.getDate(),
 		//			taskCreator.getColorId(), "1", true));
-
-		receiver = new BroadcastReceiver()
-		{
-			@Override
-			public void onReceive(Context context, Intent intent) {
-
-				CardView.refresh();
-
-			}
-
-		};
 		
 		//GET TASKS HERE
 
@@ -154,7 +143,7 @@ public class AgendaFragment extends Fragment{
 		while(makeCards)
 		{
 				cardList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
-						TaskCursor.getString(4),String.valueOf(TaskCursor.getInt(5)), getActivity()));
+						TaskCursor.getString(4),String.valueOf(TaskCursor.getInt(5)), getActivity(), getFragmentManager()));
 			if(TaskCursor.isLast()) 
 			{
 				makeCards = false;
