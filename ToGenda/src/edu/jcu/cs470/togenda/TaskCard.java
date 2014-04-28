@@ -126,7 +126,6 @@ public class TaskCard extends CardTemplate implements Comparable{
 						db.open();
 						db.deleteTask(taskID);
 						db.close();
-						//AgendaFragment.();
 						
 					}
 				});
