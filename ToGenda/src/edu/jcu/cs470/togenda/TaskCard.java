@@ -24,8 +24,8 @@ public class TaskCard extends CardTemplate implements Comparable{
 	boolean last = false;
 
 	int[] colors;
-//	private OnCardSwiped onCardSwipedListener;
-//	private String eventId = "0";
+	//	private OnCardSwiped onCardSwipedListener;
+	//	private String eventId = "0";
 
 	public TaskCard(String thisTitle){
 		title = thisTitle;
@@ -39,51 +39,51 @@ public class TaskCard extends CardTemplate implements Comparable{
 	@Override
 	protected void applyTo(View convertView) {
 		((TextView) convertView.findViewById(R.id.EventLabel)).setText(title);
-		//((TextView) convertView.findViewById(R.id.description)).setText(description);
+		((TextView) convertView.findViewById(R.id.description)).setText(description);
 		//((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);
 
-//		if (color!=null){
-//
-//			if (Integer.parseInt(color) < 25 && Integer.parseInt(color) > 0) //Later: compensate for custom colors
-//			{
-//				//Chooses color based on google defualts.
-//				colors = new int[25];
-//				colors[1] = R.color.gCal1;
-//				colors[2] = R.color.gCal2;
-//				colors[3] = R.color.gCal3;
-//				colors[4] = R.color.gCal4;
-//				colors[5] = R.color.gCal5;
-//				colors[6] = R.color.gCal6;
-//				colors[7] = R.color.gCal7;
-//				colors[8] = R.color.gCal8;
-//				colors[9] = R.color.gCal9;
-//				colors[10] = R.color.gCal10;
-//				colors[11] = R.color.gCal11;
-//				colors[12] = R.color.gCal12;
-//				colors[13] = R.color.gCal13;
-//				colors[14] = R.color.gCal14;
-//				colors[15] = R.color.gCal15;
-//				colors[16] = R.color.gCal16;
-//				colors[17] = R.color.gCal17;
-//				colors[18] = R.color.gCal18;
-//				colors[19] = R.color.gCal19;
-//				colors[20] = R.color.gCal20;
-//				colors[21] = R.color.gCal21;
-//				colors[22] = R.color.gCal22;
-//				colors[23] = R.color.gCal23;
-//				colors[24] = R.color.gCal24;
-//				((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[Integer.parseInt(color)]);
-//			}
-//		}
+		//		if (color!=null){
+		//
+		//			if (Integer.parseInt(color) < 25 && Integer.parseInt(color) > 0) //Later: compensate for custom colors
+		//			{
+		//				//Chooses color based on google defualts.
+		//				colors = new int[25];
+		//				colors[1] = R.color.gCal1;
+		//				colors[2] = R.color.gCal2;
+		//				colors[3] = R.color.gCal3;
+		//				colors[4] = R.color.gCal4;
+		//				colors[5] = R.color.gCal5;
+		//				colors[6] = R.color.gCal6;
+		//				colors[7] = R.color.gCal7;
+		//				colors[8] = R.color.gCal8;
+		//				colors[9] = R.color.gCal9;
+		//				colors[10] = R.color.gCal10;
+		//				colors[11] = R.color.gCal11;
+		//				colors[12] = R.color.gCal12;
+		//				colors[13] = R.color.gCal13;
+		//				colors[14] = R.color.gCal14;
+		//				colors[15] = R.color.gCal15;
+		//				colors[16] = R.color.gCal16;
+		//				colors[17] = R.color.gCal17;
+		//				colors[18] = R.color.gCal18;
+		//				colors[19] = R.color.gCal19;
+		//				colors[20] = R.color.gCal20;
+		//				colors[21] = R.color.gCal21;
+		//				colors[22] = R.color.gCal22;
+		//				colors[23] = R.color.gCal23;
+		//				colors[24] = R.color.gCal24;
+		//				((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[Integer.parseInt(color)]);
+		//			}
+		//		}
 	}
 
-//	@Override
-//	public void setOnCardSwipedListener(OnCardSwiped onEpisodeSwipedListener) {
-//		this.onCardSwipedListener = onEpisodeSwipedListener;
-//	}
+	//	@Override
+	//	public void setOnCardSwipedListener(OnCardSwiped onEpisodeSwipedListener) {
+	//		this.onCardSwipedListener = onEpisodeSwipedListener;
+	//	}
 
 	@SuppressLint("SimpleDateFormat")
-	public TaskCard(String titlePlay, String descText, long due, String color, String priority, boolean last) {
+	public TaskCard(String titlePlay, String descText, final long due, String color, String priority, boolean last) {
 		this.title = titlePlay;
 		this.description = descText;
 		@SuppressWarnings("unused")
@@ -92,25 +92,27 @@ public class TaskCard extends CardTemplate implements Comparable{
 		this.endTime = due;
 		this.endLabel = _12HourSDF.format(new Time(due));
 		this.color = color;
-		
+
 		this.hasOverflow = false;
 		this.isClickable = true;
-//		this.eventId = eventId;
+		//		this.eventId = eventId;
 		this.last = last;
 		this.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				AlertDialog alertDialog = new AlertDialog.Builder(v.getContext()).create();
 				alertDialog.setTitle(title);
 				LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				View dialogContent = inflater.inflate(R.layout.task_dialog, null);
-				
+
 				TextView tdDesc = (TextView) dialogContent.findViewById(R.id.td_desc);
 				tdDesc.setText(description);
-				TextView tdDue = (TextView) dialogContent.findViewById(R.id.td_due);
-				tdDesc.setText(String.valueOf(endTime));
-				
+				if (due != 0)
+				{
+					TextView tdDue = (TextView) dialogContent.findViewById(R.id.td_due);
+					tdDue.setText(String.valueOf(due));
+				}
 				alertDialog.setView(dialogContent);
 				//interface
 				alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Complete", new DialogInterface.OnClickListener() {
@@ -136,12 +138,12 @@ public class TaskCard extends CardTemplate implements Comparable{
 	{
 		this.description = desc;
 	}
-	
+
 	public boolean isLast()
 	{
 		return last;
 	}
-	
+
 	public long getStart()
 	{
 		return this.startTime;
@@ -176,7 +178,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 		}
 		return 0;
 	}
-	
+
 	public TaskCard()
 	{
 		super();
