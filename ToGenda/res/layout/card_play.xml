@@ -21,7 +21,7 @@
             android:baselineAlignBottom="true"
             android:contentDescription="@string/color_stripe"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_bell_on" />
+            android:src="@drawable/ic_bell_off" />
 
         <LinearLayout
             android:id="@+id/contentLayout"

@@ -1,14 +1,21 @@
 package edu.jcu.cs470.togenda;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.widget.RemoteViews;
 
+
 public class WidgetProvider extends AppWidgetProvider{
+	
+	static DBAdapter db;
 
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
@@ -22,9 +29,50 @@ public class WidgetProvider extends AppWidgetProvider{
 
 			RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
 					R.layout.widget_layout);
-			// Set the text
-			//remoteViews.setTextViewText(R.id.WidgetLabel, String.valueOf(number));
+			
+			db = getDatabaseHelper(context);
+			
+			db.open();
+			Cursor TaskCursor = db.getAllTasks();
 
+			ArrayList<CardTemplate> TaskList = new ArrayList<CardTemplate>();
+
+			Boolean makeCards = false;
+			try{
+
+				if (TaskCursor != null)
+				{
+					makeCards = true;
+				}
+				while(makeCards)
+				{
+					TaskList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
+							TaskCursor.getString(4),TaskCursor.getInt(5)));
+					if(TaskCursor.isLast()) 
+					{
+						makeCards = false;
+					}
+					else
+					{
+						TaskCursor.moveToNext();
+					}
+				}
+			}
+			catch(Exception E)
+			{
+			}
+			db.close();
+
+
+			//SORT TASKS + EVENTS TOGETHER HERE
+			Collections.sort(TaskList);
+			
+			// Set the text
+			
+			remoteViews.setTextViewText(R.id.WidgetLabel, TaskList.get(0).getTitle());
+			remoteViews.setTextViewText(R.id.description, TaskList.get(0).getDesc());
+			
+			
 			// Register an onClickListener
 			Intent intent = new Intent(context, WidgetProvider.class);
 
@@ -36,6 +84,15 @@ public class WidgetProvider extends AppWidgetProvider{
 			remoteViews.setOnClickPendingIntent(R.id.WidgetLabel, pendingIntent);
 			appWidgetManager.updateAppWidget(widgetId, remoteViews);
 		}
+	}
+	
+	private static DBAdapter getDatabaseHelper(Context context) {
+
+	    if (db == null) {
+	        db = new DBAdapter(context);
+	        db.open();
+	    }
+	    return db;
 	}
 
 }

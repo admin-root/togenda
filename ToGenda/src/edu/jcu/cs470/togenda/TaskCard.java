@@ -116,7 +116,14 @@ public class TaskCard extends CardTemplate implements Comparable{
 				View dialogContent = inflater.inflate(R.layout.task_dialog, null);
 
 				TextView tdDesc = (TextView) dialogContent.findViewById(R.id.td_desc);
-				tdDesc.setText(description);
+				if (description.equals(""))
+				{
+					tdDesc.setText("no description");
+				}
+				else
+				{
+					tdDesc.setText(description);
+				}
 				if (due != 0)
 				{
 					TextView tdDue = (TextView) dialogContent.findViewById(R.id.td_due);
@@ -129,11 +136,11 @@ public class TaskCard extends CardTemplate implements Comparable{
 						db.open();
 						db.deleteTask(taskID);
 						db.close();
-						
+
 						FragmentTransaction tr = fm.beginTransaction();
-					    tr.replace(R.id.content_frame, new AgendaFragment());
-					    tr.commit();
-						
+						tr.replace(R.id.content_frame, new AgendaFragment());
+						tr.commit();
+
 					}
 				});
 				alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Edit", new DialogInterface.OnClickListener() {
@@ -152,6 +159,20 @@ public class TaskCard extends CardTemplate implements Comparable{
 				alertDialog.show();
 			}
 		});
+	}
+
+	public TaskCard(final int taskID, String titlePlay, String descText, final long due, String color, int priority) {
+		this.title = titlePlay;
+		this.description = descText;
+		@SuppressWarnings("unused")
+		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
+		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
+		this.endTime = due;
+		this.endLabel = _12HourSDF.format(new Time(due));
+		this.color = color;
+		this.Priority = priority;
+		this.hasOverflow = false;
+		this.isClickable = true;
 	}
 
 	public void setDescription(String desc)
@@ -186,5 +207,14 @@ public class TaskCard extends CardTemplate implements Comparable{
 	public TaskCard()
 	{
 		super();
+	}
+	public String getTitle()
+	{
+		return this.title;
+	}
+	
+	public String getDesc()
+	{
+		return this.description;
 	}
 }
