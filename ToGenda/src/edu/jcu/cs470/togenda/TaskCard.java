@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView.FindListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 @SuppressWarnings("rawtypes")
@@ -28,6 +29,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 	Long endTime;
 	String startLabel;
 	String endLabel;
+	int colorId;
 	boolean last = false;
 	DBAdapter db;
 	int Priority;
@@ -49,41 +51,34 @@ public class TaskCard extends CardTemplate implements Comparable{
 	protected void applyTo(View convertView) {
 		((TextView) convertView.findViewById(R.id.EventLabel)).setText(title);
 		((TextView) convertView.findViewById(R.id.description)).setText(description);
-		//((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);
-
-		//		if (color!=null){
-		//
-		//			if (Integer.parseInt(color) < 25 && Integer.parseInt(color) > 0) //Later: compensate for custom colors
-		//			{
-		//				//Chooses color based on google defualts.
-		//				colors = new int[25];
-		//				colors[1] = R.color.gCal1;
-		//				colors[2] = R.color.gCal2;
-		//				colors[3] = R.color.gCal3;
-		//				colors[4] = R.color.gCal4;
-		//				colors[5] = R.color.gCal5;
-		//				colors[6] = R.color.gCal6;
-		//				colors[7] = R.color.gCal7;
-		//				colors[8] = R.color.gCal8;
-		//				colors[9] = R.color.gCal9;
-		//				colors[10] = R.color.gCal10;
-		//				colors[11] = R.color.gCal11;
-		//				colors[12] = R.color.gCal12;
-		//				colors[13] = R.color.gCal13;
-		//				colors[14] = R.color.gCal14;
-		//				colors[15] = R.color.gCal15;
-		//				colors[16] = R.color.gCal16;
-		//				colors[17] = R.color.gCal17;
-		//				colors[18] = R.color.gCal18;
-		//				colors[19] = R.color.gCal19;
-		//				colors[20] = R.color.gCal20;
-		//				colors[21] = R.color.gCal21;
-		//				colors[22] = R.color.gCal22;
-		//				colors[23] = R.color.gCal23;
-		//				colors[24] = R.color.gCal24;
-		//				((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[Integer.parseInt(color)]);
-		//			}
-		//		}
+		//((ImageView) convertView.findViewById(R.id.stripe)).setBackground(colorId);
+		//Chooses color based on google defualts.
+		colors = new int[25];
+		colors[1] = R.color.gCal1;
+		colors[2] = R.color.gCal2;
+		colors[3] = R.color.gCal3;
+		colors[4] = R.color.gCal4;
+		colors[5] = R.color.gCal5;
+		colors[6] = R.color.gCal6;
+		colors[7] = R.color.gCal7;
+		colors[8] = R.color.gCal8;
+		colors[9] = R.color.gCal9;
+		colors[10] = R.color.gCal10;
+		colors[11] = R.color.gCal11;
+		colors[12] = R.color.gCal12;
+		colors[13] = R.color.gCal13;
+		colors[14] = R.color.gCal14;
+		colors[15] = R.color.gCal15;
+		colors[16] = R.color.gCal16;
+		colors[17] = R.color.gCal17;
+		colors[18] = R.color.gCal18;
+		colors[19] = R.color.gCal19;
+		colors[20] = R.color.gCal20;
+		colors[21] = R.color.gCal21;
+		colors[22] = R.color.gCal22;
+		colors[23] = R.color.gCal23;
+		colors[24] = R.color.gCal24;
+		((ImageView) convertView.findViewById(R.id.stripe)).setBackgroundResource(colors[colorId]);
 	}
 
 	//	@Override
@@ -100,11 +95,11 @@ public class TaskCard extends CardTemplate implements Comparable{
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
 		this.endTime = due;
 		this.endLabel = _12HourSDF.format(new Time(due));
-		this.color = color;
+		this.colorId = Integer.parseInt(color);
 		this.Priority = priority;
 		this.hasOverflow = false;
 		this.isClickable = true;
-		//		this.eventId = eventId;
+		//this.eventId = eventId;
 		db = new DBAdapter(c);
 		this.setOnClickListener(new OnClickListener() {
 
