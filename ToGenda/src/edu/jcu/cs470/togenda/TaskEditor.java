@@ -16,6 +16,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
 
@@ -34,6 +36,7 @@ public class TaskEditor extends FragmentActivity implements OnDateSetListener{
 	private Calendar calendar;
 	long milliseconds;
 	DBAdapter db;
+	int taskID;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,38 +46,58 @@ public class TaskEditor extends FragmentActivity implements OnDateSetListener{
 		getActionBar().setTitle(R.string.modify);
 		
 		Intent i= getIntent();
-		Long ldate = i.getLongExtra("TaskID", 0);
+		taskID = i.getIntExtra("TaskID", 0);
 
-		String dateString = new SimpleDateFormat("MM/dd/yyyy").format(new Date(ldate));
+		//String dateString = new SimpleDateFormat("MM/dd/yyyy").format(new Date(ldate));
 		
 		calendar = Calendar.getInstance();
 		datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
 		
+		db = new DBAdapter(this);
+		db.open();
+		Cursor TaskCursor = db.getTask(taskID);
+		
+		TextView TaskName = (TextView) findViewById(R.id.taskTitle);
+		TaskName.setText(TaskCursor.getString(1));
+		
+		TextView TaskDesc = (TextView) findViewById(R.id.taskInfo);
+		TaskDesc.setText(TaskCursor.getString(2));
+		
+		Long dueDate = TaskCursor.getLong(3);
+		if (dueDate != 0){
+			CheckBox dateCheck = (CheckBox) findViewById(R.id.datebox);
+			dateCheck.setChecked(true);
+		}
+		
+		
+		
+		db.close();
+		
 		//copy the database from the assets folder to where the app can find it
-				String dir = "/data/data/"+getPackageName()+"/databases/";
-				String path = dir+"tasks.db";
-				//should not need to create the databases directory, will for testing purposes
-				File f = new File(dir);
-				if(!f.exists())
-				{
-					File directory = new File(dir);
-					directory.mkdirs();
-					try
-					{
-						//copy from input-stream to output-stream
-						copyDataBase(getBaseContext().getAssets().open("tasks.db"), new FileOutputStream(path));
-					}
-					catch(FileNotFoundException ex)
-					{
-						ex.printStackTrace();
-					}
-					catch(IOException ex)
-					{
-						ex.printStackTrace();
-					}
-				}
-				//exercise the database
-				db = new DBAdapter(this);
+//				String dir = "/data/data/"+getPackageName()+"/databases/";
+//				String path = dir+"tasks.db";
+//				//should not need to create the databases directory, will for testing purposes
+//				File f = new File(dir);
+//				if(!f.exists())
+//				{
+//					File directory = new File(dir);
+//					directory.mkdirs();
+//					try
+//					{
+//						//copy from input-stream to output-stream
+//						copyDataBase(getBaseContext().getAssets().open("tasks.db"), new FileOutputStream(path));
+//					}
+//					catch(FileNotFoundException ex)
+//					{
+//						ex.printStackTrace();
+//					}
+//					catch(IOException ex)
+//					{
+//						ex.printStackTrace();
+//					}
+//				}
+//				//exercise the database
+//				db = new DBAdapter(this);
 	}
 	
 	private void copyDataBase(InputStream in, FileOutputStream out) throws IOException

@@ -21,6 +21,7 @@ import com.squareup.timessquare.CalendarPickerView;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
@@ -204,7 +205,7 @@ public class MainActivity extends FragmentActivity {
 		switch(item.getItemId()) {
 		case R.id.new_event:
 			Intent intent = new Intent(this, TaskCreator.class);
-			startActivity(intent);
+			startActivityForResult(intent, 1);
 
 			return true;
 		default:
@@ -288,6 +289,21 @@ public class MainActivity extends FragmentActivity {
 		Intent intent = new Intent(this, DayAgenda.class);
 		intent.putExtra("longdate",ldate);
 		startActivity(intent);
+	}
+
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		FragmentTransaction tr = getFragmentManager().beginTransaction();
+		if (gPosition == 0)
+		{
+			tr.replace(R.id.content_frame, new AgendaFragment());
+		}
+		else
+		{
+			tr.replace(R.id.content_frame, new ToDoFragment());
+		}
+		tr.commit();
+
 	}
 }
 
