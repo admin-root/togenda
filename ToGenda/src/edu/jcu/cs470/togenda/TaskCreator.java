@@ -26,7 +26,7 @@ import android.support.v4.app.FragmentActivity;
 
 public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	private AlertDialog alertDialog;
-	private ColorDrawable color;
+	private ColorDrawable color, comparing;
 	int[] colors;
 	private DatePickerDialog datePickerDialog;
 	private Calendar calendar;
@@ -34,6 +34,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	DBAdapter db;
 	String title, content, colorId;
 	ArrayList<CardTemplate> cardList = new ArrayList<CardTemplate>();
+	int colorNumber = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -109,12 +110,28 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	@SuppressWarnings("deprecation")
 	public void colorButton(View v)
 	{
-		color = (ColorDrawable) v.getBackground();
+		color = (ColorDrawable) v.getBackground();	
 		findViewById(R.id.colorBack).setBackgroundDrawable(color);
+		
+//		Toast.makeText(this, String.valueOf(findViewById(R.color.gCal1)), Toast.LENGTH_LONG).show();
+//		Toast.makeText(this, String.valueOf(findViewById(R.id.colorBack).getBackground()), Toast.LENGTH_LONG).show();
+		
 		//Can't use newer method without increasing our min version
 		//this method will still be good for a very long time.
 		alertDialog.dismiss();
-//		getColorId(findViewById(R.id.colorBack));
+		if(color.equals(findViewById(R.color.gCal2))/*findViewById(R.id.colorBack).getBackground().equals(color)*/)
+		{
+			Toast.makeText(this, "you are here", Toast.LENGTH_LONG).show();
+		}
+		else
+		{
+			Toast.makeText(this, "canada", Toast.LENGTH_LONG).show();
+			//Toast.makeText(this, String.valueOf(color.getColor()), Toast.LENGTH_LONG).show();
+		}
+//		if(color.getColor())
+//		{
+//			colorNumber = 1;
+//		}
 //		Toast.makeText(this, String.valueOf(getColorId()), Toast.LENGTH_LONG).show();
 	}
 
@@ -142,7 +159,6 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			db.open();
 			db.insertTask(title, content, date, colorId, priority);
 			db.close();
-			//cardList.add(new TaskCard(id, title, content, date, colorId,"0",true));
 			finish();
 		}
 		else
@@ -208,13 +224,22 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		return milliseconds;
 	}
 	
+//	public int getColor()
+//	{
+//		if(color.equals(findViewById(R.color.gCal1)))
+//		{
+//			colorNumber = 1;
+//		}
+//		return 0;
+//	}
+	
 	public String getColorId(View v)
 	{
 		//if(findViewById(R.id.colorBack).getBackground().equals(findViewById(R.id.Button01).getBackground()))
 		//if(v.getBackground().equals(findViewById(R.id.Button01).getBackground()))
 		//if(v.getBackground().equals(findViewById(R.id.Button01)))
 //		if(findViewById(R.id.colorBack).equals(findViewById(R.id.Button01)))
-		if(v.getBackground().equals(getResources().getColor(R.color.gCal1)))
+		if(colorNumber == 1)
 		{
 			return "1";
 		}
