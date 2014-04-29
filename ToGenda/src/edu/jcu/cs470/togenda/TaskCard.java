@@ -30,6 +30,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 	String endLabel;
 	boolean last = false;
 	DBAdapter db;
+	int Priority;
 
 	int[] colors;
 	//	private OnCardSwiped onCardSwipedListener;
@@ -91,7 +92,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 	//	}
 
 	@SuppressLint("SimpleDateFormat")
-	public TaskCard(final int taskID, String titlePlay, String descText, final long due, String color, String priority,  final Context c, final FragmentManager fm) {
+	public TaskCard(final int taskID, String titlePlay, String descText, final long due, String color, int priority,  final Context c, final FragmentManager fm) {
 		this.title = titlePlay;
 		this.description = descText;
 		@SuppressWarnings("unused")
@@ -100,7 +101,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 		this.endTime = due;
 		this.endLabel = _12HourSDF.format(new Time(due));
 		this.color = color;
-
+		this.Priority = priority;
 		this.hasOverflow = false;
 		this.isClickable = true;
 		//		this.eventId = eventId;
@@ -163,37 +164,21 @@ public class TaskCard extends CardTemplate implements Comparable{
 		return last;
 	}
 
-	public long getStart()
+	public long getPriority()
 	{
-		return this.startTime;
-	}
-
-	public long getEnd()
-	{
-		return this.endTime;
+		return this.Priority;
 	}
 
 	@Override
 	public int compareTo(Object another)  //for sorting
 	{	
-		if (this.getStart() < ((TaskCard) another).getStart())
+		if (this.getPriority() < ((TaskCard) another).getPriority())
 		{
 			return 1;
 		}
-		else if (this.getStart() > ((TaskCard) another).getStart())
+		else if (this.getPriority() > ((TaskCard) another).getPriority())
 		{
 			return -1;
-		}
-		else if (this.getStart() == ((TaskCard) another).getStart())
-		{
-			if (this.getEnd() < ((TaskCard) another).getEnd())
-			{
-				return 1;
-			}
-			else if (this.getEnd() < ((TaskCard) another).getEnd())
-			{
-				return -1;
-			}
 		}
 		return 0;
 	}

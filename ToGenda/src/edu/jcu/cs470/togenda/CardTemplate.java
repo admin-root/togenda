@@ -55,12 +55,12 @@ public abstract class CardTemplate extends RecyclableCard implements Comparable{
 		return 0;
 	}
 
-	private long getEnd() {
+	long getEnd() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	private long getStart() {
+	long getStart() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

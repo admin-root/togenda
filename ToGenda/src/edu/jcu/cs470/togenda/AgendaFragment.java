@@ -45,7 +45,7 @@ public class AgendaFragment extends Fragment{
 		CalendarContract.Instances.BEGIN, CalendarContract.Instances.END, CalendarContract.Instances.END_MINUTE, 
 		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Instances.EVENT_COLOR, 
 		CalendarContract.Events.ALL_DAY};
-	
+
 	public CardUI CardView;
 
 	DBAdapter db;
@@ -127,32 +127,34 @@ public class AgendaFragment extends Fragment{
 		//cardList.add(new TaskCard("Example Task", "Example Description", 0000000000,"5","0",true));
 		//		cardList.add(new TaskCard(taskCreator.getTitle(),taskCreator.getContent(),taskCreator.getDate(),
 		//			taskCreator.getColorId(), "1", true));
-		
+
 		//GET TASKS HERE
 
 		db.open();
 		//db.insertTask("finish project", "Seriously", 0, "1", 0);
 		Cursor TaskCursor = db.getAllTasks();
 
+		ArrayList<CardTemplate> TaskList = new ArrayList<CardTemplate>();
+
 		try{
-		
-		if (TaskCursor != null)
-		{
-			makeCards = true;
-		}
-		while(makeCards)
-		{
-				cardList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
-						TaskCursor.getString(4),String.valueOf(TaskCursor.getInt(5)), getActivity(), getFragmentManager()));
-			if(TaskCursor.isLast()) 
+
+			if (TaskCursor != null)
 			{
-				makeCards = false;
+				makeCards = true;
 			}
-			else
+			while(makeCards)
 			{
-				TaskCursor.moveToNext();
+				TaskList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
+						TaskCursor.getString(4),TaskCursor.getInt(5), getActivity(), getFragmentManager()));
+				if(TaskCursor.isLast()) 
+				{
+					makeCards = false;
+				}
+				else
+				{
+					TaskCursor.moveToNext();
+				}
 			}
-		}
 		}
 		catch(Exception E)
 		{
@@ -161,10 +163,17 @@ public class AgendaFragment extends Fragment{
 
 
 		//SORT TASKS + EVENTS TOGETHER HERE
+		Collections.sort(TaskList);
+
+		//ArrayList<CardTemplate> JoinedList = new ArrayList<CardTemplate>();
 
 		CardView.addStack(stack);
 
-		if (!cardList.isEmpty())
+		int eventLength = cardList.size();
+		int taskLength = TaskList.size();
+		Long blockStart = t.toMillis(true);
+		Long blockLength = (long) 1800000;
+		while (eventLength > 0)
 		{
 			//Stacked cards are kind of awkward to use, and when placed in excession they cause lag.
 			//Ordinary events will no longer be stacked. Instead, only full-day events will be stacked with each other when
@@ -173,14 +182,33 @@ public class AgendaFragment extends Fragment{
 			//Will use a different card format for full day events, as well as tasks so that different types of entries are
 			//easily identified.
 
-			for (int cards = cardList.size(); cards >= 1; cards--)
+			if(taskLength > 0)
 			{
-				CardView.addCard(cardList.get(cards-1));
+				if (cardList.get(eventLength-1).getStart()-blockStart >=blockLength)
+				{
+					CardView.addCard(TaskList.get(taskLength-1));
+					blockStart += 2*blockLength;
+					taskLength-=1;
+				}
+				else
+				{
+					CardView.addCard(cardList.get(eventLength-1));
+					blockStart = cardList.get(eventLength-1).getEnd();
+					eventLength-=1;
+				}
+			}
+			else
+			{
+				CardView.addCard(cardList.get(eventLength-1));
+				blockStart = cardList.get(eventLength-1).getEnd();
+				eventLength-=1;
 			}
 		}
-
-		//CardView.addCard(new EventCard("No events"));
-
+		while(taskLength>0)
+		{
+			CardView.addCard(TaskList.get(taskLength-1));
+			taskLength-=1;
+		}
 
 		if (cardList.isEmpty())
 		{
