@@ -9,8 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -26,15 +28,14 @@ import android.support.v4.app.FragmentActivity;
 
 public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	private AlertDialog alertDialog;
-	private ColorDrawable color, comparing;
+	private ColorDrawable color;
 	int[] colors;
 	private DatePickerDialog datePickerDialog;
 	private Calendar calendar;
 	long milliseconds;
 	DBAdapter db;
 	String title, content, colorId;
-	ArrayList<CardTemplate> cardList = new ArrayList<CardTemplate>();
-	int colorNumber = 0;
+	int colorNumber;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,34 +47,34 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
 		
 		//copy the database from the assets folder to where the app can find it
-				String dir = "/data/data/"+getPackageName()+"/databases/";
-				String path = dir+"tasks.db";
-				//THERE'S A BETTER WAY TO DO THIS
-				//We shoudln't be storing the database on the SDcard.
-				//Too many incompatibility issues with different devices. Especially with Android 4.4
-				// -Saeed
-				//should not need to create the databases directory, will for testing purposes
-				File f = new File(dir);
-				if(!f.exists())
-				{
-					File directory = new File(dir);
-					directory.mkdirs();
-					try
-					{
-						//copy from input-stream to output-stream
-						copyDataBase(getBaseContext().getAssets().open("tasks.db"), new FileOutputStream(path));
-					}
-					catch(FileNotFoundException ex)
-					{
-						ex.printStackTrace();
-					}
-					catch(IOException ex)
-					{
-						ex.printStackTrace();
-					}
-				}
-				//exercise the database
-				db = new DBAdapter(this);
+		String dir = "/data/data/"+getPackageName()+"/databases/";
+		String path = dir+"tasks.db";
+		//THERE'S A BETTER WAY TO DO THIS
+		//We shoudln't be storing the database on the SDcard.
+		//Too many incompatibility issues with different devices. Especially with Android 4.4
+		// -Saeed
+		//should not need to create the databases directory, will for testing purposes
+		File f = new File(dir);
+		if(!f.exists())
+		{
+			File directory = new File(dir);
+			directory.mkdirs();
+			try
+			{
+				//copy from input-stream to output-stream
+				copyDataBase(getBaseContext().getAssets().open("tasks.db"), new FileOutputStream(path));
+			}
+			catch(FileNotFoundException ex)
+			{
+				ex.printStackTrace();
+			}
+			catch(IOException ex)
+			{
+				ex.printStackTrace();
+			}
+		}
+		//exercise the database
+		db = new DBAdapter(this);
 	}
 	
 	private void copyDataBase(InputStream in, FileOutputStream out) throws IOException
@@ -107,34 +108,248 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		alertDialog.show();
 	}
 
+	//setting colorBack and color ID depending on which color is selecte
 	@SuppressWarnings("deprecation")
-	public void colorButton(View v)
+	public void color1(View v)
 	{
 		color = (ColorDrawable) v.getBackground();	
-		findViewById(R.id.colorBack).setBackgroundDrawable(color);
-		
-//		Toast.makeText(this, String.valueOf(findViewById(R.color.gCal1)), Toast.LENGTH_LONG).show();
-//		Toast.makeText(this, String.valueOf(findViewById(R.id.colorBack).getBackground()), Toast.LENGTH_LONG).show();
-		
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
 		//Can't use newer method without increasing our min version
 		//this method will still be good for a very long time.
+		colorNumber = 1;
 		alertDialog.dismiss();
-		if(color.equals(findViewById(R.color.gCal2))/*findViewById(R.id.colorBack).getBackground().equals(color)*/)
-		{
-			Toast.makeText(this, "you are here", Toast.LENGTH_LONG).show();
-		}
-		else
-		{
-			Toast.makeText(this, "canada", Toast.LENGTH_LONG).show();
-			//Toast.makeText(this, String.valueOf(color.getColor()), Toast.LENGTH_LONG).show();
-		}
-//		if(color.getColor())
-//		{
-//			colorNumber = 1;
-//		}
-//		Toast.makeText(this, String.valueOf(getColorId()), Toast.LENGTH_LONG).show();
 	}
-
+	@SuppressWarnings("deprecation")
+	public void color2(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 2;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color3(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 3;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color4(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 4;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color5(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 5;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color6(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 6;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color7(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 7;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color8(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 8;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color9(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 9;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color10(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 10;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color11(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 11;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color12(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 12;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color13(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 13;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color14(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 14;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color15(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 15;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color16(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 16;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color17(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 17;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color18(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 18;
+		alertDialog.dismiss();
+	}	
+	@SuppressWarnings("deprecation")
+	public void color19(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 19;
+		alertDialog.dismiss();
+	}	
+	@SuppressWarnings("deprecation")
+	public void color20(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 20;
+		alertDialog.dismiss();
+	}	
+	@SuppressWarnings("deprecation")
+	public void color21(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 21;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color22(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 22;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color23(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 23;
+		alertDialog.dismiss();
+	}
+	@SuppressWarnings("deprecation")
+	public void color24(View v)
+	{
+		color = (ColorDrawable) v.getBackground();	
+		findViewById(R.id.colorBack).setBackgroundDrawable(color);		
+		//Can't use newer method without increasing our min version
+		//this method will still be good for a very long time.
+		colorNumber = 24;
+		alertDialog.dismiss();
+	}
+	
 	public void create(View v)
 	{
 		//danny workspace
@@ -147,11 +362,10 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		//get date
 		Long date = getDate();
 		//get color ID
-		colorId = getColorId(findViewById(R.id.colorBack)); //currently returning 0
+		colorId = String.valueOf(colorNumber);//getColorId(); //currently returning 0
 		//get priority
 		int priority = 1; //test values
-		
-		Toast.makeText(this, colorId, Toast.LENGTH_LONG).show();
+
 //		Toast.makeText(this, String.valueOf(priority), Toast.LENGTH_LONG).show();
 		
 		if(!title.equals(""))
@@ -159,6 +373,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			db.open();
 			db.insertTask(title, content, date, colorId, priority);
 			db.close();
+//			Toast.makeText(this, String.valueOf(colorNumber), Toast.LENGTH_LONG).show();
 			finish();
 		}
 		else
@@ -168,7 +383,6 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 				Toast.makeText(this, "Insert a Title", Toast.LENGTH_LONG).show();
 			}
 		}
-		
 	}
 
 	public void cancel(View v)
@@ -186,10 +400,12 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	
 	public void dateCheck(View v)
 	{
-		if (((CheckBox) v).isChecked()) {
+		if (((CheckBox) v).isChecked()) 
+		{
 			findViewById(R.id.dateButton).setEnabled(true);
 		}
-		else{
+		else
+		{
 			findViewById(R.id.dateButton).setEnabled(false);
 		}
 	}
@@ -222,76 +438,5 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	public long getDate()
 	{
 		return milliseconds;
-	}
-	
-//	public int getColor()
-//	{
-//		if(color.equals(findViewById(R.color.gCal1)))
-//		{
-//			colorNumber = 1;
-//		}
-//		return 0;
-//	}
-	
-	public String getColorId(View v)
-	{
-		//if(findViewById(R.id.colorBack).getBackground().equals(findViewById(R.id.Button01).getBackground()))
-		//if(v.getBackground().equals(findViewById(R.id.Button01).getBackground()))
-		//if(v.getBackground().equals(findViewById(R.id.Button01)))
-//		if(findViewById(R.id.colorBack).equals(findViewById(R.id.Button01)))
-		if(colorNumber == 1)
-		{
-			return "1";
-		}
-//		else
-//		{
-			return "15";
-//		}
-//		Button button1 = (Button)findViewById(R.id.Button01);
-//		Button button2 = (Button)findViewById(R.id.Button02);
-//		Button button3 = (Button)findViewById(R.id.Button03);
-//		Button button4 = (Button)findViewById(R.id.Button04);
-//		if(button1.isEnabled())
-//		{
-//			return "1";
-//		}
-//		else
-//		{
-//			return "15";
-//		}
-//		colors = new int[25];
-//		colors[1] = R.color.gCal1;
-//		colors[2] = R.color.gCal2;
-//		colors[3] = R.color.gCal3;
-//		colors[4] = R.color.gCal4;
-//		colors[5] = R.color.gCal5;
-//		colors[6] = R.color.gCal6;
-//		colors[7] = R.color.gCal7;
-//		colors[8] = R.color.gCal8;
-//		colors[9] = R.color.gCal9;
-//		colors[10] = R.color.gCal10;
-//		colors[11] = R.color.gCal11;
-//		colors[12] = R.color.gCal12;
-//		colors[13] = R.color.gCal13;
-//		colors[14] = R.color.gCal14;
-//		colors[15] = R.color.gCal15;
-//		colors[16] = R.color.gCal16;
-//		colors[17] = R.color.gCal17;
-//		colors[18] = R.color.gCal18;
-//		colors[19] = R.color.gCal19;
-//		colors[20] = R.color.gCal20;
-//		colors[21] = R.color.gCal21;
-//		colors[22] = R.color.gCal22;
-//		colors[23] = R.color.gCal23;
-//		colors[24] = R.color.gCal24;
-//		for(int i = 1; i < 25; i ++)
-//		{
-//			//if(color.getColor() == findViewById(R.id.colorBack).getBackground(color[i]))
-//			if(color == getResources().getDrawable(colors[i]))
-//			{
-//				return String.valueOf(i);
-//			}	
-//		}
-//		return "15";
 	}
 }
