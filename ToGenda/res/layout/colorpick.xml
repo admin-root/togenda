@@ -12,16 +12,18 @@
             android:id="@+id/Button01"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:background="@color/gCal1"/>
+            android:background="@color/gCal1"
+            android:onClick="color1" />
 
         <Button
             android:id="@+id/Button02"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal2"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color2" 
             android:layout_weight="1" />
 
         <Button
@@ -29,7 +31,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal3"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color3" 
             android:layout_weight="1" />
 
         <Button
@@ -37,7 +40,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal4"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color4" 
             android:layout_weight="1" />
 
         <Button
@@ -45,7 +49,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal5"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color5" 
             android:layout_weight="1" />
 
         <Button
@@ -53,7 +58,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal6"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color6" 
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -66,7 +72,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal7"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color7" 
             android:layout_weight="1" />
 
         <Button
@@ -74,7 +81,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal8"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color8" 
             android:layout_weight="1" />
 
         <Button
@@ -82,7 +90,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal9"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color9" 
             android:layout_weight="1" />
 
         <Button
@@ -90,7 +99,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal10"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color10" 
             android:layout_weight="1" />
 
         <Button
@@ -98,7 +108,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal11"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color11" 
             android:layout_weight="1" />
 
         <Button
@@ -106,7 +117,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal12"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color12" 
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -121,12 +133,13 @@
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@color/gCal13"
-            android:onClick="colorButton" />
+            android:onClick="color13" />
 
         <Button
             android:id="@+id/Button14"
             android:layout_width="0dp"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color14" 
             android:layout_height="wrap_content"
             android:background="@color/gCal14"
             android:layout_weight="1" />
@@ -136,7 +149,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal15"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color15" 
             android:layout_weight="1" />
 
         <Button
@@ -144,7 +158,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal16"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color16" 
             android:layout_weight="1" />
 
         <Button
@@ -152,7 +167,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal17"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color17" 
             android:layout_weight="1" />
 
         <Button
@@ -160,7 +176,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal18"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color18" 
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -173,7 +190,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal19"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color19" 
             android:layout_weight="1" />
 
         <Button
@@ -181,7 +199,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal20"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color20" 
             android:layout_weight="1" />
 
         <Button
@@ -189,7 +208,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal21"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color21" 
             android:layout_weight="1" />
 
         <Button
@@ -197,7 +217,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal22"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color22" 
             android:layout_weight="1" />
 
         <Button
@@ -205,7 +226,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal23"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color23" 
             android:layout_weight="1" />
 
         <Button
@@ -213,7 +235,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/gCal24"
-            android:layout_margin="5dp" android:onClick="colorButton" 
+            android:layout_margin="5dp" 
+            android:onClick="color24" 
             android:layout_weight="1" />
 
     </LinearLayout>
