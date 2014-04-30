@@ -57,14 +57,13 @@
                 android:id="@+id/DueDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="right"
                 android:layout_marginLeft="8dip"
-                android:layout_marginRight="48dip"
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-light"
                 android:maxLines="3"
                 android:text="@string/date"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
