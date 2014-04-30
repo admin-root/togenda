@@ -218,10 +218,13 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) 
 		{
+			if (position != 3)
+			{
+				setNavDrawerItemNormal();
+				TextView txtview = ((TextView) view.findViewById(R.id.navItemText));
+				txtview.setTypeface(robotoBold);
+			}
 			selectItem(position);
-			setNavDrawerItemNormal();
-			TextView txtview = ((TextView) view.findViewById(R.id.navItemText));
-			txtview.setTypeface(robotoBold);
 		}
 	}
 
@@ -245,27 +248,30 @@ public class MainActivity extends FragmentActivity {
 			transaction.replace(R.id.content_frame, newFragment);
 			transaction.addToBackStack(null);
 			transaction.commit();
+			gPosition = position;
+			setTitle(pageList[position]);
 			break;
 		case 1:
 			newFragment = new ToDoFragment();
 			transaction.replace(R.id.content_frame, newFragment);
 			transaction.addToBackStack(null);
 			transaction.commit();
+			gPosition = position;
+			setTitle(pageList[position]);
 			break;
 		case 2:
 			newFragment = new CalendarFragment();
 			transaction.replace(R.id.content_frame, newFragment);
 			transaction.addToBackStack(null);
 			transaction.commit();
+			gPosition = position;
+			setTitle(pageList[position]);
 			break;
 		case 3:
 			Intent intent = new Intent(this, SettingsActivity.class);
 			startActivity(intent);
-			gPosition = 0;
 			break;
 		}
-		gPosition = position;
-		setTitle(pageList[position]);
 		mDrawerLayout.closeDrawer(mDrawerList);  
 	}
 
