@@ -145,7 +145,7 @@ public class AgendaFragment extends Fragment{
 			while(makeCards)
 			{
 				TaskList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
-						TaskCursor.getString(4),TaskCursor.getInt(5), getActivity(), getFragmentManager()));
+						TaskCursor.getString(4),TaskCursor.getInt(5), getActivity(), getFragmentManager(), TaskCursor.getInt(6)));
 				if(TaskCursor.isLast()) 
 				{
 					makeCards = false;
@@ -172,7 +172,7 @@ public class AgendaFragment extends Fragment{
 		int eventLength = cardList.size();
 		int taskLength = TaskList.size();
 		Long blockStart = t.toMillis(true);
-		Long blockLength = (long) 1800000;
+		Long MiliHalfHour = (long) 1800000;
 		while (eventLength > 0)
 		{
 			//Stacked cards are kind of awkward to use, and when placed in excession they cause lag.
@@ -184,10 +184,10 @@ public class AgendaFragment extends Fragment{
 
 			if(taskLength > 0)
 			{
-				if (cardList.get(eventLength-1).getStart()-blockStart >=blockLength)
+				if (cardList.get(eventLength-1).getStart()-blockStart >= (MiliHalfHour*taskLength))
 				{
 					CardView.addCard(TaskList.get(taskLength-1));
-					blockStart += 2*blockLength;
+					blockStart += MiliHalfHour*taskLength;
 					taskLength-=1;
 				}
 				else

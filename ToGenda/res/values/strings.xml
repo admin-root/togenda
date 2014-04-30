@@ -40,7 +40,7 @@
     <string name="create_button">Create</string>
     <string name="finish">Finish</string>
     <string name="due_date">Due Date</string>
-    <string name="discription_hint">Task Discrption</string>
+    <string name="discription_hint">Task Description</string>
     <string name="task_name_hint">Task Name</string>
     <string name="new_task">New Task</string>
     <string name="title_activity_day_agenda">DayAgenda</string>

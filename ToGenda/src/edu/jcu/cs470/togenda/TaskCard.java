@@ -33,6 +33,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 	boolean last = false;
 	DBAdapter db;
 	int Priority;
+	int color;
 
 	int[] colors;
 	//	private OnCardSwiped onCardSwipedListener;
@@ -53,6 +54,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 		((TextView) convertView.findViewById(R.id.description)).setText(description);
 		//((ImageView) convertView.findViewById(R.id.stripe)).setBackground(colorId);
 		//Chooses color based on google defualts.
+		if (colorId > 0 && colorId < 25){
 		colors = new int[25];
 		colors[1] = R.color.gCal1;
 		colors[2] = R.color.gCal2;
@@ -79,6 +81,10 @@ public class TaskCard extends CardTemplate implements Comparable{
 		colors[23] = R.color.gCal23;
 		colors[24] = R.color.gCal24;
 		((ImageView) convertView.findViewById(R.id.stripe)).setBackgroundResource(colors[colorId]);
+		}
+		else{
+			((ImageView) convertView.findViewById(R.id.stripe)).setBackgroundResource(R.color.gCal15);
+		}
 	}
 
 	//	@Override
@@ -87,7 +93,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 	//	}
 
 	@SuppressLint("SimpleDateFormat")
-	public TaskCard(final int taskID, String titlePlay, String descText, final long due, String color, int priority,  final Context c, final FragmentManager fm) {
+	public TaskCard(final int taskID, String titlePlay, String descText, final long due, String color, int priority,  final Context c, final FragmentManager fm, int size) {
 		this.title = titlePlay;
 		this.description = descText;
 		@SuppressWarnings("unused")
@@ -156,7 +162,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 		});
 	}
 
-	public TaskCard(final int taskID, String titlePlay, String descText, final long due, String color, int priority) {
+	public TaskCard(final int taskID, String titlePlay, String descText, final long due, int color, int priority) {
 		this.title = titlePlay;
 		this.description = descText;
 		@SuppressWarnings("unused")

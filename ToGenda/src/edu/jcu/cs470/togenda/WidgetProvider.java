@@ -47,7 +47,7 @@ public class WidgetProvider extends AppWidgetProvider{
 				while(makeCards)
 				{
 					TaskList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
-							TaskCursor.getString(4),TaskCursor.getInt(5)));
+							TaskCursor.getInt(4),TaskCursor.getInt(5)));
 					if(TaskCursor.isLast()) 
 					{
 						makeCards = false;
@@ -57,9 +57,13 @@ public class WidgetProvider extends AppWidgetProvider{
 						TaskCursor.moveToNext();
 					}
 				}
+				remoteViews.setTextViewText(R.id.WidgetLabel, TaskList.get(0).getTitle());
+				remoteViews.setTextViewText(R.id.description, TaskList.get(0).getDesc());
 			}
 			catch(Exception E)
 			{
+				remoteViews.setTextViewText(R.id.WidgetLabel, "No tasks.");
+				remoteViews.setTextViewText(R.id.description, "You're all caught up!");
 			}
 			db.close();
 
@@ -69,8 +73,7 @@ public class WidgetProvider extends AppWidgetProvider{
 			
 			// Set the text
 			
-			remoteViews.setTextViewText(R.id.WidgetLabel, TaskList.get(0).getTitle());
-			remoteViews.setTextViewText(R.id.description, TaskList.get(0).getDesc());
+			
 			
 			
 			// Register an onClickListener

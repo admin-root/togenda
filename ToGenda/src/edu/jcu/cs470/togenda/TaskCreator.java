@@ -34,7 +34,8 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	private Calendar calendar;
 	long milliseconds;
 	DBAdapter db;
-	String title, content, colorId;
+	String title, content;
+	int colorId;
 	int colorNumber;
 
 	@Override
@@ -352,28 +353,21 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	
 	public void create(View v)
 	{
-		//danny workspace
-		//get title
+		
+		Toast.makeText(this, String.valueOf("test1"), Toast.LENGTH_LONG).show();
 		EditText taskName = (EditText)findViewById(R.id.taskTitle);
 		title = taskName.getText().toString();
-		//get content
 		EditText taskContent = (EditText)findViewById(R.id.taskInfo);
 		content = taskContent.getText().toString();
-		//get date
 		Long date = getDate();
-		//get color ID
-		colorId = String.valueOf(colorNumber);//getColorId(); //currently returning 0
-		//get priority
-		int priority = 1; //test values
-
-//		Toast.makeText(this, String.valueOf(priority), Toast.LENGTH_LONG).show();
+		int size = 1;
 		
 		if(!title.equals(""))
 		{
 			db.open();
-			db.insertTask(title, content, date, colorId, priority);
+			db.insertTask(title, content, date, colorNumber, size);
 			db.close();
-//			Toast.makeText(this, String.valueOf(colorNumber), Toast.LENGTH_LONG).show();
+			Toast.makeText(this, String.valueOf(colorNumber), Toast.LENGTH_LONG).show();
 			finish();
 		}
 		else
