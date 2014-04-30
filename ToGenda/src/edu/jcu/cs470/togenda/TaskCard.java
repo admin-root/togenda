@@ -3,9 +3,7 @@ package edu.jcu.cs470.togenda;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import com.fima.cardsui.views.CardUI;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
@@ -172,7 +170,14 @@ public class TaskCard extends CardTemplate implements Comparable{
 		Date due = new Date(dueDate);
 		SimpleDateFormat f = new SimpleDateFormat("d-M-yyyy");
 		String date = f.format(due);
-		((TextView) convertView.findViewById(R.id.DueDate)).setText("Due: "+date);
+		if (dueDate != 0)
+		{
+			((TextView) convertView.findViewById(R.id.DueDate)).setText("Due: "+date);
+		}
+		else
+		{
+			((TextView) convertView.findViewById(R.id.DueDate)).setVisibility(View.INVISIBLE);
+		}
 	}
 
 	//	@Override
