@@ -261,6 +261,7 @@ public class MainActivity extends FragmentActivity {
 		case 3:
 			Intent intent = new Intent(this, SettingsActivity.class);
 			startActivity(intent);
+			gPosition = 0;
 			break;
 		}
 		gPosition = position;

@@ -354,7 +354,6 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	public void create(View v)
 	{
 		
-		Toast.makeText(this, String.valueOf("test1"), Toast.LENGTH_LONG).show();
 		EditText taskName = (EditText)findViewById(R.id.taskTitle);
 		title = taskName.getText().toString();
 		EditText taskContent = (EditText)findViewById(R.id.taskInfo);
@@ -367,7 +366,6 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			db.open();
 			db.insertTask(title, content, date, colorNumber, size);
 			db.close();
-			Toast.makeText(this, String.valueOf(colorNumber), Toast.LENGTH_LONG).show();
 			finish();
 		}
 		else
