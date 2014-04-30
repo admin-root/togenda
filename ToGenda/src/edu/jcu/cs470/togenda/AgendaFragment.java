@@ -123,13 +123,7 @@ public class AgendaFragment extends Fragment{
 
 		Collections.sort(cardList); //works now
 
-		//cardList.add(new TaskCard(titlePlay, descText, due, color, priority, last))
-		//cardList.add(new TaskCard("Example Task", "Example Description", 0000000000,"5","0",true));
-		//		cardList.add(new TaskCard(taskCreator.getTitle(),taskCreator.getContent(),taskCreator.getDate(),
-		//			taskCreator.getColorId(), "1", true));
-
 		//GET TASKS HERE
-
 		db.open();
 		//db.insertTask("finish project", "Seriously", 0, "1", 0);
 		Cursor TaskCursor = db.getAllTasks();
@@ -220,41 +214,6 @@ public class AgendaFragment extends Fragment{
 
 		return myFragmentView;
 	}
-
-	//	public boolean onOptionsItemSelected(MenuItem item) {
-	//		switch (item.getItemId()) 
-	//		{        
-	//		case R.id.new_event:
-	//			//DANNY, TYPE HERE
-	//			//CREATES DIALOG POPUP
-	//			alertDialog = new AlertDialog.Builder(getActivity()).create();
-	//			alertDialog.setTitle("New Task");
-	//			//EditText taskname = new EditText(getApplicationContext());
-	//			//taskname.setTextColor(000000);
-	//			LayoutInflater inflater = getActivity().getLayoutInflater();
-	//			alertDialog.setView(inflater.inflate(R.layout.dialogue_task_creator, null));
-	//			//interface
-	//			alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-	//				public void onClick(DialogInterface dialog, int which) {
-	//					// here you can add functions
-	//					//do nothing
-	//				}
-	//			});
-	//			alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Create", new DialogInterface.OnClickListener() {
-	//				public void onClick(DialogInterface dialog, int which) {
-	//					// here you can add functions
-	//					//add to database
-	//					//refresh cardview
-	//				}
-	//			});
-	//			alertDialog.setIcon(R.drawable.ic_action_new_event);
-	//			alertDialog.show();
-	//			return true;        
-	//		default:            
-	//			return super.onOptionsItemSelected(item);
-	//
-	//		}
-	//	}
 
 	/**
 	 * A placeholder fragment containing a simple view.

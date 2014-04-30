@@ -53,7 +53,6 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		//THERE'S A BETTER WAY TO DO THIS
 		//We shoudln't be storing the database on the SDcard.
 		//Too many incompatibility issues with different devices. Especially with Android 4.4
-		// -Saeed
 		//should not need to create the databases directory, will for testing purposes
 		File f = new File(dir);
 		if(!f.exists())
@@ -407,8 +406,8 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) 
 	{
 		Button thisButton = (Button)findViewById(R.id.dateButton);
-		thisButton.setText(String.valueOf(month) + "/" + String.valueOf(day) + "/" + String.valueOf(year));
-		String string_date = String.valueOf(month) + "-" + String.valueOf(day) + "-" + String.valueOf(year);
+		thisButton.setText(String.valueOf(month+1) + "/" + String.valueOf(day) + "/" + String.valueOf(year));
+		String string_date = String.valueOf(month+1) + "-" + String.valueOf(day) + "-" + String.valueOf(year);
 		SimpleDateFormat f = new SimpleDateFormat("d-M-yyyy");
 		Date d;
 		try 
