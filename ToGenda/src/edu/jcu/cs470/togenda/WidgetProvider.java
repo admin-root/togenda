@@ -60,6 +60,7 @@ public class WidgetProvider extends AppWidgetProvider{
 				}
 				remoteViews.setTextViewText(R.id.WidgetLabel, TaskList.get(0).getTitle());
 				remoteViews.setTextViewText(R.id.description, TaskList.get(0).getDesc());
+				remoteViews.setTextViewText(R.id.Time, TaskList.get(0).getTime());
 				remoteViews.setImageViewResource(R.id.navItemIcon, R.drawable.ic_bell_on_dark);
 			}
 			catch(Exception E)
