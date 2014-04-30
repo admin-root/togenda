@@ -10,11 +10,12 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.widget.ImageView;
 import android.widget.RemoteViews;
 
 
 public class WidgetProvider extends AppWidgetProvider{
-	
+
 	static DBAdapter db;
 
 	@Override
@@ -29,9 +30,9 @@ public class WidgetProvider extends AppWidgetProvider{
 
 			RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
 					R.layout.widget_layout);
-			
+
 			db = getDatabaseHelper(context);
-			
+
 			db.open();
 			Cursor TaskCursor = db.getAllTasks();
 
@@ -59,23 +60,25 @@ public class WidgetProvider extends AppWidgetProvider{
 				}
 				remoteViews.setTextViewText(R.id.WidgetLabel, TaskList.get(0).getTitle());
 				remoteViews.setTextViewText(R.id.description, TaskList.get(0).getDesc());
+				remoteViews.setImageViewResource(R.id.navItemIcon, R.drawable.ic_bell_on_dark);
 			}
 			catch(Exception E)
 			{
 				remoteViews.setTextViewText(R.id.WidgetLabel, "No tasks.");
 				remoteViews.setTextViewText(R.id.description, "You're all caught up!");
+				remoteViews.setImageViewResource(R.id.navItemIcon, R.drawable.ic_bell_off_dark);
 			}
 			db.close();
 
 
 			//SORT TASKS + EVENTS TOGETHER HERE
 			Collections.sort(TaskList);
-			
+
 			// Set the text
-			
-			
-			
-			
+
+
+
+
 			// Register an onClickListener
 			Intent intent = new Intent(context, WidgetProvider.class);
 
@@ -88,14 +91,14 @@ public class WidgetProvider extends AppWidgetProvider{
 			appWidgetManager.updateAppWidget(widgetId, remoteViews);
 		}
 	}
-	
+
 	private static DBAdapter getDatabaseHelper(Context context) {
 
-	    if (db == null) {
-	        db = new DBAdapter(context);
-	        db.open();
-	    }
-	    return db;
+		if (db == null) {
+			db = new DBAdapter(context);
+			db.open();
+		}
+		return db;
 	}
 
 }

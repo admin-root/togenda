@@ -145,7 +145,7 @@ public class AgendaFragment extends Fragment{
 			while(makeCards)
 			{
 				TaskList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
-						TaskCursor.getString(4),TaskCursor.getInt(5), getActivity(), getFragmentManager(), TaskCursor.getInt(6)));
+						TaskCursor.getInt(4),TaskCursor.getInt(5), getActivity(), getFragmentManager(), TaskCursor.getInt(6)));
 				if(TaskCursor.isLast()) 
 				{
 					makeCards = false;

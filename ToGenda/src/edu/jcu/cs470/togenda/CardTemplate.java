@@ -8,6 +8,7 @@ import com.fima.cardsui.objects.RecyclableCard;
 public abstract class CardTemplate extends RecyclableCard implements Comparable{
 
 	
+	private static final int colorID = 0;
 	public CardTemplate(String title){
 		super(title);
 	}
@@ -63,6 +64,10 @@ public abstract class CardTemplate extends RecyclableCard implements Comparable{
 	long getStart() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	public int getColorID() {
+		// TODO Auto-generated method stub
+		return colorID;
 	}
 
 }

@@ -93,7 +93,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 	//	}
 
 	@SuppressLint("SimpleDateFormat")
-	public TaskCard(final int taskID, String titlePlay, String descText, final long due, String color, int priority,  final Context c, final FragmentManager fm, int size) {
+	public TaskCard(final int taskID, String titlePlay, String descText, final long due, int color, int priority,  final Context c, final FragmentManager fm, int size) {
 		this.title = titlePlay;
 		this.description = descText;
 		@SuppressWarnings("unused")
@@ -101,7 +101,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
 		this.endTime = due;
 		this.endLabel = _12HourSDF.format(new Time(due));
-		this.colorId = Integer.parseInt(color);
+		this.colorId = color;
 		this.Priority = priority;
 		this.hasOverflow = false;
 		this.isClickable = true;
@@ -217,5 +217,9 @@ public class TaskCard extends CardTemplate implements Comparable{
 	public String getDesc()
 	{
 		return this.description;
+	}
+	public int getColorID()
+	{
+		return this.colorId;
 	}
 }
