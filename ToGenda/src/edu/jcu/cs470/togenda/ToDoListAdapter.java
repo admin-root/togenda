@@ -37,7 +37,7 @@ public class ToDoListAdapter extends BaseAdapter {
 		LayoutInflater mInflater = (LayoutInflater) context
 				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.drawer_list_item, null);
+			convertView = mInflater.inflate(R.layout.task_list_item, null);
 			holder = new ViewHolder();
 			holder.icon = (ImageView) convertView.findViewById(R.id.navItemIcon);
 			holder.title = (TextView) convertView.findViewById(R.id.navItemText);
