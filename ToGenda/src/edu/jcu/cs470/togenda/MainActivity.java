@@ -34,6 +34,7 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -252,10 +253,12 @@ public class MainActivity extends FragmentActivity {
 			setTitle(pageList[position]);
 			break;
 		case 1:
+			Log.d("Case1", "test");
 			newFragment = new ToDoFragment();
 			transaction.replace(R.id.content_frame, newFragment);
 			transaction.addToBackStack(null);
 			transaction.commit();
+			Log.d("Case1", "test");
 			gPosition = position;
 			setTitle(pageList[position]);
 			break;
