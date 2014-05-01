@@ -10,6 +10,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/messagebar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/NineOldAndroids"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/TimeSquare"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/drag-sort-listview"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
