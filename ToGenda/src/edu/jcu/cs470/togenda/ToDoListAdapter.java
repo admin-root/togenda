@@ -4,22 +4,63 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Typeface;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ToDoListAdapter extends BaseAdapter {
+import com.mobeta.android.dslv.*;
+
+public class ToDoListAdapter extends DragSortCursorAdapter {
 
 	Context context;
 	List<DragListItem> rowItem;
-	
-	ToDoListAdapter(Context context, List<DragListItem> rowItem) {
-		this.context = context;
-		this.rowItem = rowItem;
+	DBAdapter db;
+
+	//	public ToDoListAdapter(Context context, List<DragListItem> rowItem) {
+	//		this.context = context;
+	//		this.rowItem = rowItem;
+	//	}
+
+	public ToDoListAdapter(Context context, Cursor c) {
+		super(context, c);
+
+		try{
+
+			boolean makeCards = false;
+			if (c != null)
+			{
+				makeCards = true;
+			}
+			while(makeCards)
+			{
+				DragListItem items = new DragListItem(c.getString(1), c.getString(2), c.getLong(3), c.getInt(4), c.getInt(5));
+				rowItem.add(items);
+
+				if(c.isLast()) 
+				{
+					makeCards = false;
+				}
+				else
+				{
+					c.moveToNext();
+				}
+			}
+		}
+		catch(Exception E)
+		{
+		}
+
+	}
+
+	public ToDoListAdapter(Context context, Cursor c, boolean autoRequery) {
+		super(context, c, autoRequery);
+	}
+
+	public ToDoListAdapter(Context context, Cursor c, int flags) {
+		super(context, c, flags);
 	}
 
 	private class ViewHolder {
@@ -30,56 +71,30 @@ public class ToDoListAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-
-		ViewHolder holder = null;
-
-		LayoutInflater mInflater = (LayoutInflater) context
-				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.task_list_item, null);
-			holder = new ViewHolder();
-			//holder.icon = (ImageView) convertView.findViewById(R.id.navItemIcon);
-			holder.title = (TextView) convertView.findViewById(R.id.textView1);
-			holder.Due = (TextView) convertView.findViewById(R.id.textView2);
-			holder.Desc = (TextView) convertView.findViewById(R.id.textView3);
-			
-			DragListItem row_pos = rowItem.get(position);
-			// setting the image resource and title
-			holder.title.setText(row_pos.getTitle());
-			convertView.setTag(holder);
-
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
-
-		return convertView;
+	public void bindView(View arg0, Context arg1, Cursor arg2) {
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public int getCount() {
-		return rowItem.size();
+	public View newView(Context arg0, Cursor arg1, ViewGroup arg2) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	@Override
-	public Object getItem(int position) {
-		return rowItem.get(position);
+	public DragListItem getItem(int from)
+	{
+		return rowItem.get(from);
 	}
 
-	@Override
-	public long getItemId(int position) {
-		return rowItem.indexOf(getItem(position));
-	}
-
-	public void remove(Object item) {
+	public void remove(DragListItem item) {
 		// TODO Auto-generated method stub
 		rowItem.remove(item);
 	}
 
-	public void insert(Object item, int to) {
+	public void insert(DragListItem item, int to) {
 		// TODO Auto-generated method stub
-		rowItem.add(to, (DragListItem) item);
+		rowItem.add(to, item);
 	}
 
 }

@@ -20,7 +20,6 @@ public class ToDoFragment extends Fragment {
 	private View myFragmentView;
 	DragSortListView listView;
 	ToDoListAdapter adapter;
-	List<DragListItem> DragListItems;
 	DBAdapter db;
 
 	@Override
@@ -30,88 +29,58 @@ public class ToDoFragment extends Fragment {
 
 		myFragmentView = inflater.inflate(R.layout.todo_fragment, container, false);
 		db = new DBAdapter(getActivity());
-		
+
 		listView = (DragSortListView) myFragmentView.findViewById(R.id.draglistview);
-	    //String[] names = getResources().getStringArray(R.array.random_names);
-	    //ArrayList<String> list = new ArrayList<String>(Arrays.asList(names));
-		
-		DragListItems = new ArrayList<DragListItem>();
-		
+		//String[] names = getResources().getStringArray(R.array.random_names);
+		//ArrayList<String> list = new ArrayList<String>(Arrays.asList(names));
+
 		db.open();
 		Cursor TaskCursor = db.getAllTasks();
-		
-		try{
 
-			boolean makeCards = false;
-			if (TaskCursor != null)
-			{
-				makeCards = true;
-			}
-			while(makeCards)
-			{
-					DragListItem items = new DragListItem(TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getInt(4), TaskCursor.getInt(5));
-					DragListItems.add(items);
-				
-				if(TaskCursor.isLast()) 
-				{
-					makeCards = false;
-				}
-				else
-				{
-					TaskCursor.moveToNext();
-				}
-			}
-		}
-		catch(Exception E)
-		{
-		}
+
+		adapter = new ToDoListAdapter(myFragmentView.getContext(), TaskCursor);
 		db.close();
-		
-		
-		
-	    
-	    adapter = new ToDoListAdapter(myFragmentView.getContext(), DragListItems);
-	    listView.setAdapter(adapter);
-	    listView.setDropListener(onDrop);
-	    listView.setRemoveListener(onRemove);
-	    
+		listView.setAdapter(adapter);
+		listView.setDropListener(onDrop);
+		listView.setRemoveListener(onRemove);
 
-	    DragSortController controller = new DragSortController(listView);
-	    controller.setDragHandleId(R.id.imageView1);
-	            //controller.setClickRemoveId(R.id.);
-	    controller.setRemoveEnabled(false);
-	    controller.setSortEnabled(true);
-	    controller.setDragInitMode(1);
-	            //controller.setRemoveMode(removeMode);
 
-	    listView.setFloatViewManager(controller);
-	    listView.setOnTouchListener(controller);
-	    listView.setDragEnabled(true);
+		DragSortController controller = new DragSortController(listView);
+		controller.setDragHandleId(R.id.imageView1);
+		//controller.setClickRemoveId(R.id.);
+		controller.setRemoveEnabled(false);
+		controller.setSortEnabled(true);
+		controller.setDragInitMode(1);
+		//controller.setRemoveMode(removeMode);
+
+		listView.setFloatViewManager(controller);
+		listView.setOnTouchListener(controller);
+		listView.setDragEnabled(true);
 
 		return myFragmentView;
 	}
-	
+
 	private DragSortListView.DropListener onDrop = new DragSortListView.DropListener()
 	{
-	    @Override
-	    public void drop(int from, int to)
-	    {
-	        if (from != to)
-	        {
-	            Object item = adapter.getItem(from);
-	            adapter.remove(item);
-	            adapter.insert(item, to);
-	        }
-	    }
+		@Override
+		public void drop(int from, int to)
+		{
+			if (from != to)
+			{
+				DragListItem item = adapter.getItem(from);
+				adapter.remove(item);
+				adapter.insert(item, to);
+			}
+		}
 	};
 
 	private DragSortListView.RemoveListener onRemove = new DragSortListView.RemoveListener()
 	{
-	    @Override
-	    public void remove(int which)
-	    {
-	        adapter.remove(adapter.getItem(which));
-	    }
+		@Override
+		public void remove(int which)
+		{
+			adapter.remove(adapter.getItem(which));
+		}
 	};
 
 }

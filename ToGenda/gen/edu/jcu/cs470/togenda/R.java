@@ -856,8 +856,8 @@ containing a value of this type.
         public static final int td_desc=0x7f050050;
         public static final int td_due=0x7f050051;
         public static final int textView1=0x7f050053;
-        public static final int textView2=0x7f050054;
-        public static final int textView3=0x7f050055;
+        public static final int textView2=0x7f050055;
+        public static final int textView3=0x7f050054;
         public static final int time_picker=0x7f05005f;
         public static final int time_picker_dialog=0x7f05005e;
         public static final int title=0x7f050046;
