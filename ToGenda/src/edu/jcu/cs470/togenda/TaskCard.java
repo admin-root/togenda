@@ -3,7 +3,6 @@ package edu.jcu.cs470.togenda;
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.fima.cardsui.views.CardUI;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
@@ -11,11 +10,9 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender.SendIntentException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView.FindListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,7 +31,6 @@ public class TaskCard extends CardTemplate implements Comparable{
 	DBAdapter db;
 	int Priority;
 	int color;
-
 	int[] colors;
 	//	private OnCardSwiped onCardSwipedListener;
 	//	private String eventId = "0";
@@ -86,7 +82,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 				{
 					TextView tdDue = (TextView) dialogContent.findViewById(R.id.td_due);
 					Date dueDate = new Date(due);
-					SimpleDateFormat f = new SimpleDateFormat("d-M-yyyy");
+					SimpleDateFormat f = new SimpleDateFormat("M-d-yyyy");
 					String date = f.format(dueDate);
 					tdDue.setText("Due: "+date);
 				}
@@ -126,7 +122,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 			}
 		});
 	}
-	
+
 	@Override
 	protected void applyTo(View convertView) {
 		//displays task title
@@ -135,32 +131,32 @@ public class TaskCard extends CardTemplate implements Comparable{
 		((TextView) convertView.findViewById(R.id.description)).setText(description);
 		//Chooses color based on google defualts.
 		if (colorId > 0 && colorId < 25){
-		colors = new int[25];
-		colors[1] = R.color.gCal1;
-		colors[2] = R.color.gCal2;
-		colors[3] = R.color.gCal3;
-		colors[4] = R.color.gCal4;
-		colors[5] = R.color.gCal5;
-		colors[6] = R.color.gCal6;
-		colors[7] = R.color.gCal7;
-		colors[8] = R.color.gCal8;
-		colors[9] = R.color.gCal9;
-		colors[10] = R.color.gCal10;
-		colors[11] = R.color.gCal11;
-		colors[12] = R.color.gCal12;
-		colors[13] = R.color.gCal13;
-		colors[14] = R.color.gCal14;
-		colors[15] = R.color.gCal15;
-		colors[16] = R.color.gCal16;
-		colors[17] = R.color.gCal17;
-		colors[18] = R.color.gCal18;
-		colors[19] = R.color.gCal19;
-		colors[20] = R.color.gCal20;
-		colors[21] = R.color.gCal21;
-		colors[22] = R.color.gCal22;
-		colors[23] = R.color.gCal23;
-		colors[24] = R.color.gCal24;
-		((ImageView) convertView.findViewById(R.id.stripe)).setBackgroundResource(colors[colorId]);
+			colors = new int[25];
+			colors[1] = R.color.gCal1;
+			colors[2] = R.color.gCal2;
+			colors[3] = R.color.gCal3;
+			colors[4] = R.color.gCal4;
+			colors[5] = R.color.gCal5;
+			colors[6] = R.color.gCal6;
+			colors[7] = R.color.gCal7;
+			colors[8] = R.color.gCal8;
+			colors[9] = R.color.gCal9;
+			colors[10] = R.color.gCal10;
+			colors[11] = R.color.gCal11;
+			colors[12] = R.color.gCal12;
+			colors[13] = R.color.gCal13;
+			colors[14] = R.color.gCal14;
+			colors[15] = R.color.gCal15;
+			colors[16] = R.color.gCal16;
+			colors[17] = R.color.gCal17;
+			colors[18] = R.color.gCal18;
+			colors[19] = R.color.gCal19;
+			colors[20] = R.color.gCal20;
+			colors[21] = R.color.gCal21;
+			colors[22] = R.color.gCal22;
+			colors[23] = R.color.gCal23;
+			colors[24] = R.color.gCal24;
+			((ImageView) convertView.findViewById(R.id.stripe)).setBackgroundResource(colors[colorId]);
 		}
 		else
 		{
@@ -168,7 +164,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 		}
 		//Displays due date
 		Date due = new Date(dueDate);
-		SimpleDateFormat f = new SimpleDateFormat("d-M-yyyy");
+		SimpleDateFormat f = new SimpleDateFormat("M-d-yyyy");
 		String date = f.format(due);
 		if (dueDate != 0)
 		{
@@ -236,7 +232,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 	{
 		return this.title;
 	}
-	
+
 	public String getDesc()
 	{
 		return this.description;
