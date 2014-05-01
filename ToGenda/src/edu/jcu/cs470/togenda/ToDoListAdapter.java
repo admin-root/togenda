@@ -39,9 +39,11 @@ public class ToDoListAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.task_list_item, null);
 			holder = new ViewHolder();
-			holder.icon = (ImageView) convertView.findViewById(R.id.navItemIcon);
-			holder.title = (TextView) convertView.findViewById(R.id.navItemText);
-
+			//holder.icon = (ImageView) convertView.findViewById(R.id.navItemIcon);
+			holder.title = (TextView) convertView.findViewById(R.id.textView1);
+			holder.Due = (TextView) convertView.findViewById(R.id.textView2);
+			holder.Desc = (TextView) convertView.findViewById(R.id.textView3);
+			
 			DragListItem row_pos = rowItem.get(position);
 			// setting the image resource and title
 			holder.title.setText(row_pos.getTitle());
