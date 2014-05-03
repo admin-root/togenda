@@ -107,7 +107,8 @@ public class TaskCard extends CardTemplate implements Comparable{
 				});
 				alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Edit", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						Intent intent = new Intent(c, TaskEditor.class);
+						//Intent intent = new Intent(c, TaskEditor.class);
+						Intent intent = new Intent(c, TaskCreator.class);
 						intent.putExtra("TaskID",taskID);
 						c.startActivity(intent);
 					}
