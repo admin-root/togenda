@@ -45,5 +45,6 @@
     <string name="new_task">New Task</string>
     <string name="title_activity_day_agenda">DayAgenda</string>
     <string name="date">Date</string>
+    <string name="choose_date">Choose date</string>
 
 </resources>
