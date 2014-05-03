@@ -8,11 +8,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +24,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
 
@@ -32,8 +37,9 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	long milliseconds;
 	DBAdapter db;
 	String title, content;
-	int colorId;
 	int colorNumber;
+	boolean editing = false;
+	private int taskID;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +78,96 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		}
 		//exercise the database
 		db = new DBAdapter(this);
+		
+		//editing an already existing task
+		Intent i= getIntent();
+		if(i.hasExtra("TaskID"))
+		{
+			taskID = i.getIntExtra("TaskID", 0);
+
+			//String dateString = new SimpleDateFormat("MM/dd/yyyy").format(new Date(ldate));
+			calendar = Calendar.getInstance();
+			datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
+			
+			db = new DBAdapter(this);
+			db.open();
+			Cursor TaskCursor = db.getTask(taskID);
+			
+			TextView TaskName = (TextView) findViewById(R.id.taskTitle);
+			TaskName.setText(TaskCursor.getString(1));
+			
+			TextView TaskDesc = (TextView) findViewById(R.id.taskInfo);
+			TaskDesc.setText(TaskCursor.getString(2));
+			
+			Long dueDate = TaskCursor.getLong(3);
+			if (dueDate != 0)
+			{
+				CheckBox dateCheck = (CheckBox) findViewById(R.id.datebox);
+				dateCheck.setChecked(true);
+			}
+			editing = true;
+		}
 	}
 
+	public void create(View v)
+	{
+		EditText taskName = (EditText)findViewById(R.id.taskTitle);
+		EditText taskContent = (EditText)findViewById(R.id.taskInfo);
+		
+		//create default task
+		if(editing == false)
+		{
+			title = taskName.getText().toString();
+			content = taskContent.getText().toString();
+			Long date = getDate();
+			int size = 1;
+
+			if(!title.equals(""))
+			{
+				db.open();
+				db.insertTask(title, content, date, colorNumber, size);
+				db.close();
+				finish();
+			}
+			else
+			{
+				if(title.equals(""))
+				{
+					Toast.makeText(this, "Insert a Title", Toast.LENGTH_LONG).show();
+				}
+			}
+		}
+		//editing task
+		else //editing == true
+		{
+			title = taskName.getText().toString();
+			content = taskContent.getText().toString();
+			Long date = getDate();
+			int size = 1;
+
+			if(!title.equals(""))
+			{
+				db.open();
+				db.updateTask(taskID, title, content, date, colorNumber, size);
+				db.close();
+				finish();
+			}
+			else
+			{
+				if(title.equals(""))
+				{
+					Toast.makeText(this, "Insert a Title", Toast.LENGTH_LONG).show();
+				}
+			}
+			editing = false;
+		}
+	}
+
+	public void cancel(View v)
+	{
+		finish();
+	}
+	
 	private void copyDataBase(InputStream in, FileOutputStream out) throws IOException
 	{
 		//copy 1024 bytes at a time
@@ -87,54 +181,11 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		out.close();
 	}
 
-	public void colorPick(View v)
+	public String getContent()
 	{
-		alertDialog = new AlertDialog.Builder(this).create();
-		alertDialog.setTitle("Task Color");
-		LayoutInflater inflater = this.getLayoutInflater();
-		alertDialog.setView(inflater.inflate(R.layout.colorpick, null));
-		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() 
-		{
-			public void onClick(DialogInterface dialog, int which) 
-			{
-				// here you can add functions
-				//do nothing
-			}
-		});
-		alertDialog.setIcon(R.drawable.ic_tint_dark);
-		alertDialog.show();
+		return content;
 	}
-
-	public void create(View v)
-	{
-		EditText taskName = (EditText)findViewById(R.id.taskTitle);
-		title = taskName.getText().toString();
-		EditText taskContent = (EditText)findViewById(R.id.taskInfo);
-		content = taskContent.getText().toString();
-		Long date = getDate();
-		int size = 1;
-
-		if(!title.equals(""))
-		{
-			db.open();
-			db.insertTask(title, content, date, colorNumber, size);
-			db.close();
-			finish();
-		}
-		else
-		{
-			if(title.equals(""))
-			{
-				Toast.makeText(this, "Insert a Title", Toast.LENGTH_LONG).show();
-			}
-		}
-	}
-
-	public void cancel(View v)
-	{
-		finish();
-	}
-
+	
 	public void dateClick(View v)
 	{
 		datePickerDialog.setVibrate(false);
@@ -175,14 +226,27 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		}
 	}
 
-	public String getContent()
-	{
-		return content;
-	}
-
 	public long getDate()
 	{
 		return milliseconds;
+	}
+
+	public void colorPick(View v)
+	{
+		alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle("Task Color");
+		LayoutInflater inflater = this.getLayoutInflater();
+		alertDialog.setView(inflater.inflate(R.layout.colorpick, null));
+		alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() 
+		{
+			public void onClick(DialogInterface dialog, int which) 
+			{
+				// here you can add functions
+				//do nothing
+			}
+		});
+		alertDialog.setIcon(R.drawable.ic_tint_dark);
+		alertDialog.show();
 	}
 
 	//setting colorBack and color ID depending on which color is selecte
