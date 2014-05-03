@@ -22,7 +22,8 @@ public class DBAdapter {
 	private static final int DATABASE_VERSION = 5;
 	private static final String DATABASE_CREATE = "create table "+DATABASE_TABLE+" ("+KEY_ID+
 		" integer primary key autoincrement, "+COLUMN_NAME+" text not null, "+COLUMN_CONTENT+" text not null, "
-		+COLUMN_DUE+" text not null, "+COLUMN_COLOR+" INTEGER not null, "+COLUMN_PRIORITY+" INTEGER not null, "+COLUMN_SIZE+" INTEGER not null)";
+		+COLUMN_DUE+" text not null, "+COLUMN_COLOR+" INTEGER not null, "+COLUMN_PRIORITY+" INTEGER not null, "
+		+COLUMN_SIZE+" INTEGER not null)";
 	//variables
 	DatabaseHelper DBHelper;
 	SQLiteDatabase db;
@@ -121,14 +122,14 @@ public class DBAdapter {
 		return cursor;
 	}
 	
-	public boolean updateTask(long rowID, String title, String content, long due, String color, int priority, int size)
+	public boolean updateTask(long rowID,String title, String content, long due, int colorId, /*int priority, */int size)
 	{
 		ContentValues args = new ContentValues();
 		args.put(COLUMN_NAME, title);
 		args.put(COLUMN_CONTENT, content);
 		args.put(COLUMN_DUE, due);
-		args.put(COLUMN_COLOR, color);
-		args.put(COLUMN_PRIORITY, priority);
+		args.put(COLUMN_COLOR, colorId);
+		//args.put(COLUMN_PRIORITY, priority);
 		args.put(COLUMN_SIZE, size);
 		return db.update(DATABASE_TABLE, args, KEY_ID+"="+rowID, null) > 0;
 	}
