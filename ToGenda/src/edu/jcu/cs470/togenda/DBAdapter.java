@@ -134,12 +134,3 @@ public class DBAdapter {
 		return db.update(DATABASE_TABLE, args, KEY_ID+"="+rowID, null) > 0;
 	}
 }
-
-
-
-
-
-
-
-
-
