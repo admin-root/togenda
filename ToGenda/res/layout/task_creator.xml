@@ -47,7 +47,7 @@
             android:layout_weight="0.30"
             android:checked="false"
             android:onClick="dateCheck"
-            android:text="Due Date" />
+            android:text="@string/due_date" />
 
         <Button
             android:id="@+id/dateButton"
@@ -56,7 +56,7 @@
             android:layout_weight="1"
             android:enabled="false"
             android:onClick="dateClick"
-            android:text="Choose date" />
+            android:text="@string/choose_date" />
 
     </LinearLayout>
 
