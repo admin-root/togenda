@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ToGenda</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">To-Genda</string>
+    <string name="title">Title</string>
+    <string name="desc">Description</string>
+    <string name="overflow">Menu Overflow</string>
+    <string name="color_stripe">Color Stripe</string>
+    <string name="new_event">New Event</string>
+    <string name="title_activity_task">TaskActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_task_creator">New Task</string>
+    <string name="getColor">getColor</string>
+    <string name="viewCal">View Day Schedule</string>
+    <string name="widgetTitle">A ToGenda Widget</string>
+    <string name="modify">Change Event</string>
+
+    <string-array name="navItemList">
+        <item>Agenda</item>
+        <item>To-do List</item>
+        <item>Calendar</item>
+        <item>Settings</item>
+    </string-array>
+
+    <array name="navIconList">
+        <item>@drawable/ic_event</item>
+        <item>@drawable/ic_list</item>
+        <item>@drawable/ic_date</item>
+        <item>@drawable/ic_cogs</item>
+    </array>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="title_activity_to_do_fragment">ToDoFragment</string>
+    <string name="title_activity_calendar_fragment">CalendarFragment</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="create_button">Create</string>
+    <string name="finish">Finish</string>
+    <string name="due_date">Due Date</string>
+    <string name="discription_hint">Task Description</string>
+    <string name="task_name_hint">Task Name</string>
+    <string name="new_task">New Task</string>
+    <string name="title_activity_day_agenda">DayAgenda</string>
+    <string name="date">Date</string>
+    <string name="choose_date">Choose date</string>
+
+</resources>
