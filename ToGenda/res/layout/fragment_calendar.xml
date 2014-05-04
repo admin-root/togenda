@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <com.squareup.timessquare.CalendarPickerView
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.00"
+        android:background="@color/White" />
+
+    <ImageView
+        android:id="@+id/ImageView01"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.01"
+        android:adjustViewBounds="true"
+        android:background="@color/Black"
+        android:baselineAlignBottom="true"
+        android:contentDescription="@string/color_stripe"
+        android:scaleType="centerCrop" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_separator"
+        android:onClick="openCal"
+        android:text="@string/viewCal"
+        android:textColor="@color/Black" />
+
+    <ImageView
+        android:id="@+id/stripe"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0.01"
+        android:adjustViewBounds="true"
+        android:background="@color/Black"
+        android:baselineAlignBottom="true"
+        android:contentDescription="@string/color_stripe"
+        android:scaleType="centerCrop" />
+
+</LinearLayout>
