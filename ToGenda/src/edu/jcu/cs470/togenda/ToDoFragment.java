@@ -31,8 +31,6 @@ public class ToDoFragment extends Fragment {
 		db.open();
 		Cursor TaskCursor = db.getAllTasks();
 
-
-
 		if (TaskCursor.getCount() > 0){
 			list = (DragNDropListView) myFragmentView.findViewById(android.R.id.list);
 
@@ -61,6 +59,7 @@ public class ToDoFragment extends Fragment {
 
 					while (sort)
 					{
+						Log.d("while", "loop");
 						if (startPosition > endPosition)
 						{
 							if (TaskCursor.getInt(5) == startPosition)
@@ -72,7 +71,7 @@ public class ToDoFragment extends Fragment {
 								db.updateTask(TaskCursor.getInt(0), TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getInt(4), TaskCursor.getInt(5)+1, TaskCursor.getInt(6));
 							}
 						}
-						else if (endPosition > startPosition)
+						else
 						{
 							if (TaskCursor.getInt(5) == startPosition)
 							{
