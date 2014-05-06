@@ -38,6 +38,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	int colorNumber;
 	boolean editing = false;
 	private int taskID;
+	int priority;
 	Long newDate;
 
 	@Override
@@ -100,6 +101,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			TextView TaskDesc = (TextView) findViewById(R.id.taskInfo);
 			TaskDesc.setText(TaskCursor.getString(2));
 			
+
 			//get task due date from database
 			newDate = TaskCursor.getLong(3);
 			CheckBox dateCheck = (CheckBox) findViewById(R.id.datebox);
@@ -126,6 +128,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			
 			//enable editing
 			editing = true;
+			db.close();
 		}
 	}
 
@@ -168,7 +171,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			if(!title.equals(""))
 			{
 				db.open();
-				db.updateTask(taskID, title, content, date, colorNumber, size);
+				db.updateTask(taskID, title, content, date, colorNumber, priority, size);
 				db.close();
 				finish();
 			}

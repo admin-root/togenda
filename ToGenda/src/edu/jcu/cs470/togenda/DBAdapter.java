@@ -122,14 +122,14 @@ public class DBAdapter {
 		return cursor;
 	}
 	
-	public boolean updateTask(long rowID,String title, String content, long due, int colorId, /*int priority, */int size)
+	public boolean updateTask(long rowID,String title, String content, long due, int colorId, int priority, int size)
 	{
 		ContentValues args = new ContentValues();
 		args.put(COLUMN_NAME, title);
 		args.put(COLUMN_CONTENT, content);
 		args.put(COLUMN_DUE, due);
 		args.put(COLUMN_COLOR, colorId);
-		//args.put(COLUMN_PRIORITY, priority);
+		args.put(COLUMN_PRIORITY, priority);
 		args.put(COLUMN_SIZE, size);
 		return db.update(DATABASE_TABLE, args, KEY_ID+"="+rowID, null) > 0;
 	}

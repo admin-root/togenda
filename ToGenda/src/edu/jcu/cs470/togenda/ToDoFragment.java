@@ -3,6 +3,7 @@ package edu.jcu.cs470.togenda;
 
 import com.terlici.dragndroplist.DragNDropCursorAdapter;
 import com.terlici.dragndroplist.DragNDropListView;
+import com.terlici.dragndroplist.DragNDropListView.OnItemDragNDropListener;
 
 import android.app.Fragment;
 import android.database.Cursor;
@@ -47,6 +48,63 @@ public class ToDoFragment extends Fragment {
 			Log.d("apater", "test");
 
 			list.setDragNDropAdapter(adapter);
+			list.setOnItemDragNDropListener(new OnItemDragNDropListener() {
+
+				public void onItemDrop(DragNDropListView parent, View view,
+						int startPosition, int endPosition, long id) {
+
+					db = new DBAdapter(getActivity());
+					db.open();
+					Cursor TaskCursor = db.getAllTasks();
+
+					boolean sort = true;
+
+					while (sort)
+					{
+						if (startPosition > endPosition)
+						{
+							if (TaskCursor.getInt(5) == startPosition)
+							{
+								db.updateTask(TaskCursor.getInt(0), TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getInt(4), endPosition, TaskCursor.getInt(6));
+							}
+							else if (TaskCursor.getInt(5) >= endPosition && TaskCursor.getInt(5) < startPosition)
+							{
+								db.updateTask(TaskCursor.getInt(0), TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getInt(4), TaskCursor.getInt(5)+1, TaskCursor.getInt(6));
+							}
+						}
+						else if (endPosition > startPosition)
+						{
+							if (TaskCursor.getInt(5) == startPosition)
+							{
+								db.updateTask(TaskCursor.getInt(0), TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getInt(4), endPosition, TaskCursor.getInt(6));
+							}
+							else if (TaskCursor.getInt(5) < endPosition && TaskCursor.getInt(5) >= startPosition)
+							{
+								db.updateTask(TaskCursor.getInt(0), TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getInt(4), TaskCursor.getInt(5)-1, TaskCursor.getInt(6));
+							}
+
+						}
+						
+						if (TaskCursor.isLast())
+						{
+							sort = false;
+						}
+						else
+						{
+							TaskCursor.moveToNext();
+						}
+					}
+
+					db.close();
+
+				}
+
+				public void onItemDrag(DragNDropListView parent, View view, int position,
+						long id) {
+					// TODO Auto-generated method stub
+
+				}
+			});
 		}
 		Log.d("apater", "test");
 		db.close();
