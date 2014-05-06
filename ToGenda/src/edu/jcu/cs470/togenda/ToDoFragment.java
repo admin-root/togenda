@@ -66,18 +66,18 @@ public class ToDoFragment extends Fragment {
 							{
 								db.updateTask(TaskCursor.getInt(0), TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getInt(4), endPosition, TaskCursor.getInt(6));
 							}
-							else if (TaskCursor.getInt(5) >= endPosition && TaskCursor.getInt(5) < startPosition)
+							else if (TaskCursor.getInt(5) >= endPosition && TaskCursor.getInt(5) <= startPosition)
 							{
 								db.updateTask(TaskCursor.getInt(0), TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getInt(4), TaskCursor.getInt(5)+1, TaskCursor.getInt(6));
 							}
 						}
-						else
+						else if (startPosition < endPosition)
 						{
 							if (TaskCursor.getInt(5) == startPosition)
 							{
 								db.updateTask(TaskCursor.getInt(0), TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getInt(4), endPosition, TaskCursor.getInt(6));
 							}
-							else if (TaskCursor.getInt(5) < endPosition && TaskCursor.getInt(5) >= startPosition)
+							else if (TaskCursor.getInt(5) <= endPosition && TaskCursor.getInt(5) >= startPosition)
 							{
 								db.updateTask(TaskCursor.getInt(0), TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3), TaskCursor.getInt(4), TaskCursor.getInt(5)-1, TaskCursor.getInt(6));
 							}

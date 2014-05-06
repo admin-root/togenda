@@ -40,6 +40,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	private int taskID;
 	int priority;
 	Long newDate;
+	Cursor TaskCursor;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +92,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			
 			db = new DBAdapter(this);
 			db.open();
-			Cursor TaskCursor = db.getTask(taskID);
+			TaskCursor = db.getTask(taskID);
 			
 			//get task name from database
 			TextView TaskName = (TextView) findViewById(R.id.taskTitle);
@@ -122,8 +123,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			}
 			
 			//get the color ID from the database
-//			color = (ColorDrawable) TaskName.getBackground();	
-//			findViewById(R.id.colorBack).setBackgroundDrawable(color);	
+//			TaskName.setBackgroundColor(getColor(TaskCursor.getInt(4)));
 			
 			
 			//enable editing
@@ -512,5 +512,13 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		//this method will still be good for a very long time.
 		colorNumber = 24;
 		alertDialog.dismiss();
+	}
+	
+	public void getColor(int colorId)
+	{
+		if(TaskCursor.getInt(4) == 1)
+		{
+			
+		}
 	}
 }

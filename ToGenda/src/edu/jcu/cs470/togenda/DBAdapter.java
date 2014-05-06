@@ -85,7 +85,7 @@ public class DBAdapter {
 		row.put(COLUMN_CONTENT, content);
 		row.put(COLUMN_DUE, due);
 		row.put(COLUMN_COLOR, colorId);
-		row.put(COLUMN_PRIORITY, priority+1);
+		row.put(COLUMN_PRIORITY, priority);
 		row.put(COLUMN_SIZE, size);
 		return db.insert(DATABASE_TABLE, null, row);
 	}
