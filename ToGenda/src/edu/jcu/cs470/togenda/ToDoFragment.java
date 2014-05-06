@@ -39,8 +39,8 @@ public class ToDoFragment extends Fragment {
 			adapter = new DragNDropCursorAdapter(myFragmentView.getContext(),
 					R.layout.task_list_item,
 					TaskCursor,
-					new String[]{DBAdapter.COLUMN_NAME, DBAdapter.COLUMN_CONTENT, DBAdapter.COLUMN_DUE},
-					new int[]{R.id.TaskItemTitle, R.id.textView3, R.id.textView2},
+					new String[]{DBAdapter.COLUMN_NAME, DBAdapter.COLUMN_CONTENT},
+					new int[]{R.id.TaskItemTitle, R.id.textView3},
 					R.id.DragHandle);
 
 			Log.d("apater", "test");

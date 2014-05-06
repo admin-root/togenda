@@ -742,15 +742,14 @@ containing a value of this type.
         public static final int month=0x7f03001d;
         public static final int task_creator=0x7f03001e;
         public static final int task_dialog=0x7f03001f;
-        public static final int task_edit=0x7f030020;
-        public static final int task_list_item=0x7f030021;
-        public static final int time_header_label=0x7f030022;
-        public static final int time_picker_dialog=0x7f030023;
-        public static final int todo_fragment=0x7f030024;
-        public static final int week=0x7f030025;
-        public static final int widget_daily_recm=0x7f030026;
-        public static final int widget_layout=0x7f030027;
-        public static final int year_label_text_view=0x7f030028;
+        public static final int task_list_item=0x7f030020;
+        public static final int time_header_label=0x7f030021;
+        public static final int time_picker_dialog=0x7f030022;
+        public static final int todo_fragment=0x7f030023;
+        public static final int week=0x7f030024;
+        public static final int widget_daily_recm=0x7f030025;
+        public static final int widget_layout=0x7f030026;
+        public static final int year_label_text_view=0x7f030027;
     }
     public static final class menu {
         public static final int calendar=0x7f0b0000;
