@@ -113,11 +113,10 @@ public class AgendaFragment extends Fragment{
 			}
 		}
 
-		Collections.sort(cardList); //works now
+		Collections.sort(cardList); //sort event cards
 
 		//GET TASKS HERE
 		db.open();
-		//db.insertTask("finish project", "Seriously", 0, "1", 0);
 		Cursor TaskCursor = db.getAllTasks();
 
 		ArrayList<CardTemplate> TaskList = new ArrayList<CardTemplate>();
@@ -130,6 +129,7 @@ public class AgendaFragment extends Fragment{
 			}
 			while(makeCards)
 			{
+				//0 = task ID, 1 = title; 2 = description; 3 = date; 4 = color ID; 5 = priority
 				TaskList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
 						TaskCursor.getInt(4),TaskCursor.getInt(5), getActivity(), getFragmentManager(), TaskCursor.getInt(6)));
 				if(TaskCursor.isLast()) 
@@ -147,11 +147,8 @@ public class AgendaFragment extends Fragment{
 		}
 		db.close();
 
-
 		//SORT TASKS + EVENTS TOGETHER HERE
 		Collections.sort(TaskList);
-
-		//ArrayList<CardTemplate> JoinedList = new ArrayList<CardTemplate>();
 
 		CardView.addStack(stack);
 
@@ -200,16 +197,11 @@ public class AgendaFragment extends Fragment{
 		{
 			//Create cardtype that explains that there are no current events.
 		}
-
 		// draw cards
 		CardView.refresh();
-
 		return myFragmentView;
 	}
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
 	public static class PlaceholderFragment extends Fragment {
 
 		public PlaceholderFragment() {
@@ -223,7 +215,6 @@ public class AgendaFragment extends Fragment{
 			return rootView;
 		}
 	}
-
 
 	public EventCard getEvent() {
 		try
@@ -241,15 +232,13 @@ public class AgendaFragment extends Fragment{
 
 			try {
 
-				//				CalendarContract.Instances.EVENT_ID,
+				//CalendarContract.Instances.EVENT_ID,
 				eventId = mCursor.getString(0);
-				//				CalendarContract.Instances.TITLE,
+				//CalendarContract.Instances.TITLE,
 				title = mCursor.getString(1);
-				//				CalendarContract.Events.DESCRIPTION, 
+				//CalendarContract.Events.DESCRIPTION, 
 				desc = mCursor.getString(2);
-				//				CalendarContract.Instances.START_DAY,
 
-				//				CalendarContract.Instances.START_MINUTE,
 				start = mCursor.getLong(4);					//MIGHT REQUIRE LONG
 				//				CalendarContract.Instances.END_DAY,
 
@@ -258,8 +247,7 @@ public class AgendaFragment extends Fragment{
 				//				CalendarContract.Instances.EVENT_COLOR_KEY,
 				colorKey = mCursor.getString(7);
 				colorKey2 = mCursor.getString(8);
-				//				CalendarContract.Instances.EVENT_COLOR};
-
+				//CalendarContract.Instances.EVENT_COLOR};
 				if (mCursor.getInt(10) == 1)
 				{
 					allday = true;
