@@ -294,7 +294,6 @@ public class MainActivity extends FragmentActivity {
 
 	public void openCal(View v)
 	{
-		//Log.d(getTag(), "Selected time in millis: " + calendar.getSelectedDate().getTime());
 		Long ldate = ((CalendarPickerView) findViewById(R.id.calendar_view)).getSelectedDate().getTime();	
 		Intent intent = new Intent(this, DayAgenda.class);
 		intent.putExtra("longdate",ldate);

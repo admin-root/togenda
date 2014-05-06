@@ -111,6 +111,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 						Intent intent = new Intent(c, TaskCreator.class);
 						intent.putExtra("TaskID",taskID);
 						c.startActivity(intent);
+						
 					}
 				});
 				alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
