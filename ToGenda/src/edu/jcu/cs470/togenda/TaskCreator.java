@@ -8,10 +8,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -40,6 +38,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	int colorNumber;
 	boolean editing = false;
 	private int taskID;
+	Long newDate;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -93,18 +92,39 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			db.open();
 			Cursor TaskCursor = db.getTask(taskID);
 			
+			//get task name from database
 			TextView TaskName = (TextView) findViewById(R.id.taskTitle);
 			TaskName.setText(TaskCursor.getString(1));
 			
+			//get tasks description from database
 			TextView TaskDesc = (TextView) findViewById(R.id.taskInfo);
 			TaskDesc.setText(TaskCursor.getString(2));
 			
-			Long dueDate = TaskCursor.getLong(3);
-			if (dueDate != 0)
+			//get task due date from database
+			newDate = TaskCursor.getLong(3);
+			CheckBox dateCheck = (CheckBox) findViewById(R.id.datebox);
+			Button thisButton = (Button) findViewById(R.id.dateButton);
+			if (newDate != 0)
 			{
-				CheckBox dateCheck = (CheckBox) findViewById(R.id.datebox);
 				dateCheck.setChecked(true);
+				thisButton.setEnabled(true);
+				Date due = new Date(newDate);
+				SimpleDateFormat editDate = new SimpleDateFormat("M/d/yyyy");
+				String date = editDate.format(due);
+				thisButton.setText(date);
+				milliseconds = newDate;
 			}
+			if (newDate == 0)
+			{
+				thisButton.setText("Choose date");
+			}
+			
+			//get the color ID from the database
+//			color = (ColorDrawable) TaskName.getBackground();	
+//			findViewById(R.id.colorBack).setBackgroundDrawable(color);	
+			
+			
+			//enable editing
 			editing = true;
 		}
 	}

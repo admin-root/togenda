@@ -177,11 +177,6 @@ public class TaskCard extends CardTemplate implements Comparable{
 		}
 	}
 
-	//	@Override
-	//	public void setOnCardSwipedListener(OnCardSwiped onEpisodeSwipedListener) {
-	//		this.onCardSwipedListener = onEpisodeSwipedListener;
-	//	}
-
 	public TaskCard(final int taskID, String titlePlay, String descText, final long due, int color, int priority) {
 		this.title = titlePlay;
 		this.description = descText;
