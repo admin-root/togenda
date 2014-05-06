@@ -29,26 +29,28 @@ public class ToDoFragment extends Fragment {
 		db = new DBAdapter(getActivity());
 		db.open();
 		Cursor TaskCursor = db.getAllTasks();
-		
-		list = (DragNDropListView) myFragmentView.findViewById(android.R.id.list);
 
-		Log.d("cursor", TaskCursor.getString(1));
-		
-		adapter = new DragNDropCursorAdapter(myFragmentView.getContext(),
-		                           R.layout.task_list_item,
-		                           TaskCursor,
-		                           new String[]{DBAdapter.COLUMN_NAME, DBAdapter.COLUMN_CONTENT, DBAdapter.COLUMN_DUE},
-		                           new int[]{R.id.TaskItemTitle, R.id.textView3, R.id.textView2},
-		                           R.id.DragHandle);
 
+
+		if (TaskCursor.getCount() > 0){
+			list = (DragNDropListView) myFragmentView.findViewById(android.R.id.list);
+
+			Log.d("cursor", TaskCursor.getString(1));
+
+			adapter = new DragNDropCursorAdapter(myFragmentView.getContext(),
+					R.layout.task_list_item,
+					TaskCursor,
+					new String[]{DBAdapter.COLUMN_NAME, DBAdapter.COLUMN_CONTENT, DBAdapter.COLUMN_DUE},
+					new int[]{R.id.TaskItemTitle, R.id.textView3, R.id.textView2},
+					R.id.DragHandle);
+
+			Log.d("apater", "test");
+
+			list.setDragNDropAdapter(adapter);
+		}
 		Log.d("apater", "test");
-		
-		list.setDragNDropAdapter(adapter);
-		
-		Log.d("apater", "test");
-		
 		db.close();
-		
+
 		return myFragmentView;
 	}
 }
