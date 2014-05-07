@@ -527,98 +527,122 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		if(colorId == 1)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal1);
+			colorNumber = 1;
 		}
 		else if(colorId == 2)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal2);
+			colorNumber = 2;
 		}
 		else if(colorId == 3)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal3);
+			colorNumber = 3;
 		}
 		else if(colorId == 4)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal4);
+			colorNumber = 4;
 		}
 		else if(colorId == 5)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal5);
+			colorNumber = 5;
 		}
 		else if(colorId == 6)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal6);
+			colorNumber = 6;
 		}
 		else if(colorId == 7)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal7);
+			colorNumber = 7;
 		}
 		else if(colorId == 8)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal8);
+			colorNumber = 8;
 		}
 		else if(colorId == 9)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal9);
+			colorNumber = 9;
 		}
 		else if(colorId == 10)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal10);
+			colorNumber = 10;
 		}
 		else if(colorId == 11)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal11);
+			colorNumber = 11;
 		}
 		else if(colorId == 12)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal12);
+			colorNumber = 12;
 		}
 		else if(colorId == 13)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal13);
+			colorNumber = 13;
 		}
 		else if(colorId == 14)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal14);
+			colorNumber = 14;
 		}
 		else if(colorId == 15)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal15);
+			colorNumber = 15;
 		}
 		else if(colorId == 16)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal16);
+			colorNumber = 16;
 		}
 		else if(colorId == 17)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal17);
+			colorNumber = 17;
 		}
 		else if(colorId == 18)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal18);
+			colorNumber = 18;
 		}
 		else if(colorId == 19)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal19);
+			colorNumber = 19;
 		}
 		else if(colorId == 20)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal20);
+			colorNumber = 20;
 		}
 		else if(colorId == 21)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal21);
+			colorNumber = 21;
 		}
 		else if(colorId == 22)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal22);
+			colorNumber = 22;
 		}
 		else if(colorId == 23)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal23);
+			colorNumber = 23;
 		}
 		else if(colorId == 24)
 		{
 			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal24);
+			colorNumber = 24;
 		}
 	}
 }
