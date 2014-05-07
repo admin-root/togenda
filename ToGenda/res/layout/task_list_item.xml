@@ -17,7 +17,7 @@
             android:id="@+id/TaskItemTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Large Text"
+            android:text="@string/large_text"
             android:textSize="20sp" />
 
         <RelativeLayout
@@ -30,7 +30,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medium Text"
+            android:text="@string/medium_text"
             android:textSize="16sp" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:textSize="8sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 

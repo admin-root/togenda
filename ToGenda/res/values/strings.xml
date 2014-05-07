@@ -46,5 +46,7 @@
     <string name="title_activity_day_agenda">DayAgenda</string>
     <string name="date">Date</string>
     <string name="choose_date">Choose date</string>
+    <string name="large_text">Large Text</string>
+    <string name="medium_text">Medium Text</string>
 
 </resources>
