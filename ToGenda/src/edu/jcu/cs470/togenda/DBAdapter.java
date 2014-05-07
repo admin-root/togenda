@@ -1,3 +1,8 @@
+/* Saeed Tawil, Danny Gonzalez
+ * Spring 2014
+ * Description: This class is used to create and implement the tasks database and methods, such
+ * 				as creating, deleting, editing, and calling a element in the database. 
+ */
 package edu.jcu.cs470.togenda;
 import android.content.ContentValues;
 import android.content.Context;
@@ -42,6 +47,7 @@ public class DBAdapter {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		}
 
+		//creates the tasks database
 		@Override
 		public void onCreate(SQLiteDatabase db) 
 		{
@@ -55,6 +61,7 @@ public class DBAdapter {
 			}
 		}
 
+		//swaps the current database with a an updated database
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) 
 		{
@@ -65,17 +72,20 @@ public class DBAdapter {
 		}
 	}
 
+	//receives access to the database
 	public DBAdapter open() throws SQLException
 	{
 		db = DBHelper.getWritableDatabase();
 		return this;
 	}
 
+	//closes access to the database
 	public void close()
 	{
 		DBHelper.close();
 	}
 
+	//adds a new task to the database
 	public long insertTask(String title, String content, long due, int colorId, int size)
 	{
 		int priority = db.rawQuery("select * from "+DATABASE_TABLE,null).getCount();
@@ -90,11 +100,13 @@ public class DBAdapter {
 		return db.insert(DATABASE_TABLE, null, row);
 	}
 
+	//deletes a task from the database
 	public boolean deleteTask(long rowId)
 	{
 		return db.delete(DATABASE_TABLE, KEY_ID+"="+rowId, null) > 0;
 	}
 
+	//get all the tasks in the database
 	public Cursor getAllTasks()
 	{
 		String[] COLS = new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT, COLUMN_DUE, 
@@ -111,6 +123,7 @@ public class DBAdapter {
 		return cursor;
 	}
 
+	//gets a task from the database
 	public Cursor getTask(long rowId) throws SQLException
 	{
 		Cursor cursor = db.query(DATABASE_TABLE, new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT, COLUMN_DUE, 
@@ -122,6 +135,7 @@ public class DBAdapter {
 		return cursor;
 	}
 	
+	//updates a task in the database
 	public boolean updateTask(long rowID,String title, String content, long due, int colorId, int priority, int size)
 	{
 		ContentValues args = new ContentValues();
