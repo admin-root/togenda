@@ -72,7 +72,6 @@
                 android:layout_gravity="right"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="time here"
                 android:textColor="@color/Black"
                 android:textSize="@dimen/card_action_small_text" />
         </LinearLayout>

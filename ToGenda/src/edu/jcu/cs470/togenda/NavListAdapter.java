@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 //Adaptor for list items in the navigation drawer.
+//sets icons and text labels.
 
 public class NavListAdapter extends BaseAdapter {
 

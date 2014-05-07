@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 //Displays a task card object
+//handles on click method by displaying an alert dialog.
 
 @SuppressWarnings("rawtypes")
 public class TaskCard extends CardTemplate implements Comparable{
@@ -56,7 +57,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 		this.title = titlePlay;
 		this.description = descText;
 		this.dueDate = due;
-		@SuppressWarnings("unused")
+		@SuppressWarnings("unused") //is actually used. Eclipse doesn't like SDF
 		SimpleDateFormat _12HourSDFwDM = new SimpleDateFormat("M/d h:mm a");
 		SimpleDateFormat _12HourSDF = new SimpleDateFormat("h:mm a");
 		this.endTime = due;
@@ -71,7 +72,8 @@ public class TaskCard extends CardTemplate implements Comparable{
 			@Override
 			public void onClick(View v) 
 			{
-				//creates dialogue to edit or remove task
+				//creates an Alert Dialogue to edit or remove task
+
 				AlertDialog alertDialog = new AlertDialog.Builder(v.getContext()).create();
 				//displays task title in view
 				alertDialog.setTitle(title);
@@ -90,6 +92,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 				//displays due date/"No Due Date" message in view
 				if (due != 0)
 				{
+					//Set Due Date Label
 					TextView tdDue = (TextView) dialogContent.findViewById(R.id.td_due);
 					Date dueDate = new Date(due);
 					SimpleDateFormat f = new SimpleDateFormat("M-d-yyyy");
@@ -105,7 +108,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 				//removes task from view and database
 				alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Complete", new DialogInterface.OnClickListener() 
 				{
-					public void onClick(DialogInterface dialog, int which) 
+					public void onClick(DialogInterface dialog, int which) //Deleted Task
 					{
 						db.open();
 						db.deleteTask(taskID);

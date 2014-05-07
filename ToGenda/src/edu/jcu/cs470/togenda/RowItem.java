@@ -1,5 +1,7 @@
 package edu.jcu.cs470.togenda;
 
+//Navigation drawer row item
+
 public class RowItem {
 
     private String title;

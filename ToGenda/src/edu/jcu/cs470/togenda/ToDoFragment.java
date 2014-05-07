@@ -30,7 +30,7 @@ public class ToDoFragment extends Fragment {
 		db.open();
 		Cursor TaskCursor = db.getAllTasks();
 
-		if (TaskCursor.getCount() > 0){
+		if (TaskCursor.getCount() > 0){	//only do stuff if there's a task in the database.
 			list = (DragNDropListView) myFragmentView.findViewById(android.R.id.list);
 
 			Log.d("cursor", TaskCursor.getString(1));
@@ -47,6 +47,7 @@ public class ToDoFragment extends Fragment {
 			list.setDragNDropAdapter(adapter);
 			list.setOnItemDragNDropListener(new OnItemDragNDropListener() {
 
+				//Listener for changing the priority of tasks when their list order is changed.
 				public void onItemDrop(DragNDropListView parent, View view,
 						int startPosition, int endPosition, long id) {
 
@@ -59,6 +60,8 @@ public class ToDoFragment extends Fragment {
 					while (sort)
 					{
 						Log.d("while", "loop");
+						//Increment all tasks between start and end position so that they get reordered correctly.
+						//the event being moved skips over the it's destined location.
 						if (startPosition > endPosition)
 						{
 							if (TaskCursor.getInt(5) == startPosition)

@@ -636,8 +636,8 @@ containing a value of this type.
         public static final int ScrollView1=0x7f08001d;
         public static final int TaskItemTitle=0x7f08004e;
         public static final int Time=0x7f080016;
-        public static final int WidgetLabel=0x7f080063;
-        public static final int action_settings=0x7f080064;
+        public static final int WidgetLabel=0x7f08005d;
+        public static final int action_settings=0x7f08005e;
         public static final int ampm_hitspace=0x7f080057;
         public static final int ampm_label=0x7f080058;
         public static final int animator=0x7f080007;
@@ -682,7 +682,7 @@ containing a value of this type.
         public static final int month_text_view=0x7f080008;
         public static final int navItemIcon=0x7f080012;
         public static final int navItemText=0x7f080037;
-        public static final int new_event=0x7f080065;
+        public static final int new_event=0x7f08005f;
         public static final int overflow=0x7f08001a;
         public static final int placeholder=0x7f08003c;
         public static final int separator=0x7f080053;
@@ -701,13 +701,7 @@ containing a value of this type.
         public static final int time_picker=0x7f08005a;
         public static final int time_picker_dialog=0x7f080059;
         public static final int title=0x7f080041;
-        public static final int widgetLayout=0x7f080062;
-        public static final int widget_cards=0x7f08005c;
-        public static final int widget_cards_alt=0x7f08005d;
-        public static final int widget_error=0x7f08005f;
-        public static final int widget_message=0x7f080060;
-        public static final int widget_progress=0x7f08005e;
-        public static final int widget_submessage=0x7f080061;
+        public static final int widgetLayout=0x7f08005c;
     }
     public static final class layout {
         public static final int activity_day_agenda=0x7f030000;
@@ -747,9 +741,8 @@ containing a value of this type.
         public static final int time_picker_dialog=0x7f030022;
         public static final int todo_fragment=0x7f030023;
         public static final int week=0x7f030024;
-        public static final int widget_daily_recm=0x7f030025;
-        public static final int widget_layout=0x7f030026;
-        public static final int year_label_text_view=0x7f030027;
+        public static final int widget_layout=0x7f030025;
+        public static final int year_label_text_view=0x7f030026;
     }
     public static final class menu {
         public static final int calendar=0x7f0b0000;

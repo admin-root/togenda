@@ -1,4 +1,7 @@
 package edu.jcu.cs470.togenda;
+
+//AOSP code is for basic implementation for Navigation Drawer
+//Advanced themeing and style was not included.
 /*
  * Copyright 2013 The Android Open Source Project
  *
@@ -68,42 +71,48 @@ import android.widget.TextView;
  * for example enabling or disabling a data overlay on top of the current content.</p>
  */
 
-
+//Main Class
+//Handles drawer opening and closing. Selecting from Drawer, and switching between fragments
 
 public class MainActivity extends FragmentActivity {
-	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerList;
-	private ActionBarDrawerToggle mDrawerToggle;
+	private DrawerLayout mDrawerLayout;	//Layout of Navigation Drawer
+	private ListView mDrawerList;	//List view in DrawerLayout
+	private ActionBarDrawerToggle mDrawerToggle;	//Toggles the Drawer Open and Close.
 
+	//For task card Dialog
 	public Drawable backgroundColor;
 	public AlertDialog alertDialog;
-	public int gPosition = 0;
-
+	
+	//Navigation Drawer and Action Bar labels
+	public int gPosition = 0;	//Current Positions in NavBar list.
 	private CharSequence mDrawerTitle;
 	public CharSequence mTitle;
-	private String[] pageList;
+	private String[] pageList;	//Array
 
-	private List<RowItem> rowItems;
-	private NavListAdapter adapter;
-	String[] menutitles;
-	TypedArray menuIcons;
+	private List<RowItem> rowItems;	//Of navigation drawer items
+	private NavListAdapter adapter;	//Creates rowitems
+	String[] menutitles;	//of menu icons
+	TypedArray menuIcons;	//Icons for nav drawer list
+
+	//Font faces.
 
 	public Typeface robotoLight;
 	public Typeface robotoBold;
-
-	//Main Activity
-	//Contains implementation for slide out navigation bar and switching fragments, as well as menu buttons and buttons from fragments.
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		mTitle = mDrawerTitle = getTitle();
+		
+		mTitle = mDrawerTitle = getTitle();	//Actionbar text
+		
+		//NavDrawer stuff
 		pageList = getResources().getStringArray(R.array.navItemList);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
+		//These  fonts are built into android 4.4
+		//We include them in our assets for devices running below that.
 		robotoLight=Typeface.createFromAsset(getAssets(),"fonts/Roboto-Thin.ttf");
 		robotoBold=Typeface.createFromAsset(getAssets(),"fonts/Roboto-Black.ttf");
 
@@ -115,9 +124,11 @@ public class MainActivity extends FragmentActivity {
 
 		rowItems = new ArrayList<RowItem>();
 
+		//Drawer list text + icons
 		menutitles = getResources().getStringArray(R.array.navItemList);
 		menuIcons = getResources().obtainTypedArray(R.array.navIconList);
 
+		//Create drawer list items
 		for (int i = 0; i < menutitles.length; i++) {
 			RowItem items = new RowItem(menutitles[i], menuIcons.getResourceId(
 					i, -1));
@@ -125,9 +136,9 @@ public class MainActivity extends FragmentActivity {
 		}
 
 		menuIcons.recycle();
-
+		
+		//sets adaptor
 		adapter = new NavListAdapter(getApplicationContext(), rowItems);
-
 		mDrawerList.setAdapter(adapter);
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -202,10 +213,9 @@ public class MainActivity extends FragmentActivity {
 		}
 		// Handle action buttons
 		switch(item.getItemId()) {
-		case R.id.new_event:
+		case R.id.new_event:	//if the user clicked the new event button
 			Intent intent = new Intent(this, TaskCreator.class);
-			startActivityForResult(intent, 1);
-
+			startActivityForResult(intent, 1);	//new event intent
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -217,8 +227,9 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) 
 		{
-			if (position != 3)
+			if (position != 3)	//position 3 is the settings intent, which should never be highlights
 			{
+				//highlight and font stuff.
 				setNavDrawerItemNormal();
 				TextView txtview = ((TextView) view.findViewById(R.id.navItemText));
 				txtview.setTypeface(robotoBold);
@@ -240,6 +251,8 @@ public class MainActivity extends FragmentActivity {
 
 	private void selectItem(int position) 
 	{
+		//switches to the correct fragment.
+		
 		Fragment newFragment;
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		switch (position) {
@@ -293,6 +306,7 @@ public class MainActivity extends FragmentActivity {
 
 	public void openCal(View v)
 	{
+		//for the Calendar Fragment's button
 		Long ldate = ((CalendarPickerView) findViewById(R.id.calendar_view)).getSelectedDate().getTime();	
 		Intent intent = new Intent(this, DayAgenda.class);
 		intent.putExtra("longdate",ldate);
@@ -300,13 +314,13 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+		//refresh the current fragment.
 		FragmentTransaction tr = getFragmentManager().beginTransaction();
 		if (gPosition == 0)
 		{
 			tr.replace(R.id.content_frame, new AgendaFragment());
 		}
-		else
+		else	//if not in agenda view, go to todo view.
 		{
 			tr.replace(R.id.content_frame, new ToDoFragment());
 		}
@@ -314,4 +328,3 @@ public class MainActivity extends FragmentActivity {
 
 	}
 }
-

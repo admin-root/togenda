@@ -33,6 +33,7 @@ import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
 
 //Activity for creating and editing tasks
+//Becomes task editor if created with extra
 
 public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	private AlertDialog alertDialog;
@@ -60,33 +61,8 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		//gets the calendar for date selection
 		calendar = Calendar.getInstance();
 		datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
-		//copy the database from the assets folder to where the app can find it
-//		String dir = "/data/data/"+getPackageName()+"/databases/";
-//		String path = dir+"tasks.db";
-		//THERE'S A BETTER WAY TO DO THIS
-		//We shoudln't be storing the database on the SDcard.
-		//Too many incompatibility issues with different devices. Especially with Android 4.4
-		//should not need to create the databases directory, will for testing purposes
-//		File f = new File(dir);
-//		if(!f.exists())
-//		{
-//			File directory = new File(dir);
-//			directory.mkdirs();
-//			try
-//			{
-//				//copy from input-stream to output-stream
-//				copyDataBase(getBaseContext().getAssets().open("tasks.db"), new FileOutputStream(path));
-//			}
-//			catch(FileNotFoundException ex)
-//			{
-//				ex.printStackTrace();
-//			}
-//			catch(IOException ex)
-//			{
-//				ex.printStackTrace();
-//			}
-//		}
-		//exercise the database
+
+		//Access the database
 		db = new DBAdapter(this);
 		
 		//editing an already existing task
@@ -110,7 +86,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			newDate = TaskCursor.getLong(3);
 			CheckBox dateCheck = (CheckBox) findViewById(R.id.datebox);
 			Button thisButton = (Button) findViewById(R.id.dateButton);
-			if (newDate != 0)
+			if (newDate != 0)	//only do date stuff if task has a due date.
 			{
 				dateCheck.setChecked(true);
 				thisButton.setEnabled(true);
@@ -171,6 +147,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 
 			if(!title.equals(""))
 			{
+				//update task in database
 				db.open();
 				db.updateTask(taskID, title, content, date, colorNumber, priority, size);
 				db.close();
@@ -193,20 +170,6 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	{
 		finish();
 	}
-	
-//	//copies tasks database
-//	private void copyDataBase(InputStream in, FileOutputStream out) throws IOException
-//	{
-//		//copy 1024 bytes at a time
-//		byte[] buffer = new byte [1024];
-//		int length;
-//		while((length = in.read(buffer)) > 0)
-//		{
-//			out.write(buffer, 0, length);
-//		}
-//		in.close();
-//		out.close();
-//	}
 
 	//gets the task content as a string value
 	public String getContent()
@@ -236,7 +199,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		}
 	}
 
-	//setting the due date
+	//setting the due date with Date Picker
 	@SuppressLint("SimpleDateFormat")
 	@Override
 	public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) 
@@ -281,6 +244,9 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		alertDialog.setIcon(R.drawable.ic_tint_dark);
 		alertDialog.show();
 	}
+	
+	//Using deprecated method because newer method isn't supported in older app versions.
+	//necessary for keeping support with 4.0
 
 	//setting colorBack and color ID depending on which color is selecte
 	@SuppressWarnings("deprecation")
