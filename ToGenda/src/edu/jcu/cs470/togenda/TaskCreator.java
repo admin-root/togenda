@@ -171,9 +171,6 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 				db.open();
 				db.updateTask(taskID, title, content, date, colorNumber, priority, size);
 				db.close();
-				//Intent returnIntent = new Intent();
-				//setResult(RESULT_OK, returnIntent);
-				//finish();
 				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 				startActivity(intent);
 			}
@@ -194,6 +191,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		finish();
 	}
 	
+	//copies tasks database
 	private void copyDataBase(InputStream in, FileOutputStream out) throws IOException
 	{
 		//copy 1024 bytes at a time
