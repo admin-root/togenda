@@ -27,6 +27,13 @@ import android.provider.CalendarContract;
 import android.text.format.DateFormat;
 import android.text.format.Time;
 
+
+//This fragment holds the apps Agenda View
+//When created, it will queery the user's Google Calendar for events in the next week. It will make Event cards for each of these.
+//The app will also queery it's own Task database for tasks that the user entered, and will create a task card for each of those.
+//It will sort all Event cards and schedule Task cards in the free spaces in between the Events.
+//If there is a free hour available, an available task will be scheduled into it.
+
 @SuppressLint("SimpleDateFormat")
 public class AgendaFragment extends Fragment{
 
