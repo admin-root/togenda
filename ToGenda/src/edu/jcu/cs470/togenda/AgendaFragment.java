@@ -175,12 +175,14 @@ public class AgendaFragment extends Fragment{
 			{
 				if (cardList.get(eventLength-1).getStart()-blockStart >= (MiliHalfHour*taskLength))	//Check if there is time to schedule a task
 				{
+					//Schedule task
 					CardView.addCard(TaskList.get(taskLength-1));
 					blockStart += MiliHalfHour*taskLength;
 					taskLength-=1;
 				}
 				else
 				{
+					//put event
 					CardView.addCard(cardList.get(eventLength-1));
 					blockStart = cardList.get(eventLength-1).getEnd();
 					eventLength-=1;
@@ -188,6 +190,7 @@ public class AgendaFragment extends Fragment{
 			}
 			else
 			{
+				//put event
 				CardView.addCard(cardList.get(eventLength-1));
 				blockStart = cardList.get(eventLength-1).getEnd();
 				eventLength-=1;
@@ -240,6 +243,7 @@ public class AgendaFragment extends Fragment{
 			boolean allday = false;
 
 			try {
+				//Get Event from Google Calendar
 
 				//CalendarContract.Instances.EVENT_ID,
 				eventId = mCursor.getString(0);

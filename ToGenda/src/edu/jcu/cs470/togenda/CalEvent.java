@@ -3,7 +3,8 @@ package edu.jcu.cs470.togenda;
 public class CalEvent {
 
 	//For storing of calendar events into local database.
-	//Unused.
+	//Unused. We get all events from Google Calendar's DB
+	//Could be useful in the future for users who do not use Google Calendar.
 	
 	//Calendar table
 	String CALENDAR_ACCOUNT_NAME;

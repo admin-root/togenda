@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-//Adaptor class for retrieving tasks from database
+//Custom adaptor class for retrieving tasks from database
 
 public class DBAdapter {
 	//defining the table and column names
@@ -113,7 +113,7 @@ public class DBAdapter {
 	{
 		String[] COLS = new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT, COLUMN_DUE, 
 				COLUMN_COLOR, COLUMN_PRIORITY, COLUMN_SIZE};
-		Cursor cursor = db.query(DATABASE_TABLE, COLS, null, null, null, null, "tasks.priority ASC");
+		Cursor cursor = db.query(DATABASE_TABLE, COLS, null, null, null, null, "tasks.priority ASC");	//Sort tasks by priority
 		if(cursor != null)
 		{
 			cursor.moveToFirst();

@@ -5,6 +5,9 @@ import android.view.View;
 import com.fima.cardsui.objects.RecyclableCard;
 
 //Generic card to extend from
+//Bridges the gap between our Cards and the RecyclableCard from the CardsUI Lib.
+//This is important so that we can put Event and Task cards together in an array of type "Cardtemplate"
+//Implements comparable for sorting.
 
 @SuppressWarnings("rawtypes")
 public abstract class CardTemplate extends RecyclableCard implements Comparable{

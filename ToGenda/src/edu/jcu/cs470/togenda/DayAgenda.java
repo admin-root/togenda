@@ -75,7 +75,7 @@ public class DayAgenda extends Activity {
 			{
 				if (newCard.startTime <= ldate)
 				{
-					stack.add(newCard);
+					stack.add(newCard); //stack of full day events
 				}
 			}
 			else if (newCard.getTitle() != "no event") //"no event" == try-catch block
@@ -92,15 +92,15 @@ public class DayAgenda extends Activity {
 			}
 		}
 
-		Collections.sort(cardList);
+		Collections.sort(cardList);//Sorting
 
-		CardView.addStack(stack);
+		CardView.addStack(stack);//Adds full-day events in stack view.
 
 		if (!cardList.isEmpty())
 		{
 			for (int cards = cardList.size(); cards >= 1; cards--)
 			{
-				CardView.addCard(cardList.get(cards-1));
+				CardView.addCard(cardList.get(cards-1));//Add cards to view
 			}
 		}
 
@@ -115,6 +115,9 @@ public class DayAgenda extends Activity {
 	}
 	
 	public EventCard getEvent() {
+		
+		//Gets events from Google Calendar
+		
 		try
 		{
 			EventCard event;

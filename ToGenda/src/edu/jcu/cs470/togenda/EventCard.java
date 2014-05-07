@@ -26,13 +26,13 @@ public class EventCard extends CardTemplate implements Comparable{
 	int[] colors;
 	public String eventId = "0";
 
-	public EventCard(String title)
+	public EventCard(String title)	//Basic Constructor
 	{
 		super(title);
 	}
 
 	@Override
-	protected int getCardLayoutId() 
+	protected int getCardLayoutId() //Defines which layout should be used when inflating.
 	{
 		return R.layout.card_ex;
 	}
@@ -42,19 +42,19 @@ public class EventCard extends CardTemplate implements Comparable{
 	{
 		((TextView) convertView.findViewById(R.id.EventLabel)).setText(titlePlay);
 		((TextView) convertView.findViewById(R.id.description)).setText(description);
-		if (AllDay)
+		if (AllDay)	//Different label if the event is an "all day" event.
 		{
 			((TextView) convertView.findViewById(R.id.Time)).setText("All day");
 		}
 		else{
-			((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);
+			((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);	//states start and end time.
 		}
 
 		if (color!=null){
 
 			if (Integer.parseInt(color) < 25 && Integer.parseInt(color) > 0) //Later: compensate for custom colors
 			{
-				//Chooses color based on google defualts.
+				//Chooses color based on google defaults.
 				colors = new int[25];
 				colors[1] = R.color.gCal1;
 				colors[2] = R.color.gCal2;
@@ -87,7 +87,7 @@ public class EventCard extends CardTemplate implements Comparable{
 
 	@SuppressLint("SimpleDateFormat")
 	public EventCard(String titlePlay, String description, long start, long end, String color, String color2, Boolean hasOverflow, 
-			Boolean isClickable, final String eventId, boolean last, boolean fullday) 
+			Boolean isClickable, final String eventId, boolean last, boolean fullday) //Full constructor
 	{
 		this.titlePlay = titlePlay;
 		this.description = description;
@@ -97,13 +97,13 @@ public class EventCard extends CardTemplate implements Comparable{
 		this.startTime = start;
 		this.endTime = end;
 		this.startLabel = _12HourSDFwDM.format(new Time(start));
-		if (_DaySDF.format(new Time(start))==_DaySDF.format(new Time(end)))
+		if (_DaySDF.format(new Time(start))==_DaySDF.format(new Time(end)))	//Check if start and end time are on same day
 		{
-			this.endLabel = _12HourSDFwDM.format(new Time(end));
+			this.endLabel = _12HourSDFwDM.format(new Time(end));	//Formats end time with day
 		}
 		else
 		{
-			this.endLabel = _12HourSDF.format(new Time(end));
+			this.endLabel = _12HourSDF.format(new Time(end));	//Formats end time
 		}
 		this.AllDay = fullday;
 
@@ -126,6 +126,7 @@ public class EventCard extends CardTemplate implements Comparable{
 			{
 				public void onClick(View v) 
 				{
+					//Opens intent to user's default calendar app that supports Google Calendar events.
 					Intent intent = new Intent(Intent.ACTION_VIEW);
 					intent.setData(Uri.parse("content://com.android.calendar/events/" + String.valueOf(eventId))); 
 					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK

@@ -6,6 +6,11 @@ import android.widget.TextView;
 
 import com.fima.cardsui.objects.RecyclableCard;
 
+//No longer used.
+//a "card" object that would only display the date
+//this is useful for placing strings, such as a date label, between cards in agenda view.
+//We now use the stack label for this functionality.
+
 public class DateHolder extends RecyclableCard {
 
 	@Override

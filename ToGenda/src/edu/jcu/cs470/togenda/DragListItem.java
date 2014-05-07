@@ -1,6 +1,6 @@
 package edu.jcu.cs470.togenda;
 
-//Item for ToDoFragment DragNDrop Listview
+//Row Item for ToDoFragment DragNDrop Listview
 
 public class DragListItem {
 
