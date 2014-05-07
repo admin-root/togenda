@@ -1,5 +1,10 @@
+/* Saeed Tawil, Danny Gonzalez
+ * Spring 2014
+ * Description: This class is used to edit it elements in the card_play.xml file with the 
+ * 				specific elements taken from the task database to create a unique task card
+ * 				to be seen.
+ */
 package edu.jcu.cs470.togenda;
-
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,7 +23,6 @@ import android.widget.TextView;
 
 @SuppressWarnings("rawtypes")
 public class TaskCard extends CardTemplate implements Comparable{
-
 	String title;
 	String description;
 	Long dueDate;
@@ -32,18 +36,19 @@ public class TaskCard extends CardTemplate implements Comparable{
 	int Priority;
 	int color;
 	int[] colors;
-	//	private OnCardSwiped onCardSwipedListener;
-	//	private String eventId = "0";
 
-	public TaskCard(String thisTitle){
+	public TaskCard(String thisTitle)
+	{
 		title = thisTitle;
 	}
 
 	@Override
-	protected int getCardLayoutId() {
+	protected int getCardLayoutId() 
+	{
 		return R.layout.card_play;
 	}
 
+	//
 	@SuppressLint("SimpleDateFormat")
 	public TaskCard(final int taskID, String titlePlay, String descText, final long due, int color, int priority,  final Context c, final FragmentManager fm, int size) {
 		this.title = titlePlay;
@@ -58,17 +63,19 @@ public class TaskCard extends CardTemplate implements Comparable{
 		this.Priority = priority;
 		this.hasOverflow = false;
 		this.isClickable = true;
-		//this.eventId = eventId;
 		db = new DBAdapter(c);
-		this.setOnClickListener(new OnClickListener() {
-
+		this.setOnClickListener(new OnClickListener() 
+		{
 			@Override
-			public void onClick(View v) {
+			public void onClick(View v) 
+			{
+				//creates dialogue to edit or remove task
 				AlertDialog alertDialog = new AlertDialog.Builder(v.getContext()).create();
+				//displays task title in view
 				alertDialog.setTitle(title);
 				LayoutInflater inflater = (LayoutInflater) v.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 				View dialogContent = inflater.inflate(R.layout.task_dialog, null);
-
+				//displays task description in view
 				TextView tdDesc = (TextView) dialogContent.findViewById(R.id.td_desc);
 				if (description.equals(""))
 				{
@@ -78,6 +85,7 @@ public class TaskCard extends CardTemplate implements Comparable{
 				{
 					tdDesc.setText(description);
 				}
+				//displays due date/"No Due Date" message in view
 				if (due != 0)
 				{
 					TextView tdDue = (TextView) dialogContent.findViewById(R.id.td_due);
@@ -92,9 +100,11 @@ public class TaskCard extends CardTemplate implements Comparable{
 					tdDue.setText("No Due Date");
 				}
 				alertDialog.setView(dialogContent);
-				//interface
-				alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Complete", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
+				//removes task from view and database
+				alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Complete", new DialogInterface.OnClickListener() 
+				{
+					public void onClick(DialogInterface dialog, int which) 
+					{
 						db.open();
 						db.deleteTask(taskID);
 						db.close();
@@ -102,20 +112,23 @@ public class TaskCard extends CardTemplate implements Comparable{
 						FragmentTransaction tr = fm.beginTransaction();
 						tr.replace(R.id.content_frame, new AgendaFragment());
 						tr.commit();
-
 					}
 				});
-				alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Edit", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						//Intent intent = new Intent(c, TaskEditor.class);
+				//creates task as an intent to edit in TaskCreator class
+				alertDialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Edit", new DialogInterface.OnClickListener() 
+				{
+					public void onClick(DialogInterface dialog, int which) 
+					{
 						Intent intent = new Intent(c, TaskCreator.class);
 						intent.putExtra("TaskID",taskID);
 						c.startActivity(intent);
-						
 					}
 				});
-				alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
+				//leave dialogue without removing or editing task
+				alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() 
+				{
+					public void onClick(DialogInterface dialog, int which) 
+					{
 						//Do nothing.
 					}
 				});
@@ -125,14 +138,18 @@ public class TaskCard extends CardTemplate implements Comparable{
 		});
 	}
 
+	//creates the values in the task card that is displayed in the card_play.xml
+	@SuppressLint("SimpleDateFormat")
 	@Override
-	protected void applyTo(View convertView) {
+	protected void applyTo(View convertView) 
+	{
 		//displays task title
 		((TextView) convertView.findViewById(R.id.EventLabel)).setText(title);
 		//displays task description
 		((TextView) convertView.findViewById(R.id.description)).setText(description);
-		//Chooses color based on google defualts.
-		if (colorId > 0 && colorId < 25){
+		//Chooses color based on google defaults.
+		if (colorId > 0 && colorId < 25)
+		{
 			colors = new int[25];
 			colors[1] = R.color.gCal1;
 			colors[2] = R.color.gCal2;
@@ -178,7 +195,10 @@ public class TaskCard extends CardTemplate implements Comparable{
 		}
 	}
 
-	public TaskCard(final int taskID, String titlePlay, String descText, final long due, int color, int priority) {
+	//
+	@SuppressLint("SimpleDateFormat")
+	public TaskCard(final int taskID, String titlePlay, String descText, final long due, int color, int priority) 
+	{
 		this.title = titlePlay;
 		this.description = descText;
 		@SuppressWarnings("unused")
@@ -192,23 +212,27 @@ public class TaskCard extends CardTemplate implements Comparable{
 		this.isClickable = true;
 	}
 
+	//set the description of the task
 	public void setDescription(String desc)
 	{
 		this.description = desc;
 	}
 
+	//checks if a task is the last task in the list
 	public boolean isLast()
 	{
 		return last;
 	}
 
+	//gets the task priority
 	public long getPriority()
 	{
 		return this.Priority;
 	}
 
+	//for sorting tasks for placement
 	@Override
-	public int compareTo(Object another)  //for sorting
+	public int compareTo(Object another)  
 	{	
 		if (this.getPriority() < ((TaskCard) another).getPriority())
 		{
@@ -225,15 +249,20 @@ public class TaskCard extends CardTemplate implements Comparable{
 	{
 		super();
 	}
+	
+	//get the title of the task
 	public String getTitle()
 	{
 		return this.title;
 	}
 
+	//gets the description of the task
 	public String getDesc()
 	{
 		return this.description;
 	}
+	
+	//gets the color ID
 	public int getColorID()
 	{
 		return this.colorId;

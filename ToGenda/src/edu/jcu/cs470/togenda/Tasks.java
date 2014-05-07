@@ -1,3 +1,7 @@
+/* Saeed Tawil, Danny Gonzalez
+ * Spring 2014
+ * Description: Generates getters and setter for the database elements
+ */
 package edu.jcu.cs470.togenda;
 
 public class Tasks {
@@ -38,19 +42,23 @@ public class Tasks {
 		this.comment = comment;
 	}
 
-	public long getDueDate() {
+	public long getDueDate() 
+	{
 		return dueDate;
 	}
 
-	public void setDueDate(long dueDate) {
+	public void setDueDate(long dueDate) 
+	{
 		this.dueDate = dueDate;
 	}
 
-	public String getColorID() {
+	public String getColorID() 
+	{
 		return colorID;
 	}
 
-	public void setColorID(String colorID) {
+	public void setColorID(String colorID) 
+	{
 		this.colorID = colorID;
 	}
 
@@ -58,7 +66,8 @@ public class Tasks {
 		return priority;
 	}
 
-	public void setPriority(int priority) {
+	public void setPriority(int priority) 
+	{
 		this.priority = priority;
 	}
 
@@ -66,6 +75,5 @@ public class Tasks {
 	public String toString() 
 	{
 		return comment;
-	}
-	
+	}	
 }

@@ -54,9 +54,9 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		setContentView(R.layout.task_creator);
 		getActionBar().setIcon(R.drawable.ic_new_event);
 
+		//gets the calendar for date selection
 		calendar = Calendar.getInstance();
 		datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
-
 		//copy the database from the assets folder to where the app can find it
 		String dir = "/data/data/"+getPackageName()+"/databases/";
 		String path = dir+"tasks.db";
@@ -123,7 +123,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			}
 			//get the color ID from the database
 			getColor(TaskCursor.getInt(4));
-			//enable editing
+			
 			editing = true;
 			db.close();
 		}

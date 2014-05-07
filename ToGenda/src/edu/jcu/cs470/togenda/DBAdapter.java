@@ -111,7 +111,6 @@ public class DBAdapter {
 	{
 		String[] COLS = new String[] {KEY_ID, COLUMN_NAME, COLUMN_CONTENT, COLUMN_DUE, 
 				COLUMN_COLOR, COLUMN_PRIORITY, COLUMN_SIZE};
-		
 		Cursor cursor = db.query(DATABASE_TABLE, COLS, null, null, null, null, "tasks.priority ASC");
 		if(cursor != null)
 		{
