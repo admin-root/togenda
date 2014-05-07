@@ -1,3 +1,9 @@
+/* Saeed Tawil, Danny Gonzalez
+ * Spring 2014
+ * Description: This class is used to create a new or edit and existing task. This class will
+ * 				also add the task's title, contents, due date, selected color ID, and priority
+ * 				level to the tasks database.
+ */
 package edu.jcu.cs470.togenda;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,10 +14,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 import com.fourmob.datetimepicker.date.DatePickerDialog;
 import com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -87,24 +91,18 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		if(i.hasExtra("TaskID"))
 		{
 			taskID = i.getIntExtra("TaskID", 0);
-
 			//String dateString = new SimpleDateFormat("MM/dd/yyyy").format(new Date(ldate));
 			calendar = Calendar.getInstance();
 			datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
-			
 			db = new DBAdapter(this);
 			db.open();
 			TaskCursor = db.getTask(taskID);
-			
 			//get task name from database
 			TextView TaskName = (TextView) findViewById(R.id.taskTitle);
-			TaskName.setText(TaskCursor.getString(1));
-			
+			TaskName.setText(TaskCursor.getString(1));		
 			//get tasks description from database
 			TextView TaskDesc = (TextView) findViewById(R.id.taskInfo);
 			TaskDesc.setText(TaskCursor.getString(2));
-			
-
 			//get task due date from database
 			newDate = TaskCursor.getLong(3);
 			CheckBox dateCheck = (CheckBox) findViewById(R.id.datebox);
@@ -123,17 +121,15 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 			{
 				thisButton.setText("Choose date");
 			}
-			
 			//get the color ID from the database
-//			TaskName.setBackgroundColor(getColor(TaskCursor.getInt(4)));
-			
-			
+			getColor(TaskCursor.getInt(4));
 			//enable editing
 			editing = true;
 			db.close();
 		}
 	}
 
+	//creates/edit task
 	public void create(View v)
 	{
 		EditText taskName = (EditText)findViewById(R.id.taskTitle);
@@ -192,6 +188,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		}
 	}
 
+	//implements cancel button
 	public void cancel(View v)
 	{
 		finish();
@@ -210,11 +207,13 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		out.close();
 	}
 
+	//gets the task content as a string value
 	public String getContent()
 	{
 		return content;
 	}
 	
+	//creates the claendar dialogue to select due date
 	public void dateClick(View v)
 	{
 		datePickerDialog.setVibrate(false);
@@ -223,6 +222,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		datePickerDialog.show(getSupportFragmentManager(), "Due Date");
 	}
 
+	//allows addition of due date if dateBox CheckBox is selected
 	public void dateCheck(View v)
 	{
 		if (((CheckBox) v).isChecked()) 
@@ -235,6 +235,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		}
 	}
 
+	//setting the due date
 	@SuppressLint("SimpleDateFormat")
 	@Override
 	public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) 
@@ -255,11 +256,13 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		}
 	}
 
+	//gets the due date in milliseconds
 	public long getDate()
 	{
 		return milliseconds;
 	}
 
+	//creates the color select dialogue
 	public void colorPick(View v)
 	{
 		alertDialog = new AlertDialog.Builder(this).create();
@@ -520,11 +523,104 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		alertDialog.dismiss();
 	}
 	
+	//gets the color of the colorBack segment from the assigned color ID from the database
 	public void getColor(int colorId)
 	{
-		if(TaskCursor.getInt(4) == 1)
+		if(colorId == 1)
 		{
-			
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal1);
+		}
+		else if(colorId == 2)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal2);
+		}
+		else if(colorId == 3)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal3);
+		}
+		else if(colorId == 4)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal4);
+		}
+		else if(colorId == 5)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal5);
+		}
+		else if(colorId == 6)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal6);
+		}
+		else if(colorId == 7)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal7);
+		}
+		else if(colorId == 8)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal8);
+		}
+		else if(colorId == 9)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal9);
+		}
+		else if(colorId == 10)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal10);
+		}
+		else if(colorId == 11)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal11);
+		}
+		else if(colorId == 12)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal12);
+		}
+		else if(colorId == 13)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal13);
+		}
+		else if(colorId == 14)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal14);
+		}
+		else if(colorId == 15)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal15);
+		}
+		else if(colorId == 16)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal16);
+		}
+		else if(colorId == 17)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal17);
+		}
+		else if(colorId == 18)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal18);
+		}
+		else if(colorId == 19)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal19);
+		}
+		else if(colorId == 20)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal20);
+		}
+		else if(colorId == 21)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal21);
+		}
+		else if(colorId == 22)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal22);
+		}
+		else if(colorId == 23)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal23);
+		}
+		else if(colorId == 24)
+		{
+			findViewById(R.id.colorBack).setBackgroundResource(R.color.gCal24);
 		}
 	}
 }
