@@ -4,6 +4,8 @@ import android.view.View;
 
 import com.fima.cardsui.objects.RecyclableCard;
 
+//Generic card to extend from
+
 @SuppressWarnings("rawtypes")
 public abstract class CardTemplate extends RecyclableCard implements Comparable{
 

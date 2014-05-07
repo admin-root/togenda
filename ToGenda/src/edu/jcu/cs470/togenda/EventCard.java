@@ -11,6 +11,8 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+//Card that displays a calendar event.
+
 @SuppressWarnings("rawtypes")
 public class EventCard extends CardTemplate implements Comparable{
 
@@ -22,7 +24,6 @@ public class EventCard extends CardTemplate implements Comparable{
 	boolean AllDay = false;
 
 	int[] colors;
-	//	private OnCardSwiped onCardSwipedListener;
 	public String eventId = "0";
 
 	public EventCard(String title)
@@ -83,20 +84,6 @@ public class EventCard extends CardTemplate implements Comparable{
 			}
 		}
 	}
-	
-//	public int getColorID()
-//	{
-//		for(int index = 1; index <= 24; index++)
-//		{
-//			return colors[index]
-//		}
-////		return 0;
-//	}
-
-	//	@Override
-	//	public void setOnCardSwipedListener(OnCardSwiped onEpisodeSwipedListener) {
-	//		this.onCardSwipedListener = onEpisodeSwipedListener;
-	//	}
 
 	@SuppressLint("SimpleDateFormat")
 	public EventCard(String titlePlay, String description, long start, long end, String color, String color2, Boolean hasOverflow, 
@@ -140,10 +127,7 @@ public class EventCard extends CardTemplate implements Comparable{
 				public void onClick(View v) 
 				{
 					Intent intent = new Intent(Intent.ACTION_VIEW);
-					//Android 2.2+
-					intent.setData(Uri.parse("content://com.android.calendar/events/" + String.valueOf(eventId)));  
-					//Android 2.1 and below.
-					//intent.setData(Uri.parse("content://calendar/events/" + String.valueOf(calendarEventID)));    
+					intent.setData(Uri.parse("content://com.android.calendar/events/" + String.valueOf(eventId))); 
 					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
 							| Intent.FLAG_ACTIVITY_SINGLE_TOP
 							| Intent.FLAG_ACTIVITY_CLEAR_TOP

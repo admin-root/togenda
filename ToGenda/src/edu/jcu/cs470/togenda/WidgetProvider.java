@@ -10,14 +10,15 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.widget.ImageView;
 import android.widget.RemoteViews;
 
+//A basic widget that displays the user's next task.
 
 public class WidgetProvider extends AppWidgetProvider{
 
 	static DBAdapter db;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds) {

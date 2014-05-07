@@ -21,9 +21,7 @@ import com.squareup.timessquare.CalendarPickerView;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -93,8 +91,8 @@ public class MainActivity extends FragmentActivity {
 	public Typeface robotoLight;
 	public Typeface robotoBold;
 
-
-
+	//Main Activity
+	//Contains implementation for slide out navigation bar and switching fragments, as well as menu buttons and buttons from fragments.
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -229,6 +227,7 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
+	//Changes the font of unselected items to thin
 	public void setNavDrawerItemNormal()
 	{
 		for (int i=0; i< mDrawerList.getChildCount(); i++)

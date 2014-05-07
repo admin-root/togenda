@@ -12,6 +12,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+//Adaptor for list items in the navigation drawer.
+
 public class NavListAdapter extends BaseAdapter {
 
 	Context context;

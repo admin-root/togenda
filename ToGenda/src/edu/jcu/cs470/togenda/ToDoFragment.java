@@ -12,9 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
+
+//Displays the Application's ToDo list and allows for sorting.
 
 public class ToDoFragment extends Fragment {
 

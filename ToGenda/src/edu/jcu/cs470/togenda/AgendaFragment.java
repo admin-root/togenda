@@ -6,7 +6,6 @@ import com.fima.cardsui.views.CardUI;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +19,6 @@ import java.util.Collections;
 import java.util.Date;
 
 import android.content.ContentUris;
-import android.content.Intent;
 import android.database.Cursor; 
 import android.graphics.drawable.Drawable;
 import android.provider.CalendarContract;
@@ -40,8 +38,6 @@ public class AgendaFragment extends Fragment{
 	private View myFragmentView;
 	private static final int MiliSecDay = 86400000;	//Number of Milliseconds in a day.
 	private Cursor mCursor = null;
-	//	private String whereClauseTrue = "CalendarContract.Events.ALL_DAY=1";
-	//	private String whereClauseFalse = "CalendarContract.Events.ALL_DAY=0";
 
 	//Contains all columns we are to recieve from Google Calendar.
 	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
@@ -58,7 +54,7 @@ public class AgendaFragment extends Fragment{
 	AlertDialog alertDialog;
 	TaskCreator taskCreator;
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("unchecked") //Suppressor on the for the "sort" function.
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// Inflate the layout for getActivity() fragment
@@ -93,10 +89,12 @@ public class AgendaFragment extends Fragment{
 		mCursor = getActivity().getContentResolver().query(eventsUri, COLS, null, null, CalendarContract.Instances.DTSTART + " ASC");
 		mCursor.moveToFirst();
 
+		//Array List of all card types.
 		ArrayList<CardTemplate> cardList = new ArrayList<CardTemplate>();
 
 		boolean makeCards = true;
 
+		//Card stack is for "all day" events
 		CardStack stack = new CardStack();
 		stack.setTitle(datelabel);
 		stack.setColor("#33b5e5");
@@ -104,11 +102,11 @@ public class AgendaFragment extends Fragment{
 		while(makeCards)
 		{		
 			EventCard newCard = getEvent();
-			if (newCard.AllDay == true)
+			if (newCard.AllDay == true)	//If full day event
 			{
-				if (newCard.startTime <= t.toMillis(true))
+				if (newCard.startTime <= t.toMillis(true))	//And is for today
 				{
-					stack.add(newCard);
+					stack.add(newCard); //add to the "all day" stack
 				}
 			}
 			else if (newCard.getTitle() != "no event") //"no event" == try-catch block
@@ -130,7 +128,8 @@ public class AgendaFragment extends Fragment{
 		//GET TASKS HERE
 		db.open();
 		Cursor TaskCursor = db.getAllTasks();
-
+		
+		//Task list array
 		ArrayList<CardTemplate> TaskList = new ArrayList<CardTemplate>();
 
 		try{
@@ -139,7 +138,7 @@ public class AgendaFragment extends Fragment{
 			{
 				makeCards = true;
 			}
-			while(makeCards)
+			while(makeCards) // make task cards
 			{
 				//0 = task ID, 1 = title; 2 = description; 3 = date; 4 = color ID; 5 = priority
 				TaskList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
@@ -159,27 +158,22 @@ public class AgendaFragment extends Fragment{
 		}
 		db.close();
 
-		//SORT TASKS + EVENTS TOGETHER HERE
+		//SORT TASKS
 		Collections.sort(TaskList);
 
-		CardView.addStack(stack);
+		CardView.addStack(stack); //add the "all day" stack to the card view.
 
-		int eventLength = cardList.size();
-		int taskLength = TaskList.size();
-		Long blockStart = t.toMillis(true);
-		Long MiliHalfHour = (long) 1800000;
-		while (eventLength > 0)
+		int eventLength = cardList.size();	//Number of events
+		int taskLength = TaskList.size();	//number of tasks
+		Long blockStart = t.toMillis(true);	//time scheduling from (starts at current time)
+		Long MiliHalfHour = (long) 1800000;	//Number of milliseconds in a half hour
+		
+		while (eventLength > 0) //as long as there are still events in the list
 		{
-			//Stacked cards are kind of awkward to use, and when placed in excession they cause lag.
-			//Ordinary events will no longer be stacked. Instead, only full-day events will be stacked with each other when
-			//multiple full-day events exist on the same day.
-			//full day events aren't properly implemented yet.
-			//Will use a different card format for full day events, as well as tasks so that different types of entries are
-			//easily identified.
 
-			if(taskLength > 0)
+			if(taskLength > 0)	//as long as there are still tasks in the list
 			{
-				if (cardList.get(eventLength-1).getStart()-blockStart >= (MiliHalfHour*taskLength))
+				if (cardList.get(eventLength-1).getStart()-blockStart >= (MiliHalfHour*taskLength))	//Check if there is time to schedule a task
 				{
 					CardView.addCard(TaskList.get(taskLength-1));
 					blockStart += MiliHalfHour*taskLength;
@@ -229,6 +223,9 @@ public class AgendaFragment extends Fragment{
 	}
 
 	public EventCard getEvent() {
+		
+		//Gets events from Google Calendar stored on the user's device.
+		
 		try
 		{
 			EventCard event;

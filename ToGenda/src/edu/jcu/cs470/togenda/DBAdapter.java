@@ -12,6 +12,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+//Adaptor class for retrieving tasks from database
+
 public class DBAdapter {
 	//defining the table and column names
 	public static final String KEY_ID = "_id";

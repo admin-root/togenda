@@ -21,6 +21,8 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+//Displays a task card object
+
 @SuppressWarnings("rawtypes")
 public class TaskCard extends CardTemplate implements Comparable{
 	String title;

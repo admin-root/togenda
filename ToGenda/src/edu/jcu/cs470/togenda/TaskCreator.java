@@ -5,11 +5,11 @@
  * 				level to the tasks database.
  */
 package edu.jcu.cs470.togenda;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
+//import java.io.File;
+//import java.io.FileNotFoundException;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,6 +32,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.FragmentActivity;
 
+//Activity for creating and editing tasks
+
 public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	private AlertDialog alertDialog;
 	private ColorDrawable color;
@@ -48,6 +50,7 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 	Long newDate;
 	Cursor TaskCursor;
 
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -58,31 +61,31 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		calendar = Calendar.getInstance();
 		datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), true);
 		//copy the database from the assets folder to where the app can find it
-		String dir = "/data/data/"+getPackageName()+"/databases/";
-		String path = dir+"tasks.db";
+//		String dir = "/data/data/"+getPackageName()+"/databases/";
+//		String path = dir+"tasks.db";
 		//THERE'S A BETTER WAY TO DO THIS
 		//We shoudln't be storing the database on the SDcard.
 		//Too many incompatibility issues with different devices. Especially with Android 4.4
 		//should not need to create the databases directory, will for testing purposes
-		File f = new File(dir);
-		if(!f.exists())
-		{
-			File directory = new File(dir);
-			directory.mkdirs();
-			try
-			{
-				//copy from input-stream to output-stream
-				copyDataBase(getBaseContext().getAssets().open("tasks.db"), new FileOutputStream(path));
-			}
-			catch(FileNotFoundException ex)
-			{
-				ex.printStackTrace();
-			}
-			catch(IOException ex)
-			{
-				ex.printStackTrace();
-			}
-		}
+//		File f = new File(dir);
+//		if(!f.exists())
+//		{
+//			File directory = new File(dir);
+//			directory.mkdirs();
+//			try
+//			{
+//				//copy from input-stream to output-stream
+//				copyDataBase(getBaseContext().getAssets().open("tasks.db"), new FileOutputStream(path));
+//			}
+//			catch(FileNotFoundException ex)
+//			{
+//				ex.printStackTrace();
+//			}
+//			catch(IOException ex)
+//			{
+//				ex.printStackTrace();
+//			}
+//		}
 		//exercise the database
 		db = new DBAdapter(this);
 		
@@ -191,19 +194,19 @@ public class TaskCreator extends FragmentActivity implements OnDateSetListener{
 		finish();
 	}
 	
-	//copies tasks database
-	private void copyDataBase(InputStream in, FileOutputStream out) throws IOException
-	{
-		//copy 1024 bytes at a time
-		byte[] buffer = new byte [1024];
-		int length;
-		while((length = in.read(buffer)) > 0)
-		{
-			out.write(buffer, 0, length);
-		}
-		in.close();
-		out.close();
-	}
+//	//copies tasks database
+//	private void copyDataBase(InputStream in, FileOutputStream out) throws IOException
+//	{
+//		//copy 1024 bytes at a time
+//		byte[] buffer = new byte [1024];
+//		int length;
+//		while((length = in.read(buffer)) > 0)
+//		{
+//			out.write(buffer, 0, length);
+//		}
+//		in.close();
+//		out.close();
+//	}
 
 	//gets the task content as a string value
 	public String getContent()

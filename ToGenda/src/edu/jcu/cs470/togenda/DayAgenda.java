@@ -15,6 +15,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 
+//Similar to the Agenda Fragment, but only displays events from a single day.
+//Also, it is an Activity, not a fragment.
+
 public class DayAgenda extends Activity {
 
 	TaskCreator taskCreator;
@@ -45,10 +48,6 @@ public class DayAgenda extends Activity {
 		String dateString = new SimpleDateFormat("MM/dd/yyyy").format(new Date(ldate));
 		
 		getActionBar().setTitle(dateString);
-
-//		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
-//		alertDialog.setTitle(dateString);
-//		LayoutInflater inflater = this.getLayoutInflater();
 
 		// init CardView
 		CardUI CardView = (CardUI) findViewById(R.id.cardsviewday);
@@ -99,13 +98,6 @@ public class DayAgenda extends Activity {
 
 		if (!cardList.isEmpty())
 		{
-			//Stacked cards are kind of awkward to use, and when placed in excession they cause lag.
-			//Ordinary events will no longer be stacked. Instead, only full-day events will be stacked with each other when
-			//multiple full-day events exist on the same day.
-			//full day events aren't properly implemented yet.
-			//Will use a different card format for full day events, as well as tasks so that different types of entries are
-			//easily identified.
-
 			for (int cards = cardList.size(); cards >= 1; cards--)
 			{
 				CardView.addCard(cardList.get(cards-1));
@@ -129,7 +121,6 @@ public class DayAgenda extends Activity {
 			String title;
 			long start;
 			long end;
-			//			int color; //holds custom color case
 			String colorKey, colorKey2;
 			String desc;
 			String eventId;

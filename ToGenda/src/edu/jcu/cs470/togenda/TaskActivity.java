@@ -12,7 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-//drag to set priority
+//stores a task
+
 public class TaskActivity extends Activity {
 
 	@Override

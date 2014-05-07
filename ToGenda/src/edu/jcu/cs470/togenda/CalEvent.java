@@ -2,6 +2,9 @@ package edu.jcu.cs470.togenda;
 
 public class CalEvent {
 
+	//For storing of calendar events into local database.
+	//Unused.
+	
 	//Calendar table
 	String CALENDAR_ACCOUNT_NAME;
 	String CALENDAR_ACCOUNT_TYPE;
