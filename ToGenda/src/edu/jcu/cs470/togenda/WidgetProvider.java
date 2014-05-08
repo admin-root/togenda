@@ -17,6 +17,7 @@ import android.widget.RemoteViews;
 public class WidgetProvider extends AppWidgetProvider{
 
 	static DBAdapter db;
+	int[] allWidgetIds;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -26,7 +27,7 @@ public class WidgetProvider extends AppWidgetProvider{
 		// Get all ids
 		ComponentName thisWidget = new ComponentName(context,
 				WidgetProvider.class);
-		int[] allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+		allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
 		for (int widgetId : allWidgetIds) {
 
 			RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
@@ -80,16 +81,12 @@ public class WidgetProvider extends AppWidgetProvider{
 
 
 
-
-			// Register an onClickListener
-			Intent intent = new Intent(context, WidgetProvider.class);
-
+			//Launch app when widget is clicked.
+			Intent intent = new Intent(context, MainActivity.class);			
 			intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
 			intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
-
-			PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
-					0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-			remoteViews.setOnClickPendingIntent(R.id.WidgetLabel, pendingIntent);
+			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+			remoteViews.setOnClickPendingIntent(R.id.widgetLayout, pendingIntent);
 			appWidgetManager.updateAppWidget(widgetId, remoteViews);
 		}
 	}

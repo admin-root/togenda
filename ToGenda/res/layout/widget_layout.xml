@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/widgetLayout"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/White"
     android:orientation="vertical"
@@ -8,7 +8,7 @@
     android:paddingTop="5dp" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:gravity="top"
@@ -27,7 +27,7 @@
 
         <LinearLayout
             android:id="@+id/CardBody"
-            android:layout_width="288dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/selectable_background_cardbank"
             android:gravity="bottom|right"

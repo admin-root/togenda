@@ -4,8 +4,12 @@
  * 				as creating, deleting, editing, and calling a element in the database. 
  */
 package edu.jcu.cs470.togenda;
+import android.app.PendingIntent;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -85,6 +89,7 @@ public class DBAdapter {
 	public void close()
 	{
 		DBHelper.close();
+		widgetUpdate(context);	//Widgets are updated whenever DB is closed.
 	}
 
 	//adds a new task to the database
@@ -147,5 +152,14 @@ public class DBAdapter {
 		args.put(COLUMN_PRIORITY, priority);
 		args.put(COLUMN_SIZE, size);
 		return db.update(DATABASE_TABLE, args, KEY_ID+"="+rowID, null) > 0;
+	}
+	
+	public void widgetUpdate(Context c){
+		//Updates all instances of widgets.
+		Intent intent = new Intent(c, WidgetProvider.class);
+		intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
+		int ids[] = AppWidgetManager.getInstance(c).getAppWidgetIds(new ComponentName(c, WidgetProvider.class));
+		intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS,ids);
+		c.sendBroadcast(intent);
 	}
 }
