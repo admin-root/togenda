@@ -13,7 +13,7 @@ import com.squareup.timessquare.CalendarPickerView;
 import com.squareup.timessquare.CalendarPickerView.SelectionMode;
 
 public class CalendarFragment extends Fragment{
-
+	
 	//Displays a calendar from lib and a button.
 	//You can select a date on the calendar. When clicking the button, a dayAgenda intent for whichever day was selected.
 	//The buttons onclick listener is in main class.
