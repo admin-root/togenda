@@ -327,4 +327,12 @@ public class MainActivity extends FragmentActivity {
 		tr.commit();
 
 	}
+	
+	@Override
+	protected void onStop() {
+		
+	    android.os.Process.killProcess(android.os.Process.myPid());
+
+	    super.onStop();
+	}
 }
