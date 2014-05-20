@@ -10,6 +10,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 //A basic widget that displays the user's next task.
@@ -23,13 +24,13 @@ public class WidgetProvider extends AppWidgetProvider{
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
 			int[] appWidgetIds) {
-
+		Log.d("WidgetProvider", "onUpdate");
 		// Get all ids
 		ComponentName thisWidget = new ComponentName(context,
 				WidgetProvider.class);
 		allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
 		for (int widgetId : allWidgetIds) {
-
+			Log.d("WidgetProvider", "for WidgetIDs");
 			RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
 					R.layout.widget_layout);
 
@@ -42,13 +43,14 @@ public class WidgetProvider extends AppWidgetProvider{
 
 			Boolean makeCards = false;
 			try{
-
+				
 				if (TaskCursor != null)
 				{
 					makeCards = true;
 				}
 				while(makeCards)
 				{
+					Log.d("WidgetProvider", "while");
 					TaskList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
 							TaskCursor.getInt(4),TaskCursor.getInt(5)));
 					if(TaskCursor.isLast()) 
@@ -74,12 +76,8 @@ public class WidgetProvider extends AppWidgetProvider{
 			db.close();
 
 
-			//SORT TASKS + EVENTS TOGETHER HERE
+			//SORT TASKS HERE
 			Collections.sort(TaskList);
-
-			// Set the text
-
-
 
 			//Launch app when widget is clicked.
 			Intent intent = new Intent(context, MainActivity.class);			
@@ -88,6 +86,7 @@ public class WidgetProvider extends AppWidgetProvider{
 			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
 			remoteViews.setOnClickPendingIntent(R.id.widgetLayout, pendingIntent);
 			appWidgetManager.updateAppWidget(widgetId, remoteViews);
+			Log.d("WidgetProvider", "done");
 		}
 	}
 

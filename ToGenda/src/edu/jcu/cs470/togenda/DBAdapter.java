@@ -155,11 +155,13 @@ public class DBAdapter {
 	}
 	
 	public void widgetUpdate(Context c){
+		Log.d("DBAdaptor", "Widget Update");
 		//Updates all instances of widgets.
 		Intent intent = new Intent(c, WidgetProvider.class);
 		intent.setAction("android.appwidget.action.APPWIDGET_UPDATE");
 		int ids[] = AppWidgetManager.getInstance(c).getAppWidgetIds(new ComponentName(c, WidgetProvider.class));
 		intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS,ids);
 		c.sendBroadcast(intent);
+		Log.d("DBAdaptor", "finished");
 	}
 }
