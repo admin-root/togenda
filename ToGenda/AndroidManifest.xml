@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.jcu.cs470.togenda"
     android:versionCode="13"
-    android:versionName="Togenda v1.02.01" >
+    android:versionName="v1.02.01" >
 
     <uses-sdk
         android:minSdkVersion="15"
