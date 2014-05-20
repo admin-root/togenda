@@ -4,7 +4,6 @@
  * 				as creating, deleting, editing, and calling a element in the database. 
  */
 package edu.jcu.cs470.togenda;
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.ContentValues;
