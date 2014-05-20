@@ -81,6 +81,7 @@ public class DBAdapter {
 	public DBAdapter open() throws SQLException
 	{
 		db = DBHelper.getWritableDatabase();
+		Log.d("DBAdaptor", "Open");
 		return this;
 	}
 
@@ -88,6 +89,7 @@ public class DBAdapter {
 	public void close()
 	{
 		DBHelper.close();
+		Log.d("DBAdaptor", "Close");
 		widgetUpdate(context);	//Widgets are updated whenever DB is closed.
 	}
 
