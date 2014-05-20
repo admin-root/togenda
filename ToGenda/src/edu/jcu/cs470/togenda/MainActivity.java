@@ -104,6 +104,8 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		Log.d("MainActivity", "onCreate");
+		
 		mTitle = mDrawerTitle = getTitle();	//Actionbar text
 		
 		//NavDrawer stuff
@@ -331,6 +333,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	protected void onStop() {
 		
+		Log.d("MainActivity", "is kill");
 	    android.os.Process.killProcess(android.os.Process.myPid());
 
 	    super.onStop();

@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,7 +101,8 @@ public class AgendaFragment extends Fragment{
 		stack.setColor("#33b5e5");
 
 		while(makeCards)
-		{		
+		{
+			Log.d("AgendaFragment", "Making Event Cards");
 			EventCard newCard = getEvent();
 			if (newCard.AllDay == true)	//If full day event
 			{
@@ -140,6 +142,7 @@ public class AgendaFragment extends Fragment{
 			}
 			while(makeCards) // make task cards
 			{
+				Log.d("AgendaFragment", "Making Task Cards");
 				//0 = task ID, 1 = title; 2 = description; 3 = date; 4 = color ID; 5 = priority
 				TaskList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
 						TaskCursor.getInt(4),TaskCursor.getInt(5), getActivity(), getFragmentManager(), TaskCursor.getInt(6)));
@@ -170,7 +173,7 @@ public class AgendaFragment extends Fragment{
 		
 		while (eventLength > 0) //as long as there are still events in the list
 		{
-
+			Log.d("AgendaFragment", "Sorting with Events");
 			if(taskLength > 0)	//as long as there are still tasks in the list
 			{
 				if (cardList.get(eventLength-1).getStart()-blockStart >= (MiliHalfHour*taskLength))	//Check if there is time to schedule a task
@@ -198,6 +201,7 @@ public class AgendaFragment extends Fragment{
 		}
 		while(taskLength>0)
 		{
+			Log.d("Agenda Fragment", "Listing Tasks");
 			CardView.addCard(TaskList.get(taskLength-1));
 			taskLength-=1;
 		}
@@ -226,8 +230,9 @@ public class AgendaFragment extends Fragment{
 	}
 
 	public EventCard getEvent() {
-		
 		//Gets events from Google Calendar stored on the user's device.
+		
+		Log.d("AgendaFragment", "Fetch Event");
 		
 		try
 		{

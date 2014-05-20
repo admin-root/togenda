@@ -29,64 +29,67 @@ public class WidgetProvider extends AppWidgetProvider{
 		ComponentName thisWidget = new ComponentName(context,
 				WidgetProvider.class);
 		allWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
-		for (int widgetId : allWidgetIds) {
-			Log.d("WidgetProvider", "for WidgetIDs");
-			RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
-					R.layout.widget_layout);
+		
+		if (appWidgetIds.length > 0){
+			for (int widgetId : allWidgetIds) {
+				Log.d("WidgetProvider", "for WidgetIDs");
+				RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
+						R.layout.widget_layout);
 
-			db = getDatabaseHelper(context);
+				db = getDatabaseHelper(context);
 
-			db.open();
-			Cursor TaskCursor = db.getAllTasks();
+				db.open();
+				Cursor TaskCursor = db.getAllTasks();
 
-			ArrayList<CardTemplate> TaskList = new ArrayList<CardTemplate>();
+				ArrayList<CardTemplate> TaskList = new ArrayList<CardTemplate>();
 
-			Boolean makeCards = false;
-			try{
-				
-				if (TaskCursor != null)
-				{
-					makeCards = true;
-				}
-				while(makeCards)
-				{
-					Log.d("WidgetProvider", "while");
-					TaskList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
-							TaskCursor.getInt(4),TaskCursor.getInt(5)));
-					if(TaskCursor.isLast()) 
+				Boolean makeCards = false;
+				try{
+
+					if (TaskCursor != null)
 					{
-						makeCards = false;
+						makeCards = true;
 					}
-					else
+					while(makeCards)
 					{
-						TaskCursor.moveToNext();
+						Log.d("WidgetProvider", "while");
+						TaskList.add(new TaskCard(TaskCursor.getInt(0),TaskCursor.getString(1), TaskCursor.getString(2), TaskCursor.getLong(3),
+								TaskCursor.getInt(4),TaskCursor.getInt(5)));
+						if(TaskCursor.isLast()) 
+						{
+							makeCards = false;
+						}
+						else
+						{
+							TaskCursor.moveToNext();
+						}
 					}
+					remoteViews.setTextViewText(R.id.WidgetLabel, TaskList.get(0).getTitle());
+					remoteViews.setTextViewText(R.id.description, TaskList.get(0).getDesc());
+					remoteViews.setTextViewText(R.id.Time, TaskList.get(0).getTime());
+					remoteViews.setImageViewResource(R.id.navItemIcon, R.drawable.ic_bell_on_dark);
 				}
-				remoteViews.setTextViewText(R.id.WidgetLabel, TaskList.get(0).getTitle());
-				remoteViews.setTextViewText(R.id.description, TaskList.get(0).getDesc());
-				remoteViews.setTextViewText(R.id.Time, TaskList.get(0).getTime());
-				remoteViews.setImageViewResource(R.id.navItemIcon, R.drawable.ic_bell_on_dark);
+				catch(Exception E)
+				{
+					remoteViews.setTextViewText(R.id.WidgetLabel, "No tasks.");
+					remoteViews.setTextViewText(R.id.description, "You're all caught up!");
+					remoteViews.setImageViewResource(R.id.navItemIcon, R.drawable.ic_bell_off_dark);
+				}
+				db.close();
+
+
+				//SORT TASKS HERE
+				Collections.sort(TaskList);
+
+				//Launch app when widget is clicked.
+				Intent intent = new Intent(context, MainActivity.class);			
+				intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+				intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+				PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
+				remoteViews.setOnClickPendingIntent(R.id.widgetLayout, pendingIntent);
+				appWidgetManager.updateAppWidget(widgetId, remoteViews);
+				Log.d("WidgetProvider", "done");
 			}
-			catch(Exception E)
-			{
-				remoteViews.setTextViewText(R.id.WidgetLabel, "No tasks.");
-				remoteViews.setTextViewText(R.id.description, "You're all caught up!");
-				remoteViews.setImageViewResource(R.id.navItemIcon, R.drawable.ic_bell_off_dark);
-			}
-			db.close();
-
-
-			//SORT TASKS HERE
-			Collections.sort(TaskList);
-
-			//Launch app when widget is clicked.
-			Intent intent = new Intent(context, MainActivity.class);			
-			intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-			intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
-			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-			remoteViews.setOnClickPendingIntent(R.id.widgetLayout, pendingIntent);
-			appWidgetManager.updateAppWidget(widgetId, remoteViews);
-			Log.d("WidgetProvider", "done");
 		}
 	}
 
