@@ -604,6 +604,7 @@ containing a value of this type.
         public static final int url1=0x7f020036;
         public static final int url2=0x7f020037;
         public static final int url3=0x7f020038;
+        public static final int widgetpreview=0x7f020039;
     }
     public static final class id {
         public static final int Button01=0x7f08001f;
