@@ -92,6 +92,11 @@ public class DBAdapter {
 		Log.d("DBAdaptor", "Close");
 		widgetUpdate(context);	//Widgets are updated whenever DB is closed.
 	}
+	
+	public void wClose()
+	{
+		DBHelper.close();
+	}
 
 	//adds a new task to the database
 	public long insertTask(String title, String content, long due, int colorId, int size)

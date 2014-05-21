@@ -75,7 +75,7 @@ public class WidgetProvider extends AppWidgetProvider{
 					remoteViews.setTextViewText(R.id.description, "You're all caught up!");
 					remoteViews.setImageViewResource(R.id.navItemIcon, R.drawable.ic_bell_off_dark);
 				}
-				db.close();
+				db.wClose();
 
 
 				//SORT TASKS HERE
