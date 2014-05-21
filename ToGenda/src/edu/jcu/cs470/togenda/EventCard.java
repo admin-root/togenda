@@ -50,8 +50,7 @@ public class EventCard extends CardTemplate implements Comparable{
 			((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);	//states start and end time.
 		}
 
-		if (color!=null){
-
+		try{
 			if (Integer.parseInt(color) < 25 && Integer.parseInt(color) > 0) //Later: compensate for custom colors
 			{
 				//Chooses color based on google defaults.
@@ -82,6 +81,10 @@ public class EventCard extends CardTemplate implements Comparable{
 				colors[24] = R.color.gCal24;
 				((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[Integer.parseInt(color)]);
 			}
+		}
+		catch (Exception e)
+		{
+			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(R.color.gCal15);
 		}
 	}
 
