@@ -330,12 +330,12 @@ public class MainActivity extends FragmentActivity {
 
 	}
 	
-	@Override
-	protected void onStop() {
-		
-		Log.d("MainActivity", "is kill");
-	    android.os.Process.killProcess(android.os.Process.myPid());
-
-	    super.onStop();
-	}
+//	@Override
+//	protected void onStop() {
+//		
+//		Log.d("MainActivity", "is kill");
+//	    android.os.Process.killProcess(android.os.Process.myPid());
+//
+//	    super.onStop();
+//	}
 }
