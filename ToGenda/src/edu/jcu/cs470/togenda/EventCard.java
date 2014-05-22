@@ -67,7 +67,7 @@ public class EventCard extends CardTemplate implements Comparable{
 			colors[9] = R.color.gCal3;
 			colors[10] = R.color.gCal21;
 			colors[11] = R.color.gCal19;
-			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[(colorKey)]);
+			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[colorKey]);
 		}
 		catch (Exception e)
 		{
@@ -101,7 +101,7 @@ public class EventCard extends CardTemplate implements Comparable{
 			colors2[22] = R.color.gCal22;
 			colors2[23] = R.color.gCal23;
 			colors2[24] = R.color.gCal24;
-			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors2[(colorKey2)]);
+			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors2[colorKey]);
 		}
 		catch (Exception e)
 		{
