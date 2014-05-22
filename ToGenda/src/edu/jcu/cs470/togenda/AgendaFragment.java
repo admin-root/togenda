@@ -44,7 +44,7 @@ public class AgendaFragment extends Fragment{
 	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
 		CalendarContract.Instances.TITLE,  CalendarContract.Events.DESCRIPTION, CalendarContract.Instances.START_DAY, 
 		CalendarContract.Instances.BEGIN, CalendarContract.Instances.END, CalendarContract.Instances.END_MINUTE, 
-		CalendarContract.Instances.EVENT_COLOR, CalendarContract.Events.CALENDAR_COLOR, CalendarContract.Events.ALL_DAY};
+		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Events.ALL_DAY};
 
 	public CardUI CardView;
 

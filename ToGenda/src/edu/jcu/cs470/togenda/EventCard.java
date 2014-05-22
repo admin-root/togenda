@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 //Card that displays a calendar event.
 
@@ -21,6 +22,7 @@ public class EventCard extends CardTemplate implements Comparable{
 	Long endTime;
 	String startLabel;
 	String endLabel;
+	int colorKey, colorKey2;
 	boolean last = false;
 	boolean AllDay = false;
 
@@ -43,6 +45,7 @@ public class EventCard extends CardTemplate implements Comparable{
 	{
 		((TextView) convertView.findViewById(R.id.EventLabel)).setText(titlePlay);
 		((TextView) convertView.findViewById(R.id.description)).setText(description);
+		//((TextView) convertView.findViewById(R.id.description)).setText("colorKey: "+ String.valueOf(colorKey) + " colorKey2: " + String.valueOf(colorKey2));
 		if (AllDay)	//Different label if the event is an "all day" event.
 		{
 			((TextView) convertView.findViewById(R.id.Time)).setText("All day");
@@ -50,42 +53,54 @@ public class EventCard extends CardTemplate implements Comparable{
 		else{
 			((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);	//states start and end time.
 		}
-
+		
 		try{
-			if (Integer.parseInt(color) < 25 && Integer.parseInt(color) > 0) //Later: compensate for custom colors
-			{
-				//Chooses color based on google defaults.
-				colors = new int[25];
-				colors[1] = R.color.gCal1;
-				colors[2] = R.color.gCal2;
-				colors[3] = R.color.gCal3;
-				colors[4] = R.color.gCal4;
-				colors[5] = R.color.gCal5;
-				colors[6] = R.color.gCal6;
-				colors[7] = R.color.gCal7;
-				colors[8] = R.color.gCal8;
-				colors[9] = R.color.gCal9;
-				colors[10] = R.color.gCal10;
-				colors[11] = R.color.gCal11;
-				colors[12] = R.color.gCal12;
-				colors[13] = R.color.gCal13;
-				colors[14] = R.color.gCal14;
-				colors[15] = R.color.gCal15;
-				colors[16] = R.color.gCal16;
-				colors[17] = R.color.gCal17;
-				colors[18] = R.color.gCal18;
-				colors[19] = R.color.gCal19;
-				colors[20] = R.color.gCal20;
-				colors[21] = R.color.gCal21;
-				colors[22] = R.color.gCal22;
-				colors[23] = R.color.gCal23;
-				colors[24] = R.color.gCal24;
-				((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[Integer.parseInt(color)]);
-			}
-			else
-			{
-				((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(R.color.gCal15);
-			}
+			//Chooses color based on google defaults.
+			colors = new int[25];
+			colors[1] = R.color.gCal1;
+			colors[2] = R.color.gCal2;
+			colors[3] = R.color.gCal3;
+			colors[4] = R.color.gCal4;
+			colors[5] = R.color.gCal5;
+			colors[6] = R.color.gCal6;
+			colors[7] = R.color.gCal7;
+			colors[8] = R.color.gCal8;
+			colors[9] = R.color.gCal9;
+			colors[10] = R.color.gCal10;
+			colors[11] = R.color.gCal11;
+			colors[12] = R.color.gCal12;
+			colors[13] = R.color.gCal13;
+			colors[14] = R.color.gCal14;
+			colors[15] = R.color.gCal15;
+			colors[16] = R.color.gCal16;
+			colors[17] = R.color.gCal17;
+			colors[18] = R.color.gCal18;
+			colors[19] = R.color.gCal19;
+			colors[20] = R.color.gCal20;
+			colors[21] = R.color.gCal21;
+			colors[22] = R.color.gCal22;
+			colors[23] = R.color.gCal23;
+			colors[24] = R.color.gCal24;
+			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[colorKey2]);
+		}
+		catch (Exception e)
+		{
+
+		}
+		try{
+			colors = new int[11];
+			colors[1] = R.color.gCal16;
+			colors[2] = R.color.gCal15;
+			colors[3] = R.color.gCal7;
+			colors[4] = R.color.gCal13;
+			colors[5] = R.color.gCal9;
+			colors[6] = R.color.gCal11;
+			colors[7] = R.color.gCal12;
+			colors[8] = R.color.gCal22;
+			colors[9] = R.color.gCal3;
+			colors[10] = R.color.gCal21;
+			colors[11] = R.color.gCal19;
+			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[colorKey]);
 		}
 		catch (Exception e)
 		{
@@ -115,21 +130,13 @@ public class EventCard extends CardTemplate implements Comparable{
 			this.endLabel = _12HourSDF.format(new Time(end));	//Formats end time
 		}
 		this.AllDay = fullday;
-
 		try{
-			if (color != "" && color != null)
-			{
-				this.color = color;
-			}
-			else
-			{
-				this.color = color2;
-			}
+			this.colorKey = Integer.parseInt(color);
+			this.colorKey2 = Integer.parseInt(color2);
 		}
 		catch (Exception e)
 		{
-			Log.d("EventCard Color2", "I tried so hard");
-			this.color = color2;
+			Log.d("EventCard Color", "I tried so hard");
 		}
 		this.hasOverflow = hasOverflow;
 		this.eventId = eventId;
