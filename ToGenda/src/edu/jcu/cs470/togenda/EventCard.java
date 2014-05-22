@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
@@ -88,7 +89,8 @@ public class EventCard extends CardTemplate implements Comparable{
 		}
 		catch (Exception e)
 		{
-			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(R.color.gCal15);
+			//White card
+			//((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(R.color.gCal15);
 		}
 	}
 
@@ -114,15 +116,21 @@ public class EventCard extends CardTemplate implements Comparable{
 		}
 		this.AllDay = fullday;
 
-		if (color != "" && color != null)
-		{
-			this.color = color;
+		try{
+			if (color != "" && color != null)
+			{
+				this.color = color;
+			}
+			else
+			{
+				this.color = color2;
+			}
 		}
-		else
+		catch (Exception e)
 		{
+			Log.d("EventCard Color2", "I tried so hard");
 			this.color = color2;
 		}
-
 		this.hasOverflow = hasOverflow;
 		this.eventId = eventId;
 		this.last = last;
