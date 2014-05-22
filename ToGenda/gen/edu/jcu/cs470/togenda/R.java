@@ -810,27 +810,27 @@ containing a value of this type.
         public static final int numbers_radius_multiplier_normal=0x7f050006;
         public static final int numbers_radius_multiplier_outer=0x7f050008;
         public static final int overflow=0x7f050024;
-        public static final int pref_default_display_name=0x7f050043;
-        public static final int pref_description_social_recommendations=0x7f050041;
+        public static final int pref_default_display_name=0x7f050045;
+        public static final int pref_description_social_recommendations=0x7f050043;
         /**  Example settings for Data & Sync 
          */
-        public static final int pref_header_data_sync=0x7f050045;
+        public static final int pref_header_data_sync=0x7f050047;
         /**  Strings related to Settings 
  Example General settings 
          */
-        public static final int pref_header_general=0x7f05003f;
+        public static final int pref_header_general=0x7f050041;
         /**  Example settings for Notifications 
          */
-        public static final int pref_header_notifications=0x7f050048;
-        public static final int pref_ringtone_silent=0x7f05004b;
-        public static final int pref_title_add_friends_to_messages=0x7f050044;
-        public static final int pref_title_display_name=0x7f050042;
-        public static final int pref_title_new_message_notifications=0x7f050049;
-        public static final int pref_title_ringtone=0x7f05004a;
-        public static final int pref_title_social_recommendations=0x7f050040;
-        public static final int pref_title_sync_frequency=0x7f050046;
-        public static final int pref_title_system_sync_settings=0x7f050047;
-        public static final int pref_title_vibrate=0x7f05004c;
+        public static final int pref_header_notifications=0x7f05004a;
+        public static final int pref_ringtone_silent=0x7f05004d;
+        public static final int pref_title_add_friends_to_messages=0x7f050046;
+        public static final int pref_title_display_name=0x7f050044;
+        public static final int pref_title_new_message_notifications=0x7f05004b;
+        public static final int pref_title_ringtone=0x7f05004c;
+        public static final int pref_title_social_recommendations=0x7f050042;
+        public static final int pref_title_sync_frequency=0x7f050048;
+        public static final int pref_title_system_sync_settings=0x7f050049;
+        public static final int pref_title_vibrate=0x7f05004e;
         public static final int radial_numbers_typeface=0x7f050019;
         public static final int sans_serif=0x7f050012;
         public static final int select_day=0x7f05000f;
@@ -848,12 +848,14 @@ containing a value of this type.
         public static final int title_activity_calendar_fragment=0x7f050031;
         public static final int title_activity_day_agenda=0x7f050039;
         public static final int title_activity_main=0x7f050021;
-        public static final int title_activity_settings=0x7f05003e;
+        public static final int title_activity_settings=0x7f050040;
         public static final int title_activity_task=0x7f050027;
         public static final int title_activity_task_creator=0x7f050029;
         public static final int title_activity_to_do_fragment=0x7f050030;
         public static final int viewCal=0x7f05002b;
+        public static final int widgetDescBlank=0x7f05003f;
         public static final int widgetTitle=0x7f05002c;
+        public static final int widgetTitleBlank=0x7f05003e;
         public static final int year_picker_description=0x7f05000e;
     }
     public static final class style {

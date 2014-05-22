@@ -31,8 +31,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/selectable_background_cardbank"
             android:gravity="bottom|right"
-            android:orientation="vertical"
-            android:padding="4dp" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/WidgetLabel"
@@ -42,7 +41,7 @@
                 android:layout_gravity="left"
                 android:layout_weight="1"
                 android:paddingLeft="8dp"
-                android:text="Task Title"
+                android:text="@string/widgetTitleBlank"
                 android:textColor="@color/Black" />
 
             <RelativeLayout
@@ -61,7 +60,7 @@
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:maxLines="4"
-                android:text="This is a task description"
+                android:text="@string/widgetDescBlank"
                 android:textColor="@color/Black" />
 
             <TextView

@@ -48,5 +48,8 @@
     <string name="choose_date">Choose date</string>
     <string name="large_text">Large Text</string>
     <string name="medium_text">Medium Text</string>
+    
+    <string name="widgetTitleBlank">No tasks.</string>
+    <string name="widgetDescBlank">You're all caught up!</string>
 
 </resources>
