@@ -55,6 +55,26 @@ public class EventCard extends CardTemplate implements Comparable{
 		}
 		
 		try{
+			colors = new int[11];
+			colors[1] = R.color.gCal16;
+			colors[2] = R.color.gCal15;
+			colors[3] = R.color.gCal7;
+			colors[4] = R.color.gCal13;
+			colors[5] = R.color.gCal9;
+			colors[6] = R.color.gCal11;
+			colors[7] = R.color.gCal12;
+			colors[8] = R.color.gCal22;
+			colors[9] = R.color.gCal3;
+			colors[10] = R.color.gCal21;
+			colors[11] = R.color.gCal19;
+			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[(colorKey)]);
+		}
+		catch (Exception e)
+		{
+			//White card
+			//((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(R.color.gCal15);
+		}		
+		try{
 			//Chooses color based on google defaults.
 			colors2 = new int[25];
 			colors2[1] = R.color.gCal1;
@@ -81,31 +101,11 @@ public class EventCard extends CardTemplate implements Comparable{
 			colors2[22] = R.color.gCal22;
 			colors2[23] = R.color.gCal23;
 			colors2[24] = R.color.gCal24;
-			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors2[(colorKey2+1)]);
+			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors2[(colorKey2)]);
 		}
 		catch (Exception e)
 		{
 
-		}
-		try{
-			colors = new int[11];
-			colors[1] = R.color.gCal16;
-			colors[2] = R.color.gCal15;
-			colors[3] = R.color.gCal7;
-			colors[4] = R.color.gCal13;
-			colors[5] = R.color.gCal9;
-			colors[6] = R.color.gCal11;
-			colors[7] = R.color.gCal12;
-			colors[8] = R.color.gCal22;
-			colors[9] = R.color.gCal3;
-			colors[10] = R.color.gCal21;
-			colors[11] = R.color.gCal19;
-			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[(colorKey+1)]);
-		}
-		catch (Exception e)
-		{
-			//White card
-			//((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(R.color.gCal15);
 		}
 	}
 
