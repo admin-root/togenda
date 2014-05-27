@@ -53,27 +53,6 @@ public class EventCard extends CardTemplate implements Comparable{
 		else{
 			((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);	//states start and end time.
 		}
-		
-		try{
-			colors = new int[11];
-			colors[1] = R.color.gCal16;
-			colors[2] = R.color.gCal15;
-			colors[3] = R.color.gCal7;
-			colors[4] = R.color.gCal13;
-			colors[5] = R.color.gCal9;
-			colors[6] = R.color.gCal11;
-			colors[7] = R.color.gCal12;
-			colors[8] = R.color.gCal22;
-			colors[9] = R.color.gCal3;
-			colors[10] = R.color.gCal21;
-			colors[11] = R.color.gCal19;
-			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[colorKey]);
-		}
-		catch (Exception e)
-		{
-			//White card
-			//((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(R.color.gCal15);
-		}		
 		try{
 			//Chooses color based on google defaults.
 			colors2 = new int[25];
@@ -107,6 +86,26 @@ public class EventCard extends CardTemplate implements Comparable{
 		{
 
 		}
+		try{
+			colors = new int[11];
+			colors[1] = R.color.gCal16;
+			colors[2] = R.color.gCal15;
+			colors[3] = R.color.gCal7;
+			colors[4] = R.color.gCal13;
+			colors[5] = R.color.gCal9;
+			colors[6] = R.color.gCal11;
+			colors[7] = R.color.gCal12;
+			colors[8] = R.color.gCal22;
+			colors[9] = R.color.gCal3;
+			colors[10] = R.color.gCal21;
+			colors[11] = R.color.gCal19;
+			((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(colors[colorKey]);
+		}
+		catch (Exception e)
+		{
+			//White card
+			//((LinearLayout) convertView.findViewById(R.id.background)).setBackgroundResource(R.color.gCal15);
+		}		
 	}
 
 	@SuppressLint("SimpleDateFormat")
