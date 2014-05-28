@@ -193,11 +193,13 @@ public class AgendaFragment extends Fragment{
 			else
 			{
 				//put event
+				Log.d("Agenda Fragment", "Put Event");
 				CardView.addCard(cardList.get(eventLength-1));
 				blockStart = cardList.get(eventLength-1).getEnd();
 				eventLength-=1;
 			}
 		}
+		Log.d("Agenda Fragment", "Done Sorting");
 		while(taskLength>0)
 		{
 			Log.d("Agenda Fragment", "Listing Tasks");
@@ -210,6 +212,7 @@ public class AgendaFragment extends Fragment{
 			//Create cardtype that explains that there are no current events.
 		}
 		// draw cards
+		Log.d("Agenda Fragment", "Refresh");
 		CardView.refresh();
 		return myFragmentView;
 	}

@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 //Card that displays a calendar event.
 
@@ -50,10 +49,57 @@ public class EventCard extends CardTemplate implements Comparable{
 		if (AllDay)	//Different label if the event is an "all day" event.
 		{
 			((TextView) convertView.findViewById(R.id.Time)).setText("All day");
+			
 		}
 		else{
 			((TextView) convertView.findViewById(R.id.Time)).setText(startLabel + " - " + endLabel);	//states start and end time.
 		}
+		
+		try{
+			SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+			String dayOfTheWeek = sdf.format(startTime);
+			
+			if(dayOfTheWeek.contains("Sunday"))
+			{
+				dayOfTheWeek = "SUN";
+			}
+			else if(dayOfTheWeek.contains("Monday"))
+			{
+				dayOfTheWeek = "MON";
+			}
+			else if(dayOfTheWeek.contains("Tuesday"))
+			{
+				dayOfTheWeek = "TUE";
+			}
+			else if(dayOfTheWeek.contains("Wednesday"))
+			{
+				dayOfTheWeek = "WED";
+			}
+			else if(dayOfTheWeek.contains("Thursday"))
+			{
+				dayOfTheWeek = "THU";
+			}
+			else if(dayOfTheWeek.contains("Friday"))
+			{
+				dayOfTheWeek = "FRI";
+			}
+			else
+			{
+				dayOfTheWeek = "SAT";
+			}
+			
+			((TextView) convertView.findViewById(R.id.DayAbrevLabel)).setText(dayOfTheWeek);
+			
+			sdf = new SimpleDateFormat("dd");
+			String dayNum = sdf.format(startTime);
+			((TextView) convertView.findViewById(R.id.DayNumLabel)).setText(dayNum);
+		}
+		catch(Exception e)
+		{
+			
+		}
+		
+		
 		try{
 			//Chooses color based on google defaults.
 			colors = new int[25];
