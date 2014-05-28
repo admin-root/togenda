@@ -12,11 +12,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.text.Format; 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Currency;
 import java.util.Date;
 
 import android.content.ContentUris;
@@ -129,7 +131,7 @@ public class AgendaFragment extends Fragment{
 		//GET TASKS HERE
 		db.open();
 		Cursor TaskCursor = db.getAllTasks();
-		
+
 		//Task list array
 		ArrayList<CardTemplate> TaskList = new ArrayList<CardTemplate>();
 
@@ -169,7 +171,7 @@ public class AgendaFragment extends Fragment{
 		int taskLength = TaskList.size();	//number of tasks
 		Long blockStart = t.toMillis(true);	//time scheduling from (starts at current time)
 		Long MiliHalfHour = (long) 1800000;	//Number of milliseconds in a half hour
-		
+
 		while (eventLength > 0) //as long as there are still events in the list
 		{
 			Log.d("AgendaFragment", "Sorting with Events");
@@ -181,21 +183,22 @@ public class AgendaFragment extends Fragment{
 					CardView.addCard(TaskList.get(taskLength-1));
 					blockStart += MiliHalfHour*taskLength;
 					taskLength-=1;
+
 				}
 				else
 				{
+					blockStart = cardList.get(eventLength-1).getEnd();
 					//put event
 					CardView.addCard(cardList.get(eventLength-1));
-					blockStart = cardList.get(eventLength-1).getEnd();
 					eventLength-=1;
 				}
 			}
 			else
 			{
+				blockStart = cardList.get(eventLength-1).getEnd();
 				//put event
 				Log.d("Agenda Fragment", "Put Event");
 				CardView.addCard(cardList.get(eventLength-1));
-				blockStart = cardList.get(eventLength-1).getEnd();
 				eventLength-=1;
 			}
 		}
@@ -233,9 +236,9 @@ public class AgendaFragment extends Fragment{
 
 	public EventCard getEvent() {
 		//Gets events from Google Calendar stored on the user's device.
-		
+
 		Log.d("AgendaFragment", "Fetch Event");
-		
+
 		try
 		{
 			EventCard event;
