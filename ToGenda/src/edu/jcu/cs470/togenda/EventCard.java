@@ -40,6 +40,7 @@ public class EventCard extends CardTemplate implements Comparable{
 		return R.layout.card_ex;
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	protected void applyTo(View convertView) 
 	{

@@ -20,14 +20,13 @@
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            android:paddingLeft="15dp"
+            android:paddingRight="20dp" >
 
             <TextView
                 android:id="@+id/DayAbrevLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DAY"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/White"
                 android:textSize="15sp" />
@@ -36,7 +35,6 @@
                 android:id="@+id/DayNumLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="01"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/White" />
 
@@ -45,11 +43,10 @@
         <TextView
             android:id="@+id/EventLabel"
             style="@style/CardTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="10"
-            android:text="Title"
             android:textColor="@color/White" />
 
     </LinearLayout>
@@ -67,8 +64,7 @@
         android:layout_gravity="right"
         android:background="@drawable/selectable_background_cardbank"
         android:gravity="bottom|right"
-        android:orientation="vertical"
-        android:padding="4dp" >
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/description"
@@ -76,10 +72,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:layout_weight="1"
             android:ellipsize="end"
             android:maxLines="4"
-            android:text="small description"
             android:textColor="@color/White" />
 
         <TextView
@@ -87,9 +81,7 @@
             style="@style/CardTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="right"
-            android:text="time"
             android:textColor="@color/White"
             android:textSize="@dimen/card_action_small_text" />
 
