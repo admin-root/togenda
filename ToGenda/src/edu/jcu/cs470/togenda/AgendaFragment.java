@@ -44,7 +44,7 @@ public class AgendaFragment extends Fragment{
 	private static final String[] COLS = new String[]{ CalendarContract.Instances.EVENT_ID, 
 		CalendarContract.Instances.TITLE,  CalendarContract.Events.DESCRIPTION, CalendarContract.Instances.START_DAY, 
 		CalendarContract.Instances.BEGIN, CalendarContract.Instances.END, CalendarContract.Instances.END_MINUTE, 
-		CalendarContract.Instances.EVENT_COLOR_KEY, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Events.ALL_DAY};
+		CalendarContract.Events.DISPLAY_COLOR, CalendarContract.Events.CALENDAR_COLOR_KEY, CalendarContract.Events.ALL_DAY};
 
 	public CardUI CardView;
 
@@ -240,7 +240,7 @@ public class AgendaFragment extends Fragment{
 			long start;
 			long end;
 			//			int color; //holds custom color case
-			String colorKey, colorKey2;
+			String colorKey, colorCode;
 			String desc;
 			String eventId;
 			boolean last = false;
@@ -262,8 +262,8 @@ public class AgendaFragment extends Fragment{
 				//				CalendarContract.Instances.END_MINUTE,
 				end = mCursor.getLong(5);					//MIGHT REQUIRE LONG
 				//				CalendarContract.Instances.EVENT_COLOR_KEY,
-				colorKey = mCursor.getString(7);
-				colorKey2 = mCursor.getString(8);
+				colorCode = mCursor.getString(7);
+				colorKey = mCursor.getString(8);
 				//CalendarContract.Instances.EVENT_COLOR};
 				if (mCursor.getInt(9) == 1)
 				{
@@ -285,7 +285,7 @@ public class AgendaFragment extends Fragment{
 			}
 
 			//creates event (title,description,star time,end time,event color, calendar color,is clickable,have overflow button,id,is last)
-			event = new EventCard(title, desc, start, end, colorKey, colorKey2, true, true, eventId, last, allday);
+			event = new EventCard(title, desc, start, end, colorCode, colorKey, true, true, eventId, last, allday);
 
 			return event;
 		}

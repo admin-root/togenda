@@ -3,6 +3,7 @@
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/gCal16"
     android:orientation="vertical"
     android:paddingBottom="5dp"
     android:paddingTop="5dp" >
@@ -20,7 +21,7 @@
             android:layout_gravity="top"
             android:layout_weight="1"
             android:padding="8dp"
-            android:src="@drawable/ic_event_dark" />
+            android:src="@drawable/ic_event" />
 
         <TextView
             android:id="@+id/EventLabel"
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="10"
             android:text="title"
-            android:textColor="@color/Black" />
+            android:textColor="@color/White" />
 
     </LinearLayout>
 
@@ -59,7 +60,7 @@
             android:ellipsize="end"
             android:maxLines="4"
             android:text="small description"
-            android:textColor="@color/Black" />
+            android:textColor="@color/White" />
 
         <TextView
             android:id="@+id/Time"
@@ -70,7 +71,7 @@
             android:layout_weight="1"
             android:gravity="right"
             android:text="time"
-            android:textColor="@color/Black"
+            android:textColor="@color/White"
             android:textSize="@dimen/card_action_small_text" />
 
     </LinearLayout>
