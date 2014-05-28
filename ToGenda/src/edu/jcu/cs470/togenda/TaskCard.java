@@ -180,11 +180,11 @@ public class TaskCard extends CardTemplate implements Comparable{
 			colors[22] = R.color.gCal22;
 			colors[23] = R.color.gCal23;
 			colors[24] = R.color.gCal24;
-			((ImageView) convertView.findViewById(R.id.stripe)).setBackgroundResource(colors[colorId]);
+			((View) convertView.findViewById(R.id.stripe)).setBackgroundResource(colors[colorId]);
 		}
 		else
 		{
-			((ImageView) convertView.findViewById(R.id.stripe)).setBackgroundResource(R.color.gCal15);
+			((View) convertView.findViewById(R.id.stripe)).setBackgroundResource(R.color.gCal15);
 		}
 		//Displays due date
 		Date due = new Date(dueDate);

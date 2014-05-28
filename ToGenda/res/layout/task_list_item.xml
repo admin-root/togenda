@@ -1,45 +1,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
-
-    <ImageView
-        android:id="@+id/DragHandle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/drag_handle" />
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="3dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:layout_height="wrap_content"
+        android:background="@color/White" >
 
-        <TextView
-            android:id="@+id/TaskItemTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/large_text"
-            android:textSize="20sp" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/card_text" >
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/textView3"
+        <ImageView
+            android:id="@+id/DragHandle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/medium_text"
-            android:textSize="16sp" />
+            android:src="@drawable/drag_handle" />
 
-        <TextView
-            android:id="@+id/DayNumLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:textSize="12sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
+            <TextView
+                android:id="@+id/TaskItemTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/large_text"
+                android:textColor="#33B6EA"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="@string/medium_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/DayNumLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textSize="12sp" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
