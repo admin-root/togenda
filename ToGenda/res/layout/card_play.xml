@@ -39,6 +39,14 @@
                 android:text="@string/title"
                 android:textColor="#33B6EA"
                 android:textSize="24sp" />
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/card_text"
+                android:paddingRight="5dp" >
+                </RelativeLayout>
 
             <TextView
                 android:id="@+id/description"
@@ -51,6 +59,7 @@
                 android:fontFamily="sans-serif-light"
                 android:maxLines="3"
                 android:text="@string/desc"
+                android:textColor="@color/card_text"
                 android:textSize="16sp" />
             
             <TextView
