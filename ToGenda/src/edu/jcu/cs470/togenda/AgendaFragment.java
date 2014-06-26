@@ -2,25 +2,22 @@ package edu.jcu.cs470.togenda;
 
 import com.fima.cardsui.objects.CardStack;
 import com.fima.cardsui.views.CardUI;
-
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
 import java.text.Format; 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Currency;
 import java.util.Date;
-
 import android.content.ContentUris;
 import android.database.Cursor; 
 import android.graphics.drawable.Drawable;
@@ -35,6 +32,7 @@ import android.text.format.Time;
 //It will sort all Event cards and schedule Task cards in the free spaces in between the Events.
 //If there is a free hour available, an available task will be scheduled into it.
 
+@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 @SuppressLint("SimpleDateFormat")
 public class AgendaFragment extends Fragment{
 
